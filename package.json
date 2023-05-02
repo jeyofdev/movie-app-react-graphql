@@ -1,28 +1,37 @@
 {
-	"name": "movie-app-react-graphql",
-	"private": true,
-	"version": "1.0.0",
-	"description": "Fullstack application that lists movies. The App is developed with React and graphql",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/jeyofdev/movie-app-react-graphql.git"
-	},
-	"keywords": [
-		"node",
-		"react",
-		"vite",
-		"graphql",
-		"apollo",
-		"typescript",
-		"javascript"
-	],
-	"author": "jeyofdev <jgregoire.pro@gmail.com>",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/jeyofdev/starter-react-graphql-apollo-prisma/issues"
-	}
+  "name": "movie-app-react-graphql",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Fullstack application that lists movies. The App is developed with React and graphql",
+  "main": "index.js",
+  "scripts": {
+    "compile": "tsc",
+    "dev": "npm run compile && concurrently  --names \"TS,Nodemon\" -c \"blueBright,green\" \"tsc -w \" \"nodemon ./dist/index.js \"",
+    "start": "npm run compile && node ./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeyofdev/movie-app-react-graphql.git"
+  },
+  "keywords": [
+    "node",
+    "react",
+    "vite",
+    "graphql",
+    "apollo",
+    "typescript",
+    "javascript"
+  ],
+  "author": "jeyofdev <jgregoire.pro@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeyofdev/starter-react-graphql-apollo-prisma/issues"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.3",
+    "concurrently": "^8.0.1",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
 }
