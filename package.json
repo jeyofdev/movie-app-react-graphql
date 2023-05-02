@@ -1,46 +1,59 @@
 {
-  "name": "movie-app-react-graphql",
-  "private": true,
-  "version": "1.0.0",
-  "description": "Fullstack application that lists movies. The App is developed with React and graphql",
-  "main": "index.js",
-  "scripts": {
-    "compile": "tsc",
-    "dev": "npm run compile && concurrently  --names \"TS,Nodemon\" -c \"blueBright,green\" \"tsc -w \" \"nodemon ./dist/index.js \"",
-    "start": "npm run compile && node ./dist/index.js",
-    "lint": "eslint src --fix --no-ignore --max-warnings=0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jeyofdev/movie-app-react-graphql.git"
-  },
-  "keywords": [
-    "node",
-    "react",
-    "vite",
-    "graphql",
-    "apollo",
-    "typescript",
-    "javascript"
-  ],
-  "author": "jeyofdev <jgregoire.pro@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jeyofdev/starter-react-graphql-apollo-prisma/issues"
-  },
-  "devDependencies": {
-    "@types/node": "^18.16.3",
-    "@typescript-eslint/eslint-plugin": "^5.59.2",
-    "@typescript-eslint/parser": "^5.59.2",
-    "concurrently": "^8.0.1",
-    "eslint": "^8.39.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "nodemon": "^2.0.22",
-    "prettier": "^2.8.8",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.0.4"
-  }
+	"name": "movie-app-react-graphql",
+	"private": true,
+	"version": "1.0.0",
+	"description": "Fullstack application that lists movies. The App is developed with React and graphql",
+	"main": "index.js",
+	"scripts": {
+		"compile": "tsc",
+		"dev": "npm run compile && concurrently  --names \"TS,Nodemon\" -c \"blueBright,green\" \"tsc -w \" \"nodemon ./dist/index.js \"",
+		"start": "npm run compile && node ./dist/index.js",
+		"lint": "eslint src --fix --no-ignore --max-warnings=0",
+		"prepare": "husky install"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jeyofdev/movie-app-react-graphql.git"
+	},
+	"keywords": [
+		"node",
+		"react",
+		"vite",
+		"graphql",
+		"apollo",
+		"typescript",
+		"javascript"
+	],
+	"author": "jeyofdev <jgregoire.pro@gmail.com>",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/jeyofdev/starter-react-graphql-apollo-prisma/issues"
+	},
+	"devDependencies": {
+		"@types/node": "^18.16.3",
+		"@typescript-eslint/eslint-plugin": "^5.59.2",
+		"@typescript-eslint/parser": "^5.59.2",
+		"concurrently": "^8.0.1",
+		"eslint": "^8.39.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-config-airbnb-typescript": "^17.0.0",
+		"eslint-config-prettier": "^8.8.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"husky": "^8.0.3",
+		"lint-staged": "^13.2.2",
+		"nodemon": "^2.0.22",
+		"prettier": "^2.8.8",
+		"ts-node": "^10.9.1",
+		"typescript": "^5.0.4"
+	},
+	"hooks": {
+		"pre-commit": "npm run lint"
+	},
+	"lint-staged": {
+		"*.{js,ts,tsx,jsx}": [
+			"prettier --write",
+			"eslint --fix --no-ignore --max-warnings=0"
+		],
+		"*.{js,css,md,html,json}": "prettier --cache --write"
+	}
 }
