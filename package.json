@@ -1,0 +1,28 @@
+{
+	"name": "movie-app-react-graphql",
+	"private": true,
+	"version": "1.0.0",
+	"description": "Fullstack application that lists movies. The App is developed with React and graphql",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jeyofdev/movie-app-react-graphql.git"
+	},
+	"keywords": [
+		"node",
+		"react",
+		"vite",
+		"graphql",
+		"apollo",
+		"typescript",
+		"javascript"
+	],
+	"author": "jeyofdev <jgregoire.pro@gmail.com>",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/jeyofdev/starter-react-graphql-apollo-prisma/issues"
+	}
+}
