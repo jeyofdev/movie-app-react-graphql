@@ -7,7 +7,8 @@
   "scripts": {
     "compile": "tsc",
     "dev": "npm run compile && concurrently  --names \"TS,Nodemon\" -c \"blueBright,green\" \"tsc -w \" \"nodemon ./dist/index.js \"",
-    "start": "npm run compile && node ./dist/index.js"
+    "start": "npm run compile && node ./dist/index.js",
+    "lint": "eslint src --fix --no-ignore --max-warnings=0"
   },
   "repository": {
     "type": "git",
@@ -29,8 +30,16 @@
   },
   "devDependencies": {
     "@types/node": "^18.16.3",
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "@typescript-eslint/parser": "^5.59.2",
     "concurrently": "^8.0.1",
+    "eslint": "^8.39.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "nodemon": "^2.0.22",
+    "prettier": "^2.8.8",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   }
