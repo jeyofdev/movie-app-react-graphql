@@ -28,7 +28,7 @@
 	"author": "jeyofdev <jgregoire.pro@gmail.com>",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/jeyofdev/starter-react-graphql-apollo-prisma/issues"
+		"url": "https://github.com/jeyofdev/movie-app-react-graphql/issues"
 	},
 	"devDependencies": {
 		"@types/node": "^18.16.3",
