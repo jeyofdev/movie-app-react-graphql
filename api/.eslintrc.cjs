@@ -1,6 +1,7 @@
 module.exports = {
 	env: {
 		es2021: true,
+		node: true,
 	},
 	extends: [
 		'airbnb-base',
@@ -16,9 +17,20 @@ module.exports = {
 		createDefaultProgram: true,
 	},
 	plugins: ['@typescript-eslint'],
+	settings: {
+		'import/resolver': {
+			typescript: {
+				alwaysTryTypes: true,
+			},
+			node: {
+				extensions: ['.js', '.ts'],
+			},
+		},
+		'import/ignore': ['node_modules'],
+	},
 	ignorePatterns: ['.eslintrc.cjs', 'dist'],
 	rules: {
-		'react/react-in-jsx-scope': 0,
+		'no-console': 'warn',
 		'import/no-extraneous-dependencies': 'off',
 	},
 };
