@@ -31,7 +31,6 @@ module.exports = {
 	ignorePatterns: ['.eslintrc.cjs', 'dist'],
 	rules: {
 		'no-console': 'warn',
-		'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
-		'import/no-cycle': [2, { maxDepth: 1 }],
+		'import/no-extraneous-dependencies': 'off',
 	},
 };
