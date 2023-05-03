@@ -36,4 +36,4 @@ jobs:
           useLockFile: false
 
       - name: Lint
-        run: npm run lint
+        run: cd client && npm run lint
