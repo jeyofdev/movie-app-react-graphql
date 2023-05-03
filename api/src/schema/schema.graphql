@@ -8,7 +8,7 @@ type Movie {
 	overview: String
 	popularity: Int
 	poster_path: String
-	release_date: Date
+	release_date: String
 	title: String
 	video: Boolean
 	vote_average: Int
