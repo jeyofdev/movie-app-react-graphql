@@ -57,6 +57,8 @@
 		"*.{js,css,md,html,json}": "prettier --cache --write"
 	},
 	"dependencies": {
-		"delay-cli": "^2.0.0"
+		"@apollo/server": "^4.7.1",
+		"delay-cli": "^2.0.0",
+		"graphql": "^16.6.0"
 	}
 }
