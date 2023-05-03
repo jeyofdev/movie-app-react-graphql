@@ -12,8 +12,11 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: run tests
-        run: npm i && cd client && npm i && cd .. && npm run test
+      - name: run api tests
+        run: cd api && npm i && npm run test
+
+      - name: run client tests
+        run: cd client && npm i && npm run test
 
   lint:
     name: Lint
@@ -35,5 +38,8 @@ jobs:
         with:
           useLockFile: false
 
-      - name: Lint
+      - name: Lint api
+        run: cd api && npm i && npm run lint
+
+      - name: Lint client
         run: cd client && npm i && npm run lint
