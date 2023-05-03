@@ -6,9 +6,8 @@
 	"main": "index.js",
 	"scripts": {
 		"compile": "tsc",
-		"dev": "npm run compile && concurrently  --names \"TS,Nodemon\" -c \"blueBright,green\" \"tsc -w \" \"nodemon ./dist/index.js \"",
-		"start": "npm run compile && node ./dist/index.js",
-		"lint": "eslint src --fix --no-ignore --max-warnings=0",
+		"dev": "cd client && npm run dev",
+		"lint": "cd client && npm run lint",
 		"prepare": "husky install",
 		"test": "vitest"
 	},
