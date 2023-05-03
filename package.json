@@ -6,8 +6,12 @@
 	"main": "index.js",
 	"scripts": {
 		"compile": "tsc",
-		"dev": "cd client && npm run dev",
-		"lint": "cd client && npm run lint",
+		"dev:api": "cd api && npm run dev",
+		"dev:client": "cd client && npm run dev",
+		"dev": "concurrently --names \"api,client\" -c \"blueBright,green\" \"npm run dev:api \" \"delay 5 && npm run dev:client \"",
+		"lint:api": "cd api && npm run lint",
+		"lint:client": "cd client && npm run lint",
+		"lint": "concurrently --names \"lint:api,lint:client\" -c \"blueBright,green\" \"npm run lint:api \" \"npm run lint:client \"",
 		"prepare": "husky install",
 		"test": "cd client && npm run test"
 	},
@@ -47,8 +51,11 @@
 	"lint-staged": {
 		"*.{js,ts,tsx,jsx}": [
 			"prettier --write",
-			"npm run lint"
+			"eslint --fix --no-ignore --max-warnings=0"
 		],
 		"*.{js,css,md,html,json}": "prettier --cache --write"
+	},
+	"dependencies": {
+		"delay-cli": "^2.0.0"
 	}
 }
