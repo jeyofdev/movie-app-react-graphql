@@ -16,6 +16,7 @@ const config: CodegenConfig = {
 			],
 			config: {
 				useIndexSignature: true,
+				contextype: '../context#IContext',
 			},
 		},
 		'./graphql.schema.json': {

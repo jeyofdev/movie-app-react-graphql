@@ -32,5 +32,7 @@ module.exports = {
 	rules: {
 		'no-console': 'warn',
 		'import/no-extraneous-dependencies': 'off',
+		'lines-between-class-members': 'off',
+		'@typescript-eslint/lines-between-class-members': 'off',
 	},
 };

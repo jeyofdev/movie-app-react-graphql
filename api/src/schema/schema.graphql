@@ -15,6 +15,13 @@ type Movie {
 	vote_count: Int
 }
 
+type MovieResponse {
+	page: Int!
+	results: [Movie]!
+	total_pages: Int!
+	total_results: Int!
+}
+
 type Query {
-	movies: [Movie]
+	movies: MovieResponse
 }

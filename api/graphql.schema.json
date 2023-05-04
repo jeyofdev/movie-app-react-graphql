@@ -211,6 +211,85 @@
 			},
 			{
 				"kind": "OBJECT",
+				"name": "MovieResponse",
+				"description": null,
+				"fields": [
+					{
+						"name": "page",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Int",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "results",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "LIST",
+								"name": null,
+								"ofType": {
+									"kind": "OBJECT",
+									"name": "Movie",
+									"ofType": null
+								}
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "total_pages",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Int",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "total_results",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "NON_NULL",
+							"name": null,
+							"ofType": {
+								"kind": "SCALAR",
+								"name": "Int",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
 				"name": "Query",
 				"description": null,
 				"fields": [
@@ -219,13 +298,9 @@
 						"description": null,
 						"args": [],
 						"type": {
-							"kind": "LIST",
-							"name": null,
-							"ofType": {
-								"kind": "OBJECT",
-								"name": "Movie",
-								"ofType": null
-							}
+							"kind": "OBJECT",
+							"name": "MovieResponse",
+							"ofType": null
 						},
 						"isDeprecated": false,
 						"deprecationReason": null

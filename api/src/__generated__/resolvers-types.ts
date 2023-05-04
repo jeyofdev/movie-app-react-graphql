@@ -38,9 +38,17 @@ export type Movie = {
 	vote_count?: Maybe<Scalars['Int']>;
 };
 
+export type MovieResponse = {
+	__typename?: 'MovieResponse';
+	page: Scalars['Int'];
+	results: Array<Maybe<Movie>>;
+	total_pages: Scalars['Int'];
+	total_results: Scalars['Int'];
+};
+
 export type Query = {
 	__typename?: 'Query';
-	movies?: Maybe<Array<Maybe<Movie>>>;
+	movies?: Maybe<MovieResponse>;
 };
 
 export type WithIndex<TObject> = TObject & Record<string, any>;
@@ -156,6 +164,7 @@ export type ResolversTypes = ResolversObject<{
 	Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 	Int: ResolverTypeWrapper<Scalars['Int']>;
 	Movie: ResolverTypeWrapper<Movie>;
+	MovieResponse: ResolverTypeWrapper<MovieResponse>;
 	Query: ResolverTypeWrapper<{}>;
 	String: ResolverTypeWrapper<Scalars['String']>;
 }>;
@@ -165,6 +174,7 @@ export type ResolversParentTypes = ResolversObject<{
 	Boolean: Scalars['Boolean'];
 	Int: Scalars['Int'];
 	Movie: Movie;
+	MovieResponse: MovieResponse;
 	Query: {};
 	String: Scalars['String'];
 }>;
@@ -218,12 +228,27 @@ export type MovieResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
+export type MovieResponseResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['MovieResponse'] = ResolversParentTypes['MovieResponse'],
+> = ResolversObject<{
+	page?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+	results?: Resolver<
+		Array<Maybe<ResolversTypes['Movie']>>,
+		ParentType,
+		ContextType
+	>;
+	total_pages?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+	total_results?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
 export type QueryResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query'],
 > = ResolversObject<{
 	movies?: Resolver<
-		Maybe<Array<Maybe<ResolversTypes['Movie']>>>,
+		Maybe<ResolversTypes['MovieResponse']>,
 		ParentType,
 		ContextType
 	>;
@@ -231,5 +256,6 @@ export type QueryResolvers<
 
 export type Resolvers<ContextType = any> = ResolversObject<{
 	Movie?: MovieResolvers<ContextType>;
+	MovieResponse?: MovieResponseResolvers<ContextType>;
 	Query?: QueryResolvers<ContextType>;
 }>;
