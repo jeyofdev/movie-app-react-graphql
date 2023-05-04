@@ -1,5 +1,6 @@
 import { RESTDataSource } from '@apollo/datasource-rest';
 import { MovieResponse } from '__generated__/resolvers-types';
+import 'dotenv/config';
 
 class MoviesService extends RESTDataSource {
 	baseURL!: string;
@@ -8,11 +9,29 @@ class MoviesService extends RESTDataSource {
 	constructor() {
 		super();
 		this.baseURL = 'https://api.themoviedb.org/3/movie';
-		this.apiKey = 'c32de35faa37af988c8bb89cea6c82f1';
+
+		if (!process.env.TMDB_API_KEY) {
+			throw new Error(
+				'The environment variable TMDB_API_KEY must be specified',
+			);
+		}
+		this.apiKey = `api_key=${process.env.TMDB_API_KEY}`;
 	}
 
 	async findMostPopular(): Promise<MovieResponse> {
-		return this.get(`${this.baseURL}/popular?api_key=${this.apiKey}`);
+		return this.get(`${this.baseURL}/popular?${this.apiKey}`);
+	}
+
+	async findTopRated(): Promise<MovieResponse> {
+		return this.get(`${this.baseURL}/top_rated?${this.apiKey}`);
+	}
+
+	async findUpcoming(): Promise<MovieResponse> {
+		return this.get(`${this.baseURL}/upcoming?${this.apiKey}`);
+	}
+
+	async findNowPlaying(): Promise<MovieResponse> {
+		return this.get(`${this.baseURL}/now_playing?${this.apiKey}`);
 	}
 }
 

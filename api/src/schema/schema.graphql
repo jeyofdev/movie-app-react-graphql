@@ -23,5 +23,8 @@ type MovieResponse {
 }
 
 type Query {
-	movies: MovieResponse
+	popularMovies: MovieResponse
+	topRatedMovies: MovieResponse
+	upcomingMovies: MovieResponse
+	nowPlayingMovies: MovieResponse
 }

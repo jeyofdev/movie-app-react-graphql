@@ -48,7 +48,10 @@ export type MovieResponse = {
 
 export type Query = {
 	__typename?: 'Query';
-	movies?: Maybe<MovieResponse>;
+	nowPlayingMovies?: Maybe<MovieResponse>;
+	popularMovies?: Maybe<MovieResponse>;
+	topRatedMovies?: Maybe<MovieResponse>;
+	upcomingMovies?: Maybe<MovieResponse>;
 };
 
 export type WithIndex<TObject> = TObject & Record<string, any>;
@@ -247,7 +250,22 @@ export type QueryResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query'],
 > = ResolversObject<{
-	movies?: Resolver<
+	nowPlayingMovies?: Resolver<
+		Maybe<ResolversTypes['MovieResponse']>,
+		ParentType,
+		ContextType
+	>;
+	popularMovies?: Resolver<
+		Maybe<ResolversTypes['MovieResponse']>,
+		ParentType,
+		ContextType
+	>;
+	topRatedMovies?: Resolver<
+		Maybe<ResolversTypes['MovieResponse']>,
+		ParentType,
+		ContextType
+	>;
+	upcomingMovies?: Resolver<
 		Maybe<ResolversTypes['MovieResponse']>,
 		ParentType,
 		ContextType

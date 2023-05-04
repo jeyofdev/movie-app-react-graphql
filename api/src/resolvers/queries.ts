@@ -1,17 +1,40 @@
 import { IContext } from 'context';
+import setMoviesResult from '../utils/movies';
+import { QueryResolvers } from '../__generated__/resolvers-types';
 
-const queries = {
+const queries: QueryResolvers = {
 	Query: {
-		movies: async (_: never, __: never, context: IContext) => {
+		popularMovies: async (_: never, __: never, context: IContext) => {
 			try {
 				const movies = await context.dataSource.movies.findMostPopular();
+				return setMoviesResult(movies);
+			} catch (error) {
+				throw new Error('error');
+			}
+		},
 
-				return {
-					page: movies.page,
-					results: movies.results,
-					total_pages: movies.total_pages,
-					total_results: movies.total_results,
-				};
+		topRatedMovies: async (_: never, __: never, context: IContext) => {
+			try {
+				const movies = await context.dataSource.movies.findTopRated();
+				return setMoviesResult(movies);
+			} catch (error) {
+				throw new Error('error');
+			}
+		},
+
+		upcomingMovies: async (_: never, __: never, context: IContext) => {
+			try {
+				const movies = await context.dataSource.movies.findUpcoming();
+				return setMoviesResult(movies);
+			} catch (error) {
+				throw new Error('error');
+			}
+		},
+
+		nowPlayingMovies: async (_: never, __: never, context: IContext) => {
+			try {
+				const movies = await context.dataSource.movies.findNowPlaying();
+				return setMoviesResult(movies);
 			} catch (error) {
 				throw new Error('error');
 			}

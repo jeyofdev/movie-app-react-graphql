@@ -294,7 +294,43 @@
 				"description": null,
 				"fields": [
 					{
-						"name": "movies",
+						"name": "nowPlayingMovies",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "OBJECT",
+							"name": "MovieResponse",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "popularMovies",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "OBJECT",
+							"name": "MovieResponse",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "topRatedMovies",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "OBJECT",
+							"name": "MovieResponse",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "upcomingMovies",
 						"description": null,
 						"args": [],
 						"type": {
