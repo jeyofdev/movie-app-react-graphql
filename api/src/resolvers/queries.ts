@@ -51,6 +51,18 @@ const queries: QueryResolvers = {
 				throw new Error('error');
 			}
 		},
+
+		castMovie: async (
+			_: never,
+			args: { movieId: number },
+			context: IContext,
+		) => {
+			try {
+				return context.dataSource.movies.findCastByMovie(args.movieId);
+			} catch (error) {
+				throw new Error('error');
+			}
+		},
 	},
 };
 

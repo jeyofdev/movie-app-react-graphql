@@ -37,6 +37,10 @@ class MoviesService extends RESTDataSource {
 	async findMovieDetails(movieId: number): Promise<Movie> {
 		return this.get(`${this.baseURL}/${movieId}?${this.apiKey}`);
 	}
+
+	async findCastByMovie(movieId: number): Promise<Movie> {
+		return this.get(`${this.baseURL}/${movieId}/credits?${this.apiKey}`);
+	}
 }
 
 export default MoviesService;

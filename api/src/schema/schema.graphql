@@ -15,6 +15,26 @@ type Movie {
 	vote_count: Int
 }
 
+type CastMovie {
+	adult: Boolean
+	gender: Int
+	id: Int
+	known_for_department: String
+	name: String
+	original_name: String
+	popularity: Int
+	profile_path: String
+	cast_id: Int
+	character: String
+	credit_id: String
+	order: Int
+}
+
+type MovieCastResponse {
+	id: Int
+	cast: [CastMovie]
+}
+
 type MoviesResponse {
 	page: Int!
 	results: [Movie]!
@@ -28,4 +48,5 @@ type Query {
 	upcomingMovies: MoviesResponse
 	nowPlayingMovies: MoviesResponse
 	movieDetails(movieId: Int): Movie
+	castMovie(movieId: Int): MovieCastResponse
 }

@@ -1,4 +1,4 @@
-import { MoviesResponse } from '__generated__/resolvers-types';
+import { MoviesResponse } from '../__generated__/resolvers-types';
 
 const setMoviesResult = (movies: MoviesResponse) => ({
 	page: movies.page,
