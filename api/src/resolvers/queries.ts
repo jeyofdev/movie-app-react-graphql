@@ -39,6 +39,18 @@ const queries: QueryResolvers = {
 				throw new Error('error');
 			}
 		},
+
+		movieDetails: async (
+			_: never,
+			args: { movieId: number },
+			context: IContext,
+		) => {
+			try {
+				return context.dataSource.movies.findMovieDetails(args.movieId);
+			} catch (error) {
+				throw new Error('error');
+			}
+		},
 	},
 };
 

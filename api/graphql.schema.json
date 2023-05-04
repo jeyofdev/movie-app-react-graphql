@@ -211,7 +211,7 @@
 			},
 			{
 				"kind": "OBJECT",
-				"name": "MovieResponse",
+				"name": "MoviesResponse",
 				"description": null,
 				"fields": [
 					{
@@ -294,12 +294,37 @@
 				"description": null,
 				"fields": [
 					{
+						"name": "movieDetails",
+						"description": null,
+						"args": [
+							{
+								"name": "movieId",
+								"description": null,
+								"type": {
+									"kind": "SCALAR",
+									"name": "Int",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "Movie",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
 						"name": "nowPlayingMovies",
 						"description": null,
 						"args": [],
 						"type": {
 							"kind": "OBJECT",
-							"name": "MovieResponse",
+							"name": "MoviesResponse",
 							"ofType": null
 						},
 						"isDeprecated": false,
@@ -311,7 +336,7 @@
 						"args": [],
 						"type": {
 							"kind": "OBJECT",
-							"name": "MovieResponse",
+							"name": "MoviesResponse",
 							"ofType": null
 						},
 						"isDeprecated": false,
@@ -323,7 +348,7 @@
 						"args": [],
 						"type": {
 							"kind": "OBJECT",
-							"name": "MovieResponse",
+							"name": "MoviesResponse",
 							"ofType": null
 						},
 						"isDeprecated": false,
@@ -335,7 +360,7 @@
 						"args": [],
 						"type": {
 							"kind": "OBJECT",
-							"name": "MovieResponse",
+							"name": "MoviesResponse",
 							"ofType": null
 						},
 						"isDeprecated": false,

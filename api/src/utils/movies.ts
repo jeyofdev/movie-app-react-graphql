@@ -1,6 +1,6 @@
-import { MovieResponse } from '__generated__/resolvers-types';
+import { MoviesResponse } from '__generated__/resolvers-types';
 
-const setMoviesResult = (movies: MovieResponse) => ({
+const setMoviesResult = (movies: MoviesResponse) => ({
 	page: movies.page,
 	results: movies.results,
 	total_pages: movies.total_pages,

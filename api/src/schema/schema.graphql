@@ -15,7 +15,7 @@ type Movie {
 	vote_count: Int
 }
 
-type MovieResponse {
+type MoviesResponse {
 	page: Int!
 	results: [Movie]!
 	total_pages: Int!
@@ -23,8 +23,9 @@ type MovieResponse {
 }
 
 type Query {
-	popularMovies: MovieResponse
-	topRatedMovies: MovieResponse
-	upcomingMovies: MovieResponse
-	nowPlayingMovies: MovieResponse
+	popularMovies: MoviesResponse
+	topRatedMovies: MoviesResponse
+	upcomingMovies: MoviesResponse
+	nowPlayingMovies: MoviesResponse
+	movieDetails(movieId: Int): Movie
 }
