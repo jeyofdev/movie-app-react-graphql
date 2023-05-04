@@ -8,10 +8,10 @@
 		"compile": "tsc",
 		"dev:api": "cd api && npm run dev",
 		"dev:client": "cd client && npm run dev",
-		"dev": "concurrently --names \"api,client\" -c \"blueBright,green\" \"npm run dev:api \" \"delay 5 && npm run dev:client \"",
+		"dev": "concurrently --names \"api,client\" -c \"blueBright,green\" \"npm run dev:api\" \"delay 5 && npm run dev:client\"",
 		"lint:api": "cd api && npm run lint",
 		"lint:client": "cd client && npm run lint",
-		"lint": "concurrently --names \"lint:api,lint:client\" -c \"blueBright,green\" \"npm run lint:api \" \"npm run lint:client \"",
+		"lint": "concurrently --names \"lint:api,lint:client\" -c \"blueBright,green\" \"npm run lint:api\" \"npm run lint:client\"",
 		"prepare": "husky install",
 		"test:api": "cd api && npm run test",
 		"test:client": "cd client && npm run test"
