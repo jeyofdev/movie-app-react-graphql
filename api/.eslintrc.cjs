@@ -28,7 +28,7 @@ module.exports = {
 		},
 		'import/ignore': ['node_modules'],
 	},
-	ignorePatterns: ['.eslintrc.cjs', 'dist'],
+	ignorePatterns: ['.eslintrc.cjs'],
 	rules: {
 		'no-console': 'warn',
 		'import/no-extraneous-dependencies': 'off',

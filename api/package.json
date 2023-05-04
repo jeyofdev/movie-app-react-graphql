@@ -9,12 +9,18 @@
 		"dev": "npm run compile && concurrently --names \"TS,Nodemon\" -c \"blueBright,green\" \"tsc -w \" \"nodemon ./dist/index.js \"",
 		"start": "npm run compile && node ./dist/index.js",
 		"lint": "eslint src --fix --no-ignore --max-warnings=0",
-		"test": "vitest"
+		"test": "vitest",
+		"codegen": "graphql-codegen --config codegen.ts"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
+		"@graphql-codegen/add": "^4.0.1",
+		"@graphql-codegen/cli": "3.3.1",
+		"@graphql-codegen/introspection": "3.0.1",
+		"@graphql-codegen/typescript": "3.0.4",
+		"@graphql-codegen/typescript-resolvers": "3.2.1",
 		"@types/node": "^18.16.3",
 		"@typescript-eslint/eslint-plugin": "^5.59.2",
 		"@typescript-eslint/parser": "^5.59.2",
