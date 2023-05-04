@@ -63,6 +63,30 @@ const queries: QueryResolvers = {
 				throw new Error('error');
 			}
 		},
+
+		crewMovie: async (
+			_: never,
+			args: { movieId: number },
+			context: IContext,
+		) => {
+			try {
+				return context.dataSource.movies.findCrewByMovie(args.movieId);
+			} catch (error) {
+				throw new Error('error');
+			}
+		},
+
+		similarMovie: async (
+			_: never,
+			args: { movieId: number },
+			context: IContext,
+		) => {
+			try {
+				return context.dataSource.movies.findSimilarMovies(args.movieId);
+			} catch (error) {
+				throw new Error('error');
+			}
+		},
 	},
 };
 

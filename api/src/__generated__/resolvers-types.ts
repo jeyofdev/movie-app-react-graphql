@@ -36,6 +36,21 @@ export type CastMovie = {
 	profile_path?: Maybe<Scalars['String']>;
 };
 
+export type CrewMovie = {
+	__typename?: 'CrewMovie';
+	adult?: Maybe<Scalars['Boolean']>;
+	credit_id?: Maybe<Scalars['String']>;
+	department?: Maybe<Scalars['String']>;
+	gender?: Maybe<Scalars['Int']>;
+	id?: Maybe<Scalars['Int']>;
+	job?: Maybe<Scalars['String']>;
+	known_for_department?: Maybe<Scalars['String']>;
+	name?: Maybe<Scalars['String']>;
+	original_name?: Maybe<Scalars['String']>;
+	popularity?: Maybe<Scalars['Int']>;
+	profile_path?: Maybe<Scalars['String']>;
+};
+
 export type Movie = {
 	__typename?: 'Movie';
 	adult?: Maybe<Scalars['Boolean']>;
@@ -60,6 +75,12 @@ export type MovieCastResponse = {
 	id?: Maybe<Scalars['Int']>;
 };
 
+export type MovieCrewResponse = {
+	__typename?: 'MovieCrewResponse';
+	crew?: Maybe<Array<Maybe<CrewMovie>>>;
+	id?: Maybe<Scalars['Int']>;
+};
+
 export type MoviesResponse = {
 	__typename?: 'MoviesResponse';
 	page: Scalars['Int'];
@@ -71,9 +92,11 @@ export type MoviesResponse = {
 export type Query = {
 	__typename?: 'Query';
 	castMovie?: Maybe<MovieCastResponse>;
+	crewMovie?: Maybe<MovieCrewResponse>;
 	movieDetails?: Maybe<Movie>;
 	nowPlayingMovies?: Maybe<MoviesResponse>;
 	popularMovies?: Maybe<MoviesResponse>;
+	similarMovie?: Maybe<MoviesResponse>;
 	topRatedMovies?: Maybe<MoviesResponse>;
 	upcomingMovies?: Maybe<MoviesResponse>;
 };
@@ -82,7 +105,15 @@ export type QueryCastMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
 };
 
+export type QueryCrewMovieArgs = {
+	movieId?: InputMaybe<Scalars['Int']>;
+};
+
 export type QueryMovieDetailsArgs = {
+	movieId?: InputMaybe<Scalars['Int']>;
+};
+
+export type QuerySimilarMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
 };
 
@@ -198,9 +229,11 @@ export type DirectiveResolverFn<
 export type ResolversTypes = ResolversObject<{
 	Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 	CastMovie: ResolverTypeWrapper<CastMovie>;
+	CrewMovie: ResolverTypeWrapper<CrewMovie>;
 	Int: ResolverTypeWrapper<Scalars['Int']>;
 	Movie: ResolverTypeWrapper<Movie>;
 	MovieCastResponse: ResolverTypeWrapper<MovieCastResponse>;
+	MovieCrewResponse: ResolverTypeWrapper<MovieCrewResponse>;
 	MoviesResponse: ResolverTypeWrapper<MoviesResponse>;
 	Query: ResolverTypeWrapper<{}>;
 	String: ResolverTypeWrapper<Scalars['String']>;
@@ -210,9 +243,11 @@ export type ResolversTypes = ResolversObject<{
 export type ResolversParentTypes = ResolversObject<{
 	Boolean: Scalars['Boolean'];
 	CastMovie: CastMovie;
+	CrewMovie: CrewMovie;
 	Int: Scalars['Int'];
 	Movie: Movie;
 	MovieCastResponse: MovieCastResponse;
+	MovieCrewResponse: MovieCrewResponse;
 	MoviesResponse: MoviesResponse;
 	Query: {};
 	String: Scalars['String'];
@@ -243,6 +278,44 @@ export type CastMovieResolvers<
 	>;
 	name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	order?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	original_name?: Resolver<
+		Maybe<ResolversTypes['String']>,
+		ParentType,
+		ContextType
+	>;
+	popularity?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	profile_path?: Resolver<
+		Maybe<ResolversTypes['String']>,
+		ParentType,
+		ContextType
+	>;
+	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type CrewMovieResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['CrewMovie'] = ResolversParentTypes['CrewMovie'],
+> = ResolversObject<{
+	adult?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+	credit_id?: Resolver<
+		Maybe<ResolversTypes['String']>,
+		ParentType,
+		ContextType
+	>;
+	department?: Resolver<
+		Maybe<ResolversTypes['String']>,
+		ParentType,
+		ContextType
+	>;
+	gender?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	job?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+	known_for_department?: Resolver<
+		Maybe<ResolversTypes['String']>,
+		ParentType,
+		ContextType
+	>;
+	name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	original_name?: Resolver<
 		Maybe<ResolversTypes['String']>,
 		ParentType,
@@ -319,6 +392,19 @@ export type MovieCastResponseResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
+export type MovieCrewResponseResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['MovieCrewResponse'] = ResolversParentTypes['MovieCrewResponse'],
+> = ResolversObject<{
+	crew?: Resolver<
+		Maybe<Array<Maybe<ResolversTypes['CrewMovie']>>>,
+		ParentType,
+		ContextType
+	>;
+	id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
 export type MoviesResponseResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['MoviesResponse'] = ResolversParentTypes['MoviesResponse'],
@@ -344,6 +430,12 @@ export type QueryResolvers<
 		ContextType,
 		Partial<QueryCastMovieArgs>
 	>;
+	crewMovie?: Resolver<
+		Maybe<ResolversTypes['MovieCrewResponse']>,
+		ParentType,
+		ContextType,
+		Partial<QueryCrewMovieArgs>
+	>;
 	movieDetails?: Resolver<
 		Maybe<ResolversTypes['Movie']>,
 		ParentType,
@@ -360,6 +452,12 @@ export type QueryResolvers<
 		ParentType,
 		ContextType
 	>;
+	similarMovie?: Resolver<
+		Maybe<ResolversTypes['MoviesResponse']>,
+		ParentType,
+		ContextType,
+		Partial<QuerySimilarMovieArgs>
+	>;
 	topRatedMovies?: Resolver<
 		Maybe<ResolversTypes['MoviesResponse']>,
 		ParentType,
@@ -374,8 +472,10 @@ export type QueryResolvers<
 
 export type Resolvers<ContextType = any> = ResolversObject<{
 	CastMovie?: CastMovieResolvers<ContextType>;
+	CrewMovie?: CrewMovieResolvers<ContextType>;
 	Movie?: MovieResolvers<ContextType>;
 	MovieCastResponse?: MovieCastResponseResolvers<ContextType>;
+	MovieCrewResponse?: MovieCrewResponseResolvers<ContextType>;
 	MoviesResponse?: MoviesResponseResolvers<ContextType>;
 	Query?: QueryResolvers<ContextType>;
 }>;

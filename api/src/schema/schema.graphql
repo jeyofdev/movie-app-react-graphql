@@ -30,9 +30,28 @@ type CastMovie {
 	order: Int
 }
 
+type CrewMovie {
+	adult: Boolean
+	gender: Int
+	id: Int
+	known_for_department: String
+	name: String
+	original_name: String
+	popularity: Int
+	profile_path: String
+	credit_id: String
+	department: String
+	job: String
+}
+
 type MovieCastResponse {
 	id: Int
 	cast: [CastMovie]
+}
+
+type MovieCrewResponse {
+	id: Int
+	crew: [CrewMovie]
 }
 
 type MoviesResponse {
@@ -49,4 +68,6 @@ type Query {
 	nowPlayingMovies: MoviesResponse
 	movieDetails(movieId: Int): Movie
 	castMovie(movieId: Int): MovieCastResponse
+	crewMovie(movieId: Int): MovieCrewResponse
+	similarMovie(movieId: Int): MoviesResponse
 }
