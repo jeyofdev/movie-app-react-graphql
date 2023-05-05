@@ -1,49 +1,74 @@
 import { IContext } from 'context';
 import setMoviesResult from '../utils/movies';
 import { QueryResolvers } from '../__generated__/resolvers-types';
-import { ICollectionsArgs, IMoviesArgs, IPersonsArgs } from '../types';
+import {
+	ICollectionsArgs,
+	IMoviesArgs,
+	IMoviesListOptions,
+	IPersonsArgs,
+} from '../types';
 
 const queries: QueryResolvers = {
 	Query: {
-		popularMovies: async (_: never, __: never, context: IContext) => {
+		popularMovies: async (
+			_: never,
+			args: IMoviesListOptions,
+			context: IContext,
+		) => {
 			try {
-				const movies = await context.dataSource.movies.findMostPopular();
+				const movies = await context.dataSource.movies.findMostPopular(args);
 				return setMoviesResult(movies);
 			} catch (error) {
 				throw new Error('error');
 			}
 		},
 
-		topRatedMovies: async (_: never, __: never, context: IContext) => {
+		topRatedMovies: async (
+			_: never,
+			args: IMoviesListOptions,
+			context: IContext,
+		) => {
 			try {
-				const movies = await context.dataSource.movies.findTopRated();
+				const movies = await context.dataSource.movies.findTopRated(args);
 				return setMoviesResult(movies);
 			} catch (error) {
 				throw new Error('error');
 			}
 		},
 
-		upcomingMovies: async (_: never, __: never, context: IContext) => {
+		upcomingMovies: async (
+			_: never,
+			args: IMoviesListOptions,
+			context: IContext,
+		) => {
 			try {
-				const movies = await context.dataSource.movies.findUpcoming();
+				const movies = await context.dataSource.movies.findUpcoming(args);
 				return setMoviesResult(movies);
 			} catch (error) {
 				throw new Error('error');
 			}
 		},
 
-		nowPlayingMovies: async (_: never, __: never, context: IContext) => {
+		nowPlayingMovies: async (
+			_: never,
+			args: IMoviesListOptions,
+			context: IContext,
+		) => {
 			try {
-				const movies = await context.dataSource.movies.findNowPlaying();
+				const movies = await context.dataSource.movies.findNowPlaying(args);
 				return setMoviesResult(movies);
 			} catch (error) {
 				throw new Error('error');
 			}
 		},
 
-		movieDetails: async (_: never, args: IMoviesArgs, context: IContext) => {
+		movieDetails: async (
+			_: never,
+			args: { movieId: number; options: IMoviesListOptions },
+			context: IContext,
+		) => {
 			try {
-				return context.dataSource.movies.findMovieDetails(args.movieId);
+				return context.dataSource.movies.findMovieDetails(args);
 			} catch (error) {
 				throw new Error('error');
 			}

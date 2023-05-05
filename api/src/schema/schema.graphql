@@ -1,3 +1,10 @@
+enum LanguageEnum {
+	FR
+	EN
+	US
+	ES
+}
+
 type Movie {
 	adult: Boolean
 	backdrop_path: String
@@ -170,12 +177,17 @@ type PersonCrewResponse {
 	crew: [CrewMovie]
 }
 
+input MovieOptionsInput {
+	language: LanguageEnum
+	page: Int
+}
+
 type Query {
-	popularMovies: MoviesResponse
-	topRatedMovies: MoviesResponse
-	upcomingMovies: MoviesResponse
-	nowPlayingMovies: MoviesResponse
-	movieDetails(movieId: Int): MovieDetails
+	popularMovies(options: MovieOptionsInput): MoviesResponse
+	topRatedMovies(options: MovieOptionsInput): MoviesResponse
+	upcomingMovies(options: MovieOptionsInput): MoviesResponse
+	nowPlayingMovies(options: MovieOptionsInput): MoviesResponse
+	movieDetails(movieId: Int, options: MovieOptionsInput): MovieDetails
 	castMovie(movieId: Int): MovieCastResponse
 	crewMovie(movieId: Int): MovieCrewResponse
 	similarMovie(movieId: Int): MoviesResponse

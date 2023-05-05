@@ -63,6 +63,13 @@ export type Keywords = {
 	name?: Maybe<Scalars['String']>;
 };
 
+export enum LanguageEnum {
+	En = 'EN',
+	Es = 'ES',
+	Fr = 'FR',
+	Us = 'US',
+}
+
 export type Movie = {
 	__typename?: 'Movie';
 	adult?: Maybe<Scalars['Boolean']>;
@@ -125,6 +132,11 @@ export type MovieImageResponse = {
 	__typename?: 'MovieImageResponse';
 	id?: Maybe<Scalars['Int']>;
 	poster?: Maybe<Array<Maybe<PosterMovie>>>;
+};
+
+export type MovieOptionsInput = {
+	language?: InputMaybe<LanguageEnum>;
+	page?: InputMaybe<Scalars['Int']>;
 };
 
 export type MoviesCollectionResponse = {
@@ -241,10 +253,15 @@ export type QueryKeywordsMovieArgs = {
 
 export type QueryMovieDetailsArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
+	options?: InputMaybe<MovieOptionsInput>;
 };
 
 export type QueryMoviesByCollectionArgs = {
 	collectionId?: InputMaybe<Scalars['Int']>;
+};
+
+export type QueryNowPlayingMoviesArgs = {
+	options?: InputMaybe<MovieOptionsInput>;
 };
 
 export type QueryPersonCastByMovieArgs = {
@@ -259,8 +276,20 @@ export type QueryPersonDetailsArgs = {
 	personId?: InputMaybe<Scalars['Int']>;
 };
 
+export type QueryPopularMoviesArgs = {
+	options?: InputMaybe<MovieOptionsInput>;
+};
+
 export type QuerySimilarMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
+};
+
+export type QueryTopRatedMoviesArgs = {
+	options?: InputMaybe<MovieOptionsInput>;
+};
+
+export type QueryUpcomingMoviesArgs = {
+	options?: InputMaybe<MovieOptionsInput>;
 };
 
 export type Spoken_Languages = {
@@ -386,11 +415,13 @@ export type ResolversTypes = ResolversObject<{
 	Genre: ResolverTypeWrapper<Genre>;
 	Int: ResolverTypeWrapper<Scalars['Int']>;
 	Keywords: ResolverTypeWrapper<Keywords>;
+	LanguageEnum: LanguageEnum;
 	Movie: ResolverTypeWrapper<Movie>;
 	MovieCastResponse: ResolverTypeWrapper<MovieCastResponse>;
 	MovieCrewResponse: ResolverTypeWrapper<MovieCrewResponse>;
 	MovieDetails: ResolverTypeWrapper<MovieDetails>;
 	MovieImageResponse: ResolverTypeWrapper<MovieImageResponse>;
+	MovieOptionsInput: MovieOptionsInput;
 	MoviesCollectionResponse: ResolverTypeWrapper<MoviesCollectionResponse>;
 	MoviesKeywordsResponse: ResolverTypeWrapper<MoviesKeywordsResponse>;
 	MoviesResponse: ResolverTypeWrapper<MoviesResponse>;
@@ -419,6 +450,7 @@ export type ResolversParentTypes = ResolversObject<{
 	MovieCrewResponse: MovieCrewResponse;
 	MovieDetails: MovieDetails;
 	MovieImageResponse: MovieImageResponse;
+	MovieOptionsInput: MovieOptionsInput;
 	MoviesCollectionResponse: MoviesCollectionResponse;
 	MoviesKeywordsResponse: MoviesKeywordsResponse;
 	MoviesResponse: MoviesResponse;
@@ -919,7 +951,8 @@ export type QueryResolvers<
 	nowPlayingMovies?: Resolver<
 		Maybe<ResolversTypes['MoviesResponse']>,
 		ParentType,
-		ContextType
+		ContextType,
+		Partial<QueryNowPlayingMoviesArgs>
 	>;
 	personCastByMovie?: Resolver<
 		Maybe<ResolversTypes['PersonCastResponse']>,
@@ -942,7 +975,8 @@ export type QueryResolvers<
 	popularMovies?: Resolver<
 		Maybe<ResolversTypes['MoviesResponse']>,
 		ParentType,
-		ContextType
+		ContextType,
+		Partial<QueryPopularMoviesArgs>
 	>;
 	similarMovie?: Resolver<
 		Maybe<ResolversTypes['MoviesResponse']>,
@@ -953,12 +987,14 @@ export type QueryResolvers<
 	topRatedMovies?: Resolver<
 		Maybe<ResolversTypes['MoviesResponse']>,
 		ParentType,
-		ContextType
+		ContextType,
+		Partial<QueryTopRatedMoviesArgs>
 	>;
 	upcomingMovies?: Resolver<
 		Maybe<ResolversTypes['MoviesResponse']>,
 		ParentType,
-		ContextType
+		ContextType,
+		Partial<QueryUpcomingMoviesArgs>
 	>;
 }>;
 

@@ -8,6 +8,7 @@ import {
 	MoviesResponse,
 } from '__generated__/resolvers-types';
 import 'dotenv/config';
+import { IMoviesListOptions } from '../types';
 
 class MoviesService extends RESTDataSource {
 	baseURL!: string;
@@ -25,24 +26,37 @@ class MoviesService extends RESTDataSource {
 		this.apiKey = `api_key=${process.env.TMDB_API_KEY}`;
 	}
 
-	async findMostPopular(): Promise<MoviesResponse> {
-		return this.get(`${this.baseURL}/popular?${this.apiKey}`);
+	async findMostPopular(options: IMoviesListOptions): Promise<MoviesResponse> {
+		return this.get(
+			`${this.baseURL}/popular?${this.apiKey}&language=${options.language}&page=${options.page}`,
+		);
 	}
 
-	async findTopRated(): Promise<MoviesResponse> {
-		return this.get(`${this.baseURL}/top_rated?${this.apiKey}`);
+	async findTopRated(options: IMoviesListOptions): Promise<MoviesResponse> {
+		return this.get(
+			`${this.baseURL}/top_rated?${this.apiKey}&language=${options.language}&page=${options.page}`,
+		);
 	}
 
-	async findUpcoming(): Promise<MoviesResponse> {
-		return this.get(`${this.baseURL}/upcoming?${this.apiKey}`);
+	async findUpcoming(options: IMoviesListOptions): Promise<MoviesResponse> {
+		return this.get(
+			`${this.baseURL}/upcoming?${this.apiKey}&language=${options.language}&page=${options.page}`,
+		);
 	}
 
-	async findNowPlaying(): Promise<MoviesResponse> {
-		return this.get(`${this.baseURL}/now_playing?${this.apiKey}`);
+	async findNowPlaying(options: IMoviesListOptions): Promise<MoviesResponse> {
+		return this.get(
+			`${this.baseURL}/now_playing?${this.apiKey}&language=${options.language}&page=${options.page}`,
+		);
 	}
 
-	async findMovieDetails(movieId: number): Promise<MovieDetails> {
-		return this.get(`${this.baseURL}/${movieId}?${this.apiKey}`);
+	async findMovieDetails(args: {
+		movieId: number;
+		options: IMoviesListOptions;
+	}): Promise<MovieDetails> {
+		return this.get(
+			`${this.baseURL}/${args.movieId}?${this.apiKey}&language=${args.options.language}`,
+		);
 	}
 
 	async findCastByMovie(movieId: number): Promise<MovieCastResponse> {
