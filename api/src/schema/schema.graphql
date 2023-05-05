@@ -6,22 +6,153 @@ type Movie {
 	original_language: String
 	original_title: String
 	overview: String
-	popularity: Int
+	popularity: Float
 	poster_path: String
 	release_date: String
 	title: String
 	video: Boolean
-	vote_average: Int
+	vote_average: Float
 	vote_count: Int
 }
 
-type MovieResponse {
+type MovieDetails {
+	adult: Boolean
+	backdrop_path: String
+	genre_ids: [Int]
+	budget: Int
+	genres: [Genre]
+	id: Int
+	homepage: String
+	imdb_id: String
+	original_language: String
+	original_title: String
+	overview: String
+	popularity: Float
+	poster_path: String
+	production_companies: [ProductionCompany]
+	production_countries: [ProductionCountry]
+	release_date: String
+	runtime: Int
+	spoken_languages: [spoken_languages]
+	status: String
+	tagline: String
+	title: String
+	video: Boolean
+	vote_average: Float
+	vote_count: Int
+}
+
+type Genre {
+	id: Int
+	name: String
+}
+
+type ProductionCompany {
+	id: Int
+	name: String
+	logo_path: String
+	origin_country: String
+}
+
+type ProductionCountry {
+	iso_3166_1: String
+	name: String
+}
+
+type spoken_languages {
+	iso_639_1: String
+	name: String
+}
+
+type CastMovie {
+	adult: Boolean
+	gender: Int
+	id: Int
+	known_for_department: String
+	name: String
+	original_name: String
+	popularity: Int
+	profile_path: String
+	cast_id: Int
+	character: String
+	credit_id: String
+	order: Int
+}
+
+type CrewMovie {
+	adult: Boolean
+	gender: Int
+	id: Int
+	known_for_department: String
+	name: String
+	original_name: String
+	popularity: Int
+	profile_path: String
+	credit_id: String
+	department: String
+	job: String
+}
+
+type PosterMovie {
+	aspect_ratio: Int
+	file_path: String
+	height: Int
+	iso_639_1: String
+	vote_average: Float
+	vote_count: Int
+	width: Int
+}
+
+type Keywords {
+	id: Int
+	name: String
+}
+
+type MovieImageResponse {
+	id: Int
+	poster: [PosterMovie]
+}
+
+type MovieCastResponse {
+	id: Int
+	cast: [CastMovie]
+}
+
+type MovieCrewResponse {
+	id: Int
+	crew: [CrewMovie]
+}
+
+type MoviesResponse {
 	page: Int!
 	results: [Movie]!
 	total_pages: Int!
 	total_results: Int!
 }
 
+type MoviesKeywordsResponse {
+	id: Int
+	keywords: [Keywords]
+}
+
+type MoviesCollectionResponse {
+	id: Int
+	name: String
+	overview: String
+	backdrop_path: String
+	parts: [Movie]
+}
+
 type Query {
-	movies: MovieResponse
+	popularMovies: MoviesResponse
+	topRatedMovies: MoviesResponse
+	upcomingMovies: MoviesResponse
+	nowPlayingMovies: MoviesResponse
+	movieDetails(movieId: Int): MovieDetails
+	castMovie(movieId: Int): MovieCastResponse
+	crewMovie(movieId: Int): MovieCrewResponse
+	similarMovie(movieId: Int): MoviesResponse
+	imagesMovie(movieId: Int): MovieImageResponse
+	keywordsMovie(movieId: Int): MoviesKeywordsResponse
+	moviesByCollection(collectionId: Int): MoviesCollectionResponse
 }
