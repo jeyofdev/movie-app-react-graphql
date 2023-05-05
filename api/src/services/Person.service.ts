@@ -5,6 +5,7 @@ import {
 	PersonCrewResponse,
 } from '__generated__/resolvers-types';
 import 'dotenv/config';
+import { IPersonsArgs } from 'types';
 
 class PersonsService extends RESTDataSource {
 	baseURL!: string;
@@ -22,16 +23,22 @@ class PersonsService extends RESTDataSource {
 		this.apiKey = `api_key=${process.env.TMDB_API_KEY}`;
 	}
 
-	async findPersonDetails(personId: number): Promise<Person> {
-		return this.get(`${this.baseURL}/${personId}?${this.apiKey}`);
+	async findPersonDetails(args: IPersonsArgs): Promise<Person> {
+		return this.get(
+			`${this.baseURL}/${args.personId}?${this.apiKey}&language=${args.options.language}`,
+		);
 	}
 
-	async findCrewByPerson(personId: number): Promise<PersonCrewResponse> {
-		return this.get(`${this.baseURL}/${personId}/movie_credits?${this.apiKey}`);
+	async findCrewByPerson(args: IPersonsArgs): Promise<PersonCrewResponse> {
+		return this.get(
+			`${this.baseURL}/${args.personId}/movie_credits?${this.apiKey}&language=${args.options.language}`,
+		);
 	}
 
-	async findCastByPerson(personId: number): Promise<PersonCastResponse> {
-		return this.get(`${this.baseURL}/${personId}/movie_credits?${this.apiKey}`);
+	async findCastByPerson(args: IPersonsArgs): Promise<PersonCastResponse> {
+		return this.get(
+			`${this.baseURL}/${args.personId}/movie_credits?${this.apiKey}&language=${args.options.language}`,
+		);
 	}
 }
 

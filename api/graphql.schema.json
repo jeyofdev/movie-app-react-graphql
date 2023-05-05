@@ -405,6 +405,41 @@
 				"possibleTypes": null
 			},
 			{
+				"kind": "ENUM",
+				"name": "LanguageEnum",
+				"description": null,
+				"fields": null,
+				"inputFields": null,
+				"interfaces": null,
+				"enumValues": [
+					{
+						"name": "EN",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "ES",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "FR",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "US",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"possibleTypes": null
+			},
+			{
 				"kind": "OBJECT",
 				"name": "Movie",
 				"description": null,
@@ -1217,6 +1252,41 @@
 				"possibleTypes": null
 			},
 			{
+				"kind": "INPUT_OBJECT",
+				"name": "OptionsInput",
+				"description": null,
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "language",
+						"description": null,
+						"type": {
+							"kind": "ENUM",
+							"name": "LanguageEnum",
+							"ofType": null
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "page",
+						"description": null,
+						"type": {
+							"kind": "SCALAR",
+							"name": "Int",
+							"ofType": null
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
 				"kind": "OBJECT",
 				"name": "Person",
 				"description": null,
@@ -1686,6 +1756,18 @@
 								"defaultValue": null,
 								"isDeprecated": false,
 								"deprecationReason": null
+							},
+							{
+								"name": "options",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "OptionsInput",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
 							}
 						],
 						"type": {
@@ -1711,6 +1793,18 @@
 								"defaultValue": null,
 								"isDeprecated": false,
 								"deprecationReason": null
+							},
+							{
+								"name": "options",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "OptionsInput",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
 							}
 						],
 						"type": {
@@ -1731,6 +1825,18 @@
 								"type": {
 									"kind": "SCALAR",
 									"name": "Int",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
+							},
+							{
+								"name": "options",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "OptionsInput",
 									"ofType": null
 								},
 								"defaultValue": null,
@@ -1786,6 +1892,18 @@
 								"defaultValue": null,
 								"isDeprecated": false,
 								"deprecationReason": null
+							},
+							{
+								"name": "options",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "OptionsInput",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
 							}
 						],
 						"type": {
@@ -1811,6 +1929,18 @@
 								"defaultValue": null,
 								"isDeprecated": false,
 								"deprecationReason": null
+							},
+							{
+								"name": "options",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "OptionsInput",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
 							}
 						],
 						"type": {
@@ -1824,7 +1954,20 @@
 					{
 						"name": "nowPlayingMovies",
 						"description": null,
-						"args": [],
+						"args": [
+							{
+								"name": "options",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "OptionsInput",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
+							}
+						],
 						"type": {
 							"kind": "OBJECT",
 							"name": "MoviesResponse",
@@ -1837,6 +1980,18 @@
 						"name": "personCastByMovie",
 						"description": null,
 						"args": [
+							{
+								"name": "options",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "OptionsInput",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
+							},
 							{
 								"name": "personId",
 								"description": null,
@@ -1863,6 +2018,18 @@
 						"description": null,
 						"args": [
 							{
+								"name": "options",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "OptionsInput",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
+							},
+							{
 								"name": "personId",
 								"description": null,
 								"type": {
@@ -1888,6 +2055,18 @@
 						"description": null,
 						"args": [
 							{
+								"name": "options",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "OptionsInput",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
+							},
+							{
 								"name": "personId",
 								"description": null,
 								"type": {
@@ -1911,7 +2090,20 @@
 					{
 						"name": "popularMovies",
 						"description": null,
-						"args": [],
+						"args": [
+							{
+								"name": "options",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "OptionsInput",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
+							}
+						],
 						"type": {
 							"kind": "OBJECT",
 							"name": "MoviesResponse",
@@ -1935,6 +2127,18 @@
 								"defaultValue": null,
 								"isDeprecated": false,
 								"deprecationReason": null
+							},
+							{
+								"name": "options",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "OptionsInput",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
 							}
 						],
 						"type": {
@@ -1948,7 +2152,20 @@
 					{
 						"name": "topRatedMovies",
 						"description": null,
-						"args": [],
+						"args": [
+							{
+								"name": "options",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "OptionsInput",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
+							}
+						],
 						"type": {
 							"kind": "OBJECT",
 							"name": "MoviesResponse",
@@ -1960,7 +2177,20 @@
 					{
 						"name": "upcomingMovies",
 						"description": null,
-						"args": [],
+						"args": [
+							{
+								"name": "options",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "OptionsInput",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
+							}
+						],
 						"type": {
 							"kind": "OBJECT",
 							"name": "MoviesResponse",

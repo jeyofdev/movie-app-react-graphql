@@ -8,6 +8,7 @@ import {
 	MoviesResponse,
 } from '__generated__/resolvers-types';
 import 'dotenv/config';
+import { IListOptions, IMoviesArgs } from '../types';
 
 class MoviesService extends RESTDataSource {
 	baseURL!: string;
@@ -25,40 +26,58 @@ class MoviesService extends RESTDataSource {
 		this.apiKey = `api_key=${process.env.TMDB_API_KEY}`;
 	}
 
-	async findMostPopular(): Promise<MoviesResponse> {
-		return this.get(`${this.baseURL}/popular?${this.apiKey}`);
+	async findMostPopular(options: IListOptions): Promise<MoviesResponse> {
+		return this.get(
+			`${this.baseURL}/popular?${this.apiKey}&language=${options.language}&page=${options.page}`,
+		);
 	}
 
-	async findTopRated(): Promise<MoviesResponse> {
-		return this.get(`${this.baseURL}/top_rated?${this.apiKey}`);
+	async findTopRated(options: IListOptions): Promise<MoviesResponse> {
+		return this.get(
+			`${this.baseURL}/top_rated?${this.apiKey}&language=${options.language}&page=${options.page}`,
+		);
 	}
 
-	async findUpcoming(): Promise<MoviesResponse> {
-		return this.get(`${this.baseURL}/upcoming?${this.apiKey}`);
+	async findUpcoming(options: IListOptions): Promise<MoviesResponse> {
+		return this.get(
+			`${this.baseURL}/upcoming?${this.apiKey}&language=${options.language}&page=${options.page}`,
+		);
 	}
 
-	async findNowPlaying(): Promise<MoviesResponse> {
-		return this.get(`${this.baseURL}/now_playing?${this.apiKey}`);
+	async findNowPlaying(options: IListOptions): Promise<MoviesResponse> {
+		return this.get(
+			`${this.baseURL}/now_playing?${this.apiKey}&language=${options.language}&page=${options.page}`,
+		);
 	}
 
-	async findMovieDetails(movieId: number): Promise<MovieDetails> {
-		return this.get(`${this.baseURL}/${movieId}?${this.apiKey}`);
+	async findMovieDetails(args: IMoviesArgs): Promise<MovieDetails> {
+		return this.get(
+			`${this.baseURL}/${args.movieId}?${this.apiKey}&language=${args.options.language}`,
+		);
 	}
 
-	async findCastByMovie(movieId: number): Promise<MovieCastResponse> {
-		return this.get(`${this.baseURL}/${movieId}/credits?${this.apiKey}`);
+	async findCastByMovie(args: IMoviesArgs): Promise<MovieCastResponse> {
+		return this.get(
+			`${this.baseURL}/${args.movieId}/credits?${this.apiKey}&language=${args.options.language}`,
+		);
 	}
 
-	async findSimilarMovies(movieId: number): Promise<MoviesResponse> {
-		return this.get(`${this.baseURL}/${movieId}/similar?${this.apiKey}`);
+	async findCrewByMovie(args: IMoviesArgs): Promise<MovieCrewResponse> {
+		return this.get(
+			`${this.baseURL}/${args.movieId}/credits?${this.apiKey}&language=${args.options.language}`,
+		);
 	}
 
-	async findCrewByMovie(movieId: number): Promise<MovieCrewResponse> {
-		return this.get(`${this.baseURL}/${movieId}/credits?${this.apiKey}`);
+	async findSimilarMovies(args: IMoviesArgs): Promise<MoviesResponse> {
+		return this.get(
+			`${this.baseURL}/${args.movieId}/similar?${this.apiKey}&language=${args.options.language}&page=${args.options.page}`,
+		);
 	}
 
-	async findImagesByMovie(movieId: number): Promise<MovieImageResponse> {
-		return this.get(`${this.baseURL}/${movieId}/images?${this.apiKey}`);
+	async findImagesByMovie(args: IMoviesArgs): Promise<MovieImageResponse> {
+		return this.get(
+			`${this.baseURL}/${args.movieId}/images?${this.apiKey}&language=${args.options.language}`,
+		);
 	}
 
 	async findKeywordsByMovie(movieId: number): Promise<MoviesKeywordsResponse> {

@@ -1,3 +1,10 @@
+enum LanguageEnum {
+	FR
+	EN
+	US
+	ES
+}
+
 type Movie {
 	adult: Boolean
 	backdrop_path: String
@@ -170,19 +177,27 @@ type PersonCrewResponse {
 	crew: [CrewMovie]
 }
 
+input OptionsInput {
+	language: LanguageEnum
+	page: Int
+}
+
 type Query {
-	popularMovies: MoviesResponse
-	topRatedMovies: MoviesResponse
-	upcomingMovies: MoviesResponse
-	nowPlayingMovies: MoviesResponse
-	movieDetails(movieId: Int): MovieDetails
-	castMovie(movieId: Int): MovieCastResponse
-	crewMovie(movieId: Int): MovieCrewResponse
-	similarMovie(movieId: Int): MoviesResponse
-	imagesMovie(movieId: Int): MovieImageResponse
+	popularMovies(options: OptionsInput): MoviesResponse
+	topRatedMovies(options: OptionsInput): MoviesResponse
+	upcomingMovies(options: OptionsInput): MoviesResponse
+	nowPlayingMovies(options: OptionsInput): MoviesResponse
+	movieDetails(movieId: Int, options: OptionsInput): MovieDetails
+	castMovie(movieId: Int, options: OptionsInput): MovieCastResponse
+	crewMovie(movieId: Int, options: OptionsInput): MovieCrewResponse
+	similarMovie(movieId: Int, options: OptionsInput): MoviesResponse
+	imagesMovie(movieId: Int, options: OptionsInput): MovieImageResponse
 	keywordsMovie(movieId: Int): MoviesKeywordsResponse
-	moviesByCollection(collectionId: Int): MoviesCollectionResponse
-	personDetails(personId: Int): Person
-	personCastByMovie(personId: Int): PersonCastResponse
-	personCrewByMovie(personId: Int): PersonCrewResponse
+	moviesByCollection(
+		collectionId: Int
+		options: OptionsInput
+	): MoviesCollectionResponse
+	personDetails(personId: Int, options: OptionsInput): Person
+	personCastByMovie(personId: Int, options: OptionsInput): PersonCastResponse
+	personCrewByMovie(personId: Int, options: OptionsInput): PersonCrewResponse
 }

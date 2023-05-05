@@ -1,6 +1,7 @@
 import { RESTDataSource } from '@apollo/datasource-rest';
 import { MoviesKeywordsResponse } from '__generated__/resolvers-types';
 import 'dotenv/config';
+import { ICollectionsArgs } from 'types';
 
 class CollectionsService extends RESTDataSource {
 	baseURL!: string;
@@ -19,9 +20,11 @@ class CollectionsService extends RESTDataSource {
 	}
 
 	async findMoviesByCollection(
-		collectionId: number,
+		args: ICollectionsArgs,
 	): Promise<MoviesKeywordsResponse> {
-		return this.get(`${this.baseURL}/${collectionId}?${this.apiKey}`);
+		return this.get(
+			`${this.baseURL}/${args.collectionId}?${this.apiKey}&language=${args.options.language}`,
+		);
 	}
 }
 
