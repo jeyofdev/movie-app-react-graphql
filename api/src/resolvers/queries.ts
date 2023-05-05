@@ -125,6 +125,18 @@ const queries: QueryResolvers = {
 				throw new Error('error');
 			}
 		},
+
+		personDetails: async (
+			_: never,
+			args: { personId: number },
+			context: IContext,
+		) => {
+			try {
+				return context.dataSource.persons.findPersonDetails(args.personId);
+			} catch (error) {
+				throw new Error('error');
+			}
+		},
 	},
 };
 

@@ -108,6 +108,23 @@ type Keywords {
 	name: String
 }
 
+type Person {
+	birthday: String
+	known_for_department: String
+	deathday: String
+	id: Int
+	name: String
+	also_known_as: [String]
+	gender: String
+	biography: String
+	popularity: Int
+	place_of_birth: String
+	profile_path: String
+	adult: Boolean
+	imdb_id: String
+	homepage: String
+}
+
 type MovieImageResponse {
 	id: Int
 	poster: [PosterMovie]
@@ -155,4 +172,5 @@ type Query {
 	imagesMovie(movieId: Int): MovieImageResponse
 	keywordsMovie(movieId: Int): MoviesKeywordsResponse
 	moviesByCollection(collectionId: Int): MoviesCollectionResponse
+	personDetails(personId: Int): Person
 }

@@ -150,6 +150,24 @@ export type MoviesResponse = {
 	total_results: Scalars['Int'];
 };
 
+export type Person = {
+	__typename?: 'Person';
+	adult?: Maybe<Scalars['Boolean']>;
+	also_known_as?: Maybe<Array<Maybe<Scalars['String']>>>;
+	biography?: Maybe<Scalars['String']>;
+	birthday?: Maybe<Scalars['String']>;
+	deathday?: Maybe<Scalars['String']>;
+	gender?: Maybe<Scalars['String']>;
+	homepage?: Maybe<Scalars['String']>;
+	id?: Maybe<Scalars['Int']>;
+	imdb_id?: Maybe<Scalars['String']>;
+	known_for_department?: Maybe<Scalars['String']>;
+	name?: Maybe<Scalars['String']>;
+	place_of_birth?: Maybe<Scalars['String']>;
+	popularity?: Maybe<Scalars['Int']>;
+	profile_path?: Maybe<Scalars['String']>;
+};
+
 export type PosterMovie = {
 	__typename?: 'PosterMovie';
 	aspect_ratio?: Maybe<Scalars['Int']>;
@@ -184,6 +202,7 @@ export type Query = {
 	movieDetails?: Maybe<MovieDetails>;
 	moviesByCollection?: Maybe<MoviesCollectionResponse>;
 	nowPlayingMovies?: Maybe<MoviesResponse>;
+	personDetails?: Maybe<Person>;
 	popularMovies?: Maybe<MoviesResponse>;
 	similarMovie?: Maybe<MoviesResponse>;
 	topRatedMovies?: Maybe<MoviesResponse>;
@@ -212,6 +231,10 @@ export type QueryMovieDetailsArgs = {
 
 export type QueryMoviesByCollectionArgs = {
 	collectionId?: InputMaybe<Scalars['Int']>;
+};
+
+export type QueryPersonDetailsArgs = {
+	personId?: InputMaybe<Scalars['Int']>;
 };
 
 export type QuerySimilarMovieArgs = {
@@ -349,6 +372,7 @@ export type ResolversTypes = ResolversObject<{
 	MoviesCollectionResponse: ResolverTypeWrapper<MoviesCollectionResponse>;
 	MoviesKeywordsResponse: ResolverTypeWrapper<MoviesKeywordsResponse>;
 	MoviesResponse: ResolverTypeWrapper<MoviesResponse>;
+	Person: ResolverTypeWrapper<Person>;
 	PosterMovie: ResolverTypeWrapper<PosterMovie>;
 	ProductionCompany: ResolverTypeWrapper<ProductionCompany>;
 	ProductionCountry: ResolverTypeWrapper<ProductionCountry>;
@@ -374,6 +398,7 @@ export type ResolversParentTypes = ResolversObject<{
 	MoviesCollectionResponse: MoviesCollectionResponse;
 	MoviesKeywordsResponse: MoviesKeywordsResponse;
 	MoviesResponse: MoviesResponse;
+	Person: Person;
 	PosterMovie: PosterMovie;
 	ProductionCompany: ProductionCompany;
 	ProductionCountry: ProductionCountry;
@@ -696,6 +721,47 @@ export type MoviesResponseResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
+export type PersonResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['Person'] = ResolversParentTypes['Person'],
+> = ResolversObject<{
+	adult?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+	also_known_as?: Resolver<
+		Maybe<Array<Maybe<ResolversTypes['String']>>>,
+		ParentType,
+		ContextType
+	>;
+	biography?: Resolver<
+		Maybe<ResolversTypes['String']>,
+		ParentType,
+		ContextType
+	>;
+	birthday?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+	deathday?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+	gender?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+	homepage?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+	id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	imdb_id?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+	known_for_department?: Resolver<
+		Maybe<ResolversTypes['String']>,
+		ParentType,
+		ContextType
+	>;
+	name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+	place_of_birth?: Resolver<
+		Maybe<ResolversTypes['String']>,
+		ParentType,
+		ContextType
+	>;
+	popularity?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	profile_path?: Resolver<
+		Maybe<ResolversTypes['String']>,
+		ParentType,
+		ContextType
+	>;
+	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
 export type PosterMovieResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['PosterMovie'] = ResolversParentTypes['PosterMovie'],
@@ -803,6 +869,12 @@ export type QueryResolvers<
 		ParentType,
 		ContextType
 	>;
+	personDetails?: Resolver<
+		Maybe<ResolversTypes['Person']>,
+		ParentType,
+		ContextType,
+		Partial<QueryPersonDetailsArgs>
+	>;
 	popularMovies?: Resolver<
 		Maybe<ResolversTypes['MoviesResponse']>,
 		ParentType,
@@ -852,6 +924,7 @@ export type Resolvers<ContextType = any> = ResolversObject<{
 	MoviesCollectionResponse?: MoviesCollectionResponseResolvers<ContextType>;
 	MoviesKeywordsResponse?: MoviesKeywordsResponseResolvers<ContextType>;
 	MoviesResponse?: MoviesResponseResolvers<ContextType>;
+	Person?: PersonResolvers<ContextType>;
 	PosterMovie?: PosterMovieResolvers<ContextType>;
 	ProductionCompany?: ProductionCompanyResolvers<ContextType>;
 	ProductionCountry?: ProductionCountryResolvers<ContextType>;
