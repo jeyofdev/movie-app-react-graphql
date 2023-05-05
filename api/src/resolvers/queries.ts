@@ -1,6 +1,7 @@
 import { IContext } from 'context';
 import setMoviesResult from '../utils/movies';
 import { QueryResolvers } from '../__generated__/resolvers-types';
+import { ICollectionsArgs, IMoviesArgs, IPersonsArgs } from '../types';
 
 const queries: QueryResolvers = {
 	Query: {
@@ -40,11 +41,7 @@ const queries: QueryResolvers = {
 			}
 		},
 
-		movieDetails: async (
-			_: never,
-			args: { movieId: number },
-			context: IContext,
-		) => {
+		movieDetails: async (_: never, args: IMoviesArgs, context: IContext) => {
 			try {
 				return context.dataSource.movies.findMovieDetails(args.movieId);
 			} catch (error) {
@@ -52,11 +49,7 @@ const queries: QueryResolvers = {
 			}
 		},
 
-		castMovie: async (
-			_: never,
-			args: { movieId: number },
-			context: IContext,
-		) => {
+		castMovie: async (_: never, args: IMoviesArgs, context: IContext) => {
 			try {
 				return context.dataSource.movies.findCastByMovie(args.movieId);
 			} catch (error) {
@@ -64,11 +57,7 @@ const queries: QueryResolvers = {
 			}
 		},
 
-		crewMovie: async (
-			_: never,
-			args: { movieId: number },
-			context: IContext,
-		) => {
+		crewMovie: async (_: never, args: IMoviesArgs, context: IContext) => {
 			try {
 				return context.dataSource.movies.findCrewByMovie(args.movieId);
 			} catch (error) {
@@ -76,11 +65,7 @@ const queries: QueryResolvers = {
 			}
 		},
 
-		similarMovie: async (
-			_: never,
-			args: { movieId: number },
-			context: IContext,
-		) => {
+		similarMovie: async (_: never, args: IMoviesArgs, context: IContext) => {
 			try {
 				return context.dataSource.movies.findSimilarMovies(args.movieId);
 			} catch (error) {
@@ -88,11 +73,7 @@ const queries: QueryResolvers = {
 			}
 		},
 
-		imagesMovie: async (
-			_: never,
-			args: { movieId: number },
-			context: IContext,
-		) => {
+		imagesMovie: async (_: never, args: IMoviesArgs, context: IContext) => {
 			try {
 				return context.dataSource.movies.findImagesByMovie(args.movieId);
 			} catch (error) {
@@ -100,11 +81,7 @@ const queries: QueryResolvers = {
 			}
 		},
 
-		keywordsMovie: async (
-			_: never,
-			args: { movieId: number },
-			context: IContext,
-		) => {
+		keywordsMovie: async (_: never, args: IMoviesArgs, context: IContext) => {
 			try {
 				return context.dataSource.movies.findKeywordsByMovie(args.movieId);
 			} catch (error) {
@@ -114,7 +91,7 @@ const queries: QueryResolvers = {
 
 		moviesByCollection: async (
 			_: never,
-			args: { collectionId: number },
+			args: ICollectionsArgs,
 			context: IContext,
 		) => {
 			try {
@@ -126,11 +103,7 @@ const queries: QueryResolvers = {
 			}
 		},
 
-		personDetails: async (
-			_: never,
-			args: { personId: number },
-			context: IContext,
-		) => {
+		personDetails: async (_: never, args: IPersonsArgs, context: IContext) => {
 			try {
 				return context.dataSource.persons.findPersonDetails(args.personId);
 			} catch (error) {
@@ -140,7 +113,7 @@ const queries: QueryResolvers = {
 
 		personCastByMovie: async (
 			_: never,
-			args: { personId: number },
+			args: IPersonsArgs,
 			context: IContext,
 		) => {
 			try {
@@ -152,7 +125,7 @@ const queries: QueryResolvers = {
 
 		personCrewByMovie: async (
 			_: never,
-			args: { personId: number },
+			args: IPersonsArgs,
 			context: IContext,
 		) => {
 			try {
