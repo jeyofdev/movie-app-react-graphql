@@ -87,6 +87,30 @@ const queries: QueryResolvers = {
 				throw new Error('error');
 			}
 		},
+
+		imagesMovie: async (
+			_: never,
+			args: { movieId: number },
+			context: IContext,
+		) => {
+			try {
+				return context.dataSource.movies.findImagesByMovie(args.movieId);
+			} catch (error) {
+				throw new Error('error');
+			}
+		},
+
+		keywordsMovie: async (
+			_: never,
+			args: { movieId: number },
+			context: IContext,
+		) => {
+			try {
+				return context.dataSource.movies.findKeywordsByMovie(args.movieId);
+			} catch (error) {
+				throw new Error('error');
+			}
+		},
 	},
 };
 

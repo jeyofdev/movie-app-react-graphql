@@ -1,5 +1,12 @@
 import { RESTDataSource } from '@apollo/datasource-rest';
-import { Movie, MoviesResponse } from '__generated__/resolvers-types';
+import {
+	MovieCastResponse,
+	MovieCrewResponse,
+	MovieDetails,
+	MovieImageResponse,
+	MoviesKeywordsResponse,
+	MoviesResponse,
+} from '__generated__/resolvers-types';
 import 'dotenv/config';
 
 class MoviesService extends RESTDataSource {
@@ -34,20 +41,28 @@ class MoviesService extends RESTDataSource {
 		return this.get(`${this.baseURL}/now_playing?${this.apiKey}`);
 	}
 
-	async findMovieDetails(movieId: number): Promise<Movie> {
+	async findMovieDetails(movieId: number): Promise<MovieDetails> {
 		return this.get(`${this.baseURL}/${movieId}?${this.apiKey}`);
 	}
 
-	async findCastByMovie(movieId: number): Promise<Movie> {
+	async findCastByMovie(movieId: number): Promise<MovieCastResponse> {
 		return this.get(`${this.baseURL}/${movieId}/credits?${this.apiKey}`);
 	}
 
-	async findSimilarMovies(movieId: number): Promise<Movie> {
+	async findSimilarMovies(movieId: number): Promise<MoviesResponse> {
 		return this.get(`${this.baseURL}/${movieId}/similar?${this.apiKey}`);
 	}
 
-	async findCrewByMovie(movieId: number): Promise<Movie> {
+	async findCrewByMovie(movieId: number): Promise<MovieCrewResponse> {
 		return this.get(`${this.baseURL}/${movieId}/credits?${this.apiKey}`);
+	}
+
+	async findImagesByMovie(movieId: number): Promise<MovieImageResponse> {
+		return this.get(`${this.baseURL}/${movieId}/images?${this.apiKey}`);
+	}
+
+	async findKeywordsByMovie(movieId: number): Promise<MoviesKeywordsResponse> {
+		return this.get(`${this.baseURL}/${movieId}/keywords?${this.apiKey}`);
 	}
 }
 

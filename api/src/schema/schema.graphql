@@ -6,13 +6,62 @@ type Movie {
 	original_language: String
 	original_title: String
 	overview: String
-	popularity: Int
+	popularity: Float
 	poster_path: String
 	release_date: String
 	title: String
 	video: Boolean
-	vote_average: Int
+	vote_average: Float
 	vote_count: Int
+}
+
+type MovieDetails {
+	adult: Boolean
+	backdrop_path: String
+	genre_ids: [Int]
+	budget: Int
+	genres: [Genre]
+	id: Int
+	homepage: String
+	imdb_id: String
+	original_language: String
+	original_title: String
+	overview: String
+	popularity: Float
+	poster_path: String
+	production_companies: [ProductionCompany]
+	production_countries: [ProductionCountry]
+	release_date: String
+	runtime: Int
+	spoken_languages: [spoken_languages]
+	status: String
+	tagline: String
+	title: String
+	video: Boolean
+	vote_average: Float
+	vote_count: Int
+}
+
+type Genre {
+	id: Int
+	name: String
+}
+
+type ProductionCompany {
+	id: Int
+	name: String
+	logo_path: String
+	origin_country: String
+}
+
+type ProductionCountry {
+	iso_3166_1: String
+	name: String
+}
+
+type spoken_languages {
+	iso_639_1: String
+	name: String
 }
 
 type CastMovie {
@@ -44,6 +93,26 @@ type CrewMovie {
 	job: String
 }
 
+type PosterMovie {
+	aspect_ratio: Int
+	file_path: String
+	height: Int
+	iso_639_1: String
+	vote_average: Float
+	vote_count: Int
+	width: Int
+}
+
+type Keywords {
+	id: Int
+	name: String
+}
+
+type MovieImageResponse {
+	id: Int
+	poster: [PosterMovie]
+}
+
 type MovieCastResponse {
 	id: Int
 	cast: [CastMovie]
@@ -61,13 +130,20 @@ type MoviesResponse {
 	total_results: Int!
 }
 
+type MoviesKeywordsResponse {
+	id: Int
+	keywords: [Keywords]
+}
+
 type Query {
 	popularMovies: MoviesResponse
 	topRatedMovies: MoviesResponse
 	upcomingMovies: MoviesResponse
 	nowPlayingMovies: MoviesResponse
-	movieDetails(movieId: Int): Movie
+	movieDetails(movieId: Int): MovieDetails
 	castMovie(movieId: Int): MovieCastResponse
 	crewMovie(movieId: Int): MovieCrewResponse
 	similarMovie(movieId: Int): MoviesResponse
+	imagesMovie(movieId: Int): MovieImageResponse
+	keywordsMovie(movieId: Int): MoviesKeywordsResponse
 }
