@@ -125,6 +125,42 @@ const queries: QueryResolvers = {
 				throw new Error('error');
 			}
 		},
+
+		personDetails: async (
+			_: never,
+			args: { personId: number },
+			context: IContext,
+		) => {
+			try {
+				return context.dataSource.persons.findPersonDetails(args.personId);
+			} catch (error) {
+				throw new Error('error');
+			}
+		},
+
+		personCastByMovie: async (
+			_: never,
+			args: { personId: number },
+			context: IContext,
+		) => {
+			try {
+				return context.dataSource.persons.findCastByPerson(args.personId);
+			} catch (error) {
+				throw new Error('error');
+			}
+		},
+
+		personCrewByMovie: async (
+			_: never,
+			args: { personId: number },
+			context: IContext,
+		) => {
+			try {
+				return context.dataSource.persons.findCrewByPerson(args.personId);
+			} catch (error) {
+				throw new Error('error');
+			}
+		},
 	},
 };
 
