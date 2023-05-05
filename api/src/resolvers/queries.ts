@@ -111,6 +111,20 @@ const queries: QueryResolvers = {
 				throw new Error('error');
 			}
 		},
+
+		moviesByCollection: async (
+			_: never,
+			args: { collectionId: number },
+			context: IContext,
+		) => {
+			try {
+				return context.dataSource.collections.findMoviesByCollection(
+					args.collectionId,
+				);
+			} catch (error) {
+				throw new Error('error');
+			}
+		},
 	},
 };
 

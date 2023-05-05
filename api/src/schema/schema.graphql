@@ -135,6 +135,14 @@ type MoviesKeywordsResponse {
 	keywords: [Keywords]
 }
 
+type MoviesCollectionResponse {
+	id: Int
+	name: String
+	overview: String
+	backdrop_path: String
+	parts: [Movie]
+}
+
 type Query {
 	popularMovies: MoviesResponse
 	topRatedMovies: MoviesResponse
@@ -146,4 +154,5 @@ type Query {
 	similarMovie(movieId: Int): MoviesResponse
 	imagesMovie(movieId: Int): MovieImageResponse
 	keywordsMovie(movieId: Int): MoviesKeywordsResponse
+	moviesByCollection(collectionId: Int): MoviesCollectionResponse
 }
