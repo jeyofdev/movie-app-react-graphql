@@ -1,5 +1,9 @@
 import { RESTDataSource } from '@apollo/datasource-rest';
-import { Person } from '__generated__/resolvers-types';
+import {
+	Person,
+	PersonCastResponse,
+	PersonCrewResponse,
+} from '__generated__/resolvers-types';
 import 'dotenv/config';
 
 class PersonsService extends RESTDataSource {
@@ -20,6 +24,14 @@ class PersonsService extends RESTDataSource {
 
 	async findPersonDetails(personId: number): Promise<Person> {
 		return this.get(`${this.baseURL}/${personId}?${this.apiKey}`);
+	}
+
+	async findCrewByPerson(personId: number): Promise<PersonCrewResponse> {
+		return this.get(`${this.baseURL}/${personId}/movie_credits?${this.apiKey}`);
+	}
+
+	async findCastByPerson(personId: number): Promise<PersonCastResponse> {
+		return this.get(`${this.baseURL}/${personId}/movie_credits?${this.apiKey}`);
 	}
 }
 

@@ -168,6 +168,18 @@ export type Person = {
 	profile_path?: Maybe<Scalars['String']>;
 };
 
+export type PersonCastResponse = {
+	__typename?: 'PersonCastResponse';
+	cast?: Maybe<Array<Maybe<CastMovie>>>;
+	id?: Maybe<Scalars['Int']>;
+};
+
+export type PersonCrewResponse = {
+	__typename?: 'PersonCrewResponse';
+	crew?: Maybe<Array<Maybe<CrewMovie>>>;
+	id?: Maybe<Scalars['Int']>;
+};
+
 export type PosterMovie = {
 	__typename?: 'PosterMovie';
 	aspect_ratio?: Maybe<Scalars['Int']>;
@@ -202,6 +214,8 @@ export type Query = {
 	movieDetails?: Maybe<MovieDetails>;
 	moviesByCollection?: Maybe<MoviesCollectionResponse>;
 	nowPlayingMovies?: Maybe<MoviesResponse>;
+	personCastByMovie?: Maybe<PersonCastResponse>;
+	personCrewByMovie?: Maybe<PersonCrewResponse>;
 	personDetails?: Maybe<Person>;
 	popularMovies?: Maybe<MoviesResponse>;
 	similarMovie?: Maybe<MoviesResponse>;
@@ -231,6 +245,14 @@ export type QueryMovieDetailsArgs = {
 
 export type QueryMoviesByCollectionArgs = {
 	collectionId?: InputMaybe<Scalars['Int']>;
+};
+
+export type QueryPersonCastByMovieArgs = {
+	personId?: InputMaybe<Scalars['Int']>;
+};
+
+export type QueryPersonCrewByMovieArgs = {
+	personId?: InputMaybe<Scalars['Int']>;
 };
 
 export type QueryPersonDetailsArgs = {
@@ -373,6 +395,8 @@ export type ResolversTypes = ResolversObject<{
 	MoviesKeywordsResponse: ResolverTypeWrapper<MoviesKeywordsResponse>;
 	MoviesResponse: ResolverTypeWrapper<MoviesResponse>;
 	Person: ResolverTypeWrapper<Person>;
+	PersonCastResponse: ResolverTypeWrapper<PersonCastResponse>;
+	PersonCrewResponse: ResolverTypeWrapper<PersonCrewResponse>;
 	PosterMovie: ResolverTypeWrapper<PosterMovie>;
 	ProductionCompany: ResolverTypeWrapper<ProductionCompany>;
 	ProductionCountry: ResolverTypeWrapper<ProductionCountry>;
@@ -399,6 +423,8 @@ export type ResolversParentTypes = ResolversObject<{
 	MoviesKeywordsResponse: MoviesKeywordsResponse;
 	MoviesResponse: MoviesResponse;
 	Person: Person;
+	PersonCastResponse: PersonCastResponse;
+	PersonCrewResponse: PersonCrewResponse;
 	PosterMovie: PosterMovie;
 	ProductionCompany: ProductionCompany;
 	ProductionCountry: ProductionCountry;
@@ -762,6 +788,32 @@ export type PersonResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
+export type PersonCastResponseResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['PersonCastResponse'] = ResolversParentTypes['PersonCastResponse'],
+> = ResolversObject<{
+	cast?: Resolver<
+		Maybe<Array<Maybe<ResolversTypes['CastMovie']>>>,
+		ParentType,
+		ContextType
+	>;
+	id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type PersonCrewResponseResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['PersonCrewResponse'] = ResolversParentTypes['PersonCrewResponse'],
+> = ResolversObject<{
+	crew?: Resolver<
+		Maybe<Array<Maybe<ResolversTypes['CrewMovie']>>>,
+		ParentType,
+		ContextType
+	>;
+	id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
 export type PosterMovieResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['PosterMovie'] = ResolversParentTypes['PosterMovie'],
@@ -869,6 +921,18 @@ export type QueryResolvers<
 		ParentType,
 		ContextType
 	>;
+	personCastByMovie?: Resolver<
+		Maybe<ResolversTypes['PersonCastResponse']>,
+		ParentType,
+		ContextType,
+		Partial<QueryPersonCastByMovieArgs>
+	>;
+	personCrewByMovie?: Resolver<
+		Maybe<ResolversTypes['PersonCrewResponse']>,
+		ParentType,
+		ContextType,
+		Partial<QueryPersonCrewByMovieArgs>
+	>;
 	personDetails?: Resolver<
 		Maybe<ResolversTypes['Person']>,
 		ParentType,
@@ -925,6 +989,8 @@ export type Resolvers<ContextType = any> = ResolversObject<{
 	MoviesKeywordsResponse?: MoviesKeywordsResponseResolvers<ContextType>;
 	MoviesResponse?: MoviesResponseResolvers<ContextType>;
 	Person?: PersonResolvers<ContextType>;
+	PersonCastResponse?: PersonCastResponseResolvers<ContextType>;
+	PersonCrewResponse?: PersonCrewResponseResolvers<ContextType>;
 	PosterMovie?: PosterMovieResolvers<ContextType>;
 	ProductionCompany?: ProductionCompanyResolvers<ContextType>;
 	ProductionCountry?: ProductionCountryResolvers<ContextType>;

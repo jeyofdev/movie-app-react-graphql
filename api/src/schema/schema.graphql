@@ -160,6 +160,16 @@ type MoviesCollectionResponse {
 	parts: [Movie]
 }
 
+type PersonCastResponse {
+	id: Int
+	cast: [CastMovie]
+}
+
+type PersonCrewResponse {
+	id: Int
+	crew: [CrewMovie]
+}
+
 type Query {
 	popularMovies: MoviesResponse
 	topRatedMovies: MoviesResponse
@@ -173,4 +183,6 @@ type Query {
 	keywordsMovie(movieId: Int): MoviesKeywordsResponse
 	moviesByCollection(collectionId: Int): MoviesCollectionResponse
 	personDetails(personId: Int): Person
+	personCastByMovie(personId: Int): PersonCastResponse
+	personCrewByMovie(personId: Int): PersonCrewResponse
 }
