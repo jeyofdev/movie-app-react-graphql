@@ -1,16 +1,11 @@
 import { IContext } from 'context';
 import setMoviesResult from '../utils/movies';
-import { QueryResolvers } from '../__generated__/resolvers-types';
-import {
-	ICollectionsArgs,
-	IListOptions,
-	IMoviesArgs,
-	IPersonsArgs,
-} from '../types';
+import { OptionsInput, QueryResolvers } from '../__generated__/resolvers-types';
+import { ICollectionsArgs, IMoviesArgs, IPersonsArgs } from '../types';
 
 const queries: QueryResolvers = {
 	Query: {
-		popularMovies: async (_: never, args: IListOptions, context: IContext) => {
+		popularMovies: async (_: never, args: OptionsInput, context: IContext) => {
 			try {
 				const movies = await context.dataSource.movies.findMostPopular(args);
 				return setMoviesResult(movies);
@@ -19,7 +14,7 @@ const queries: QueryResolvers = {
 			}
 		},
 
-		topRatedMovies: async (_: never, args: IListOptions, context: IContext) => {
+		topRatedMovies: async (_: never, args: OptionsInput, context: IContext) => {
 			try {
 				const movies = await context.dataSource.movies.findTopRated(args);
 				return setMoviesResult(movies);
@@ -28,7 +23,7 @@ const queries: QueryResolvers = {
 			}
 		},
 
-		upcomingMovies: async (_: never, args: IListOptions, context: IContext) => {
+		upcomingMovies: async (_: never, args: OptionsInput, context: IContext) => {
 			try {
 				const movies = await context.dataSource.movies.findUpcoming(args);
 				return setMoviesResult(movies);
@@ -39,7 +34,7 @@ const queries: QueryResolvers = {
 
 		nowPlayingMovies: async (
 			_: never,
-			args: IListOptions,
+			args: OptionsInput,
 			context: IContext,
 		) => {
 			try {

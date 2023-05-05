@@ -160,6 +160,7 @@ export type MoviesResponse = {
 export type OptionsInput = {
 	language?: InputMaybe<LanguageEnum>;
 	page?: InputMaybe<Scalars['Int']>;
+	region?: InputMaybe<Scalars['String']>;
 };
 
 export type Person = {

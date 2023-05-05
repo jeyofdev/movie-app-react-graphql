@@ -180,6 +180,7 @@ type PersonCrewResponse {
 input OptionsInput {
 	language: LanguageEnum
 	page: Int
+	region: String
 }
 
 type Query {

@@ -6,9 +6,10 @@ import {
 	MovieImageResponse,
 	MoviesKeywordsResponse,
 	MoviesResponse,
+	OptionsInput,
 } from '__generated__/resolvers-types';
 import 'dotenv/config';
-import { IListOptions, IMoviesArgs } from '../types';
+import { IMoviesArgs } from '../types';
 
 class MoviesService extends RESTDataSource {
 	baseURL!: string;
@@ -26,25 +27,25 @@ class MoviesService extends RESTDataSource {
 		this.apiKey = `api_key=${process.env.TMDB_API_KEY}`;
 	}
 
-	async findMostPopular(options: IListOptions): Promise<MoviesResponse> {
+	async findMostPopular(options: OptionsInput): Promise<MoviesResponse> {
 		return this.get(
 			`${this.baseURL}/popular?${this.apiKey}&language=${options.language}&page=${options.page}`,
 		);
 	}
 
-	async findTopRated(options: IListOptions): Promise<MoviesResponse> {
+	async findTopRated(options: OptionsInput): Promise<MoviesResponse> {
 		return this.get(
-			`${this.baseURL}/top_rated?${this.apiKey}&language=${options.language}&page=${options.page}`,
+			`${this.baseURL}/top_rated?${this.apiKey}&language=${options.language}&page=${options.page}&region=${options.region}`,
 		);
 	}
 
-	async findUpcoming(options: IListOptions): Promise<MoviesResponse> {
+	async findUpcoming(options: OptionsInput): Promise<MoviesResponse> {
 		return this.get(
 			`${this.baseURL}/upcoming?${this.apiKey}&language=${options.language}&page=${options.page}`,
 		);
 	}
 
-	async findNowPlaying(options: IListOptions): Promise<MoviesResponse> {
+	async findNowPlaying(options: OptionsInput): Promise<MoviesResponse> {
 		return this.get(
 			`${this.baseURL}/now_playing?${this.apiKey}&language=${options.language}&page=${options.page}`,
 		);

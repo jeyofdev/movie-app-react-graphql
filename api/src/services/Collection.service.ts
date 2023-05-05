@@ -1,7 +1,7 @@
 import { RESTDataSource } from '@apollo/datasource-rest';
 import { MoviesKeywordsResponse } from '__generated__/resolvers-types';
 import 'dotenv/config';
-import { ICollectionsArgs } from 'types';
+import { ICollectionsArgs } from '../types';
 
 class CollectionsService extends RESTDataSource {
 	baseURL!: string;

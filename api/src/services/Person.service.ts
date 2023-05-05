@@ -5,7 +5,7 @@ import {
 	PersonCrewResponse,
 } from '__generated__/resolvers-types';
 import 'dotenv/config';
-import { IPersonsArgs } from 'types';
+import { IPersonsArgs } from '../types';
 
 class PersonsService extends RESTDataSource {
 	baseURL!: string;

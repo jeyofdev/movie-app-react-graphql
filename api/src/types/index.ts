@@ -1,26 +1,23 @@
-enum LanguageEnum {
-	FR = 'fr-Fr',
-	EN = 'en-EN',
-	US = 'en-US',
-	ES = 'es-Es',
-}
+import { OptionsInput } from '__generated__/resolvers-types';
+
+// enum LanguageEnum {
+// 	FR = 'fr-Fr',
+// 	EN = 'en-EN',
+// 	US = 'en-US',
+// 	ES = 'es-Es',
+// }
 
 export interface IMoviesArgs {
 	movieId: number;
-	options: IListOptions;
+	options: OptionsInput;
 }
 
 export interface IPersonsArgs {
 	personId: number;
-	options: IListOptions;
+	options: OptionsInput;
 }
 
 export interface ICollectionsArgs {
 	collectionId: number;
-	options: IListOptions;
-}
-
-export interface IListOptions {
-	language: LanguageEnum;
-	page: number;
+	options: OptionsInput;
 }
