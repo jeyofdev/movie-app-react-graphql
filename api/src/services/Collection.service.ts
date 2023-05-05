@@ -1,7 +1,7 @@
 import { RESTDataSource } from '@apollo/datasource-rest';
 import { MoviesKeywordsResponse } from '__generated__/resolvers-types';
 import 'dotenv/config';
-import { IListOptions } from 'types';
+import { ICollectionsArgs } from 'types';
 
 class CollectionsService extends RESTDataSource {
 	baseURL!: string;
@@ -19,10 +19,9 @@ class CollectionsService extends RESTDataSource {
 		this.apiKey = `api_key=${process.env.TMDB_API_KEY}`;
 	}
 
-	async findMoviesByCollection(args: {
-		collectionId: number;
-		options: IListOptions;
-	}): Promise<MoviesKeywordsResponse> {
+	async findMoviesByCollection(
+		args: ICollectionsArgs,
+	): Promise<MoviesKeywordsResponse> {
 		return this.get(
 			`${this.baseURL}/${args.collectionId}?${this.apiKey}&language=${args.options.language}`,
 		);

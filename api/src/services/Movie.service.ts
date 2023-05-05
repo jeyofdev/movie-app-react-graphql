@@ -8,7 +8,7 @@ import {
 	MoviesResponse,
 } from '__generated__/resolvers-types';
 import 'dotenv/config';
-import { IListOptions } from '../types';
+import { IListOptions, IMoviesArgs } from '../types';
 
 class MoviesService extends RESTDataSource {
 	baseURL!: string;
@@ -50,46 +50,31 @@ class MoviesService extends RESTDataSource {
 		);
 	}
 
-	async findMovieDetails(args: {
-		movieId: number;
-		options: IListOptions;
-	}): Promise<MovieDetails> {
+	async findMovieDetails(args: IMoviesArgs): Promise<MovieDetails> {
 		return this.get(
 			`${this.baseURL}/${args.movieId}?${this.apiKey}&language=${args.options.language}`,
 		);
 	}
 
-	async findCastByMovie(args: {
-		movieId: number;
-		options: IListOptions;
-	}): Promise<MovieCastResponse> {
+	async findCastByMovie(args: IMoviesArgs): Promise<MovieCastResponse> {
 		return this.get(
 			`${this.baseURL}/${args.movieId}/credits?${this.apiKey}&language=${args.options.language}`,
 		);
 	}
 
-	async findCrewByMovie(args: {
-		movieId: number;
-		options: IListOptions;
-	}): Promise<MovieCrewResponse> {
+	async findCrewByMovie(args: IMoviesArgs): Promise<MovieCrewResponse> {
 		return this.get(
 			`${this.baseURL}/${args.movieId}/credits?${this.apiKey}&language=${args.options.language}`,
 		);
 	}
 
-	async findSimilarMovies(args: {
-		movieId: number;
-		options: IListOptions;
-	}): Promise<MoviesResponse> {
+	async findSimilarMovies(args: IMoviesArgs): Promise<MoviesResponse> {
 		return this.get(
 			`${this.baseURL}/${args.movieId}/similar?${this.apiKey}&language=${args.options.language}&page=${args.options.page}`,
 		);
 	}
 
-	async findImagesByMovie(args: {
-		movieId: number;
-		options: IListOptions;
-	}): Promise<MovieImageResponse> {
+	async findImagesByMovie(args: IMoviesArgs): Promise<MovieImageResponse> {
 		return this.get(
 			`${this.baseURL}/${args.movieId}/images?${this.apiKey}&language=${args.options.language}`,
 		);
