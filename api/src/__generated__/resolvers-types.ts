@@ -134,11 +134,6 @@ export type MovieImageResponse = {
 	poster?: Maybe<Array<Maybe<PosterMovie>>>;
 };
 
-export type MovieOptionsInput = {
-	language?: InputMaybe<LanguageEnum>;
-	page?: InputMaybe<Scalars['Int']>;
-};
-
 export type MoviesCollectionResponse = {
 	__typename?: 'MoviesCollectionResponse';
 	backdrop_path?: Maybe<Scalars['String']>;
@@ -160,6 +155,11 @@ export type MoviesResponse = {
 	results: Array<Maybe<Movie>>;
 	total_pages: Scalars['Int'];
 	total_results: Scalars['Int'];
+};
+
+export type OptionsInput = {
+	language?: InputMaybe<LanguageEnum>;
+	page?: InputMaybe<Scalars['Int']>;
 };
 
 export type Person = {
@@ -237,14 +237,17 @@ export type Query = {
 
 export type QueryCastMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
+	options?: InputMaybe<OptionsInput>;
 };
 
 export type QueryCrewMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
+	options?: InputMaybe<OptionsInput>;
 };
 
 export type QueryImagesMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
+	options?: InputMaybe<OptionsInput>;
 };
 
 export type QueryKeywordsMovieArgs = {
@@ -253,43 +256,48 @@ export type QueryKeywordsMovieArgs = {
 
 export type QueryMovieDetailsArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
-	options?: InputMaybe<MovieOptionsInput>;
+	options?: InputMaybe<OptionsInput>;
 };
 
 export type QueryMoviesByCollectionArgs = {
 	collectionId?: InputMaybe<Scalars['Int']>;
+	options?: InputMaybe<OptionsInput>;
 };
 
 export type QueryNowPlayingMoviesArgs = {
-	options?: InputMaybe<MovieOptionsInput>;
+	options?: InputMaybe<OptionsInput>;
 };
 
 export type QueryPersonCastByMovieArgs = {
+	options?: InputMaybe<OptionsInput>;
 	personId?: InputMaybe<Scalars['Int']>;
 };
 
 export type QueryPersonCrewByMovieArgs = {
+	options?: InputMaybe<OptionsInput>;
 	personId?: InputMaybe<Scalars['Int']>;
 };
 
 export type QueryPersonDetailsArgs = {
+	options?: InputMaybe<OptionsInput>;
 	personId?: InputMaybe<Scalars['Int']>;
 };
 
 export type QueryPopularMoviesArgs = {
-	options?: InputMaybe<MovieOptionsInput>;
+	options?: InputMaybe<OptionsInput>;
 };
 
 export type QuerySimilarMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
+	options?: InputMaybe<OptionsInput>;
 };
 
 export type QueryTopRatedMoviesArgs = {
-	options?: InputMaybe<MovieOptionsInput>;
+	options?: InputMaybe<OptionsInput>;
 };
 
 export type QueryUpcomingMoviesArgs = {
-	options?: InputMaybe<MovieOptionsInput>;
+	options?: InputMaybe<OptionsInput>;
 };
 
 export type Spoken_Languages = {
@@ -421,10 +429,10 @@ export type ResolversTypes = ResolversObject<{
 	MovieCrewResponse: ResolverTypeWrapper<MovieCrewResponse>;
 	MovieDetails: ResolverTypeWrapper<MovieDetails>;
 	MovieImageResponse: ResolverTypeWrapper<MovieImageResponse>;
-	MovieOptionsInput: MovieOptionsInput;
 	MoviesCollectionResponse: ResolverTypeWrapper<MoviesCollectionResponse>;
 	MoviesKeywordsResponse: ResolverTypeWrapper<MoviesKeywordsResponse>;
 	MoviesResponse: ResolverTypeWrapper<MoviesResponse>;
+	OptionsInput: OptionsInput;
 	Person: ResolverTypeWrapper<Person>;
 	PersonCastResponse: ResolverTypeWrapper<PersonCastResponse>;
 	PersonCrewResponse: ResolverTypeWrapper<PersonCrewResponse>;
@@ -450,10 +458,10 @@ export type ResolversParentTypes = ResolversObject<{
 	MovieCrewResponse: MovieCrewResponse;
 	MovieDetails: MovieDetails;
 	MovieImageResponse: MovieImageResponse;
-	MovieOptionsInput: MovieOptionsInput;
 	MoviesCollectionResponse: MoviesCollectionResponse;
 	MoviesKeywordsResponse: MoviesKeywordsResponse;
 	MoviesResponse: MoviesResponse;
+	OptionsInput: OptionsInput;
 	Person: Person;
 	PersonCastResponse: PersonCastResponse;
 	PersonCrewResponse: PersonCrewResponse;

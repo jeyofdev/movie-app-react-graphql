@@ -17,7 +17,7 @@ export interface ICollectionsArgs {
 	collectionId: number;
 }
 
-export interface IMoviesListOptions {
+export interface IListOptions {
 	language: LanguageEnum;
 	page: number;
 }
