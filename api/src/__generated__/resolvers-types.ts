@@ -160,6 +160,7 @@ export type MoviesResponse = {
 export type OptionsInput = {
 	language?: InputMaybe<LanguageEnum>;
 	page?: InputMaybe<Scalars['Int']>;
+	region?: InputMaybe<RegionEnum>;
 };
 
 export type Person = {
@@ -299,6 +300,13 @@ export type QueryTopRatedMoviesArgs = {
 export type QueryUpcomingMoviesArgs = {
 	options?: InputMaybe<OptionsInput>;
 };
+
+export enum RegionEnum {
+	En = 'EN',
+	Es = 'ES',
+	Fr = 'FR',
+	Us = 'US',
+}
 
 export type Spoken_Languages = {
 	__typename?: 'spoken_languages';
@@ -440,6 +448,7 @@ export type ResolversTypes = ResolversObject<{
 	ProductionCompany: ResolverTypeWrapper<ProductionCompany>;
 	ProductionCountry: ResolverTypeWrapper<ProductionCountry>;
 	Query: ResolverTypeWrapper<{}>;
+	RegionEnum: RegionEnum;
 	String: ResolverTypeWrapper<Scalars['String']>;
 	spoken_languages: ResolverTypeWrapper<Spoken_Languages>;
 }>;

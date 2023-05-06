@@ -5,6 +5,13 @@ enum LanguageEnum {
 	ES
 }
 
+enum RegionEnum {
+	FR
+	EN
+	US
+	ES
+}
+
 type Movie {
 	adult: Boolean
 	backdrop_path: String
@@ -180,6 +187,7 @@ type PersonCrewResponse {
 input OptionsInput {
 	language: LanguageEnum
 	page: Int
+	region: RegionEnum
 }
 
 type Query {

@@ -1,7 +1,10 @@
 import { RESTDataSource } from '@apollo/datasource-rest';
-import { MoviesKeywordsResponse } from '__generated__/resolvers-types';
+import {
+	MoviesKeywordsResponse,
+	QueryMoviesByCollectionArgs,
+} from '../__generated__/resolvers-types';
 import 'dotenv/config';
-import { ICollectionsArgs } from 'types';
+import formatUrlQuery from '../utils/helpers';
 
 class CollectionsService extends RESTDataSource {
 	baseURL!: string;
@@ -16,14 +19,14 @@ class CollectionsService extends RESTDataSource {
 				'The environment variable TMDB_API_KEY must be specified',
 			);
 		}
-		this.apiKey = `api_key=${process.env.TMDB_API_KEY}`;
+		this.apiKey = process.env.TMDB_API_KEY;
 	}
 
 	async findMoviesByCollection(
-		args: ICollectionsArgs,
+		args: QueryMoviesByCollectionArgs,
 	): Promise<MoviesKeywordsResponse> {
 		return this.get(
-			`${this.baseURL}/${args.collectionId}?${this.apiKey}&language=${args.options.language}`,
+			formatUrlQuery(this.baseURL, this.apiKey, `${String(args.collectionId)}`),
 		);
 	}
 }
