@@ -3,9 +3,11 @@ import {
 	Person,
 	PersonCastResponse,
 	PersonCrewResponse,
+	QueryPersonCastByMovieArgs,
+	QueryPersonCrewByMovieArgs,
+	QueryPersonDetailsArgs,
 } from '__generated__/resolvers-types';
 import 'dotenv/config';
-import { IPersonsArgs } from '../types';
 
 class PersonsService extends RESTDataSource {
 	baseURL!: string;
@@ -23,21 +25,25 @@ class PersonsService extends RESTDataSource {
 		this.apiKey = `api_key=${process.env.TMDB_API_KEY}`;
 	}
 
-	async findPersonDetails(args: IPersonsArgs): Promise<Person> {
+	async findPersonDetails(args: QueryPersonDetailsArgs): Promise<Person> {
 		return this.get(
-			`${this.baseURL}/${args.personId}?${this.apiKey}&language=${args.options.language}`,
+			`${this.baseURL}/${args.personId}?${this.apiKey}&language=${args?.options?.language}`,
 		);
 	}
 
-	async findCrewByPerson(args: IPersonsArgs): Promise<PersonCrewResponse> {
+	async findCrewByPerson(
+		args: QueryPersonCrewByMovieArgs,
+	): Promise<PersonCrewResponse> {
 		return this.get(
-			`${this.baseURL}/${args.personId}/movie_credits?${this.apiKey}&language=${args.options.language}`,
+			`${this.baseURL}/${args.personId}/movie_credits?${this.apiKey}&language=${args?.options?.language}`,
 		);
 	}
 
-	async findCastByPerson(args: IPersonsArgs): Promise<PersonCastResponse> {
+	async findCastByPerson(
+		args: QueryPersonCastByMovieArgs,
+	): Promise<PersonCastResponse> {
 		return this.get(
-			`${this.baseURL}/${args.personId}/movie_credits?${this.apiKey}&language=${args.options.language}`,
+			`${this.baseURL}/${args.personId}/movie_credits?${this.apiKey}&language=${args?.options?.language}`,
 		);
 	}
 }
