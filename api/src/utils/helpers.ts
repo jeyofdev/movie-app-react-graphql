@@ -18,7 +18,6 @@ const formatUrlQuery = (
 
 		url += allQueryStrings.join('&');
 	}
-
 	return url;
 };
 

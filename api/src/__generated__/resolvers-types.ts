@@ -146,8 +146,9 @@ export type MovieDetails = {
 
 export type MovieImageResponse = {
 	__typename?: 'MovieImageResponse';
+	backdrops?: Maybe<Array<Maybe<PosterMovie>>>;
 	id?: Maybe<Scalars['Int']>;
-	poster?: Maybe<Array<Maybe<PosterMovie>>>;
+	posters?: Maybe<Array<Maybe<PosterMovie>>>;
 };
 
 export type MoviesCollectionResponse = {
@@ -811,8 +812,13 @@ export type MovieImageResponseResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['MovieImageResponse'] = ResolversParentTypes['MovieImageResponse'],
 > = ResolversObject<{
+	backdrops?: Resolver<
+		Maybe<Array<Maybe<ResolversTypes['PosterMovie']>>>,
+		ParentType,
+		ContextType
+	>;
 	id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-	poster?: Resolver<
+	posters?: Resolver<
 		Maybe<Array<Maybe<ResolversTypes['PosterMovie']>>>,
 		ParentType,
 		ContextType

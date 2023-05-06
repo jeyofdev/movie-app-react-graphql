@@ -155,7 +155,8 @@ type Person {
 
 type MovieImageResponse {
 	id: Int
-	poster: [PosterMovie]
+	backdrops: [PosterMovie]
+	posters: [PosterMovie]
 }
 
 type MovieCastResponse {
