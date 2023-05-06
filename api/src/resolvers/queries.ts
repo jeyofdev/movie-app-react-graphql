@@ -156,6 +156,18 @@ const queries: QueryResolvers = {
 			}
 		},
 
+		translationByCollection: async (
+			_: never,
+			args: QueryMoviesByCollectionArgs,
+			context: IContext,
+		) => {
+			try {
+				return context.dataSource.collections.findTranslationByCollection(args);
+			} catch (error) {
+				throw new Error('error');
+			}
+		},
+
 		personDetails: async (
 			_: never,
 			args: QueryPersonDetailsArgs,

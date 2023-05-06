@@ -122,6 +122,20 @@ type Keywords {
 	name: String
 }
 
+type CollectionTranslateData {
+	title: String
+	overview: String
+	homepage: String
+}
+
+type CollectionTranslate {
+	iso_3166_1: String
+	iso_639_1: String
+	name: String
+	english_name: String
+	data: CollectionTranslateData
+}
+
 type Person {
 	birthday: String
 	known_for_department: String
@@ -141,7 +155,8 @@ type Person {
 
 type MovieImageResponse {
 	id: Int
-	poster: [PosterMovie]
+	backdrops: [PosterMovie]
+	posters: [PosterMovie]
 }
 
 type MovieCastResponse {
@@ -172,6 +187,11 @@ type MoviesCollectionResponse {
 	overview: String
 	backdrop_path: String
 	parts: [Movie]
+}
+
+type MoviesCollectionTranslateResponse {
+	id: Int
+	translations: [CollectionTranslate]
 }
 
 type PersonCastResponse {
@@ -205,6 +225,10 @@ type Query {
 		collectionId: Int
 		options: OptionsInput
 	): MoviesCollectionResponse
+	translationByCollection(
+		collectionId: Int
+		options: OptionsInput
+	): MoviesCollectionTranslateResponse
 	personDetails(personId: Int, options: OptionsInput): Person
 	personCastByMovie(personId: Int, options: OptionsInput): PersonCastResponse
 	personCrewByMovie(personId: Int, options: OptionsInput): PersonCrewResponse
