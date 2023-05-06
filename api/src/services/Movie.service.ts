@@ -18,6 +18,7 @@ import {
 	QueryUpcomingMoviesArgs,
 } from '__generated__/resolvers-types';
 import 'dotenv/config';
+import formatUrlQuery from '../utils/helpers';
 
 class MoviesService extends RESTDataSource {
 	baseURL!: string;
@@ -32,24 +33,36 @@ class MoviesService extends RESTDataSource {
 				'The environment variable TMDB_API_KEY must be specified',
 			);
 		}
-		this.apiKey = `api_key=${process.env.TMDB_API_KEY}`;
+		this.apiKey = process.env.TMDB_API_KEY;
 	}
 
 	async findMostPopular(args: QueryPopularMoviesArgs): Promise<MoviesResponse> {
 		return this.get(
-			`${this.baseURL}/popular?${this.apiKey}&language=${args?.options?.language}&page=${args?.options?.page}`,
+			formatUrlQuery(this.baseURL, this.apiKey, 'popular', {
+				language: args?.options?.language,
+				page: args?.options?.page,
+				region: args?.options?.region,
+			}),
 		);
 	}
 
 	async findTopRated(args: QueryTopRatedMoviesArgs): Promise<MoviesResponse> {
 		return this.get(
-			`${this.baseURL}/top_rated?${this.apiKey}&language=${args?.options?.language}&page=${args?.options?.page}&region=${args?.options?.region}`,
+			formatUrlQuery(this.baseURL, this.apiKey, 'top_rated', {
+				language: args?.options?.language,
+				page: args?.options?.page,
+				region: args?.options?.region,
+			}),
 		);
 	}
 
 	async findUpcoming(args: QueryUpcomingMoviesArgs): Promise<MoviesResponse> {
 		return this.get(
-			`${this.baseURL}/upcoming?${this.apiKey}&language=${args?.options?.language}&page=${args?.options?.page}`,
+			formatUrlQuery(this.baseURL, this.apiKey, 'upcoming', {
+				language: args?.options?.language,
+				page: args?.options?.page,
+				region: args?.options?.region,
+			}),
 		);
 	}
 
@@ -57,25 +70,45 @@ class MoviesService extends RESTDataSource {
 		args: QueryNowPlayingMoviesArgs,
 	): Promise<MoviesResponse> {
 		return this.get(
-			`${this.baseURL}/now_playing?${this.apiKey}&language=${args?.options?.language}&page=${args?.options?.page}`,
+			formatUrlQuery(this.baseURL, this.apiKey, 'now_playing', {
+				language: args?.options?.language,
+				page: args?.options?.page,
+				region: args?.options?.region,
+			}),
 		);
 	}
 
 	async findMovieDetails(args: QueryMovieDetailsArgs): Promise<MovieDetails> {
 		return this.get(
-			`${this.baseURL}/${args.movieId}?${this.apiKey}&language=${args?.options?.language}`,
+			formatUrlQuery(this.baseURL, this.apiKey, String(args.movieId), {
+				language: args?.options?.language,
+			}),
 		);
 	}
 
 	async findCastByMovie(args: QueryCastMovieArgs): Promise<MovieCastResponse> {
 		return this.get(
-			`${this.baseURL}/${args.movieId}/credits?${this.apiKey}&language=${args?.options?.language}`,
+			formatUrlQuery(
+				this.baseURL,
+				this.apiKey,
+				`${String(args.movieId)}/credits`,
+				{
+					language: args?.options?.language,
+				},
+			),
 		);
 	}
 
 	async findCrewByMovie(args: QueryCrewMovieArgs): Promise<MovieCrewResponse> {
 		return this.get(
-			`${this.baseURL}/${args.movieId}/credits?${this.apiKey}&language=${args?.options?.language}`,
+			formatUrlQuery(
+				this.baseURL,
+				this.apiKey,
+				`${String(args.movieId)}/credits`,
+				{
+					language: args?.options?.language,
+				},
+			),
 		);
 	}
 
@@ -83,7 +116,15 @@ class MoviesService extends RESTDataSource {
 		args: QuerySimilarMovieArgs,
 	): Promise<MoviesResponse> {
 		return this.get(
-			`${this.baseURL}/${args.movieId}/similar?${this.apiKey}&language=${args?.options?.language}&page=${args?.options?.page}`,
+			formatUrlQuery(
+				this.baseURL,
+				this.apiKey,
+				`${String(args.movieId)}/similar`,
+				{
+					language: args?.options?.language,
+					page: args?.options?.page,
+				},
+			),
 		);
 	}
 
@@ -91,14 +132,24 @@ class MoviesService extends RESTDataSource {
 		args: QueryImagesMovieArgs,
 	): Promise<MovieImageResponse> {
 		return this.get(
-			`${this.baseURL}/${args.movieId}/images?${this.apiKey}&language=${args?.options?.language}`,
+			formatUrlQuery(
+				this.baseURL,
+				this.apiKey,
+				`${String(args.movieId)}/images`,
+			),
 		);
 	}
 
 	async findKeywordsByMovie(
 		args: QueryKeywordsMovieArgs,
 	): Promise<MoviesKeywordsResponse> {
-		return this.get(`${this.baseURL}/${args.movieId}/keywords?${this.apiKey}`);
+		return this.get(
+			formatUrlQuery(
+				this.baseURL,
+				this.apiKey,
+				`${String(args.movieId)}/keywords`,
+			),
+		);
 	}
 }
 

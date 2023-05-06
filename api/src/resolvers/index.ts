@@ -8,6 +8,12 @@ const resolvers: Resolvers = {
 		US: 'en-US',
 		ES: 'es-ES',
 	},
+	RegionEnum: {
+		FR: 'FR',
+		EN: 'EN',
+		US: 'US',
+		ES: 'ES',
+	},
 	...queries,
 };
 

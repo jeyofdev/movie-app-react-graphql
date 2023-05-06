@@ -1285,8 +1285,8 @@
 						"name": "region",
 						"description": null,
 						"type": {
-							"kind": "SCALAR",
-							"name": "String",
+							"kind": "ENUM",
+							"name": "RegionEnum",
 							"ofType": null
 						},
 						"defaultValue": null,
@@ -2215,6 +2215,41 @@
 				"inputFields": null,
 				"interfaces": [],
 				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "RegionEnum",
+				"description": null,
+				"fields": null,
+				"inputFields": null,
+				"interfaces": null,
+				"enumValues": [
+					{
+						"name": "EN",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "ES",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "FR",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "US",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
 				"possibleTypes": null
 			},
 			{
