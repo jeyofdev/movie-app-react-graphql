@@ -190,6 +190,70 @@ const moviesQueryOperations = {
       }
     }
   `,
+
+	similar: `
+    query SimilarMovie($movieId: Int, $options: OptionsInput) {
+      similarMovie(movieId: $movieId, options: $options) {
+        page
+        total_pages
+        total_results
+        results {
+          adult
+          backdrop_path
+          genre_ids
+          id
+          original_language
+          original_title
+          overview
+          popularity
+          poster_path
+          release_date
+          title
+          video
+          vote_average
+          vote_count
+        }
+      }
+    }
+  `,
+
+	images: `
+    query ImagesMovie($movieId: Int, $options: OptionsInput) {
+      imagesMovie(movieId: $movieId, options: $options) {
+        id
+        posters {
+          aspect_ratio
+          file_path
+          height
+          iso_639_1
+          vote_average
+          vote_count
+          width
+        }
+        backdrops {
+          aspect_ratio
+          file_path
+          height
+          iso_639_1
+          vote_average
+          vote_count
+          width
+        }
+      }
+    }
+  `,
+
+	keywords: `
+    query KeywordsMovie($movieId: Int) {
+      keywordsMovie(movieId: $movieId) {
+        id
+        keywords {
+          id
+          name
+        }
+      }
+    }
+  `,
 };
 
 export default moviesQueryOperations;
