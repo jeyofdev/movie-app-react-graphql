@@ -18,6 +18,7 @@ const getServer = async (port?: number) => {
 		context: async () => context,
 		listen: { port },
 	});
+
 	return { server, url };
 };
 

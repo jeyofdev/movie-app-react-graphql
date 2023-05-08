@@ -2360,7 +2360,7 @@
 						"deprecationReason": null
 					},
 					{
-						"name": "translationByCollection",
+						"name": "translationsByCollection",
 						"description": null,
 						"args": [
 							{

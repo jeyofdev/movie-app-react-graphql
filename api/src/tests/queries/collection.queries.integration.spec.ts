@@ -4,7 +4,7 @@ import { IContext } from '../../context';
 import getServer from '../../config/server';
 import 'dotenv/config';
 import { executeRequestForTesting } from '../../utils/helpers';
-import moviesQueryOperations from '../../operations/movie.query.operations';
+import collectionsQueryOperations from '../../operations/collection.query.operations';
 
 describe('init server', () => {
 	let server: ApolloServer<IContext>;
@@ -23,13 +23,13 @@ describe('init server', () => {
 		await server.stop();
 	});
 
-	describe('query MovieDetails', () => {
-		it('when no movie matches', async () => {
+	describe('Query moviesByCollection', () => {
+		it('Returns the list of movies in a collection', async () => {
 			const response = await executeRequestForTesting(
 				url,
-				moviesQueryOperations.details,
+				collectionsQueryOperations.moviesByCollection,
 				{
-					movieId: 3445500,
+					collectionId: 10,
 					options: {
 						language: 'EN',
 					},
@@ -37,15 +37,15 @@ describe('init server', () => {
 			);
 
 			expect(response.error).not.toBeUndefined();
-			expect(response.body.data.movieDetails).toBeNull();
+			expect(response.body.data.moviesByCollection).toMatchSnapshot();
 		});
 
-		it('when a movie matches', async () => {
+		it('returns the translations of a collection', async () => {
 			const response = await executeRequestForTesting(
 				url,
-				moviesQueryOperations.details,
+				collectionsQueryOperations.moviesByCollection,
 				{
-					movieId: 76600,
+					collectionId: 10,
 					options: {
 						language: 'EN',
 					},
@@ -53,7 +53,7 @@ describe('init server', () => {
 			);
 
 			expect(response.error).not.toBeUndefined();
-			expect(response.body.data.movieDetails).toMatchSnapshot();
+			expect(response.body.data.moviesByCollection).toMatchSnapshot();
 		});
 	});
 });

@@ -1,7 +1,7 @@
 import { IContext } from '../../context';
 import {
 	QueryMoviesByCollectionArgs,
-	QueryTranslationByCollectionArgs,
+	QueryTranslationsByCollectionArgs,
 } from '../../__generated__/resolvers-types';
 
 const collectionQueries = {
@@ -17,13 +17,13 @@ const collectionQueries = {
 		}
 	},
 
-	translationByCollection: async (
+	translationsByCollection: async (
 		_: never,
-		args: QueryTranslationByCollectionArgs,
+		args: QueryTranslationsByCollectionArgs,
 		context: IContext,
 	) => {
 		try {
-			return await context.dataSource.collections.findTranslationByCollection(
+			return await context.dataSource.collections.findTranslationsByCollection(
 				args,
 			);
 		} catch (error) {

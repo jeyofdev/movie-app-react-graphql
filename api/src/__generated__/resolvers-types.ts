@@ -256,7 +256,7 @@ export type Query = {
 	popularMovies?: Maybe<MoviesResponse>;
 	similarMovie?: Maybe<MoviesResponse>;
 	topRatedMovies?: Maybe<MoviesResponse>;
-	translationByCollection?: Maybe<MoviesCollectionTranslateResponse>;
+	translationsByCollection?: Maybe<MoviesCollectionTranslateResponse>;
 	upcomingMovies?: Maybe<MoviesResponse>;
 };
 
@@ -321,7 +321,7 @@ export type QueryTopRatedMoviesArgs = {
 	options?: InputMaybe<OptionsInput>;
 };
 
-export type QueryTranslationByCollectionArgs = {
+export type QueryTranslationsByCollectionArgs = {
 	collectionId?: InputMaybe<Scalars['Int']>;
 	options?: InputMaybe<OptionsInput>;
 };
@@ -1098,11 +1098,11 @@ export type QueryResolvers<
 		ContextType,
 		Partial<QueryTopRatedMoviesArgs>
 	>;
-	translationByCollection?: Resolver<
+	translationsByCollection?: Resolver<
 		Maybe<ResolversTypes['MoviesCollectionTranslateResponse']>,
 		ParentType,
 		ContextType,
-		Partial<QueryTranslationByCollectionArgs>
+		Partial<QueryTranslationsByCollectionArgs>
 	>;
 	upcomingMovies?: Resolver<
 		Maybe<ResolversTypes['MoviesResponse']>,
