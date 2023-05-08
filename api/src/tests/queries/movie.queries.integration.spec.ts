@@ -107,5 +107,37 @@ describe('init server', () => {
 			expect(response.error).not.toBeUndefined();
 			expect(response.body.data.topRatedMovies).toMatchSnapshot();
 		});
+
+		it('Returns the cast for a movie.', async () => {
+			const response = await executeRequestForTesting(
+				url,
+				moviesQueryOperations.cast,
+				{
+					movieId: 76600,
+					options: {
+						language: 'FR',
+					},
+				},
+			);
+
+			expect(response.error).not.toBeUndefined();
+			expect(response.body.data.castMovie).toMatchSnapshot();
+		});
+
+		it('Returns the crew for a movie.', async () => {
+			const response = await executeRequestForTesting(
+				url,
+				moviesQueryOperations.crew,
+				{
+					movieId: 76600,
+					options: {
+						language: 'FR',
+					},
+				},
+			);
+
+			expect(response.error).not.toBeUndefined();
+			expect(response.body.data.crewMovie).toMatchSnapshot();
+		});
 	});
 });

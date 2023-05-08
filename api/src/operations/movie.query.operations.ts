@@ -147,6 +147,49 @@ const moviesQueryOperations = {
       }
     }
   `,
+
+	cast: `
+    query CastMovie($movieId: Int, $options: OptionsInput) {
+      castMovie(movieId: $movieId, options: $options) {
+        cast {
+          adult
+          gender
+          id
+          known_for_department
+          name
+          original_name
+          popularity
+          profile_path
+          cast_id
+          character
+          credit_id
+          order
+        }
+        id
+      }
+    }
+  `,
+
+	crew: `
+    query CrewMovie($movieId: Int, $options: OptionsInput) {
+      crewMovie(movieId: $movieId, options: $options) {
+        crew {
+          adult
+          gender
+          id
+          known_for_department
+          name
+          original_name
+          popularity
+          profile_path
+          credit_id
+          department
+          job
+        }
+        id
+      }
+    }
+  `,
 };
 
 export default moviesQueryOperations;
