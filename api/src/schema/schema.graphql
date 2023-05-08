@@ -145,7 +145,7 @@ type Person {
 	also_known_as: [String]
 	gender: String
 	biography: String
-	popularity: Int
+	popularity: Float
 	place_of_birth: String
 	profile_path: String
 	adult: Boolean

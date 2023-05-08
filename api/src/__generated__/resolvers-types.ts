@@ -200,7 +200,7 @@ export type Person = {
 	known_for_department?: Maybe<Scalars['String']>;
 	name?: Maybe<Scalars['String']>;
 	place_of_birth?: Maybe<Scalars['String']>;
-	popularity?: Maybe<Scalars['Int']>;
+	popularity?: Maybe<Scalars['Float']>;
 	profile_path?: Maybe<Scalars['String']>;
 };
 
@@ -919,7 +919,11 @@ export type PersonResolvers<
 		ParentType,
 		ContextType
 	>;
-	popularity?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	popularity?: Resolver<
+		Maybe<ResolversTypes['Float']>,
+		ParentType,
+		ContextType
+	>;
 	profile_path?: Resolver<
 		Maybe<ResolversTypes['String']>,
 		ParentType,

@@ -4,7 +4,7 @@ import { IContext } from '../../context';
 import getServer from '../../config/server';
 import 'dotenv/config';
 import { executeRequestForTesting } from '../../utils/helpers';
-import collectionsQueryOperations from '../../operations/collection.query.operations';
+import personsQueryOperations from '../../operations/person.query.operations';
 
 describe('init server', () => {
 	let server: ApolloServer<IContext>;
@@ -24,28 +24,44 @@ describe('init server', () => {
 	});
 
 	describe('Query moviesByCollection', () => {
-		it('Returns the list of movies in a collection', async () => {
+		it("Returns a person's information", async () => {
 			const response = await executeRequestForTesting(
 				url,
-				collectionsQueryOperations.moviesByCollection,
+				personsQueryOperations.details,
 				{
-					collectionId: 10,
+					personId: 2,
 					options: {
-						language: 'EN',
+						language: 'FR',
 					},
 				},
 			);
 
 			expect(response.error).not.toBeUndefined();
-			expect(response.body.data.moviesByCollection).toMatchSnapshot();
+			expect(response.body.data.personDetails).toMatchSnapshot();
 		});
 
-		it('returns the translations of a collection', async () => {
+		it("returns a person's information as an actor for each movie they starred in", async () => {
 			const response = await executeRequestForTesting(
 				url,
-				collectionsQueryOperations.translationsByCollection,
+				personsQueryOperations.castByMovie,
 				{
-					collectionId: 10,
+					personId: 2,
+					options: {
+						language: 'FR',
+					},
+				},
+			);
+
+			expect(response.error).not.toBeUndefined();
+			expect(response.body.data.personCastByMovie).toMatchSnapshot();
+		});
+
+		it('returns the information of a person who has a role in the technical team', async () => {
+			const response = await executeRequestForTesting(
+				url,
+				personsQueryOperations.crewByMovie,
+				{
+					personId: 2,
 					options: {
 						language: 'EN',
 					},
@@ -53,7 +69,7 @@ describe('init server', () => {
 			);
 
 			expect(response.error).not.toBeUndefined();
-			expect(response.body.data.translationsByCollection).toMatchSnapshot();
+			expect(response.body.data.personCrewByMovie).toMatchSnapshot();
 		});
 	});
 });
