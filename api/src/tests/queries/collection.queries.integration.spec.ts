@@ -24,6 +24,22 @@ describe('init server', () => {
 	});
 
 	describe('Queries collections', () => {
+		it('When no collection found', async () => {
+			const response = await executeRequestForTesting(
+				url,
+				collectionsQueryOperations.moviesByCollection,
+				{
+					collectionId: 100,
+					options: {
+						language: 'EN',
+					},
+				},
+			);
+
+			expect(response.error).not.toBeUndefined();
+			expect(response.body.data.moviesByCollection).toBeNull();
+		});
+
 		it('Returns the list of movies in a collection', async () => {
 			const response = await executeRequestForTesting(
 				url,

@@ -24,6 +24,22 @@ describe('init server', () => {
 	});
 
 	describe('Queries persons', () => {
+		it('When no person found', async () => {
+			const response = await executeRequestForTesting(
+				url,
+				personsQueryOperations.details,
+				{
+					collectionId: 30000000,
+					options: {
+						language: 'EN',
+					},
+				},
+			);
+
+			expect(response.error).not.toBeUndefined();
+			expect(response.body.data.personDetails).toBeNull();
+		});
+
 		it("Returns a person's information", async () => {
 			const response = await executeRequestForTesting(
 				url,

@@ -12,6 +12,7 @@ import {
 	QueryTopRatedMoviesArgs,
 	QueryUpcomingMoviesArgs,
 } from '../../__generated__/resolvers-types';
+import NotFoundError from '../../errors/NotFound.error';
 
 const movieQueries = {
 	popularMovies: async (
@@ -23,7 +24,7 @@ const movieQueries = {
 			const movies = await context.dataSource.movies.findMostPopular(args);
 			return setMoviesResult(movies);
 		} catch (error) {
-			throw new Error('error');
+			throw new NotFoundError('No movie was found');
 		}
 	},
 
@@ -36,7 +37,7 @@ const movieQueries = {
 			const movies = await context.dataSource.movies.findTopRated(args);
 			return setMoviesResult(movies);
 		} catch (error) {
-			throw new Error('error');
+			throw new NotFoundError('No movie was found');
 		}
 	},
 
@@ -49,7 +50,7 @@ const movieQueries = {
 			const movies = await context.dataSource.movies.findUpcoming(args);
 			return setMoviesResult(movies);
 		} catch (error) {
-			throw new Error('error');
+			throw new NotFoundError('No movie was found');
 		}
 	},
 
@@ -62,7 +63,7 @@ const movieQueries = {
 			const movies = await context.dataSource.movies.findNowPlaying(args);
 			return setMoviesResult(movies);
 		} catch (error) {
-			throw new Error('error');
+			throw new NotFoundError('No movie was found');
 		}
 	},
 
@@ -74,7 +75,7 @@ const movieQueries = {
 		try {
 			return await context.dataSource.movies.findMovieDetails(args);
 		} catch (error) {
-			throw new Error('error');
+			throw new NotFoundError('No movie was found with this id', 'movieId');
 		}
 	},
 
@@ -82,7 +83,7 @@ const movieQueries = {
 		try {
 			return await context.dataSource.movies.findCastByMovie(args);
 		} catch (error) {
-			throw new Error('error');
+			throw new NotFoundError('No movie was found with this id', 'movieId');
 		}
 	},
 
@@ -90,7 +91,7 @@ const movieQueries = {
 		try {
 			return await context.dataSource.movies.findCrewByMovie(args);
 		} catch (error) {
-			throw new Error('error');
+			throw new NotFoundError('No movie was found with this id', 'movieId');
 		}
 	},
 
@@ -102,7 +103,7 @@ const movieQueries = {
 		try {
 			return await context.dataSource.movies.findSimilarMovies(args);
 		} catch (error) {
-			throw new Error('error');
+			throw new NotFoundError('No movie was found with this id', 'movieId');
 		}
 	},
 
@@ -114,7 +115,7 @@ const movieQueries = {
 		try {
 			return await context.dataSource.movies.findImagesByMovie(args);
 		} catch (error) {
-			throw new Error('error');
+			throw new NotFoundError('No movie was found with this id', 'movieId');
 		}
 	},
 
@@ -126,7 +127,7 @@ const movieQueries = {
 		try {
 			return await context.dataSource.movies.findKeywordsByMovie(args);
 		} catch (error) {
-			throw new Error('error');
+			throw new NotFoundError('No movie was found with this id', 'movieId');
 		}
 	},
 };

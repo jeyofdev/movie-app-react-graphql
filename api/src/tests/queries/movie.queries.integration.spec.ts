@@ -24,6 +24,22 @@ describe('init server', () => {
 	});
 
 	describe('queries movies', () => {
+		it('When no movie found', async () => {
+			const response = await executeRequestForTesting(
+				url,
+				moviesQueryOperations.details,
+				{
+					movieId: 7660450,
+					options: {
+						language: 'FR',
+					},
+				},
+			);
+
+			expect(response.error).not.toBeUndefined();
+			expect(response.body.data.movieDetails).toBeNull();
+		});
+
 		it('Get the primary information about a movie.', async () => {
 			const response = await executeRequestForTesting(
 				url,

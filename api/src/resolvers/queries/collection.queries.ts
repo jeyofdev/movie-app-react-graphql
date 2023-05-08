@@ -3,6 +3,7 @@ import {
 	QueryMoviesByCollectionArgs,
 	QueryTranslationsByCollectionArgs,
 } from '../../__generated__/resolvers-types';
+import NotFoundError from '../../errors/NotFound.error';
 
 const collectionQueries = {
 	moviesByCollection: async (
@@ -12,8 +13,11 @@ const collectionQueries = {
 	) => {
 		try {
 			return await context.dataSource.collections.findMoviesByCollection(args);
-		} catch (error) {
-			throw new Error('error');
+		} catch (err) {
+			throw new NotFoundError(
+				'No collection was found with this id',
+				'collectionId',
+			);
 		}
 	},
 
@@ -26,8 +30,11 @@ const collectionQueries = {
 			return await context.dataSource.collections.findTranslationsByCollection(
 				args,
 			);
-		} catch (error) {
-			throw new Error('error');
+		} catch (err) {
+			throw new NotFoundError(
+				'No collection was found with this id',
+				'collectionId',
+			);
 		}
 	},
 };

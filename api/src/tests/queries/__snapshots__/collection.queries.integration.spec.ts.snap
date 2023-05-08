@@ -25,7 +25,7 @@ exports[`init server > Queries collections > Returns the list of movies in a col
       "title": "Star Wars",
       "video": false,
       "vote_average": 8.208,
-      "vote_count": 18576,
+      "vote_count": 18578,
     },
     {
       "adult": false,
@@ -85,7 +85,7 @@ exports[`init server > Queries collections > Returns the list of movies in a col
       "title": "Star Wars: Episode I - The Phantom Menace",
       "video": false,
       "vote_average": 6.527,
-      "vote_count": 13161,
+      "vote_count": 13162,
     },
     {
       "adult": false,
@@ -105,7 +105,7 @@ exports[`init server > Queries collections > Returns the list of movies in a col
       "title": "Star Wars: Episode II - Attack of the Clones",
       "video": false,
       "vote_average": 6.549,
-      "vote_count": 11940,
+      "vote_count": 11941,
     },
     {
       "adult": false,
@@ -125,7 +125,7 @@ exports[`init server > Queries collections > Returns the list of movies in a col
       "title": "Star Wars: Episode III - Revenge of the Sith",
       "video": false,
       "vote_average": 7.403,
-      "vote_count": 12378,
+      "vote_count": 12379,
     },
     {
       "adult": false,
@@ -146,7 +146,7 @@ exports[`init server > Queries collections > Returns the list of movies in a col
       "title": "Star Wars: The Force Awakens",
       "video": false,
       "vote_average": 7.3,
-      "vote_count": 17976,
+      "vote_count": 17977,
     },
     {
       "adult": false,
@@ -165,8 +165,8 @@ exports[`init server > Queries collections > Returns the list of movies in a col
       "release_date": "2019-12-18",
       "title": "Star Wars: The Rise of Skywalker",
       "video": false,
-      "vote_average": 6.4,
-      "vote_count": 8718,
+      "vote_average": 6.39,
+      "vote_count": 8719,
     },
     {
       "adult": false,
@@ -185,8 +185,8 @@ exports[`init server > Queries collections > Returns the list of movies in a col
       "release_date": "2017-12-13",
       "title": "Star Wars: The Last Jedi",
       "video": false,
-      "vote_average": 6.8,
-      "vote_count": 13951,
+      "vote_average": 6.837,
+      "vote_count": 13952,
     },
   ],
 }
