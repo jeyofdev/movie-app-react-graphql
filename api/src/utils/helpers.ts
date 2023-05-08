@@ -1,6 +1,7 @@
+import request from 'supertest';
 import { OptionsInput } from '../__generated__/resolvers-types';
 
-const formatUrlQuery = (
+export const formatUrlQuery = (
 	baseUrl: string,
 	apiKey: string,
 	pathParams?: string | number,
@@ -21,4 +22,20 @@ const formatUrlQuery = (
 	return url;
 };
 
-export default formatUrlQuery;
+export const executeRequestForTesting = async (
+	url: string,
+	query: string,
+	variables: unknown,
+	statusCode = 200,
+) => {
+	const response = await request(url)
+		.post('/')
+		.set('Accept', 'application/json')
+		.send({
+			query,
+			variables,
+		})
+		.expect(statusCode);
+
+	return response;
+};

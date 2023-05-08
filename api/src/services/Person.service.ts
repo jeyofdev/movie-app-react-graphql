@@ -8,7 +8,7 @@ import {
 	QueryPersonDetailsArgs,
 } from '__generated__/resolvers-types';
 import 'dotenv/config';
-import formatUrlQuery from '../utils/helpers';
+import { formatUrlQuery } from '../utils/helpers';
 
 class PersonsService extends RESTDataSource {
 	baseURL!: string;
