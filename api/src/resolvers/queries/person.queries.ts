@@ -4,6 +4,7 @@ import {
 	QueryPersonCrewByMovieArgs,
 	QueryPersonDetailsArgs,
 } from '../../__generated__/resolvers-types';
+import NotFoundError from '../../errors/NotFound.error';
 
 const personQueries = {
 	personDetails: async (
@@ -14,7 +15,7 @@ const personQueries = {
 		try {
 			return await context.dataSource.persons.findPersonDetails(args);
 		} catch (error) {
-			throw new Error('error');
+			throw new NotFoundError('No person was found with this id', 'personId');
 		}
 	},
 
@@ -26,7 +27,7 @@ const personQueries = {
 		try {
 			return await context.dataSource.persons.findCastByPerson(args);
 		} catch (error) {
-			throw new Error('error');
+			throw new NotFoundError('No person was found with this id', 'personId');
 		}
 	},
 
@@ -38,7 +39,7 @@ const personQueries = {
 		try {
 			return await context.dataSource.persons.findCrewByPerson(args);
 		} catch (error) {
-			throw new Error('error');
+			throw new NotFoundError('No person was found with this id', 'personId');
 		}
 	},
 };
