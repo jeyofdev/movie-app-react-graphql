@@ -2,7 +2,7 @@ import { RESTDataSource } from '@apollo/datasource-rest';
 import {
 	MoviesKeywordsResponse,
 	QueryMoviesByCollectionArgs,
-	QueryTranslationByCollectionArgs,
+	QueryTranslationsByCollectionArgs,
 } from '../__generated__/resolvers-types';
 import 'dotenv/config';
 import { formatUrlQuery } from '../utils/helpers';
@@ -38,8 +38,8 @@ class CollectionsService extends RESTDataSource {
 		);
 	}
 
-	async findTranslationByCollection(
-		args: QueryTranslationByCollectionArgs,
+	async findTranslationsByCollection(
+		args: QueryTranslationsByCollectionArgs,
 	): Promise<MoviesKeywordsResponse> {
 		return this.get(
 			formatUrlQuery(

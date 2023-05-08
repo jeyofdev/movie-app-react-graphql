@@ -1630,7 +1630,7 @@
 						"args": [],
 						"type": {
 							"kind": "SCALAR",
-							"name": "Int",
+							"name": "Float",
 							"ofType": null
 						},
 						"isDeprecated": false,
@@ -2360,7 +2360,7 @@
 						"deprecationReason": null
 					},
 					{
-						"name": "translationByCollection",
+						"name": "translationsByCollection",
 						"description": null,
 						"args": [
 							{

@@ -200,7 +200,7 @@ export type Person = {
 	known_for_department?: Maybe<Scalars['String']>;
 	name?: Maybe<Scalars['String']>;
 	place_of_birth?: Maybe<Scalars['String']>;
-	popularity?: Maybe<Scalars['Int']>;
+	popularity?: Maybe<Scalars['Float']>;
 	profile_path?: Maybe<Scalars['String']>;
 };
 
@@ -256,7 +256,7 @@ export type Query = {
 	popularMovies?: Maybe<MoviesResponse>;
 	similarMovie?: Maybe<MoviesResponse>;
 	topRatedMovies?: Maybe<MoviesResponse>;
-	translationByCollection?: Maybe<MoviesCollectionTranslateResponse>;
+	translationsByCollection?: Maybe<MoviesCollectionTranslateResponse>;
 	upcomingMovies?: Maybe<MoviesResponse>;
 };
 
@@ -321,7 +321,7 @@ export type QueryTopRatedMoviesArgs = {
 	options?: InputMaybe<OptionsInput>;
 };
 
-export type QueryTranslationByCollectionArgs = {
+export type QueryTranslationsByCollectionArgs = {
 	collectionId?: InputMaybe<Scalars['Int']>;
 	options?: InputMaybe<OptionsInput>;
 };
@@ -919,7 +919,11 @@ export type PersonResolvers<
 		ParentType,
 		ContextType
 	>;
-	popularity?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	popularity?: Resolver<
+		Maybe<ResolversTypes['Float']>,
+		ParentType,
+		ContextType
+	>;
 	profile_path?: Resolver<
 		Maybe<ResolversTypes['String']>,
 		ParentType,
@@ -1098,11 +1102,11 @@ export type QueryResolvers<
 		ContextType,
 		Partial<QueryTopRatedMoviesArgs>
 	>;
-	translationByCollection?: Resolver<
+	translationsByCollection?: Resolver<
 		Maybe<ResolversTypes['MoviesCollectionTranslateResponse']>,
 		ParentType,
 		ContextType,
-		Partial<QueryTranslationByCollectionArgs>
+		Partial<QueryTranslationsByCollectionArgs>
 	>;
 	upcomingMovies?: Resolver<
 		Maybe<ResolversTypes['MoviesResponse']>,
