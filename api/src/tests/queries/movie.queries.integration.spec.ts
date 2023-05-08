@@ -107,5 +107,80 @@ describe('init server', () => {
 			expect(response.error).not.toBeUndefined();
 			expect(response.body.data.topRatedMovies).toMatchSnapshot();
 		});
+
+		it('Returns the cast for a movie', async () => {
+			const response = await executeRequestForTesting(
+				url,
+				moviesQueryOperations.cast,
+				{
+					movieId: 76600,
+					options: {
+						language: 'FR',
+					},
+				},
+			);
+
+			expect(response.error).not.toBeUndefined();
+			expect(response.body.data.castMovie).toMatchSnapshot();
+		});
+
+		it('Returns the crew for a movie', async () => {
+			const response = await executeRequestForTesting(
+				url,
+				moviesQueryOperations.crew,
+				{
+					movieId: 76600,
+					options: {
+						language: 'FR',
+					},
+				},
+			);
+
+			expect(response.error).not.toBeUndefined();
+			expect(response.body.data.crewMovie).toMatchSnapshot();
+		});
+
+		it('Returns a list of similar movies', async () => {
+			const response = await executeRequestForTesting(
+				url,
+				moviesQueryOperations.similar,
+				{
+					movieId: 76600,
+					options: {
+						language: 'ES',
+						page: 1,
+					},
+				},
+			);
+
+			expect(response.error).not.toBeUndefined();
+			expect(response.body.data.similarMovie).toMatchSnapshot();
+		});
+
+		it('Returns the images that belong to a movie', async () => {
+			const response = await executeRequestForTesting(
+				url,
+				moviesQueryOperations.images,
+				{
+					movieId: 76600,
+				},
+			);
+
+			expect(response.error).not.toBeUndefined();
+			expect(response.body.data.imagesMovie).toMatchSnapshot();
+		});
+
+		it('Returns the keywords that have been added to a movie', async () => {
+			const response = await executeRequestForTesting(
+				url,
+				moviesQueryOperations.keywords,
+				{
+					movieId: 25,
+				},
+			);
+
+			expect(response.error).not.toBeUndefined();
+			expect(response.body.data.keywordsMovie).toMatchSnapshot();
+		});
 	});
 });
