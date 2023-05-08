@@ -11,10 +11,12 @@ describe('init server', () => {
 	let url: string;
 
 	beforeAll(async () => {
-		if (!process.env.TEST_PORT) {
-			throw new Error('The environment variable TEST_PORT must be specified');
+		if (!process.env.TEST_API_PORT) {
+			throw new Error(
+				'The environment variable TEST_API_PORT must be specified',
+			);
 		}
-		({ server, url } = await getServer(Number(process.env.TEST_PORT)));
+		({ server, url } = await getServer(Number(process.env.TEST_API_PORT)));
 
 		// eslint-disable-next-line no-console
 		console.log(url);

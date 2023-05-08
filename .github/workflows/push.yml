@@ -4,6 +4,12 @@ on:
   push:
   pull_request:
 
+env:
+  ## Sets environment variable
+  API_PORT= ${{ secrets.API_PORT }}
+  TEST_API_PORT= ${{ secrets.TEST_API_PORT }}
+  TMDB_API_KEY= ${{ secrets.TMDB_API_KEY }}
+
 jobs:
   test:
     name: Test code
