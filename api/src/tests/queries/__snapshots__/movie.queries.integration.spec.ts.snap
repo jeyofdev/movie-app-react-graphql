@@ -1,0 +1,24 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`init server > query MovieDetails > when a movie matches 1`] = `
+{
+  "genres": [
+    {
+      "id": 878,
+      "name": "Science Fiction",
+    },
+    {
+      "id": 12,
+      "name": "Adventure",
+    },
+    {
+      "id": 28,
+      "name": "Action",
+    },
+  ],
+  "id": 76600,
+  "original_title": "Avatar: The Way of Water",
+  "overview": "Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure.",
+  "title": "Avatar: The Way of Water",
+}
+`;

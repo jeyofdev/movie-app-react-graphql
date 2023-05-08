@@ -18,7 +18,7 @@ import {
 	QueryUpcomingMoviesArgs,
 } from '__generated__/resolvers-types';
 import 'dotenv/config';
-import formatUrlQuery from '../utils/helpers';
+import { formatUrlQuery } from '../utils/helpers';
 
 class MoviesService extends RESTDataSource {
 	baseURL!: string;
