@@ -16,6 +16,7 @@
 
 # testing
 /**/coverage
+api/src/tests/queries/__snapshots__
 
 # production
 /**/build
