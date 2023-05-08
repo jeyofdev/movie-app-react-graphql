@@ -137,7 +137,7 @@ describe('init server', () => {
 			);
 
 			expect(response.error).not.toBeUndefined();
-			expect(response.body.data.castMovie).toMatchSnapshot();
+			expect(response.body.data.castByMovie).toMatchSnapshot();
 		});
 
 		it('Returns the crew for a movie', async () => {
@@ -153,7 +153,7 @@ describe('init server', () => {
 			);
 
 			expect(response.error).not.toBeUndefined();
-			expect(response.body.data.crewMovie).toMatchSnapshot();
+			expect(response.body.data.crewByMovie).toMatchSnapshot();
 		});
 
 		it('Returns a list of similar movies', async () => {
@@ -183,7 +183,7 @@ describe('init server', () => {
 			);
 
 			expect(response.error).not.toBeUndefined();
-			expect(response.body.data.imagesMovie).toMatchSnapshot();
+			expect(response.body.data.imagesByMovie).toMatchSnapshot();
 		});
 
 		it('Returns the keywords that have been added to a movie', async () => {
@@ -196,7 +196,7 @@ describe('init server', () => {
 			);
 
 			expect(response.error).not.toBeUndefined();
-			expect(response.body.data.keywordsMovie).toMatchSnapshot();
+			expect(response.body.data.keywordsByMovie).toMatchSnapshot();
 		});
 	});
 });

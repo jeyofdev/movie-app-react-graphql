@@ -1927,7 +1927,7 @@
 				"description": null,
 				"fields": [
 					{
-						"name": "castMovie",
+						"name": "castByMovie",
 						"description": null,
 						"args": [
 							{
@@ -1964,7 +1964,7 @@
 						"deprecationReason": null
 					},
 					{
-						"name": "crewMovie",
+						"name": "crewByMovie",
 						"description": null,
 						"args": [
 							{
@@ -2001,7 +2001,7 @@
 						"deprecationReason": null
 					},
 					{
-						"name": "imagesMovie",
+						"name": "imagesByMovie",
 						"description": null,
 						"args": [
 							{
@@ -2038,7 +2038,7 @@
 						"deprecationReason": null
 					},
 					{
-						"name": "keywordsMovie",
+						"name": "keywordsByMovie",
 						"description": null,
 						"args": [
 							{

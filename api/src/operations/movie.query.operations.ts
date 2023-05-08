@@ -150,7 +150,7 @@ const moviesQueryOperations = {
 
 	cast: `
     query CastMovie($movieId: Int, $options: OptionsInput) {
-      castMovie(movieId: $movieId, options: $options) {
+      castByMovie(movieId: $movieId, options: $options) {
         cast {
           adult
           gender
@@ -172,7 +172,7 @@ const moviesQueryOperations = {
 
 	crew: `
     query CrewMovie($movieId: Int, $options: OptionsInput) {
-      crewMovie(movieId: $movieId, options: $options) {
+      crewByMovie(movieId: $movieId, options: $options) {
         crew {
           adult
           gender
@@ -219,7 +219,7 @@ const moviesQueryOperations = {
 
 	images: `
     query ImagesMovie($movieId: Int, $options: OptionsInput) {
-      imagesMovie(movieId: $movieId, options: $options) {
+      imagesByMovie(movieId: $movieId, options: $options) {
         id
         posters {
           aspect_ratio
@@ -244,8 +244,8 @@ const moviesQueryOperations = {
   `,
 
 	keywords: `
-    query KeywordsMovie($movieId: Int) {
-      keywordsMovie(movieId: $movieId) {
+    query KeywordsByMovie($movieId: Int) {
+      keywordsByMovie(movieId: $movieId) {
         id
         keywords {
           id

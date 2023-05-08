@@ -243,10 +243,10 @@ export type ProductionCountry = {
 
 export type Query = {
 	__typename?: 'Query';
-	castMovie?: Maybe<MovieCastResponse>;
-	crewMovie?: Maybe<MovieCrewResponse>;
-	imagesMovie?: Maybe<MovieImageResponse>;
-	keywordsMovie?: Maybe<MoviesKeywordsResponse>;
+	castByMovie?: Maybe<MovieCastResponse>;
+	crewByMovie?: Maybe<MovieCrewResponse>;
+	imagesByMovie?: Maybe<MovieImageResponse>;
+	keywordsByMovie?: Maybe<MoviesKeywordsResponse>;
 	movieDetails?: Maybe<MovieDetails>;
 	moviesByCollection?: Maybe<MoviesCollectionResponse>;
 	nowPlayingMovies?: Maybe<MoviesResponse>;
@@ -260,22 +260,22 @@ export type Query = {
 	upcomingMovies?: Maybe<MoviesResponse>;
 };
 
-export type QueryCastMovieArgs = {
+export type QueryCastByMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
 	options?: InputMaybe<OptionsInput>;
 };
 
-export type QueryCrewMovieArgs = {
+export type QueryCrewByMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
 	options?: InputMaybe<OptionsInput>;
 };
 
-export type QueryImagesMovieArgs = {
+export type QueryImagesByMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
 	options?: InputMaybe<OptionsInput>;
 };
 
-export type QueryKeywordsMovieArgs = {
+export type QueryKeywordsByMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
 };
 
@@ -1024,29 +1024,29 @@ export type QueryResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query'],
 > = ResolversObject<{
-	castMovie?: Resolver<
+	castByMovie?: Resolver<
 		Maybe<ResolversTypes['MovieCastResponse']>,
 		ParentType,
 		ContextType,
-		Partial<QueryCastMovieArgs>
+		Partial<QueryCastByMovieArgs>
 	>;
-	crewMovie?: Resolver<
+	crewByMovie?: Resolver<
 		Maybe<ResolversTypes['MovieCrewResponse']>,
 		ParentType,
 		ContextType,
-		Partial<QueryCrewMovieArgs>
+		Partial<QueryCrewByMovieArgs>
 	>;
-	imagesMovie?: Resolver<
+	imagesByMovie?: Resolver<
 		Maybe<ResolversTypes['MovieImageResponse']>,
 		ParentType,
 		ContextType,
-		Partial<QueryImagesMovieArgs>
+		Partial<QueryImagesByMovieArgs>
 	>;
-	keywordsMovie?: Resolver<
+	keywordsByMovie?: Resolver<
 		Maybe<ResolversTypes['MoviesKeywordsResponse']>,
 		ParentType,
 		ContextType,
-		Partial<QueryKeywordsMovieArgs>
+		Partial<QueryKeywordsByMovieArgs>
 	>;
 	movieDetails?: Resolver<
 		Maybe<ResolversTypes['MovieDetails']>,

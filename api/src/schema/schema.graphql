@@ -216,11 +216,11 @@ type Query {
 	upcomingMovies(options: OptionsInput): MoviesResponse
 	nowPlayingMovies(options: OptionsInput): MoviesResponse
 	movieDetails(movieId: Int, options: OptionsInput): MovieDetails
-	castMovie(movieId: Int, options: OptionsInput): MovieCastResponse
-	crewMovie(movieId: Int, options: OptionsInput): MovieCrewResponse
+	castByMovie(movieId: Int, options: OptionsInput): MovieCastResponse
+	crewByMovie(movieId: Int, options: OptionsInput): MovieCrewResponse
 	similarMovie(movieId: Int, options: OptionsInput): MoviesResponse
-	imagesMovie(movieId: Int, options: OptionsInput): MovieImageResponse
-	keywordsMovie(movieId: Int): MoviesKeywordsResponse
+	imagesByMovie(movieId: Int, options: OptionsInput): MovieImageResponse
+	keywordsByMovie(movieId: Int): MoviesKeywordsResponse
 	moviesByCollection(
 		collectionId: Int
 		options: OptionsInput
