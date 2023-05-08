@@ -23,7 +23,7 @@ describe('init server', () => {
 		await server.stop();
 	});
 
-	describe('Query moviesByCollection', () => {
+	describe('Queries persons', () => {
 		it("Returns a person's information", async () => {
 			const response = await executeRequestForTesting(
 				url,

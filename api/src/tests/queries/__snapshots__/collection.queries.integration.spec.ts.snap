@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`init server > Query moviesByCollection > Returns the list of movies in a collection 1`] = `
+exports[`init server > Queries collections > Returns the list of movies in a collection 1`] = `
 {
   "backdrop_path": "/d8duYyyC9J5T825Hg7grmaabfxQ.jpg",
   "id": 10,
@@ -192,7 +192,7 @@ exports[`init server > Query moviesByCollection > Returns the list of movies in 
 }
 `;
 
-exports[`init server > Query moviesByCollection > returns the translations of a collection 1`] = `
+exports[`init server > Queries collections > returns the translations of a collection 1`] = `
 {
   "id": 10,
   "translations": [

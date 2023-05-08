@@ -23,37 +23,89 @@ describe('init server', () => {
 		await server.stop();
 	});
 
-	describe('query MovieDetails', () => {
-		it('when no movie matches', async () => {
-			const response = await executeRequestForTesting(
-				url,
-				moviesQueryOperations.details,
-				{
-					movieId: 3445500,
-					options: {
-						language: 'EN',
-					},
-				},
-			);
-
-			expect(response.error).not.toBeUndefined();
-			expect(response.body.data.movieDetails).toBeNull();
-		});
-
-		it('when a movie matches', async () => {
+	describe('queries movies', () => {
+		it('Get the primary information about a movie.', async () => {
 			const response = await executeRequestForTesting(
 				url,
 				moviesQueryOperations.details,
 				{
 					movieId: 76600,
 					options: {
-						language: 'EN',
+						language: 'FR',
 					},
 				},
 			);
 
 			expect(response.error).not.toBeUndefined();
 			expect(response.body.data.movieDetails).toMatchSnapshot();
+		});
+
+		it('Returns a list of the current popular movies', async () => {
+			const response = await executeRequestForTesting(
+				url,
+				moviesQueryOperations.popular,
+				{
+					options: {
+						language: 'FR',
+						page: 1,
+						region: 'FR',
+					},
+				},
+			);
+
+			expect(response.error).not.toBeUndefined();
+			expect(response.body.data.popularMovies).toMatchSnapshot();
+		});
+
+		it('Returns a list of movies in theatres', async () => {
+			const response = await executeRequestForTesting(
+				url,
+				moviesQueryOperations.nowPlaying,
+				{
+					options: {
+						language: 'FR',
+						page: 1,
+						region: 'FR',
+					},
+				},
+			);
+
+			expect(response.error).not.toBeUndefined();
+			expect(response.body.data.nowPlayingMovies).toMatchSnapshot();
+		});
+
+		it('Returns a list of upcoming movies in theatres', async () => {
+			const response = await executeRequestForTesting(
+				url,
+				moviesQueryOperations.upcoming,
+				{
+					options: {
+						language: 'FR',
+						page: 1,
+						region: 'FR',
+					},
+				},
+			);
+
+			expect(response.error).not.toBeUndefined();
+			expect(response.body.data.upcomingMovies).toMatchSnapshot();
+		});
+
+		it('Returns the top rated movies on TMDB', async () => {
+			const response = await executeRequestForTesting(
+				url,
+				moviesQueryOperations.topRating,
+				{
+					options: {
+						language: 'FR',
+						page: 1,
+						region: 'FR',
+					},
+				},
+			);
+
+			expect(response.error).not.toBeUndefined();
+			expect(response.body.data.topRatedMovies).toMatchSnapshot();
 		});
 	});
 });

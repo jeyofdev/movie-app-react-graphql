@@ -23,7 +23,7 @@ describe('init server', () => {
 		await server.stop();
 	});
 
-	describe('Query moviesByCollection', () => {
+	describe('Queries collections', () => {
 		it('Returns the list of movies in a collection', async () => {
 			const response = await executeRequestForTesting(
 				url,

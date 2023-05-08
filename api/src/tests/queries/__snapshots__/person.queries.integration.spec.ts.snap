@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`init server > Query moviesByCollection > Returns a person's information 1`] = `
+exports[`init server > Queries persons > Returns a person's information 1`] = `
 {
   "adult": false,
   "also_known_as": [
@@ -30,7 +30,7 @@ exports[`init server > Query moviesByCollection > Returns a person's information
 }
 `;
 
-exports[`init server > Query moviesByCollection > returns a person's information as an actor for each movie they starred in 1`] = `
+exports[`init server > Queries persons > returns a person's information as an actor for each movie they starred in 1`] = `
 {
   "cast": [
     {
@@ -2390,7 +2390,7 @@ exports[`init server > Query moviesByCollection > returns a person's information
 }
 `;
 
-exports[`init server > Query moviesByCollection > returns the information of a person who has a role in the technical team 1`] = `
+exports[`init server > Queries persons > returns the information of a person who has a role in the technical team 1`] = `
 {
   "crew": [
     {
