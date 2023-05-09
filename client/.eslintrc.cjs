@@ -14,15 +14,27 @@ module.exports = {
 			tsx: true,
 		},
 		ecmaVersion: 'latest',
-		sourceType: 'module',
 		project: ['./tsconfig.json', './tsconfig.node.json'],
-		tsconfigRootDir: __dirname,
+		createDefaultProgram: true,
 	},
 	plugins: ['react-refresh'],
 	settings: {
 		react: { version: 'detect' },
+		'import/resolver': {
+			alias: {
+				map: [
+					['@components', './src/components'],
+					['@hooks', './src/hooks'],
+					['@images', './src/assets/images'],
+					['@utils', './src/utils'],
+					['@context', './src/context'],
+					['@public', './public'],
+				],
+				extensions: ['.js', '.ts', '.jsx', '.tsx'],
+			},
+		},
 	},
-	ignorePatterns: ['.eslintrc.cjs'],
+	ignorePatterns: ['.eslintrc.cjs', '.codegen.ts'],
 	rules: {
 		'react/react-in-jsx-scope': 0,
 		'import/no-extraneous-dependencies': 'off',

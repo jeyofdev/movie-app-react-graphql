@@ -1,0 +1,2 @@
+/dist/**/*.js
+/client/src/graphql/__generated__/

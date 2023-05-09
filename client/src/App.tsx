@@ -1,15 +1,8 @@
-import Hello from './components/Hello';
+import MainRouter from './router/MainRouter';
 
 const App = () => (
-	<div
-		style={{
-			display: 'flex',
-			alignItems: 'center',
-			justifyContent: 'center',
-			minHeight: '100vh',
-		}}
-	>
-		<Hello />
+	<div className='app'>
+		<MainRouter />
 	</div>
 );
 
