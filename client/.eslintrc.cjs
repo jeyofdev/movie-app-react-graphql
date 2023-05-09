@@ -14,15 +14,14 @@ module.exports = {
 			tsx: true,
 		},
 		ecmaVersion: 'latest',
-		sourceType: 'module',
 		project: ['./tsconfig.json', './tsconfig.node.json'],
-		tsconfigRootDir: __dirname,
+		createDefaultProgram: true,
 	},
 	plugins: ['react-refresh'],
 	settings: {
 		react: { version: 'detect' },
 	},
-	ignorePatterns: ['.eslintrc.cjs'],
+	ignorePatterns: ['.eslintrc.cjs', '.codegen.ts'],
 	rules: {
 		'react/react-in-jsx-scope': 0,
 		'import/no-extraneous-dependencies': 'off',

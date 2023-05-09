@@ -1,9 +1,8 @@
 /* eslint-disable no-console */
-import { useQuery } from '@apollo/client';
-import GET_POPULAR_MOVIES from '../graphql/queries';
+import { usePopularMoviesQuery } from '../graphql/__generated__/graphql-type';
 
 const Hello = () => {
-	const { data, loading, error } = useQuery(GET_POPULAR_MOVIES, {});
+	const { data, loading, error } = usePopularMoviesQuery({});
 
 	console.log(data, loading, error);
 
