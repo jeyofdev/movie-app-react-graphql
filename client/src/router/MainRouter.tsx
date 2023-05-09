@@ -1,6 +1,6 @@
+import Home from '@pages/Home';
+import NotFound from '@pages/NotFound';
 import { Route, Routes } from 'react-router-dom';
-import Home from '../page/Home';
-import NotFound from '../page/NotFound';
 
 const MainRouter = () => (
 	<Routes>

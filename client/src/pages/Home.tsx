@@ -1,5 +1,3 @@
-import Hello from '../components/Hello';
-
 const Home = () => (
 	<div
 		style={{
@@ -9,7 +7,7 @@ const Home = () => (
 			minHeight: '100vh',
 		}}
 	>
-		<Hello />
+		<h1>Home</h1>
 	</div>
 );
 
