@@ -73,6 +73,15 @@ export type Genre = {
 	name?: Maybe<Scalars['String']>;
 };
 
+export type KeywordMoviesResponse = {
+	__typename?: 'KeywordMoviesResponse';
+	id?: Maybe<Scalars['Int']>;
+	page?: Maybe<Scalars['Int']>;
+	results?: Maybe<Array<Maybe<Movie>>>;
+	total_pages?: Maybe<Scalars['Int']>;
+	total_results?: Maybe<Scalars['Int']>;
+};
+
 export type Keywords = {
 	__typename?: 'Keywords';
 	id?: Maybe<Scalars['Int']>;
@@ -249,6 +258,7 @@ export type Query = {
 	keywordsByMovie?: Maybe<MoviesKeywordsResponse>;
 	movieDetails?: Maybe<MovieDetails>;
 	moviesByCollection?: Maybe<MoviesCollectionResponse>;
+	moviesByKeyword?: Maybe<KeywordMoviesResponse>;
 	nowPlayingMovies?: Maybe<MoviesResponse>;
 	personCastByMovie?: Maybe<PersonCastResponse>;
 	personCrewByMovie?: Maybe<PersonCrewResponse>;
@@ -286,6 +296,11 @@ export type QueryMovieDetailsArgs = {
 
 export type QueryMoviesByCollectionArgs = {
 	collectionId?: InputMaybe<Scalars['Int']>;
+	options?: InputMaybe<OptionsInput>;
+};
+
+export type QueryMoviesByKeywordArgs = {
+	keywordId?: InputMaybe<Scalars['Int']>;
 	options?: InputMaybe<OptionsInput>;
 };
 
@@ -461,6 +476,7 @@ export type ResolversTypes = ResolversObject<{
 	Float: ResolverTypeWrapper<Scalars['Float']>;
 	Genre: ResolverTypeWrapper<Genre>;
 	Int: ResolverTypeWrapper<Scalars['Int']>;
+	KeywordMoviesResponse: ResolverTypeWrapper<KeywordMoviesResponse>;
 	Keywords: ResolverTypeWrapper<Keywords>;
 	LanguageEnum: LanguageEnum;
 	Movie: ResolverTypeWrapper<Movie>;
@@ -495,6 +511,7 @@ export type ResolversParentTypes = ResolversObject<{
 	Float: Scalars['Float'];
 	Genre: Genre;
 	Int: Scalars['Int'];
+	KeywordMoviesResponse: KeywordMoviesResponse;
 	Keywords: Keywords;
 	Movie: Movie;
 	MovieCastResponse: MovieCastResponse;
@@ -638,6 +655,26 @@ export type GenreResolvers<
 > = ResolversObject<{
 	id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type KeywordMoviesResponseResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['KeywordMoviesResponse'] = ResolversParentTypes['KeywordMoviesResponse'],
+> = ResolversObject<{
+	id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	page?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	results?: Resolver<
+		Maybe<Array<Maybe<ResolversTypes['Movie']>>>,
+		ParentType,
+		ContextType
+	>;
+	total_pages?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	total_results?: Resolver<
+		Maybe<ResolversTypes['Int']>,
+		ParentType,
+		ContextType
+	>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
@@ -1060,6 +1097,12 @@ export type QueryResolvers<
 		ContextType,
 		Partial<QueryMoviesByCollectionArgs>
 	>;
+	moviesByKeyword?: Resolver<
+		Maybe<ResolversTypes['KeywordMoviesResponse']>,
+		ParentType,
+		ContextType,
+		Partial<QueryMoviesByKeywordArgs>
+	>;
 	nowPlayingMovies?: Resolver<
 		Maybe<ResolversTypes['MoviesResponse']>,
 		ParentType,
@@ -1135,6 +1178,7 @@ export type Resolvers<ContextType = any> = ResolversObject<{
 	CollectionTranslateData?: CollectionTranslateDataResolvers<ContextType>;
 	CrewMovie?: CrewMovieResolvers<ContextType>;
 	Genre?: GenreResolvers<ContextType>;
+	KeywordMoviesResponse?: KeywordMoviesResponseResolvers<ContextType>;
 	Keywords?: KeywordsResolvers<ContextType>;
 	Movie?: MovieResolvers<ContextType>;
 	MovieCastResponse?: MovieCastResponseResolvers<ContextType>;

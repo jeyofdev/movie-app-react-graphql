@@ -20,7 +20,7 @@ import {
 import 'dotenv/config';
 import { formatUrlQuery } from '../utils/helpers';
 
-class MoviesService extends RESTDataSource {
+class MovieService extends RESTDataSource {
 	baseURL!: string;
 	apiKey!: string;
 
@@ -157,4 +157,4 @@ class MoviesService extends RESTDataSource {
 	}
 }
 
-export default MoviesService;
+export default MovieService;

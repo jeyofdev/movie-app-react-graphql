@@ -204,6 +204,14 @@ type PersonCrewResponse {
 	crew: [CrewMovie]
 }
 
+type KeywordMoviesResponse {
+	id: Int
+	page: Int
+	results: [Movie]
+	total_pages: Int
+	total_results: Int
+}
+
 input OptionsInput {
 	language: LanguageEnum
 	page: Int
@@ -232,4 +240,5 @@ type Query {
 	personDetails(personId: Int, options: OptionsInput): Person
 	personCastByMovie(personId: Int, options: OptionsInput): PersonCastResponse
 	personCrewByMovie(personId: Int, options: OptionsInput): PersonCrewResponse
+	moviesByKeyword(keywordId: Int, options: OptionsInput): KeywordMoviesResponse
 }

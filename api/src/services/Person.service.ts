@@ -10,7 +10,7 @@ import {
 import 'dotenv/config';
 import { formatUrlQuery } from '../utils/helpers';
 
-class PersonsService extends RESTDataSource {
+class PersonService extends RESTDataSource {
 	baseURL!: string;
 	apiKey!: string;
 
@@ -65,4 +65,4 @@ class PersonsService extends RESTDataSource {
 	}
 }
 
-export default PersonsService;
+export default PersonService;
