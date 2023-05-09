@@ -1,19 +1,22 @@
-import PersonsService from '../services/Person.service';
-import CollectionsService from '../services/Collection.service';
-import MoviesService from '../services/Movie.service';
+import PersonService from '../services/Person.service';
+import CollectionService from '../services/Collection.service';
+import MovieService from '../services/Movie.service';
+import KeywordService from '../services/Keyword.service';
 
 export interface IContext {
 	dataSource: {
-		movies: MoviesService;
-		collections: CollectionsService;
-		persons: PersonsService;
+		movies: MovieService;
+		collections: CollectionService;
+		persons: PersonService;
+		keywords: KeywordService;
 	};
 }
 
 export const context: IContext = {
 	dataSource: {
-		movies: new MoviesService(),
-		collections: new CollectionsService(),
-		persons: new PersonsService(),
+		movies: new MovieService(),
+		collections: new CollectionService(),
+		persons: new PersonService(),
+		keywords: new KeywordService(),
 	},
 };

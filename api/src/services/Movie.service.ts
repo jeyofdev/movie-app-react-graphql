@@ -6,10 +6,10 @@ import {
 	MovieImageResponse,
 	MoviesKeywordsResponse,
 	MoviesResponse,
-	QueryCastMovieArgs,
-	QueryCrewMovieArgs,
-	QueryImagesMovieArgs,
-	QueryKeywordsMovieArgs,
+	QueryCastByMovieArgs,
+	QueryCrewByMovieArgs,
+	QueryImagesByMovieArgs,
+	QueryKeywordsByMovieArgs,
 	QueryMovieDetailsArgs,
 	QueryNowPlayingMoviesArgs,
 	QueryPopularMoviesArgs,
@@ -20,7 +20,7 @@ import {
 import 'dotenv/config';
 import { formatUrlQuery } from '../utils/helpers';
 
-class MoviesService extends RESTDataSource {
+class MovieService extends RESTDataSource {
 	baseURL!: string;
 	apiKey!: string;
 
@@ -86,7 +86,9 @@ class MoviesService extends RESTDataSource {
 		);
 	}
 
-	async findCastByMovie(args: QueryCastMovieArgs): Promise<MovieCastResponse> {
+	async findCastByMovie(
+		args: QueryCastByMovieArgs,
+	): Promise<MovieCastResponse> {
 		return this.get(
 			formatUrlQuery(
 				this.baseURL,
@@ -99,7 +101,9 @@ class MoviesService extends RESTDataSource {
 		);
 	}
 
-	async findCrewByMovie(args: QueryCrewMovieArgs): Promise<MovieCrewResponse> {
+	async findCrewByMovie(
+		args: QueryCrewByMovieArgs,
+	): Promise<MovieCrewResponse> {
 		return this.get(
 			formatUrlQuery(
 				this.baseURL,
@@ -129,7 +133,7 @@ class MoviesService extends RESTDataSource {
 	}
 
 	async findImagesByMovie(
-		args: QueryImagesMovieArgs,
+		args: QueryImagesByMovieArgs,
 	): Promise<MovieImageResponse> {
 		return this.get(
 			formatUrlQuery(
@@ -141,7 +145,7 @@ class MoviesService extends RESTDataSource {
 	}
 
 	async findKeywordsByMovie(
-		args: QueryKeywordsMovieArgs,
+		args: QueryKeywordsByMovieArgs,
 	): Promise<MoviesKeywordsResponse> {
 		return this.get(
 			formatUrlQuery(
@@ -153,4 +157,4 @@ class MoviesService extends RESTDataSource {
 	}
 }
 
-export default MoviesService;
+export default MovieService;

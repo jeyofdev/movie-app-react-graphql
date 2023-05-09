@@ -1,10 +1,10 @@
 import { IContext } from '../../context';
 import setMoviesResult from '../../utils/movies';
 import {
-	QueryCastMovieArgs,
-	QueryCrewMovieArgs,
-	QueryImagesMovieArgs,
-	QueryKeywordsMovieArgs,
+	QueryCastByMovieArgs,
+	QueryCrewByMovieArgs,
+	QueryImagesByMovieArgs,
+	QueryKeywordsByMovieArgs,
 	QueryMovieDetailsArgs,
 	QueryNowPlayingMoviesArgs,
 	QueryPopularMoviesArgs,
@@ -79,7 +79,11 @@ const movieQueries = {
 		}
 	},
 
-	castMovie: async (_: never, args: QueryCastMovieArgs, context: IContext) => {
+	castByMovie: async (
+		_: never,
+		args: QueryCastByMovieArgs,
+		context: IContext,
+	) => {
 		try {
 			return await context.dataSource.movies.findCastByMovie(args);
 		} catch (error) {
@@ -87,7 +91,11 @@ const movieQueries = {
 		}
 	},
 
-	crewMovie: async (_: never, args: QueryCrewMovieArgs, context: IContext) => {
+	crewByMovie: async (
+		_: never,
+		args: QueryCrewByMovieArgs,
+		context: IContext,
+	) => {
 		try {
 			return await context.dataSource.movies.findCrewByMovie(args);
 		} catch (error) {
@@ -107,9 +115,9 @@ const movieQueries = {
 		}
 	},
 
-	imagesMovie: async (
+	imagesByMovie: async (
 		_: never,
-		args: QueryImagesMovieArgs,
+		args: QueryImagesByMovieArgs,
 		context: IContext,
 	) => {
 		try {
@@ -119,9 +127,9 @@ const movieQueries = {
 		}
 	},
 
-	keywordsMovie: async (
+	keywordsByMovie: async (
 		_: never,
-		args: QueryKeywordsMovieArgs,
+		args: QueryKeywordsByMovieArgs,
 		context: IContext,
 	) => {
 		try {

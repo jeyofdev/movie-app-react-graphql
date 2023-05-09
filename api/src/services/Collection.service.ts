@@ -7,7 +7,7 @@ import {
 import 'dotenv/config';
 import { formatUrlQuery } from '../utils/helpers';
 
-class CollectionsService extends RESTDataSource {
+class CollectionService extends RESTDataSource {
 	baseURL!: string;
 	apiKey!: string;
 
@@ -54,4 +54,4 @@ class CollectionsService extends RESTDataSource {
 	}
 }
 
-export default CollectionsService;
+export default CollectionService;
