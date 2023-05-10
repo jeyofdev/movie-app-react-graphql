@@ -1,16 +1,19 @@
-import { Typography } from '@mui/material';
+import SwiperThumbs from '@components/swiper/SwiperThumbs';
+
+export type MovieItemType = { id: number; image: string };
+
+const movieList: MovieItemType[] = [
+	{ id: 1, image: 'https://placehold.co/600x400' },
+	{ id: 2, image: 'https://placehold.co/600x400' },
+	{ id: 3, image: 'https://placehold.co/600x400' },
+	{ id: 4, image: 'https://placehold.co/600x400' },
+	{ id: 5, image: 'https://placehold.co/600x400' },
+];
 
 const Home = () => (
-	<div
-		style={{
-			display: 'flex',
-			alignItems: 'center',
-			justifyContent: 'center',
-			minHeight: '100vh',
-		}}
-	>
-		<Typography variant='h3'>Home</Typography>
-	</div>
+	<>
+		<SwiperThumbs list={movieList} />
+	</>
 );
 
 export default Home;
