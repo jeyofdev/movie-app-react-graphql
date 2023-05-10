@@ -21,15 +21,18 @@ const SwiperThumbs = ({ list }: SwiperThumbsType) => (
 		slidesPerView={4}
 		freeMode={true}
 		navigation={true}
+		loop={true}
 		watchSlidesProgress={true}
 		modules={[FreeMode, Navigation, Thumbs]}
 		className='mySwiper'
 		style={style.swiper}
 	>
-		{list.map((item, i) => (
+		{list.map(item => (
 			<SwiperSlide key={item.id} style={style.swiperSlide}>
-				<img src={item.image} style={style.swiperSlideImg} />
-				{i}
+				<img
+					src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
+					style={style.swiperSlideImg}
+				/>
 			</SwiperSlide>
 		))}
 	</Swiper>

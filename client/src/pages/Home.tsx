@@ -1,19 +1,37 @@
+/* eslint-disable no-console */
 import SwiperThumbs from '@components/swiper/SwiperThumbs';
+import { useNowPlayingMoviesQuery } from '@graphql/__generated__/graphql-type';
+import { useState } from 'react';
 
-export type MovieItemType = { id: number; image: string };
+export type MovieItemType = { id: number; poster_path: string };
 
-const movieList: MovieItemType[] = [
-	{ id: 1, image: 'https://placehold.co/600x400' },
-	{ id: 2, image: 'https://placehold.co/600x400' },
-	{ id: 3, image: 'https://placehold.co/600x400' },
-	{ id: 4, image: 'https://placehold.co/600x400' },
-	{ id: 5, image: 'https://placehold.co/600x400' },
-];
+const Home = () => {
+	const [movieList, setMovieList] = useState<MovieItemType[]>([]);
+	const { loading, data: nowPlayingMovieData } = useNowPlayingMoviesQuery({
+		onCompleted(data) {
+			setMovieList(
+				data?.nowPlayingMovies?.results.slice(0, 10).map(movie => ({
+					id: movie?.id,
+					poster_path: movie?.poster_path,
+				})) as MovieItemType[],
+			);
+		},
+		onError(error) {
+			console.log(error);
+		},
+	});
 
-const Home = () => (
-	<>
-		<SwiperThumbs list={movieList} />
-	</>
-);
+	console.log(loading, nowPlayingMovieData);
+
+	if (loading) {
+		return <p>Loading...</p>;
+	}
+
+	return (
+		<>
+			<SwiperThumbs list={movieList} />
+		</>
+	);
+};
 
 export default Home;

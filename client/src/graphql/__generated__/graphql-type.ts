@@ -360,13 +360,13 @@ export type Spoken_Languages = {
 	name?: Maybe<Scalars['String']>;
 };
 
-export type PopularMoviesQueryVariables = Exact<{
+export type NowPlayingMoviesQueryVariables = Exact<{
 	options?: InputMaybe<OptionsInput>;
 }>;
 
-export type PopularMoviesQuery = {
+export type NowPlayingMoviesQuery = {
 	__typename?: 'Query';
-	popularMovies?: {
+	nowPlayingMovies?: {
 		__typename?: 'MoviesResponse';
 		page: number;
 		total_pages: number;
@@ -374,78 +374,78 @@ export type PopularMoviesQuery = {
 		results: Array<{
 			__typename?: 'Movie';
 			id?: number | null;
+			backdrop_path?: string | null;
+			original_title?: string | null;
+			poster_path?: string | null;
 			title?: string | null;
-			release_date?: string | null;
-			overview?: string | null;
-			popularity?: number | null;
 		} | null>;
 	} | null;
 };
 
-export const PopularMoviesDocument = gql`
-	query PopularMovies($options: OptionsInput) {
-		popularMovies(options: $options) {
+export const NowPlayingMoviesDocument = gql`
+	query NowPlayingMovies($options: OptionsInput) {
+		nowPlayingMovies(options: $options) {
 			page
 			total_pages
 			total_results
 			results {
 				id
+				backdrop_path
+				original_title
+				poster_path
 				title
-				release_date
-				overview
-				popularity
 			}
 		}
 	}
 `;
 
 /**
- * __usePopularMoviesQuery__
+ * __useNowPlayingMoviesQuery__
  *
- * To run a query within a React component, call `usePopularMoviesQuery` and pass it any options that fit your needs.
- * When your component renders, `usePopularMoviesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useNowPlayingMoviesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNowPlayingMoviesQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = usePopularMoviesQuery({
+ * const { data, loading, error } = useNowPlayingMoviesQuery({
  *   variables: {
  *      options: // value for 'options'
  *   },
  * });
  */
-export function usePopularMoviesQuery(
+export function useNowPlayingMoviesQuery(
 	baseOptions?: Apollo.QueryHookOptions<
-		PopularMoviesQuery,
-		PopularMoviesQueryVariables
+		NowPlayingMoviesQuery,
+		NowPlayingMoviesQueryVariables
 	>,
 ) {
 	const options = { ...defaultOptions, ...baseOptions };
-	return Apollo.useQuery<PopularMoviesQuery, PopularMoviesQueryVariables>(
-		PopularMoviesDocument,
+	return Apollo.useQuery<NowPlayingMoviesQuery, NowPlayingMoviesQueryVariables>(
+		NowPlayingMoviesDocument,
 		options,
 	);
 }
-export function usePopularMoviesLazyQuery(
+export function useNowPlayingMoviesLazyQuery(
 	baseOptions?: Apollo.LazyQueryHookOptions<
-		PopularMoviesQuery,
-		PopularMoviesQueryVariables
+		NowPlayingMoviesQuery,
+		NowPlayingMoviesQueryVariables
 	>,
 ) {
 	const options = { ...defaultOptions, ...baseOptions };
-	return Apollo.useLazyQuery<PopularMoviesQuery, PopularMoviesQueryVariables>(
-		PopularMoviesDocument,
-		options,
-	);
+	return Apollo.useLazyQuery<
+		NowPlayingMoviesQuery,
+		NowPlayingMoviesQueryVariables
+	>(NowPlayingMoviesDocument, options);
 }
-export type PopularMoviesQueryHookResult = ReturnType<
-	typeof usePopularMoviesQuery
+export type NowPlayingMoviesQueryHookResult = ReturnType<
+	typeof useNowPlayingMoviesQuery
 >;
-export type PopularMoviesLazyQueryHookResult = ReturnType<
-	typeof usePopularMoviesLazyQuery
+export type NowPlayingMoviesLazyQueryHookResult = ReturnType<
+	typeof useNowPlayingMoviesLazyQuery
 >;
-export type PopularMoviesQueryResult = Apollo.QueryResult<
-	PopularMoviesQuery,
-	PopularMoviesQueryVariables
+export type NowPlayingMoviesQueryResult = Apollo.QueryResult<
+	NowPlayingMoviesQuery,
+	NowPlayingMoviesQueryVariables
 >;
