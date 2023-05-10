@@ -11,6 +11,9 @@ const style = {
 		display: 'block',
 		width: '100%',
 	},
+	swiperSlideBtn: {
+		cursor: 'pointer',
+	},
 };
 
 export default style;
