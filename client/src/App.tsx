@@ -6,4 +6,7 @@ const App = () => (
 	</div>
 );
 
+// eslint-disable-next-line no-console
+console.log('ok');
+
 export default App;
