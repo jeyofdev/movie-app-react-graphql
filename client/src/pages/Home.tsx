@@ -1,3 +1,5 @@
+import { Typography } from '@mui/material';
+
 const Home = () => (
 	<div
 		style={{
@@ -7,7 +9,7 @@ const Home = () => (
 			minHeight: '100vh',
 		}}
 	>
-		<h1>Home</h1>
+		<Typography variant='h3'>Home</Typography>
 	</div>
 );
 
