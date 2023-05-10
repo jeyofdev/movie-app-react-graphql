@@ -29,7 +29,8 @@
 			"@utils/*": ["./src/utils/*"],
 			"@context/*": ["./src/context/*"],
 			"@config/*": ["./src/config/*"],
-			"@graphql/*": ["./src/graphql/*"]
+			"@graphql/*": ["./src/graphql/*"],
+			"@theme/*": ["./src/theme/*"]
 		}
 	},
 	"include": ["src"],

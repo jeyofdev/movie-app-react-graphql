@@ -23,12 +23,16 @@ module.exports = {
 		'import/resolver': {
 			alias: {
 				map: [
+					['@pages', './src/pages'],
 					['@components', './src/components'],
 					['@hooks', './src/hooks'],
+					['@router', './src/router'],
 					['@images', './src/assets/images'],
 					['@utils', './src/utils'],
 					['@context', './src/context'],
-					['@public', './public'],
+					['@config', './src/config'],
+					['@graphql', './src/graphql'],
+					['@theme', './src/theme'],
 				],
 				extensions: ['.js', '.ts', '.jsx', '.tsx'],
 			},
