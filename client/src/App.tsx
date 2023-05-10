@@ -1,7 +1,7 @@
 import MainRouter from './router/MainRouter';
 
 const App = () => (
-	<div className='app'>
+	<div className='App'>
 		<MainRouter />
 	</div>
 );
