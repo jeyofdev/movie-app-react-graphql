@@ -1,19 +1,9 @@
 import { Resolvers } from '__generated__/resolvers-types';
 import queries from './queries';
+import enums from './enums';
 
 const resolvers: Resolvers = {
-	LanguageEnum: {
-		FR: 'fr-FR',
-		EN: 'en-EN',
-		US: 'en-US',
-		ES: 'es-ES',
-	},
-	RegionEnum: {
-		FR: 'FR',
-		EN: 'EN',
-		US: 'US',
-		ES: 'ES',
-	},
+	...enums,
 	...queries,
 };
 
