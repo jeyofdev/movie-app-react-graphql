@@ -101,6 +101,7 @@ export type Movie = {
 	backdrop_path?: Maybe<Scalars['String']>;
 	genre_ids?: Maybe<Array<Maybe<Scalars['Int']>>>;
 	id?: Maybe<Scalars['Int']>;
+	images?: Maybe<MovieImageResponse>;
 	original_language?: Maybe<Scalars['String']>;
 	original_title?: Maybe<Scalars['String']>;
 	overview?: Maybe<Scalars['String']>;
@@ -134,6 +135,7 @@ export type MovieDetails = {
 	genres?: Maybe<Array<Maybe<Genre>>>;
 	homepage?: Maybe<Scalars['String']>;
 	id?: Maybe<Scalars['Int']>;
+	images?: Maybe<MovieImageResponse>;
 	imdb_id?: Maybe<Scalars['String']>;
 	original_language?: Maybe<Scalars['String']>;
 	original_title?: Maybe<Scalars['String']>;
@@ -227,7 +229,7 @@ export type PersonCrewResponse = {
 
 export type PosterMovie = {
 	__typename?: 'PosterMovie';
-	aspect_ratio?: Maybe<Scalars['Int']>;
+	aspect_ratio?: Maybe<Scalars['Float']>;
 	file_path?: Maybe<Scalars['String']>;
 	height?: Maybe<Scalars['Int']>;
 	iso_639_1?: Maybe<Scalars['String']>;
@@ -703,6 +705,11 @@ export type MovieResolvers<
 		ContextType
 	>;
 	id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	images?: Resolver<
+		Maybe<ResolversTypes['MovieImageResponse']>,
+		ParentType,
+		ContextType
+	>;
 	original_language?: Resolver<
 		Maybe<ResolversTypes['String']>,
 		ParentType,
@@ -789,6 +796,11 @@ export type MovieDetailsResolvers<
 	>;
 	homepage?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	images?: Resolver<
+		Maybe<ResolversTypes['MovieImageResponse']>,
+		ParentType,
+		ContextType
+	>;
 	imdb_id?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	original_language?: Resolver<
 		Maybe<ResolversTypes['String']>,
@@ -1000,7 +1012,7 @@ export type PosterMovieResolvers<
 	ParentType extends ResolversParentTypes['PosterMovie'] = ResolversParentTypes['PosterMovie'],
 > = ResolversObject<{
 	aspect_ratio?: Resolver<
-		Maybe<ResolversTypes['Int']>,
+		Maybe<ResolversTypes['Float']>,
 		ParentType,
 		ContextType
 	>;

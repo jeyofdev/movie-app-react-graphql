@@ -27,6 +27,7 @@ type Movie {
 	video: Boolean
 	vote_average: Float
 	vote_count: Int
+	images: MovieImageResponse
 }
 
 type MovieDetails {
@@ -54,6 +55,7 @@ type MovieDetails {
 	video: Boolean
 	vote_average: Float
 	vote_count: Int
+	images: MovieImageResponse
 }
 
 type Genre {
@@ -108,7 +110,7 @@ type CrewMovie {
 }
 
 type PosterMovie {
-	aspect_ratio: Int
+	aspect_ratio: Float
 	file_path: String
 	height: Int
 	iso_639_1: String
