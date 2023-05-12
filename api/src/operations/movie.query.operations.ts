@@ -40,6 +40,27 @@ const moviesQueryOperations = {
         video
         vote_average
         vote_count
+        images {
+          backdrops {
+            aspect_ratio
+            file_path
+            height
+            iso_639_1
+            vote_average
+            vote_count
+            width
+          }
+          id
+          posters {
+            aspect_ratio
+            file_path
+            height
+            iso_639_1
+            vote_average
+            vote_count
+            width
+          }
+        }
       }
     }
   `,
@@ -65,6 +86,27 @@ const moviesQueryOperations = {
           genre_ids
           backdrop_path
           adult
+          images {
+            backdrops {
+              aspect_ratio
+              file_path
+              height
+              iso_639_1
+              vote_average
+              vote_count
+              width
+            }
+            id
+            posters {
+              aspect_ratio
+              file_path
+              height
+              iso_639_1
+              vote_average
+              vote_count
+              width
+            }
+          }
         }
       }
     }
@@ -91,6 +133,27 @@ const moviesQueryOperations = {
           video
           vote_average
           vote_count
+          images {
+          backdrops {
+            aspect_ratio
+            file_path
+            height
+            iso_639_1
+            vote_average
+            vote_count
+            width
+          }
+          id
+          posters {
+            aspect_ratio
+            file_path
+            height
+            iso_639_1
+            vote_average
+            vote_count
+            width
+          }
+        }
         }
       }
     }
@@ -117,6 +180,27 @@ const moviesQueryOperations = {
           video
           vote_average
           vote_count
+          images {
+            backdrops {
+              aspect_ratio
+              file_path
+              height
+              iso_639_1
+              vote_average
+              vote_count
+              width
+            }
+            id
+            posters {
+              aspect_ratio
+              file_path
+              height
+              iso_639_1
+              vote_average
+              vote_count
+              width
+            }
+          }
         }
       }
     }
@@ -141,9 +225,31 @@ const moviesQueryOperations = {
           video
           vote_average
           vote_count
+          images {
+            posters {
+              aspect_ratio
+              file_path
+              height
+              iso_639_1
+              vote_average
+              vote_count
+              width
+            }
+            id
+            backdrops {
+              aspect_ratio
+              file_path
+              height
+              iso_639_1
+              vote_average
+              vote_count
+              width
+            }
+          }
         }
         total_pages
         total_results
+
       }
     }
   `,

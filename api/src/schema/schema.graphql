@@ -55,6 +55,7 @@ type MovieDetails {
 	video: Boolean
 	vote_average: Float
 	vote_count: Int
+	images: MovieImageResponse
 }
 
 type Genre {

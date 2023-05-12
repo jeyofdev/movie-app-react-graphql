@@ -135,6 +135,7 @@ export type MovieDetails = {
 	genres?: Maybe<Array<Maybe<Genre>>>;
 	homepage?: Maybe<Scalars['String']>;
 	id?: Maybe<Scalars['Int']>;
+	images?: Maybe<MovieImageResponse>;
 	imdb_id?: Maybe<Scalars['String']>;
 	original_language?: Maybe<Scalars['String']>;
 	original_title?: Maybe<Scalars['String']>;
@@ -795,6 +796,11 @@ export type MovieDetailsResolvers<
 	>;
 	homepage?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	images?: Resolver<
+		Maybe<ResolversTypes['MovieImageResponse']>,
+		ParentType,
+		ContextType
+	>;
 	imdb_id?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	original_language?: Resolver<
 		Maybe<ResolversTypes['String']>,
