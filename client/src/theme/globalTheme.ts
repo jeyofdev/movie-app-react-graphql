@@ -13,30 +13,45 @@ const theme = createTheme({
 });
 
 // A custom theme for this app
-const globalTheme = createTheme({
+export const globalTheme = createTheme({
 	...theme,
 	typography: {
 		h1: {
-			fontSize: '1rem',
-			[theme.breakpoints.up('sm')]: {
-				fontSize: '1.15rem',
-			},
-			[theme.breakpoints.up('md')]: {
-				fontSize: '1.25rem',
-			},
-			[theme.breakpoints.up('lg')]: {
-				fontSize: '2.35rem',
-			},
-			[theme.breakpoints.up('xl')]: {
-				fontSize: '1.5rem',
-			},
-		},
-	},
-	palette: {
-		info: {
-			main: 'rgb(219, 234, 254)',
+			fontSize: '2rem',
+			// [theme.breakpoints.up('sm')]: {
+			// 	fontSize: '2.5rem',
+			// },
+			// [theme.breakpoints.up('md')]: {
+			// 	fontSize: '2.5rem',
+			// },
+			// [theme.breakpoints.up('lg')]: {
+			// 	fontSize: '2.5rem',
+			// },
+			// [theme.breakpoints.up('xl')]: {
+			// 	fontSize: '2.5rem',
+			// },
 		},
 	},
 });
 
-export default globalTheme;
+export const lightTheme = createTheme({
+	...globalTheme,
+	palette: {
+		mode: 'dark',
+		primary: {
+			main: '#ffffff',
+			dark: '#222933',
+		},
+	},
+});
+
+export const darkTheme = createTheme({
+	...globalTheme,
+	palette: {
+		mode: 'light',
+		primary: {
+			main: '#222933',
+			dark: '#ffffff',
+		},
+	},
+});
