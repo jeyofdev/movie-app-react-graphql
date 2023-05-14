@@ -1,5 +1,9 @@
 import { ReactNode } from 'react';
 
-export type IThemeContextProviderProps = {
+export type ThemeContextProviderPropsType = {
+	children: ReactNode;
+};
+
+export type MainContainerPropsType = {
 	children: ReactNode;
 };

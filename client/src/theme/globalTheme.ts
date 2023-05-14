@@ -325,7 +325,7 @@ export const globalTheme = createTheme({
 	},
 });
 
-export const lightTheme = createTheme({
+export const darkTheme = createTheme({
 	...globalTheme,
 	palette: {
 		...globalTheme.palette,
@@ -369,13 +369,13 @@ export const lightTheme = createTheme({
 			contrastText: '#fff',
 		},
 		background: {
-			paper: '#fff',
+			paper: '#121212',
 			default: '#fff',
 		},
 	},
 });
 
-export const darkTheme = createTheme({
+export const lightTheme = createTheme({
 	...globalTheme,
 	palette: {
 		...globalTheme.palette,
@@ -418,7 +418,7 @@ export const darkTheme = createTheme({
 			contrastText: 'rgba(0, 0, 0, 0.87)',
 		},
 		background: {
-			paper: '#121212',
+			paper: '#fff',
 			default: '#121212',
 		},
 	},
