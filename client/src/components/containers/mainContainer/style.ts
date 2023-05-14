@@ -2,7 +2,8 @@ import { Theme } from '@mui/material';
 
 const useStyles = (theme: Theme) => ({
 	root: {
-		display: 'flex',
+		display: 'grid',
+		gridTemplateColumns: 'repeat(12, 1fr)',
 		flexDirection: 'column',
 		backgroundColor: theme.palette.background.paper,
 		padding: `${theme.spacing(2.5)} ${theme.spacing(2.5)}`,

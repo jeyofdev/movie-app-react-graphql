@@ -120,24 +120,24 @@ export const globalTheme = createTheme({
 			},
 		},
 		h4: {
-			fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+			fontFamily: "'Poppins', sans-serif",
 
 			fontWeight: 400,
-			fontSize: '2.125rem',
+			fontSize: '1.75rem',
 			lineHeight: 1.235,
 			letterSpacing: '0.00735em',
 
 			[theme.breakpoints.up('sm')]: {
-				fontSize: '2.125rem',
+				fontSize: '1.75rem',
 			},
 			[theme.breakpoints.up('md')]: {
-				fontSize: '2.125rem',
+				fontSize: '1.75rem',
 			},
 			[theme.breakpoints.up('lg')]: {
-				fontSize: '2.125rem',
+				fontSize: '1.75rem',
 			},
 			[theme.breakpoints.up('xl')]: {
-				fontSize: '2.125rem',
+				fontSize: '1.75rem',
 			},
 		},
 		h5: {

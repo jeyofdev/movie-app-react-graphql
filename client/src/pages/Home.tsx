@@ -1,4 +1,5 @@
 import MainContainer from '@components/containers/mainContainer/MainContainer';
+import Sidebar from '@components/sidebar/Sidebar';
 import { ThemeContext } from '@context/ThemeContext';
 import { Box, Button, Theme, Typography, useTheme } from '@mui/material';
 import { useContext } from 'react';
@@ -23,6 +24,7 @@ const Home = () => {
 	return (
 		<Box sx={styles.root}>
 			<MainContainer>
+				<Sidebar />
 				<Button
 					color='primary'
 					onClick={() => {
