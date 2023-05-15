@@ -25,7 +25,7 @@ exports[`init server > Queries persons > Returns a person's information 1`] = `
   "known_for_department": "Acting",
   "name": "Mark Hamill",
   "place_of_birth": "Oakland, California, USA",
-  "popularity": 29.414,
+  "popularity": 25.158,
   "profile_path": "/2ZulC2Ccq1yv3pemusks6Zlfy2s.jpg",
 }
 `;
@@ -484,10 +484,10 @@ exports[`init server > Queries persons > returns a person's information as an ac
     {
       "adult": false,
       "cast_id": null,
-      "character": "Walter (voice)",
-      "credit_id": "5490ff559251411226000468",
+      "character": "Griff",
+      "credit_id": "52fe46a49251416c7507ed05",
       "gender": null,
-      "id": 312100,
+      "id": 16121,
       "known_for_department": null,
       "name": null,
       "order": 1,
@@ -498,10 +498,10 @@ exports[`init server > Queries persons > returns a person's information as an ac
     {
       "adult": false,
       "cast_id": null,
-      "character": "Griff",
-      "credit_id": "52fe46a49251416c7507ed05",
+      "character": "Walter (voice)",
+      "credit_id": "5490ff559251411226000468",
       "gender": null,
-      "id": 16121,
+      "id": 312100,
       "known_for_department": null,
       "name": null,
       "order": 1,

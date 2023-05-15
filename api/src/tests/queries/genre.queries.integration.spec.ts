@@ -4,7 +4,7 @@ import { IContext } from '../../context';
 import getServer from '../../config/server';
 import 'dotenv/config';
 import { executeRequestForTesting } from '../../utils/helpers';
-import keywordsQueryOperations from '../../operations/keyword.query.operations';
+import genresQueryOperations from '../../operations/genre.query.operations';
 
 describe('init server', () => {
 	let server: ApolloServer<IContext>;
@@ -23,31 +23,16 @@ describe('init server', () => {
 		await server.stop();
 	});
 
-	describe('Queries keywords', () => {
-		it('When no keyword found', async () => {
-			const response = await executeRequestForTesting(
-				url,
-				keywordsQueryOperations.moviesByKeyword,
-				{
-					keywordId: 755,
-				},
-			);
-
-			expect(response.error).not.toBeUndefined();
-			expect(response.body.data.moviesByKeyword).toBeNull();
-		});
-
+	describe('Queries genre', () => {
 		it('Returns the list of movies to a keyword', async () => {
 			const response = await executeRequestForTesting(
 				url,
-				keywordsQueryOperations.moviesByKeyword,
-				{
-					keywordId: 161176,
-				},
+				genresQueryOperations.genres,
+				{},
 			);
 
 			expect(response.error).not.toBeUndefined();
-			expect(response.body.data.moviesByKeyword).toMatchSnapshot();
+			expect(response.body.data.genres).toMatchSnapshot();
 		});
 	});
 });

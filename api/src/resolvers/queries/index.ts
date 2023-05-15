@@ -4,6 +4,7 @@ import collectionQueries from './collection.queries';
 import personQueries from './person.queries';
 import keywordQueries from './keyword.queries';
 import parents from '../parents';
+import genreQueries from './genre.queries';
 
 const queries: QueryResolvers = {
 	...parents,
@@ -12,6 +13,7 @@ const queries: QueryResolvers = {
 		...collectionQueries,
 		...personQueries,
 		...keywordQueries,
+		...genreQueries,
 	},
 };
 
