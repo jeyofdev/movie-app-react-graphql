@@ -12,7 +12,11 @@ const useStyles = (theme: Theme) => ({
 		justifyContent: 'center',
 		minHeight: '100vh',
 		backgroundColor: theme.palette.background.default,
-		padding: `0 ${theme.spacing(2)}`,
+		padding: 0,
+
+		[theme.breakpoints.up('sm')]: {
+			padding: `${theme.spacing(3)}`,
+		},
 	},
 });
 
@@ -25,17 +29,19 @@ const Home = () => {
 		<Box sx={styles.root}>
 			<MainContainer>
 				<Sidebar />
-				<Button
-					color='primary'
-					onClick={() => {
-						handleThemeMode();
-					}}
-				>
-					darkmode
-				</Button>
-				<Typography variant='h1' color='primary'>
-					Home
-				</Typography>
+				<Box>
+					<Button
+						color='primary'
+						onClick={() => {
+							handleThemeMode();
+						}}
+					>
+						darkmode
+					</Button>
+					<Typography variant='h1' color='primary'>
+						Home
+					</Typography>
+				</Box>
 			</MainContainer>
 		</Box>
 	);

@@ -16,6 +16,7 @@ export type MenuItemPropsType = {
 	icon?: IconDefinition;
 	link: string;
 	active: boolean;
+	disableRipple: boolean;
 	setMenuItemActive: Dispatch<SetStateAction<string | number>>;
 };
 
@@ -28,6 +29,7 @@ export type BaseButtonPropsType = {
 	onClick: () => void;
 	style?: object;
 	active?: boolean;
+	disableRipple: boolean;
 	children: ReactNode;
 };
 
@@ -36,4 +38,5 @@ export type BlockSidebarMenuProps = {
 	menuItems: Array<Genre> | Array<MenuItemType>;
 	menuItemActive: string | number;
 	setMenuItemActive: Dispatch<SetStateAction<string | number>>;
+	mobile?: boolean;
 };

@@ -9,24 +9,29 @@ const MenuItemsBlock = ({
 	menuItems,
 	menuItemActive,
 	setMenuItemActive,
+	mobile = false,
 }: BlockSidebarMenuProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 
 	return (
 		<Box sx={styles.root}>
-			<Typography variant='h6' sx={styles.menuItemsBlockTitle}>
-				{title}
-			</Typography>
+			{!mobile && (
+				<Typography variant='h6' sx={styles.menuItemsBlockTitle}>
+					{title}
+				</Typography>
+			)}
+
 			{menuItems.map((menuItem: any) => (
 				<MenuItem
 					key={menuItem?.id}
 					id={menuItem?.id}
-					label={menuItem?.name}
+					label={!mobile && menuItem?.name}
 					icon={menuItem?.icon}
 					link={menuItem?.link}
 					active={menuItemActive === menuItem?.id}
 					setMenuItemActive={setMenuItemActive}
+					disableRipple={mobile}
 				/>
 			))}
 		</Box>

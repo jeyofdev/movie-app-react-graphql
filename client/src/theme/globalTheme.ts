@@ -1,13 +1,14 @@
 import { createTheme } from '@mui/material/styles';
+import { BreakpointEnum } from '../types/enums';
 
 const theme = createTheme({
 	breakpoints: {
 		values: {
-			xs: 0,
-			sm: 600,
-			md: 960,
-			lg: 1280,
-			xl: 1920,
+			xs: BreakpointEnum.XS,
+			sm: BreakpointEnum.SM,
+			md: BreakpointEnum.MD,
+			lg: BreakpointEnum.LG,
+			xl: BreakpointEnum.XL,
 		},
 	},
 });
@@ -224,7 +225,7 @@ export const globalTheme = createTheme({
 			fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
 			fontWeight: 400,
 			fontSize: '0.9rem',
-			lineHeight: 1.5,
+			lineHeight: 1,
 			letterSpacing: '0.00938em',
 
 			[theme.breakpoints.up('sm')]: {

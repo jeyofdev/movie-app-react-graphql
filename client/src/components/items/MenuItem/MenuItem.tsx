@@ -11,6 +11,7 @@ const MenuItem = ({
 	active,
 	label,
 	icon,
+	disableRipple,
 	setMenuItemActive,
 }: MenuItemPropsType) => {
 	const theme = useTheme();
@@ -23,7 +24,12 @@ const MenuItem = ({
 	};
 
 	return (
-		<BaseButton onClick={handleClick} style={styles.root} active={active}>
+		<BaseButton
+			onClick={handleClick}
+			disableRipple={disableRipple}
+			style={styles.root}
+			active={active}
+		>
 			{icon ? <FontAwesomeIcon icon={icon} style={styles.icon} /> : null}
 			<Typography variant='body1' sx={styles.label}>
 				{label}
