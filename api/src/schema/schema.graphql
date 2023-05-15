@@ -155,6 +155,15 @@ type Person {
 	homepage: String
 }
 
+type Genre {
+	id: Int
+	name: String
+}
+
+type GenreResponses {
+	genres: [Genre]
+}
+
 type MovieImageResponse {
 	id: Int
 	backdrops: [PosterMovie]
@@ -243,4 +252,5 @@ type Query {
 	personCastByMovie(personId: Int, options: OptionsInput): PersonCastResponse
 	personCrewByMovie(personId: Int, options: OptionsInput): PersonCrewResponse
 	moviesByKeyword(keywordId: Int, options: OptionsInput): KeywordMoviesResponse
+	genres(options: OptionsInput): GenreResponses
 }
