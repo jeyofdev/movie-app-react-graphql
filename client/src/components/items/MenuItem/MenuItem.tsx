@@ -24,7 +24,7 @@ const MenuItem = ({
 
 	return (
 		<BaseButton onClick={handleClick} style={styles.root} active={active}>
-			<FontAwesomeIcon icon={icon} style={styles.icon} />
+			{icon ? <FontAwesomeIcon icon={icon} style={styles.icon} /> : null}
 			<Typography variant='body1' sx={styles.label}>
 				{label}
 			</Typography>

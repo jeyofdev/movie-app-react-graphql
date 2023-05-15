@@ -71,8 +71,13 @@ export type CrewMovie = {
 
 export type Genre = {
 	__typename?: 'Genre';
-	id?: Maybe<Scalars['Int']>;
-	name?: Maybe<Scalars['String']>;
+	id: Scalars['Int'];
+	name: Scalars['String'];
+};
+
+export type GenreResponses = {
+	__typename?: 'GenreResponses';
+	genres?: Maybe<Array<Maybe<Genre>>>;
 };
 
 export type KeywordMoviesResponse = {
@@ -103,6 +108,7 @@ export type Movie = {
 	backdrop_path?: Maybe<Scalars['String']>;
 	genre_ids?: Maybe<Array<Maybe<Scalars['Int']>>>;
 	id?: Maybe<Scalars['Int']>;
+	images?: Maybe<MovieImageResponse>;
 	original_language?: Maybe<Scalars['String']>;
 	original_title?: Maybe<Scalars['String']>;
 	overview?: Maybe<Scalars['String']>;
@@ -136,6 +142,7 @@ export type MovieDetails = {
 	genres?: Maybe<Array<Maybe<Genre>>>;
 	homepage?: Maybe<Scalars['String']>;
 	id?: Maybe<Scalars['Int']>;
+	images?: Maybe<MovieImageResponse>;
 	imdb_id?: Maybe<Scalars['String']>;
 	original_language?: Maybe<Scalars['String']>;
 	original_title?: Maybe<Scalars['String']>;
@@ -229,7 +236,7 @@ export type PersonCrewResponse = {
 
 export type PosterMovie = {
 	__typename?: 'PosterMovie';
-	aspect_ratio?: Maybe<Scalars['Int']>;
+	aspect_ratio?: Maybe<Scalars['Float']>;
 	file_path?: Maybe<Scalars['String']>;
 	height?: Maybe<Scalars['Int']>;
 	iso_639_1?: Maybe<Scalars['String']>;
@@ -256,6 +263,7 @@ export type Query = {
 	__typename?: 'Query';
 	castByMovie?: Maybe<MovieCastResponse>;
 	crewByMovie?: Maybe<MovieCrewResponse>;
+	genres?: Maybe<GenreResponses>;
 	imagesByMovie?: Maybe<MovieImageResponse>;
 	keywordsByMovie?: Maybe<MoviesKeywordsResponse>;
 	movieDetails?: Maybe<MovieDetails>;
@@ -279,6 +287,10 @@ export type QueryCastByMovieArgs = {
 
 export type QueryCrewByMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
+	options?: InputMaybe<OptionsInput>;
+};
+
+export type QueryGenresArgs = {
 	options?: InputMaybe<OptionsInput>;
 };
 
@@ -382,6 +394,22 @@ export type PopularMoviesQuery = {
 	} | null;
 };
 
+export type GenresQueryVariables = Exact<{
+	options?: InputMaybe<OptionsInput>;
+}>;
+
+export type GenresQuery = {
+	__typename?: 'Query';
+	genres?: {
+		__typename?: 'GenreResponses';
+		genres?: Array<{
+			__typename?: 'Genre';
+			id: number;
+			name: string;
+		} | null> | null;
+	} | null;
+};
+
 export const PopularMoviesDocument = gql`
 	query PopularMovies($options: OptionsInput) {
 		popularMovies(options: $options) {
@@ -448,4 +476,55 @@ export type PopularMoviesLazyQueryHookResult = ReturnType<
 export type PopularMoviesQueryResult = Apollo.QueryResult<
 	PopularMoviesQuery,
 	PopularMoviesQueryVariables
+>;
+export const GenresDocument = gql`
+	query Genres($options: OptionsInput) {
+		genres(options: $options) {
+			genres {
+				id
+				name
+			}
+		}
+	}
+`;
+
+/**
+ * __useGenresQuery__
+ *
+ * To run a query within a React component, call `useGenresQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGenresQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGenresQuery({
+ *   variables: {
+ *      options: // value for 'options'
+ *   },
+ * });
+ */
+export function useGenresQuery(
+	baseOptions?: Apollo.QueryHookOptions<GenresQuery, GenresQueryVariables>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useQuery<GenresQuery, GenresQueryVariables>(
+		GenresDocument,
+		options,
+	);
+}
+export function useGenresLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<GenresQuery, GenresQueryVariables>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useLazyQuery<GenresQuery, GenresQueryVariables>(
+		GenresDocument,
+		options,
+	);
+}
+export type GenresQueryHookResult = ReturnType<typeof useGenresQuery>;
+export type GenresLazyQueryHookResult = ReturnType<typeof useGenresLazyQuery>;
+export type GenresQueryResult = Apollo.QueryResult<
+	GenresQuery,
+	GenresQueryVariables
 >;

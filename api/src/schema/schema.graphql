@@ -156,8 +156,8 @@ type Person {
 }
 
 type Genre {
-	id: Int
-	name: String
+	id: Int!
+	name: String!
 }
 
 type GenreResponses {

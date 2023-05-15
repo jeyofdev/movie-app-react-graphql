@@ -1,4 +1,5 @@
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { Genre } from '@graphql/__generated__/graphql-type';
 import { Dispatch, ReactNode, SetStateAction } from 'react';
 
 export type ThemeContextProviderPropsType = {
@@ -10,19 +11,17 @@ export type MainContainerPropsType = {
 };
 
 export type MenuItemPropsType = {
-	id: string;
+	id: string | number;
 	label: string;
-	icon: IconDefinition;
+	icon?: IconDefinition;
 	link: string;
 	active: boolean;
-	setMenuItemActive: Dispatch<SetStateAction<string>>;
+	setMenuItemActive: Dispatch<SetStateAction<string | number>>;
 };
 
-export type MenuItemType = Pick<
-	MenuItemPropsType,
-	'label' | 'icon' | 'link'
-> & {
+export type MenuItemType = Pick<MenuItemPropsType, 'icon' | 'link'> & {
 	id: string;
+	name: string;
 };
 
 export type BaseButtonPropsType = {
@@ -30,4 +29,11 @@ export type BaseButtonPropsType = {
 	style?: object;
 	active?: boolean;
 	children: ReactNode;
+};
+
+export type BlockSidebarMenuProps = {
+	title: string;
+	menuItems: Array<Genre> | Array<MenuItemType>;
+	menuItemActive: string | number;
+	setMenuItemActive: Dispatch<SetStateAction<string | number>>;
 };

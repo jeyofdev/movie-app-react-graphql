@@ -1,5 +1,5 @@
 import MainContainer from '@components/containers/mainContainer/MainContainer';
-import Sidebar from '@components/sidebar/Sidebar';
+import Sidebar from '@components/sidebar/sidebar/Sidebar';
 import { ThemeContext } from '@context/ThemeContext';
 import { Box, Button, Theme, Typography, useTheme } from '@mui/material';
 import { useContext } from 'react';

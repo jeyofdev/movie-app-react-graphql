@@ -1,5 +1,5 @@
 import MainContainer from '@components/containers/mainContainer/MainContainer';
-import Sidebar from '@components/sidebar/Sidebar';
+import Sidebar from '@components/sidebar/sidebar/Sidebar';
 import { Box, Theme, Typography, useTheme } from '@mui/material';
 
 const useStyles = (theme: Theme) => ({
