@@ -29,6 +29,7 @@ const newsFeedItems: MenuItemType[] = [
 const Sidebar = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
+
 	const [menuItemActive, setMenuItemActive] = useState<string | number>(
 		newsFeedItems[0]?.id,
 	);
