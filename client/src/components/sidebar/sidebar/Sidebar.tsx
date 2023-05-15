@@ -7,10 +7,11 @@ import {
 	faTicket,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Genre, useGenresQuery } from '@graphql/__generated__/graphql-type';
 import { Box, Typography, useTheme } from '@mui/material';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { MenuItemType } from '../../types/types/props';
+import { MenuItemType } from '../../../types/types/props';
 import useStyles from './style';
 
 const newsFeedItems: MenuItemType[] = [
@@ -28,7 +29,24 @@ const newsFeedItems: MenuItemType[] = [
 const Sidebar = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
-	const [menuItemActive, setMenuItemActive] = useState(newsFeedItems[0]?.id);
+	const [menuItemActive, setMenuItemActive] = useState<string | number>(
+		newsFeedItems[0]?.id,
+	);
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const [genresItems, setGenresItems] = useState<any>([]);
+	const { loading, error } = useGenresQuery({
+		onCompleted(data) {
+			setGenresItems(data?.genres?.genres?.slice(0, 5));
+		},
+	});
+
+	if (loading) {
+		return <Box>Loading...</Box>;
+	}
+
+	if (error) {
+		return <Box>{error.message}</Box>;
+	}
 
 	return (
 		<Box sx={styles.root}>
@@ -55,6 +73,31 @@ const Sidebar = () => {
 						icon={newsFeedItem?.icon}
 						link={newsFeedItem?.link}
 						active={menuItemActive === newsFeedItem?.id}
+						setMenuItemActive={setMenuItemActive}
+					/>
+				))}
+
+				<hr
+					style={{
+						height: '0.5px',
+						width: '100%',
+						background: theme.palette.primary.dark,
+						border: 'none',
+					}}
+				/>
+			</Box>
+
+			<Box sx={styles.menuItemsBox}>
+				<Typography variant='h6' sx={styles.menuItemsBlockTitle}>
+					Genres
+				</Typography>
+				{genresItems?.map((genre: Genre) => (
+					<MenuItem
+						key={genre?.id}
+						id={genre?.id}
+						label={genre?.name}
+						link='/'
+						active={menuItemActive === genre?.id}
 						setMenuItemActive={setMenuItemActive}
 					/>
 				))}

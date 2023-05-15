@@ -12,3 +12,12 @@ query PopularMovies($options: OptionsInput) {
 		}
 	}
 }
+
+query Genres($options: OptionsInput) {
+	genres(options: $options) {
+		genres {
+			id
+			name
+		}
+	}
+}

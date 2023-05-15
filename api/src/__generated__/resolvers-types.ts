@@ -69,8 +69,8 @@ export type CrewMovie = {
 
 export type Genre = {
 	__typename?: 'Genre';
-	id?: Maybe<Scalars['Int']>;
-	name?: Maybe<Scalars['String']>;
+	id: Scalars['Int'];
+	name: Scalars['String'];
 };
 
 export type GenreResponses = {
@@ -667,8 +667,8 @@ export type GenreResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['Genre'] = ResolversParentTypes['Genre'],
 > = ResolversObject<{
-	id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-	name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+	name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 

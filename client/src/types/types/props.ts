@@ -10,12 +10,12 @@ export type MainContainerPropsType = {
 };
 
 export type MenuItemPropsType = {
-	id: string;
+	id: string | number;
 	label: string;
-	icon: IconDefinition;
+	icon?: IconDefinition;
 	link: string;
 	active: boolean;
-	setMenuItemActive: Dispatch<SetStateAction<string>>;
+	setMenuItemActive: Dispatch<SetStateAction<string | number>>;
 };
 
 export type MenuItemType = Pick<
