@@ -161,23 +161,23 @@ export const globalTheme = createTheme({
 			},
 		},
 		h6: {
-			fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+			fontFamily: "'Poppins', sans-serif",
 			fontWeight: 500,
-			fontSize: '1.25rem',
+			fontSize: '0.75rem',
 			lineHeight: 1.6,
 			letterSpacing: '0.0075em',
 
 			[theme.breakpoints.up('sm')]: {
-				fontSize: '1.25rem',
+				fontSize: '0.75rem',
 			},
 			[theme.breakpoints.up('md')]: {
-				fontSize: '1.25rem',
+				fontSize: '0.75rem',
 			},
 			[theme.breakpoints.up('lg')]: {
-				fontSize: '1.25rem',
+				fontSize: '0.75rem',
 			},
 			[theme.breakpoints.up('xl')]: {
-				fontSize: '1.25rem',
+				fontSize: '0.75rem',
 			},
 		},
 		subtitle1: {
@@ -223,21 +223,21 @@ export const globalTheme = createTheme({
 		body1: {
 			fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
 			fontWeight: 400,
-			fontSize: '1rem',
+			fontSize: '0.9rem',
 			lineHeight: 1.5,
 			letterSpacing: '0.00938em',
 
 			[theme.breakpoints.up('sm')]: {
-				fontSize: '1rem',
+				fontSize: '0.9rem',
 			},
 			[theme.breakpoints.up('md')]: {
-				fontSize: '1rem',
+				fontSize: '0.9rem',
 			},
 			[theme.breakpoints.up('lg')]: {
-				fontSize: '1rem',
+				fontSize: '0.9rem',
 			},
 			[theme.breakpoints.up('xl')]: {
-				fontSize: '1rem',
+				fontSize: '0.9rem',
 			},
 		},
 		body2: {
@@ -332,8 +332,8 @@ export const darkTheme = createTheme({
 		mode: 'dark',
 		primary: {
 			main: '#ffffff',
-			dark: '#222933',
-			light: '#222933',
+			dark: '#707070',
+			light: '#ffffff',
 			contrastText: '#222933',
 		},
 		secondary: {
@@ -343,7 +343,7 @@ export const darkTheme = createTheme({
 			contrastText: '#222933',
 		},
 		error: {
-			main: '#d32f2f',
+			main: '#ac1a19',
 			light: '#ef5350',
 			dark: '#c62828',
 			contrastText: '#fff',
@@ -382,8 +382,8 @@ export const lightTheme = createTheme({
 		mode: 'light',
 		primary: {
 			main: '#222933',
-			dark: '#ffffff',
-			light: '#222933',
+			dark: '#222933',
+			light: '#ffffff',
 			contrastText: '#222933',
 		},
 		secondary: {
@@ -394,7 +394,7 @@ export const lightTheme = createTheme({
 		},
 
 		error: {
-			main: '#f44336',
+			main: '#ac1a19',
 			light: '#e57373',
 			dark: '#d32f2f',
 			contrastText: '#fff',
