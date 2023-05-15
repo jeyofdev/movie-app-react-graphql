@@ -1,4 +1,3 @@
-import MenuItem from '@components/items/MenuItem/MenuItem';
 import {
 	faCalendarCheck,
 	faCompass,
@@ -8,22 +7,23 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Genre, useGenresQuery } from '@graphql/__generated__/graphql-type';
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Divider, Typography, useTheme } from '@mui/material';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { MenuItemType } from '../../../types/types/props';
+import MenuItemsBlock from '../menuItemsBlock/MenuItemsBlock';
 import useStyles from './style';
 
 const newsFeedItems: MenuItemType[] = [
-	{ id: uuidv4(), label: 'browse', icon: faCompass, link: '/home' },
+	{ id: uuidv4(), name: 'browse', icon: faCompass, link: '/home' },
 	{
 		id: uuidv4(),
-		label: 'coming soon',
+		name: 'coming soon',
 		icon: faCalendarCheck,
 		link: '/coming-soon',
 	},
-	{ id: uuidv4(), label: 'playlist', icon: faRectangleList, link: '/playlist' },
-	{ id: uuidv4(), label: 'videos', icon: faFilm, link: '/video' },
+	{ id: uuidv4(), name: 'playlist', icon: faRectangleList, link: '/playlist' },
+	{ id: uuidv4(), name: 'videos', icon: faFilm, link: '/video' },
 ];
 
 const Sidebar = () => {
@@ -32,11 +32,14 @@ const Sidebar = () => {
 	const [menuItemActive, setMenuItemActive] = useState<string | number>(
 		newsFeedItems[0]?.id,
 	);
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const [genresItems, setGenresItems] = useState<any>([]);
+	const [genresItems, setGenresItems] = useState<Array<Genre>>([]);
 	const { loading, error } = useGenresQuery({
 		onCompleted(data) {
-			setGenresItems(data?.genres?.genres?.slice(0, 5));
+			setGenresItems(
+				data?.genres?.genres
+					? (data?.genres?.genres.slice(0, 5) as Array<Genre>)
+					: [],
+			);
 		},
 	});
 
@@ -61,33 +64,25 @@ const Sidebar = () => {
 				</Typography>
 			</Box>
 
-			<Box sx={styles.menuItemsBox}>
-				<Typography variant='h6' sx={styles.menuItemsBlockTitle}>
-					News Feed
-				</Typography>
-				{newsFeedItems.map(newsFeedItem => (
-					<MenuItem
-						key={newsFeedItem?.label}
-						id={newsFeedItem?.id}
-						label={newsFeedItem?.label}
-						icon={newsFeedItem?.icon}
-						link={newsFeedItem?.link}
-						active={menuItemActive === newsFeedItem?.id}
-						setMenuItemActive={setMenuItemActive}
-					/>
-				))}
+			<MenuItemsBlock
+				title='News Feed'
+				menuItems={newsFeedItems}
+				menuItemActive={menuItemActive}
+				setMenuItemActive={setMenuItemActive}
+			/>
 
-				<hr
-					style={{
-						height: '0.5px',
-						width: '100%',
-						background: theme.palette.primary.dark,
-						border: 'none',
-					}}
-				/>
-			</Box>
+			<Divider sx={styles.divider} />
 
-			<Box sx={styles.menuItemsBox}>
+			<MenuItemsBlock
+				title='Genres'
+				menuItems={genresItems}
+				menuItemActive={menuItemActive}
+				setMenuItemActive={setMenuItemActive}
+			/>
+
+			<Divider sx={styles.divider} />
+
+			{/* <Box sx={styles.menuItemsBox}>
 				<Typography variant='h6' sx={styles.menuItemsBlockTitle}>
 					Genres
 				</Typography>
@@ -110,7 +105,7 @@ const Sidebar = () => {
 						border: 'none',
 					}}
 				/>
-			</Box>
+			</Box> */}
 		</Box>
 	);
 };

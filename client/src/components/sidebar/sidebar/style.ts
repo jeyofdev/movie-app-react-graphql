@@ -18,13 +18,11 @@ const useStyles = (theme: Theme) => ({
 		color: theme.palette.primary.main,
 		textTransform: 'uppercase',
 	},
-	menuItemsBox: {
-		display: 'flex',
-		flexDirection: 'column',
-		gap: '0.5rem',
-	},
-	menuItemsBlockTitle: {
-		color: theme.palette.primary.dark,
+	divider: {
+		height: '0.5px',
+		width: '100%',
+		background: theme.palette.primary.dark,
+		border: 'none',
 	},
 });
 
