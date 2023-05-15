@@ -1,14 +1,14 @@
 import { createContext, useState } from 'react';
 import { DarkModeEnum } from '../types/enums';
 import { ThemeContextType } from '../types/types/context';
-import { IThemeContextProviderProps } from '../types/types/props';
+import { ThemeContextProviderPropsType } from '../types/types/props';
 
 export const ThemeContext = createContext<ThemeContextType>({
 	themeMode: DarkModeEnum.LIGHT,
 	handleThemeMode: () => {},
 });
 
-const ThemeContextProvider = ({ children }: IThemeContextProviderProps) => {
+const ThemeContextProvider = ({ children }: ThemeContextProviderPropsType) => {
 	const [themeMode, setThemeMode] = useState<DarkModeEnum>(DarkModeEnum.DARK);
 
 	const handleThemeMode = () => {

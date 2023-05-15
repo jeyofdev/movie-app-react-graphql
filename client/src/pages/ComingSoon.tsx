@@ -1,8 +1,6 @@
 import MainContainer from '@components/containers/mainContainer/MainContainer';
 import Sidebar from '@components/sidebar/Sidebar';
-import { ThemeContext } from '@context/ThemeContext';
-import { Box, Button, Theme, Typography, useTheme } from '@mui/material';
-import { useContext } from 'react';
+import { Box, Theme, Typography, useTheme } from '@mui/material';
 
 const useStyles = (theme: Theme) => ({
 	root: {
@@ -16,29 +14,20 @@ const useStyles = (theme: Theme) => ({
 	},
 });
 
-const Home = () => {
+const ComingSoon = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
-	const { handleThemeMode } = useContext(ThemeContext);
 
 	return (
 		<Box sx={styles.root}>
 			<MainContainer>
 				<Sidebar />
-				<Button
-					color='primary'
-					onClick={() => {
-						handleThemeMode();
-					}}
-				>
-					darkmode
-				</Button>
 				<Typography variant='h1' color='primary'>
-					Home
+					comingSoon
 				</Typography>
 			</MainContainer>
 		</Box>
 	);
 };
 
-export default Home;
+export default ComingSoon;
