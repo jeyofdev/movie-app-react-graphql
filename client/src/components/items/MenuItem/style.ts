@@ -2,18 +2,38 @@ import { Theme } from '@mui/material';
 
 const useStyles = (theme: Theme) => ({
 	root: {
-		gap: '1rem',
-		borderRadius: '1rem',
-		padding: `${theme.spacing(1.15)} ${theme.spacing(1.2)}`,
-		color: theme.palette.primary.main,
+		[theme.breakpoints.down('sm')]: {
+			display: 'initial',
+			background: 'transparent',
 
-		'&.active': {
-			backgroundColor: theme.palette.error.main,
-			color: theme.palette.primary.light,
+			'&.active': {
+				opacity: 0.2,
+			},
+
+			'&:hover': {
+				backgroundColor: 'transparent',
+			},
+		},
+
+		[theme.breakpoints.up('sm')]: {
+			display: 'flex',
+			gap: '0.6rem',
+			padding: `${theme.spacing(1.15)} ${theme.spacing(1)}`,
+			color: theme.palette.primary.main,
+			justifyContent: 'flex-start',
+			alignItems: 'center',
+			borderRadius: '1rem',
+
+			'&.active': {
+				opacity: 1,
+				backgroundColor: theme.palette.error.main,
+				color: theme.palette.primary.light,
+			},
 		},
 	},
 	icon: {
-		height: '1.5rem',
+		height: '1.15rem',
+		minWidth: '1.5rem',
 	},
 	label: {
 		textTransform: 'normal',

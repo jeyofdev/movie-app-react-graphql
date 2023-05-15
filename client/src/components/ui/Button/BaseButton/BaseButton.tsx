@@ -6,6 +6,7 @@ const BaseButton = ({
 	onClick,
 	style,
 	active,
+	disableRipple,
 	children,
 }: BaseButtonPropsType) => {
 	const styles = useStyles();
@@ -15,6 +16,7 @@ const BaseButton = ({
 			onClick={onClick}
 			sx={{ ...styles.root, ...style }}
 			className={active ? 'active' : ''}
+			disableRipple={disableRipple}
 		>
 			{children}
 		</Button>

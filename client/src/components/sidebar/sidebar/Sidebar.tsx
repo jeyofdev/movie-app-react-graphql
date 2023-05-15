@@ -7,9 +7,11 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Genre, useGenresQuery } from '@graphql/__generated__/graphql-type';
+import useWindowSize from '@hooks/useWindowSize';
 import { Box, Divider, Typography, useTheme } from '@mui/material';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { BreakpointEnum } from '../../../types/enums';
 import { MenuItemType } from '../../../types/types/props';
 import MenuItemsBlock from '../menuItemsBlock/MenuItemsBlock';
 import useStyles from './style';
@@ -29,6 +31,7 @@ const newsFeedItems: MenuItemType[] = [
 const Sidebar = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
+	const { width } = useWindowSize();
 
 	const [menuItemActive, setMenuItemActive] = useState<string | number>(
 		newsFeedItems[0]?.id,
@@ -54,59 +57,51 @@ const Sidebar = () => {
 
 	return (
 		<Box sx={styles.root}>
-			<Box sx={styles.topContentBox}>
-				<FontAwesomeIcon
-					icon={faTicket}
-					size='2x'
-					color={theme.palette.primary.main}
-				/>
-				<Typography variant='h4' sx={styles.topTitle}>
-					Movies
-				</Typography>
-			</Box>
+			{width >= BreakpointEnum.SM ? (
+				<>
+					<Box sx={styles.topContentBox}>
+						<FontAwesomeIcon
+							icon={faTicket}
+							color={theme.palette.primary.main}
+							style={styles.topIcon}
+						/>
+						<Typography variant='h4' sx={styles.topTitle}>
+							Movies
+						</Typography>
+					</Box>
 
-			<MenuItemsBlock
-				title='News Feed'
-				menuItems={newsFeedItems}
-				menuItemActive={menuItemActive}
-				setMenuItemActive={setMenuItemActive}
-			/>
-
-			<Divider sx={styles.divider} />
-
-			<MenuItemsBlock
-				title='Genres'
-				menuItems={genresItems}
-				menuItemActive={menuItemActive}
-				setMenuItemActive={setMenuItemActive}
-			/>
-
-			<Divider sx={styles.divider} />
-
-			{/* <Box sx={styles.menuItemsBox}>
-				<Typography variant='h6' sx={styles.menuItemsBlockTitle}>
-					Genres
-				</Typography>
-				{genresItems?.map((genre: Genre) => (
-					<MenuItem
-						key={genre?.id}
-						id={genre?.id}
-						label={genre?.name}
-						link='/'
-						active={menuItemActive === genre?.id}
+					<MenuItemsBlock
+						title='News Feed'
+						menuItems={newsFeedItems}
+						menuItemActive={menuItemActive}
 						setMenuItemActive={setMenuItemActive}
 					/>
-				))}
 
-				<hr
-					style={{
-						height: '0.5px',
-						width: '100%',
-						background: theme.palette.primary.dark,
-						border: 'none',
-					}}
-				/>
-			</Box> */}
+					<Divider sx={styles.divider} />
+
+					<MenuItemsBlock
+						title='Genres'
+						menuItems={genresItems}
+						menuItemActive={menuItemActive}
+						setMenuItemActive={setMenuItemActive}
+					/>
+
+					<Divider sx={styles.divider} />
+				</>
+			) : (
+				<>
+					<Divider sx={styles.divider} />
+					<Box sx={styles.root}>
+						<MenuItemsBlock
+							mobile
+							title='News Feed'
+							menuItems={newsFeedItems}
+							menuItemActive={menuItemActive}
+							setMenuItemActive={setMenuItemActive}
+						/>
+					</Box>
+				</>
+			)}
 		</Box>
 	);
 };

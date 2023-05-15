@@ -4,6 +4,7 @@ const useStyles = () => ({
 		justifyContent: 'flex-start',
 		alignItems: 'center',
 		textTransform: 'capitalize',
+		width: 'auto',
 	},
 });
 
