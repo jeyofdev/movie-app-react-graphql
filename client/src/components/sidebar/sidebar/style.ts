@@ -11,7 +11,7 @@ const useStyles = (theme: Theme) => ({
 
 		[theme.breakpoints.up('sm')]: {
 			position: 'relative',
-			gridColumn: '1 / span 5',
+			gridColumn: '1 / span 4',
 			display: 'flex',
 			flexDirection: 'column',
 			justifyContent: 'flex-start',
