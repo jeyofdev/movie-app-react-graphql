@@ -6,8 +6,7 @@ query PopularMovies($options: OptionsInput) {
 		results {
 			id
 			title
-			release_date
-			overview
+			vote_average
 			popularity
 		}
 	}

@@ -1,5 +1,5 @@
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { Genre } from '@graphql/__generated__/graphql-type';
+import { Genre, Movie } from '@graphql/__generated__/graphql-type';
 import { Dispatch, ReactNode, SetStateAction } from 'react';
 
 export type ThemeContextProviderPropsType = {
@@ -39,4 +39,8 @@ export type BlockSidebarMenuProps = {
 	menuItemActive: string | number;
 	setMenuItemActive: Dispatch<SetStateAction<string | number>>;
 	mobile?: boolean;
+};
+
+export type MainSwiperProps = {
+	list: Array<Movie>;
 };

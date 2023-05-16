@@ -2,15 +2,38 @@ import MainContainer from '@components/containers/mainContainer/MainContainer';
 import Sidebar from '@components/sidebar/sidebar/Sidebar';
 import MainSwiper from '@components/swiper/MainSwiper';
 import { ThemeContext } from '@context/ThemeContext';
+import {
+	Movie,
+	usePopularMoviesQuery,
+} from '@graphql/__generated__/graphql-type';
 import { Box, Button, Typography, useTheme } from '@mui/material';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useStyles from './style';
 
 const Home = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
+	const [popularMovies, setPopularMovies] = useState<Array<Movie>>([]);
+
+	const { loading, error } = usePopularMoviesQuery({
+		onCompleted(data) {
+			setPopularMovies(
+				data?.popularMovies?.results
+					? (data?.popularMovies?.results as Array<Movie>)
+					: [],
+			);
+		},
+	});
 	const { handleThemeMode } = useContext(ThemeContext);
+
+	if (loading) {
+		return <Box>Loading...</Box>;
+	}
+
+	if (error) {
+		return <Box>{error.message}</Box>;
+	}
 
 	return (
 		<Box sx={styles.root}>
@@ -36,7 +59,7 @@ const Home = () => {
 							<Typography>See all</Typography>
 						</Link>
 					</Box>
-					<MainSwiper />
+					<MainSwiper list={popularMovies} />
 				</Box>
 			</MainContainer>
 		</Box>

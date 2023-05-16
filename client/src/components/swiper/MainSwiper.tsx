@@ -4,9 +4,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { MainSwiperProps } from '../../types/types/props';
 import useStyles from './style';
 
-const MainSwiper = () => {
+const MainSwiper = ({ list }: MainSwiperProps) => {
 	const styles = useStyles();
 	return (
 		<>
@@ -18,15 +19,9 @@ const MainSwiper = () => {
 				className='mySwiper'
 				style={styles.root}
 			>
-				<SwiperSlide>Slide 1</SwiperSlide>
-				<SwiperSlide>Slide 2</SwiperSlide>
-				<SwiperSlide>Slide 3</SwiperSlide>
-				<SwiperSlide>Slide 4</SwiperSlide>
-				<SwiperSlide>Slide 5</SwiperSlide>
-				<SwiperSlide>Slide 6</SwiperSlide>
-				<SwiperSlide>Slide 7</SwiperSlide>
-				<SwiperSlide>Slide 8</SwiperSlide>
-				<SwiperSlide>Slide 9</SwiperSlide>
+				{list.map(item => (
+					<SwiperSlide key={item.id}>{item.title}</SwiperSlide>
+				))}
 			</Swiper>
 		</>
 	);
