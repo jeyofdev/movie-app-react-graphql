@@ -20,6 +20,8 @@ const useStyles = (theme: Theme) => ({
 	sectionBox: {
 		display: 'flex',
 		justifyContent: 'space-between',
+		alignItems: 'center',
+		marginBottom: '1.25rem',
 	},
 	sectionTitle: {
 		color: theme.palette.primary.main,

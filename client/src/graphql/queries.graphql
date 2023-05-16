@@ -8,6 +8,7 @@ query PopularMovies($options: OptionsInput) {
 			title
 			vote_average
 			popularity
+			poster_path
 		}
 	}
 }

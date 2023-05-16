@@ -387,9 +387,9 @@ export type PopularMoviesQuery = {
 			__typename?: 'Movie';
 			id?: number | null;
 			title?: string | null;
-			release_date?: string | null;
-			overview?: string | null;
+			vote_average?: number | null;
 			popularity?: number | null;
+			poster_path?: string | null;
 		} | null>;
 	} | null;
 };
@@ -419,9 +419,9 @@ export const PopularMoviesDocument = gql`
 			results {
 				id
 				title
-				release_date
-				overview
+				vote_average
 				popularity
+				poster_path
 			}
 		}
 	}

@@ -1,7 +1,7 @@
 const useStyles = () => ({
 	root: {
 		width: '100%',
-		height: '200px',
+		height: '234px',
 	},
 	swiperSlide: {
 		textAlign: 'center',
