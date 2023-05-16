@@ -8,14 +8,16 @@ const useStyles = (theme: Theme) => ({
 		justifyContent: 'center',
 		minHeight: '100vh',
 		backgroundColor: theme.palette.background.default,
-		padding: 0,
-
-		[theme.breakpoints.up('sm')]: {
-			padding: `${theme.spacing(3)}`,
-		},
+		padding: { xs: 0, sm: theme.spacing(3) },
 	},
 	primaryContentBox: {
-		gridColumn: 'auto / span 9',
+		gridColumn: {
+			xs: 'auto / span 12',
+			sm: 'auto / span 8',
+			md: 'auto / span 9',
+			lg: 'auto / span 10',
+			xl: 'auto / span 11',
+		},
 	},
 	sectionBox: {
 		display: 'flex',
