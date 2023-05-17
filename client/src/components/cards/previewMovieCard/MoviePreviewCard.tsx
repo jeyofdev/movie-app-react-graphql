@@ -2,7 +2,7 @@ import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
 import { faCircle, faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Box, Typography, useTheme } from '@mui/material';
-import { truncate } from '@utils/index';
+import { formatNumberToHours, truncate } from '@utils/index';
 import { useNavigate } from 'react-router-dom';
 import { MoviePreviewCardProps } from '../../../types/types/props';
 import useStyles from './style';
@@ -72,7 +72,7 @@ const MoviePreviewCard = ({
 					<Box sx={styles.movieInfosBox}>
 						{runtime && (
 							<Typography variant='body2' sx={styles.runtime}>
-								1h50min
+								{formatNumberToHours(runtime)}
 							</Typography>
 						)}
 
