@@ -4,6 +4,7 @@ import MainSwiper from '@components/swiper/MainSwiper';
 import { ThemeContext } from '@context/ThemeContext';
 import {
 	Movie,
+	useMovieDetailsQuery,
 	usePopularMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
 import { Box, Button, Typography, useTheme } from '@mui/material';
@@ -15,6 +16,9 @@ const Home = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const [popularMovies, setPopularMovies] = useState<Array<Movie>>([]);
+	const [popularMoviesSelectedId, setPopularMoviesSelectedId] = useState<
+		number | null
+	>(null);
 
 	const { loading, error } = usePopularMoviesQuery({
 		onCompleted(data) {
@@ -25,6 +29,11 @@ const Home = () => {
 			);
 		},
 	});
+
+	const { data: movieDetailData } = useMovieDetailsQuery({
+		variables: { movieId: popularMoviesSelectedId },
+	});
+
 	const { handleThemeMode } = useContext(ThemeContext);
 
 	if (loading) {
@@ -59,7 +68,18 @@ const Home = () => {
 							<Typography>See all</Typography>
 						</Link>
 					</Box>
-					<MainSwiper list={popularMovies} />
+					<MainSwiper
+						list={popularMovies}
+						setPopularMoviesSelected={setPopularMoviesSelectedId}
+					/>
+
+					{popularMoviesSelectedId && (
+						<Box sx={styles.selectedPreview}>
+							<Typography sx={styles.selectedPreviewTitle}>
+								{movieDetailData?.movieDetails?.title}
+							</Typography>
+						</Box>
+					)}
 				</Box>
 			</MainContainer>
 		</Box>

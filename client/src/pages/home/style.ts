@@ -32,6 +32,12 @@ const useStyles = (theme: Theme) => ({
 		color: theme.palette.primary.dark,
 		textDecoration: 'none',
 	},
+	selectedPreview: {
+		display: 'flex',
+	},
+	selectedPreviewTitle: {
+		color: theme.palette.primary.main,
+	},
 });
 
 export default useStyles;
