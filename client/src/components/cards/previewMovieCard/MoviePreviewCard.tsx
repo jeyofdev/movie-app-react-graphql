@@ -1,4 +1,5 @@
 import { Box, Typography, useTheme } from '@mui/material';
+import { truncate } from '@utils/index';
 import { MoviePreviewCardProps } from '../../../types/types/props';
 import useStyles from './style';
 
@@ -23,9 +24,12 @@ const MoviePreviewCard = ({
 				<Typography variant='h5' sx={styles.title}>
 					{title}
 				</Typography>
-				<Typography variant='body2' sx={styles.overview}>
-					{overview}
-				</Typography>
+
+				{overview && (
+					<Typography variant='body2' sx={styles.overview}>
+						{truncate(overview as string, 30)}
+					</Typography>
+				)}
 			</Box>
 		</Box>
 	);
