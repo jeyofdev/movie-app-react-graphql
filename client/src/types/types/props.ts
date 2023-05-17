@@ -29,7 +29,8 @@ export type BaseButtonPropsType = {
 	onClick: () => void;
 	style?: object;
 	active?: boolean;
-	disableRipple: boolean;
+	disableRipple?: boolean;
+	variant?: 'contained' | 'outlined' | 'text';
 	children: ReactNode;
 };
 

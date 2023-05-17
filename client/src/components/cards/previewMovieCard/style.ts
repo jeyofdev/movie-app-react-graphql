@@ -9,6 +9,10 @@ const useStyles = (theme: Theme) => ({
 		borderRadius: '1rem',
 	},
 	contentBox: {
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'space-betweeen',
+		gap: '1rem',
 		padding: `${theme.spacing(2)} ${theme.spacing(2)}`,
 	},
 	title: {
@@ -16,6 +20,9 @@ const useStyles = (theme: Theme) => ({
 	},
 	overview: {
 		color: theme.palette.primary.main,
+	},
+	button: {
+		alignSelf: 'flex-start',
 	},
 });
 
