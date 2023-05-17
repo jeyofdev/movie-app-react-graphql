@@ -16,7 +16,7 @@ const useStyles = (theme: Theme) => ({
 			flexDirection: 'column',
 			justifyContent: 'flex-start',
 			gap: '2rem',
-			paddingRight: '1rem',
+			paddingRight: theme.spacing(4),
 			height: 'auto',
 		},
 		[theme.breakpoints.up('md')]: {

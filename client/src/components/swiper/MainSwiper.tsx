@@ -1,4 +1,5 @@
 import ThumbnailCard from '@components/cards/thumbnailCard/ThumbnailCard';
+import { Button } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -10,7 +11,7 @@ import { BreakpointEnum } from '../../types/enums';
 import { MainSwiperProps } from '../../types/types/props';
 import useStyles from './style';
 
-const MainSwiper = ({ list }: MainSwiperProps) => {
+const MainSwiper = ({ list, setPopularMoviesSelected }: MainSwiperProps) => {
 	const styles = useStyles();
 	const { width } = useWindowSize();
 
@@ -59,14 +60,23 @@ const MainSwiper = ({ list }: MainSwiperProps) => {
 			<Swiper
 				slidesPerView={getSlidesPerView()}
 				spaceBetween={20}
-				navigation={true}
+				navigation={false}
 				modules={[Navigation]}
 				className='mySwiper'
 				style={styles.root}
 			>
 				{list.map(item => (
 					<SwiperSlide key={item.id}>
-						<ThumbnailCard title={item.title} poster_path={item?.poster_path} />
+						<Button
+							onClick={() => setPopularMoviesSelected(item.id as number)}
+							disableRipple={true}
+							sx={{ padding: 0 }}
+						>
+							<ThumbnailCard
+								title={item.title}
+								poster_path={item?.poster_path}
+							/>
+						</Button>
 					</SwiperSlide>
 				))}
 			</Swiper>

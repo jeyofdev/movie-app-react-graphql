@@ -23,7 +23,7 @@ const useStyles = (theme: Theme) => ({
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		marginBottom: '1.25rem',
+		marginBottom: theme.spacing(5),
 	},
 	sectionTitle: {
 		color: theme.palette.primary.main,
@@ -31,6 +31,9 @@ const useStyles = (theme: Theme) => ({
 	link: {
 		color: theme.palette.primary.dark,
 		textDecoration: 'none',
+	},
+	previewBox: {
+		marginTop: theme.spacing(4),
 	},
 });
 

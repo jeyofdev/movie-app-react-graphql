@@ -43,6 +43,14 @@ export type BlockSidebarMenuProps = {
 
 export type MainSwiperProps = {
 	list: Array<Movie>;
+	setPopularMoviesSelected: Dispatch<SetStateAction<number | null>>;
 };
 
 export type ThumbnailCardProps = Pick<Movie, 'title' | 'poster_path'>;
+
+export type MoviePreviewCardProps = Pick<
+	Movie,
+	'backdrop_path' | 'title' | 'overview'
+> & {
+	stylesBox: object;
+};
