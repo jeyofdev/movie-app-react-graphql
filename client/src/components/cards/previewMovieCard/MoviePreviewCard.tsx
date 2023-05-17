@@ -20,6 +20,30 @@ const MoviePreviewCard = ({
 	const styles = useStyles(theme);
 	const navigate = useNavigate();
 
+	const generateGenreLink = () =>
+		genres &&
+		genres?.length > 0 && (
+			<Box sx={styles.genresBox}>
+				{genres.map((genre, i) => (
+					<>
+						<BaseButton
+							key={genre?.id}
+							style={styles.genreButton}
+							disableRipple
+							onClick={() =>
+								navigate(`/${genre?.name.toLowerCase().split(' ').join('-')}`)
+							}
+						>
+							{genre?.name}
+						</BaseButton>
+						{genres.length !== i + 1 && (
+							<span style={{ color: theme.palette.primary.main }}>,&nbsp;</span>
+						)}
+					</>
+				))}
+			</Box>
+		);
+
 	return (
 		<Box sx={{ ...styles.root, ...stylesBox }}>
 			<Box sx={styles.imageBox}>
@@ -53,25 +77,7 @@ const MoviePreviewCard = ({
 						)}
 
 						<FontAwesomeIcon icon={faCircle} style={styles.separatorCircle} />
-
-						{genres && genres?.length > 0 && (
-							<Box sx={styles.genresBox}>
-								{genres.map(genre => (
-									<BaseButton
-										key={genre?.id}
-										style={styles.genreButton}
-										disableRipple
-										onClick={() =>
-											navigate(
-												`/${genre?.name.toLowerCase().split(' ').join('-')}`,
-											)
-										}
-									>
-										{genre?.name},
-									</BaseButton>
-								))}
-							</Box>
-						)}
+						{generateGenreLink()}
 					</Box>
 				</Box>
 
