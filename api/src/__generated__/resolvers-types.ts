@@ -105,6 +105,7 @@ export type Movie = {
 	adult?: Maybe<Scalars['Boolean']>;
 	backdrop_path?: Maybe<Scalars['String']>;
 	genre_ids?: Maybe<Array<Maybe<Scalars['Int']>>>;
+	genres?: Maybe<Array<Maybe<Genre>>>;
 	id?: Maybe<Scalars['Int']>;
 	images?: Maybe<MovieImageResponse>;
 	original_language?: Maybe<Scalars['String']>;
@@ -725,6 +726,11 @@ export type MovieResolvers<
 	>;
 	genre_ids?: Resolver<
 		Maybe<Array<Maybe<ResolversTypes['Int']>>>,
+		ParentType,
+		ContextType
+	>;
+	genres?: Resolver<
+		Maybe<Array<Maybe<ResolversTypes['Genre']>>>,
 		ParentType,
 		ContextType
 	>;

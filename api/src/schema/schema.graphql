@@ -17,6 +17,7 @@ type Movie {
 	backdrop_path: String
 	genre_ids: [Int]
 	id: Int
+	genres: [Genre]
 	original_language: String
 	original_title: String
 	overview: String
