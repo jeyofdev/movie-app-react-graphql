@@ -10,6 +10,8 @@ const MoviePreviewCard = ({
 	title,
 	overview,
 	genres,
+	runtime,
+	vote_average,
 	stylesBox,
 }: MoviePreviewCardProps) => {
 	const theme = useTheme();
@@ -30,24 +32,38 @@ const MoviePreviewCard = ({
 				</Typography>
 
 				<Box>
-					{genres && genres?.length > 0 && (
-						<Box sx={styles.genresBox}>
-							{genres.map(genre => (
-								<BaseButton
-									key={genre?.id}
-									style={styles.genreButton}
-									disableRipple
-									onClick={() =>
-										navigate(
-											`/${genre?.name.toLowerCase().split(' ').join('-')}`,
-										)
-									}
-								>
-									{genre?.name},
-								</BaseButton>
-							))}
-						</Box>
-					)}
+					<Box>
+						{runtime && (
+							<Typography variant='body2' sx={styles.runtime}>
+								1h50min
+							</Typography>
+						)}
+
+						{genres && genres?.length > 0 && (
+							<Box sx={styles.genresBox}>
+								{genres.map(genre => (
+									<BaseButton
+										key={genre?.id}
+										style={styles.genreButton}
+										disableRipple
+										onClick={() =>
+											navigate(
+												`/${genre?.name.toLowerCase().split(' ').join('-')}`,
+											)
+										}
+									>
+										{genre?.name},
+									</BaseButton>
+								))}
+							</Box>
+						)}
+					</Box>
+
+					<Box>
+						<Typography variant='body2' sx={styles.overview}>
+							{vote_average?.toFixed(1)}
+						</Typography>
+					</Box>
 				</Box>
 
 				{overview && (

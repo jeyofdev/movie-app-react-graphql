@@ -21,6 +21,9 @@ const useStyles = (theme: Theme) => ({
 	overview: {
 		color: theme.palette.primary.main,
 	},
+	runtime: {
+		color: theme.palette.primary.main,
+	},
 	button: {
 		alignSelf: 'flex-start',
 	},

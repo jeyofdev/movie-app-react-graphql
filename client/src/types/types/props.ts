@@ -1,5 +1,9 @@
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { Genre, Movie } from '@graphql/__generated__/graphql-type';
+import {
+	Genre,
+	Movie,
+	MovieDetails,
+} from '@graphql/__generated__/graphql-type';
 import { Dispatch, ReactNode, SetStateAction } from 'react';
 
 export type ThemeContextProviderPropsType = {
@@ -50,8 +54,8 @@ export type MainSwiperProps = {
 export type ThumbnailCardProps = Pick<Movie, 'title' | 'poster_path'>;
 
 export type MoviePreviewCardProps = Pick<
-	Movie,
-	'backdrop_path' | 'title' | 'overview' | 'genres'
+	MovieDetails,
+	'backdrop_path' | 'title' | 'overview' | 'genres' | 'runtime' | 'vote_average'
 > & {
 	stylesBox: object;
 };
