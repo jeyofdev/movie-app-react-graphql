@@ -2,7 +2,7 @@ import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
 import { faCircle, faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Box, Typography, useTheme } from '@mui/material';
-import { truncate } from '@utils/index';
+import { formatNumberToHours, truncate } from '@utils/index';
 import { useNavigate } from 'react-router-dom';
 import { MoviePreviewCardProps } from '../../../types/types/props';
 import useStyles from './style';
@@ -19,6 +19,30 @@ const MoviePreviewCard = ({
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const navigate = useNavigate();
+
+	const generateGenreLink = () =>
+		genres &&
+		genres?.length > 0 && (
+			<Box sx={styles.genresBox}>
+				{genres.map((genre, i) => (
+					<>
+						<BaseButton
+							key={genre?.id}
+							style={styles.genreButton}
+							disableRipple
+							onClick={() =>
+								navigate(`/${genre?.name.toLowerCase().split(' ').join('-')}`)
+							}
+						>
+							{genre?.name}
+						</BaseButton>
+						{genres.length !== i + 1 && (
+							<span style={{ color: theme.palette.primary.main }}>,&nbsp;</span>
+						)}
+					</>
+				))}
+			</Box>
+		);
 
 	return (
 		<Box sx={{ ...styles.root, ...stylesBox }}>
@@ -48,30 +72,12 @@ const MoviePreviewCard = ({
 					<Box sx={styles.movieInfosBox}>
 						{runtime && (
 							<Typography variant='body2' sx={styles.runtime}>
-								1h50min
+								{formatNumberToHours(runtime)}
 							</Typography>
 						)}
 
 						<FontAwesomeIcon icon={faCircle} style={styles.separatorCircle} />
-
-						{genres && genres?.length > 0 && (
-							<Box sx={styles.genresBox}>
-								{genres.map(genre => (
-									<BaseButton
-										key={genre?.id}
-										style={styles.genreButton}
-										disableRipple
-										onClick={() =>
-											navigate(
-												`/${genre?.name.toLowerCase().split(' ').join('-')}`,
-											)
-										}
-									>
-										{genre?.name},
-									</BaseButton>
-								))}
-							</Box>
-						)}
+						{generateGenreLink()}
 					</Box>
 				</Box>
 
