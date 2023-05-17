@@ -1,4 +1,6 @@
 import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
+import { faCircle, faStar } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Box, Typography, useTheme } from '@mui/material';
 import { truncate } from '@utils/index';
 import { useNavigate } from 'react-router-dom';
@@ -20,24 +22,37 @@ const MoviePreviewCard = ({
 
 	return (
 		<Box sx={{ ...styles.root, ...stylesBox }}>
-			<Box
-				component='img'
-				alt={title as string}
-				src={`https://image.tmdb.org/t/p/w400${backdrop_path}`}
-				sx={styles.image}
-			/>
+			<Box sx={styles.imageBox}>
+				<Box
+					component='img'
+					alt={title as string}
+					src={`https://image.tmdb.org/t/p/w500${backdrop_path}`}
+					sx={styles.image}
+				/>
+			</Box>
 			<Box sx={styles.contentBox}>
-				<Typography variant='h5' sx={styles.title}>
-					{title}
-				</Typography>
+				<Box sx={styles.titleBox}>
+					<Typography variant='h5' sx={styles.title}>
+						{title}
+					</Typography>
+
+					<Box sx={styles.votesBox}>
+						<FontAwesomeIcon icon={faStar} style={styles.voteStar} />
+						<Typography variant='subtitle2' sx={styles.vote}>
+							{vote_average?.toFixed(1)}
+						</Typography>
+					</Box>
+				</Box>
 
 				<Box>
-					<Box>
+					<Box sx={styles.movieInfosBox}>
 						{runtime && (
 							<Typography variant='body2' sx={styles.runtime}>
 								1h50min
 							</Typography>
 						)}
+
+						<FontAwesomeIcon icon={faCircle} style={styles.separatorCircle} />
 
 						{genres && genres?.length > 0 && (
 							<Box sx={styles.genresBox}>
@@ -57,12 +72,6 @@ const MoviePreviewCard = ({
 								))}
 							</Box>
 						)}
-					</Box>
-
-					<Box>
-						<Typography variant='body2' sx={styles.overview}>
-							{vote_average?.toFixed(1)}
-						</Typography>
 					</Box>
 				</Box>
 

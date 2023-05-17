@@ -204,21 +204,21 @@ export const globalTheme = createTheme({
 		subtitle2: {
 			fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
 			fontWeight: 500,
-			fontSize: '0.875rem',
+			fontSize: '1.1rem',
 			lineHeight: 1.57,
 			letterSpacing: '0.00714em',
 
 			[theme.breakpoints.up('sm')]: {
-				fontSize: '0.875rem',
+				fontSize: '1.1rem',
 			},
 			[theme.breakpoints.up('md')]: {
-				fontSize: '0.875rem',
+				fontSize: '1.1rem',
 			},
 			[theme.breakpoints.up('lg')]: {
-				fontSize: '0.875rem',
+				fontSize: '1.1rem',
 			},
 			[theme.breakpoints.up('xl')]: {
-				fontSize: '0.875rem',
+				fontSize: '1.1rem',
 			},
 		},
 		body1: {
