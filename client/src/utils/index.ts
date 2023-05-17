@@ -4,7 +4,6 @@
  * @param limit
  * @returns
  */
-// eslint-disable-next-line import/prefer-default-export
 export const truncate = (text: string, limit: number): string => {
 	const { length } = text.split(' ');
 
