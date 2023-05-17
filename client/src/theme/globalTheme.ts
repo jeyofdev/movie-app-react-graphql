@@ -245,7 +245,7 @@ export const globalTheme = createTheme({
 			fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
 			fontWeight: 400,
 			fontSize: '0.875rem',
-			lineHeight: 1.43,
+			lineHeight: 1.35,
 			letterSpacing: '0.01071em',
 
 			[theme.breakpoints.up('sm')]: {

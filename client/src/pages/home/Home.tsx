@@ -1,10 +1,11 @@
+import PreviewMovieCard from '@components/cards/previewMovieCard/MoviePreviewCard';
 import MainContainer from '@components/containers/mainContainer/MainContainer';
 import Sidebar from '@components/sidebar/sidebar/Sidebar';
 import MainSwiper from '@components/swiper/MainSwiper';
 import { ThemeContext } from '@context/ThemeContext';
 import {
 	Movie,
-	useMovieDetailsQuery,
+	useMoviePreviewQuery,
 	usePopularMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
 import { Box, Button, Typography, useTheme } from '@mui/material';
@@ -30,7 +31,7 @@ const Home = () => {
 		},
 	});
 
-	const { data: movieDetailData } = useMovieDetailsQuery({
+	const { data: moviePreviewData } = useMoviePreviewQuery({
 		variables: { movieId: popularMoviesSelectedId },
 	});
 
@@ -74,11 +75,12 @@ const Home = () => {
 					/>
 
 					{popularMoviesSelectedId && (
-						<Box sx={styles.selectedPreview}>
-							<Typography sx={styles.selectedPreviewTitle}>
-								{movieDetailData?.movieDetails?.title}
-							</Typography>
-						</Box>
+						<PreviewMovieCard
+							title={moviePreviewData?.movieDetails?.title}
+							backdrop_path={moviePreviewData?.movieDetails?.backdrop_path}
+							overview={moviePreviewData?.movieDetails?.overview}
+							stylesBox={styles.previewBox}
+						/>
 					)}
 				</Box>
 			</MainContainer>

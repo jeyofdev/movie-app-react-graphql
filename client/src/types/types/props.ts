@@ -47,3 +47,10 @@ export type MainSwiperProps = {
 };
 
 export type ThumbnailCardProps = Pick<Movie, 'title' | 'poster_path'>;
+
+export type MoviePreviewCardProps = Pick<
+	Movie,
+	'backdrop_path' | 'title' | 'overview'
+> & {
+	stylesBox: object;
+};

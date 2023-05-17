@@ -488,6 +488,84 @@ export type MovieDetailsQuery = {
 	} | null;
 };
 
+export type MoviePreviewQueryVariables = Exact<{
+	movieId?: InputMaybe<Scalars['Int']>;
+	options?: InputMaybe<OptionsInput>;
+}>;
+
+export type MoviePreviewQuery = {
+	__typename?: 'Query';
+	movieDetails?: {
+		__typename?: 'MovieDetails';
+		id?: number | null;
+		original_title?: string | null;
+		title?: string | null;
+		overview?: string | null;
+		adult?: boolean | null;
+		backdrop_path?: string | null;
+		budget?: number | null;
+		genre_ids?: Array<number | null> | null;
+		homepage?: string | null;
+		imdb_id?: string | null;
+		original_language?: string | null;
+		popularity?: number | null;
+		poster_path?: string | null;
+		release_date?: string | null;
+		runtime?: number | null;
+		status?: string | null;
+		tagline?: string | null;
+		video?: boolean | null;
+		vote_average?: number | null;
+		vote_count?: number | null;
+		genres?: Array<{
+			__typename?: 'Genre';
+			id: number;
+			name: string;
+		} | null> | null;
+		production_companies?: Array<{
+			__typename?: 'ProductionCompany';
+			id?: number | null;
+			name?: string | null;
+			logo_path?: string | null;
+			origin_country?: string | null;
+		} | null> | null;
+		production_countries?: Array<{
+			__typename?: 'ProductionCountry';
+			iso_3166_1?: string | null;
+			name?: string | null;
+		} | null> | null;
+		spoken_languages?: Array<{
+			__typename?: 'spoken_languages';
+			iso_639_1?: string | null;
+			name?: string | null;
+		} | null> | null;
+		images?: {
+			__typename?: 'MovieImageResponse';
+			id?: number | null;
+			backdrops?: Array<{
+				__typename?: 'PosterMovie';
+				aspect_ratio?: number | null;
+				file_path?: string | null;
+				height?: number | null;
+				iso_639_1?: string | null;
+				vote_average?: number | null;
+				vote_count?: number | null;
+				width?: number | null;
+			} | null> | null;
+			posters?: Array<{
+				__typename?: 'PosterMovie';
+				aspect_ratio?: number | null;
+				file_path?: string | null;
+				height?: number | null;
+				iso_639_1?: string | null;
+				vote_average?: number | null;
+				vote_count?: number | null;
+				width?: number | null;
+			} | null> | null;
+		} | null;
+	} | null;
+};
+
 export const PopularMoviesDocument = gql`
 	query PopularMovies($options: OptionsInput) {
 		popularMovies(options: $options) {
@@ -722,4 +800,121 @@ export type MovieDetailsLazyQueryHookResult = ReturnType<
 export type MovieDetailsQueryResult = Apollo.QueryResult<
 	MovieDetailsQuery,
 	MovieDetailsQueryVariables
+>;
+export const MoviePreviewDocument = gql`
+	query MoviePreview($movieId: Int, $options: OptionsInput) {
+		movieDetails(movieId: $movieId, options: $options) {
+			id
+			genres {
+				id
+				name
+			}
+			original_title
+			title
+			overview
+			adult
+			backdrop_path
+			budget
+			genre_ids
+			homepage
+			imdb_id
+			original_language
+			popularity
+			poster_path
+			production_companies {
+				id
+				name
+				logo_path
+				origin_country
+			}
+			production_countries {
+				iso_3166_1
+				name
+			}
+			release_date
+			runtime
+			spoken_languages {
+				iso_639_1
+				name
+			}
+			status
+			tagline
+			video
+			vote_average
+			vote_count
+			images {
+				backdrops {
+					aspect_ratio
+					file_path
+					height
+					iso_639_1
+					vote_average
+					vote_count
+					width
+				}
+				id
+				posters {
+					aspect_ratio
+					file_path
+					height
+					iso_639_1
+					vote_average
+					vote_count
+					width
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useMoviePreviewQuery__
+ *
+ * To run a query within a React component, call `useMoviePreviewQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMoviePreviewQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMoviePreviewQuery({
+ *   variables: {
+ *      movieId: // value for 'movieId'
+ *      options: // value for 'options'
+ *   },
+ * });
+ */
+export function useMoviePreviewQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		MoviePreviewQuery,
+		MoviePreviewQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useQuery<MoviePreviewQuery, MoviePreviewQueryVariables>(
+		MoviePreviewDocument,
+		options,
+	);
+}
+export function useMoviePreviewLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		MoviePreviewQuery,
+		MoviePreviewQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useLazyQuery<MoviePreviewQuery, MoviePreviewQueryVariables>(
+		MoviePreviewDocument,
+		options,
+	);
+}
+export type MoviePreviewQueryHookResult = ReturnType<
+	typeof useMoviePreviewQuery
+>;
+export type MoviePreviewLazyQueryHookResult = ReturnType<
+	typeof useMoviePreviewLazyQuery
+>;
+export type MoviePreviewQueryResult = Apollo.QueryResult<
+	MoviePreviewQuery,
+	MoviePreviewQueryVariables
 >;

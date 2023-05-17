@@ -67,7 +67,11 @@ const MainSwiper = ({ list, setPopularMoviesSelected }: MainSwiperProps) => {
 			>
 				{list.map(item => (
 					<SwiperSlide key={item.id}>
-						<Button onClick={() => setPopularMoviesSelected(item.id as number)}>
+						<Button
+							onClick={() => setPopularMoviesSelected(item.id as number)}
+							disableRipple={true}
+							sx={{ padding: 0 }}
+						>
 							<ThumbnailCard
 								title={item.title}
 								poster_path={item?.poster_path}
