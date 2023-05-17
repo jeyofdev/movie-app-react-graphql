@@ -51,7 +51,7 @@ export type ThumbnailCardProps = Pick<Movie, 'title' | 'poster_path'>;
 
 export type MoviePreviewCardProps = Pick<
 	Movie,
-	'backdrop_path' | 'title' | 'overview'
+	'backdrop_path' | 'title' | 'overview' | 'genres'
 > & {
 	stylesBox: object;
 };

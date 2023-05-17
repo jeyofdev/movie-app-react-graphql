@@ -24,6 +24,13 @@ const useStyles = (theme: Theme) => ({
 	button: {
 		alignSelf: 'flex-start',
 	},
+	genresBox: {
+		display: 'flex',
+	},
+	genreButton: {
+		padding: 0,
+		minWidth: 0,
+	},
 });
 
 export default useStyles;

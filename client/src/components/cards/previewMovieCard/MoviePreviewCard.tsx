@@ -9,6 +9,7 @@ const MoviePreviewCard = ({
 	backdrop_path,
 	title,
 	overview,
+	genres,
 	stylesBox,
 }: MoviePreviewCardProps) => {
 	const theme = useTheme();
@@ -29,9 +30,24 @@ const MoviePreviewCard = ({
 				</Typography>
 
 				<Box>
-					<Typography variant='body2' sx={styles.overview}>
-						test
-					</Typography>
+					{genres && genres?.length > 0 && (
+						<Box sx={styles.genresBox}>
+							{genres.map(genre => (
+								<BaseButton
+									key={genre?.id}
+									style={styles.genreButton}
+									disableRipple
+									onClick={() =>
+										navigate(
+											`/${genre?.name.toLowerCase().split(' ').join('-')}`,
+										)
+									}
+								>
+									{genre?.name},
+								</BaseButton>
+							))}
+						</Box>
+					)}
 				</Box>
 
 				{overview && (

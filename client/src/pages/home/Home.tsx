@@ -79,6 +79,7 @@ const Home = () => {
 							title={moviePreviewData?.movieDetails?.title}
 							backdrop_path={moviePreviewData?.movieDetails?.backdrop_path}
 							overview={moviePreviewData?.movieDetails?.overview}
+							genres={moviePreviewData?.movieDetails?.genres}
 							stylesBox={styles.previewBox}
 						/>
 					)}
