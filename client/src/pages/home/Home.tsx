@@ -7,6 +7,7 @@ import {
 	Movie,
 	useMoviePreviewQuery,
 	usePopularMoviesQuery,
+	useTopRatedMoviesQuery,
 	useUpcomingMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
 import { Box, Button, useTheme } from '@mui/material';
@@ -19,6 +20,7 @@ const Home = () => {
 	const styles = useStyles(theme);
 	const [popularMovies, setPopularMovies] = useState<Array<Movie>>([]);
 	const [upComingMovies, setUpComingMovies] = useState<Array<Movie>>([]);
+	const [topRatedMovies, setTopRatedMovies] = useState<Array<Movie>>([]);
 
 	const [moviesSelectedId, setMoviesSelectedId] = useState<number | null>(null);
 
@@ -46,17 +48,28 @@ const Home = () => {
 			},
 		});
 
+	const { loading: topRatedMoviesLoading, error: topRatedMoviesError } =
+		useTopRatedMoviesQuery({
+			onCompleted(data) {
+				setTopRatedMovies(
+					data?.topRatedMovies?.results
+						? (data?.topRatedMovies?.results as Array<Movie>)
+						: [],
+				);
+			},
+		});
+
 	const { data: moviePreviewData } = useMoviePreviewQuery({
 		variables: { movieId: moviesSelectedId },
 	});
 
 	const { handleThemeMode } = useContext(ThemeContext);
 
-	if (loading || upComingMovieLoading) {
+	if (loading || upComingMovieLoading || topRatedMoviesLoading) {
 		return <Box>Loading...</Box>;
 	}
 
-	if (error || upComingMovieError) {
+	if (error || upComingMovieError || topRatedMoviesError) {
 		return <Box>{error?.message}</Box>;
 	}
 
@@ -109,6 +122,29 @@ const Home = () => {
 						/>
 
 						{moviesListCategory === MoviesListCategoryEnum.UP_COMING &&
+							moviesSelectedId && (
+								<PreviewMovieCard
+									title={moviePreviewData?.movieDetails?.title}
+									backdrop_path={moviePreviewData?.movieDetails?.backdrop_path}
+									overview={moviePreviewData?.movieDetails?.overview}
+									genres={moviePreviewData?.movieDetails?.genres}
+									runtime={moviePreviewData?.movieDetails?.runtime}
+									vote_average={moviePreviewData?.movieDetails?.vote_average}
+									stylesBox={styles.previewBox}
+								/>
+							)}
+					</Box>
+
+					<Box sx={styles.sectionBox}>
+						<SwiperSection
+							title='Top rated'
+							list={topRatedMovies}
+							moviesListCategory={MoviesListCategoryEnum.TOP_RATING}
+							setMoviesSelectedId={setMoviesSelectedId}
+							setMoviesListCategory={setMoviesListCategory}
+						/>
+
+						{moviesListCategory === MoviesListCategoryEnum.TOP_RATING &&
 							moviesSelectedId && (
 								<PreviewMovieCard
 									title={moviePreviewData?.movieDetails?.title}

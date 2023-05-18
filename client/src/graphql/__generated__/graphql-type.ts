@@ -450,6 +450,61 @@ export type UpcomingMoviesQuery = {
 	} | null;
 };
 
+export type TopRatedMoviesQueryVariables = Exact<{
+	options?: InputMaybe<OptionsInput>;
+}>;
+
+export type TopRatedMoviesQuery = {
+	__typename?: 'Query';
+	topRatedMovies?: {
+		__typename?: 'MoviesResponse';
+		page: number;
+		total_pages: number;
+		total_results: number;
+		results: Array<{
+			__typename?: 'Movie';
+			adult?: boolean | null;
+			backdrop_path?: string | null;
+			genre_ids?: Array<number | null> | null;
+			id?: number | null;
+			original_language?: string | null;
+			original_title?: string | null;
+			overview?: string | null;
+			popularity?: number | null;
+			poster_path?: string | null;
+			release_date?: string | null;
+			title?: string | null;
+			video?: boolean | null;
+			vote_average?: number | null;
+			vote_count?: number | null;
+			images?: {
+				__typename?: 'MovieImageResponse';
+				id?: number | null;
+				posters?: Array<{
+					__typename?: 'PosterMovie';
+					aspect_ratio?: number | null;
+					file_path?: string | null;
+					height?: number | null;
+					iso_639_1?: string | null;
+					vote_average?: number | null;
+					vote_count?: number | null;
+					width?: number | null;
+				} | null> | null;
+				backdrops?: Array<{
+					__typename?: 'PosterMovie';
+					aspect_ratio?: number | null;
+					file_path?: string | null;
+					height?: number | null;
+					iso_639_1?: string | null;
+					vote_average?: number | null;
+					vote_count?: number | null;
+					width?: number | null;
+				} | null> | null;
+			} | null;
+		} | null>;
+	} | null;
+};
+
 export type GenresQueryVariables = Exact<{
 	options?: InputMaybe<OptionsInput>;
 }>;
@@ -785,6 +840,103 @@ export type UpcomingMoviesLazyQueryHookResult = ReturnType<
 export type UpcomingMoviesQueryResult = Apollo.QueryResult<
 	UpcomingMoviesQuery,
 	UpcomingMoviesQueryVariables
+>;
+export const TopRatedMoviesDocument = gql`
+	query TopRatedMovies($options: OptionsInput) {
+		topRatedMovies(options: $options) {
+			page
+			results {
+				adult
+				backdrop_path
+				genre_ids
+				id
+				original_language
+				original_title
+				overview
+				popularity
+				poster_path
+				release_date
+				title
+				video
+				vote_average
+				vote_count
+				images {
+					posters {
+						aspect_ratio
+						file_path
+						height
+						iso_639_1
+						vote_average
+						vote_count
+						width
+					}
+					id
+					backdrops {
+						aspect_ratio
+						file_path
+						height
+						iso_639_1
+						vote_average
+						vote_count
+						width
+					}
+				}
+			}
+			total_pages
+			total_results
+		}
+	}
+`;
+
+/**
+ * __useTopRatedMoviesQuery__
+ *
+ * To run a query within a React component, call `useTopRatedMoviesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTopRatedMoviesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTopRatedMoviesQuery({
+ *   variables: {
+ *      options: // value for 'options'
+ *   },
+ * });
+ */
+export function useTopRatedMoviesQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		TopRatedMoviesQuery,
+		TopRatedMoviesQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useQuery<TopRatedMoviesQuery, TopRatedMoviesQueryVariables>(
+		TopRatedMoviesDocument,
+		options,
+	);
+}
+export function useTopRatedMoviesLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		TopRatedMoviesQuery,
+		TopRatedMoviesQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useLazyQuery<TopRatedMoviesQuery, TopRatedMoviesQueryVariables>(
+		TopRatedMoviesDocument,
+		options,
+	);
+}
+export type TopRatedMoviesQueryHookResult = ReturnType<
+	typeof useTopRatedMoviesQuery
+>;
+export type TopRatedMoviesLazyQueryHookResult = ReturnType<
+	typeof useTopRatedMoviesLazyQuery
+>;
+export type TopRatedMoviesQueryResult = Apollo.QueryResult<
+	TopRatedMoviesQuery,
+	TopRatedMoviesQueryVariables
 >;
 export const GenresDocument = gql`
 	query Genres($options: OptionsInput) {
