@@ -8,6 +8,10 @@ const useStyles = (theme: Theme) => ({
 		flexDirection: 'column',
 		backgroundColor: theme.palette.background.paper,
 		padding: 0,
+		paddingBottom: {
+			xs: '50px',
+			sm: 0,
+		},
 		width: '100%',
 		minHeight: '100vh',
 

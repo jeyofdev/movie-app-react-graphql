@@ -7,6 +7,8 @@ import { Genre } from '@graphql/__generated__/graphql-type';
 import { Box, Typography, useTheme } from '@mui/material';
 import { formatNumberToHours, truncate } from '@utils/index';
 import { useNavigate } from 'react-router-dom';
+import { useWindowSize } from 'usehooks-ts';
+import { BreakpointEnum } from '../../../types/enums';
 import { MoviePreviewCardProps } from '../../../types/types/props';
 import useStyles from './style';
 
@@ -22,6 +24,7 @@ const MoviePreviewCard = ({
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const navigate = useNavigate();
+	const { width } = useWindowSize();
 
 	return (
 		<Box sx={{ ...styles.root, ...stylesBox }}>
@@ -57,7 +60,7 @@ const MoviePreviewCard = ({
 
 				{overview && (
 					<Typography variant='body2' sx={styles.overview}>
-						{truncate(overview, 30)}
+						{truncate(overview, width < BreakpointEnum.LG ? 50 : 40)}
 					</Typography>
 				)}
 

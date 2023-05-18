@@ -24,10 +24,9 @@ const useStyles = (theme: Theme) => ({
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		flexDirection: 'column',
-		marginBottom: theme.spacing(5),
 	},
 	previewBox: {
-		marginTop: theme.spacing(4),
+		marginTop: theme.spacing(1.5),
 	},
 });
 
