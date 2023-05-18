@@ -1,14 +1,14 @@
-import ComingSoon from '@pages/ComingSoon';
+import ComingSoon from '@pages/comingSoon/ComingSoon';
 import Home from '@pages/home/Home';
-import NotFound from '@pages/NotFound';
+import NotFound from '@pages/notFound/NotFound';
 import { Route, Routes } from 'react-router-dom';
 
 const MainRouter = () => (
 	<Routes>
 		<Route path='/' element={<Home />}>
 			<Route path='home' element={<Home />} />
-			<Route path='coming-soon' element={<ComingSoon />} />
 		</Route>
+		<Route path='coming-soon' element={<ComingSoon />} />
 
 		<Route path='*' element={<NotFound />} />
 	</Routes>
