@@ -69,3 +69,7 @@ export type SwiperSectionProps = {
 export type VoteAverageProps = {
 	voteAverage: number;
 };
+
+export type LinksGenresProps = {
+	genres: Array<Genre>;
+};
