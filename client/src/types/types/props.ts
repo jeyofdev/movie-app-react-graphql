@@ -59,3 +59,8 @@ export type MoviePreviewCardProps = Pick<
 > & {
 	stylesBox: object;
 };
+
+export type SwiperSectionProps = {
+	list: Array<Movie>;
+	setMoviesSelectedId: Dispatch<SetStateAction<number | null>>;
+};

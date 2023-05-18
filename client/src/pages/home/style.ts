@@ -23,14 +23,8 @@ const useStyles = (theme: Theme) => ({
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',
+		flexDirection: 'column',
 		marginBottom: theme.spacing(5),
-	},
-	sectionTitle: {
-		color: theme.palette.primary.main,
-	},
-	link: {
-		color: theme.palette.primary.dark,
-		textDecoration: 'none',
 	},
 	previewBox: {
 		marginTop: theme.spacing(4),
