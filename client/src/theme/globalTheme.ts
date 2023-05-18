@@ -124,41 +124,41 @@ export const globalTheme = createTheme({
 			fontFamily: "'Poppins', sans-serif",
 
 			fontWeight: 400,
-			fontSize: '1.75rem',
+			fontSize: '1.65rem',
 			lineHeight: 1.235,
 			letterSpacing: '0.00735em',
 
 			[theme.breakpoints.up('sm')]: {
-				fontSize: '1.75rem',
+				fontSize: '1.65rem',
 			},
 			[theme.breakpoints.up('md')]: {
-				fontSize: '1.75rem',
+				fontSize: '1.65rem',
 			},
 			[theme.breakpoints.up('lg')]: {
-				fontSize: '1.75rem',
+				fontSize: '1.65rem',
 			},
 			[theme.breakpoints.up('xl')]: {
-				fontSize: '1.75rem',
+				fontSize: '1.65rem',
 			},
 		},
 		h5: {
 			fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
 			fontWeight: 400,
-			fontSize: '1.5rem',
-			lineHeight: 1.334,
+			fontSize: '1.4rem',
+			lineHeight: 1,
 			letterSpacing: '0em',
 
 			[theme.breakpoints.up('sm')]: {
-				fontSize: '1.5rem',
+				fontSize: '1.4rem',
 			},
 			[theme.breakpoints.up('md')]: {
-				fontSize: '1.5rem',
+				fontSize: '1.4rem',
 			},
 			[theme.breakpoints.up('lg')]: {
-				fontSize: '1.5rem',
+				fontSize: '1.4rem',
 			},
 			[theme.breakpoints.up('xl')]: {
-				fontSize: '1.5rem',
+				fontSize: '1.4rem',
 			},
 		},
 		h6: {

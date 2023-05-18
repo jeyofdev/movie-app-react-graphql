@@ -5,7 +5,7 @@ const useStyles = (theme: Theme) => ({
 		display: 'flex',
 		justifyContent: 'space-between',
 		width: '100%',
-		marginBottom: theme.spacing(3),
+		marginBottom: theme.spacing(2),
 	},
 	sectionTitle: {
 		color: theme.palette.primary.main,
