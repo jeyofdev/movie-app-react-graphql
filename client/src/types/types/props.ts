@@ -48,6 +48,7 @@ export type BlockSidebarMenuProps = {
 
 export type MainSwiperProps = {
 	list: Array<Movie>;
+	component: 'ThumbnailCard';
 	setPopularMoviesSelected: Dispatch<SetStateAction<number | null>>;
 };
 

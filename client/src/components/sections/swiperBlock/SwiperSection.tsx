@@ -19,7 +19,11 @@ const SwiperSection = ({ list, setMoviesSelectedId }: SwiperSectionProps) => {
 				</Link>
 			</Box>
 
-			<MainSwiper list={list} setPopularMoviesSelected={setMoviesSelectedId} />
+			<MainSwiper
+				list={list}
+				setPopularMoviesSelected={setMoviesSelectedId}
+				component='ThumbnailCard'
+			/>
 		</>
 	);
 };

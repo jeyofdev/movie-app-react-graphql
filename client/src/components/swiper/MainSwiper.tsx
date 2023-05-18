@@ -1,5 +1,7 @@
 import ThumbnailCard from '@components/cards/thumbnailCard/ThumbnailCard';
+import { Movie } from '@graphql/__generated__/graphql-type';
 import { Button } from '@mui/material';
+import { ReactNode } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -11,7 +13,11 @@ import { BreakpointEnum } from '../../types/enums';
 import { MainSwiperProps } from '../../types/types/props';
 import useStyles from './style';
 
-const MainSwiper = ({ list, setPopularMoviesSelected }: MainSwiperProps) => {
+const MainSwiper = ({
+	list,
+	component,
+	setPopularMoviesSelected,
+}: MainSwiperProps) => {
 	const styles = useStyles();
 	const { width } = useWindowSize();
 
@@ -55,6 +61,16 @@ const MainSwiper = ({ list, setPopularMoviesSelected }: MainSwiperProps) => {
 		return 9;
 	};
 
+	const card = (item: Movie): ReactNode | null => {
+		if (component === 'ThumbnailCard') {
+			return (
+				<ThumbnailCard title={item.title} poster_path={item?.poster_path} />
+			);
+		}
+
+		return null;
+	};
+
 	return (
 		<>
 			<Swiper
@@ -72,10 +88,7 @@ const MainSwiper = ({ list, setPopularMoviesSelected }: MainSwiperProps) => {
 							disableRipple={true}
 							sx={{ padding: 0 }}
 						>
-							<ThumbnailCard
-								title={item.title}
-								poster_path={item?.poster_path}
-							/>
+							{card(item)}
 						</Button>
 					</SwiperSlide>
 				))}
