@@ -1,5 +1,6 @@
 import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
-import { faCircle, faStar } from '@fortawesome/free-solid-svg-icons';
+import VoteAverage from '@components/ui/votes/average/VoteAverage';
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Box, Typography, useTheme } from '@mui/material';
 import { formatNumberToHours, truncate } from '@utils/index';
@@ -60,12 +61,7 @@ const MoviePreviewCard = ({
 						{title}
 					</Typography>
 
-					<Box sx={styles.votesBox}>
-						<FontAwesomeIcon icon={faStar} style={styles.voteStar} />
-						<Typography variant='subtitle2' sx={styles.vote}>
-							{vote_average?.toFixed(1)}
-						</Typography>
-					</Box>
+					<VoteAverage voteAverage={vote_average as number} />
 				</Box>
 
 				<Box>

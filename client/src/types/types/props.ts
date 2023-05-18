@@ -65,3 +65,7 @@ export type SwiperSectionProps = {
 	list: Array<Movie>;
 	setMoviesSelectedId: Dispatch<SetStateAction<number | null>>;
 };
+
+export type VoteAverageProps = {
+	voteAverage: number;
+};
