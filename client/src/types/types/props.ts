@@ -5,6 +5,7 @@ import {
 	MovieDetails,
 } from '@graphql/__generated__/graphql-type';
 import { Dispatch, ReactNode, SetStateAction } from 'react';
+import { MoviesListCategoryEnum } from '../enums';
 
 export type ThemeContextProviderPropsType = {
 	children: ReactNode;
@@ -49,7 +50,11 @@ export type BlockSidebarMenuProps = {
 export type MainSwiperProps = {
 	list: Array<Movie>;
 	component: 'ThumbnailCard';
+	moviesListCategory: MoviesListCategoryEnum;
 	setPopularMoviesSelected: Dispatch<SetStateAction<number | null>>;
+	setMoviesListCategory: Dispatch<
+		SetStateAction<MoviesListCategoryEnum | null>
+	>;
 };
 
 export type ThumbnailCardProps = Pick<Movie, 'title' | 'poster_path'>;
@@ -62,8 +67,13 @@ export type MoviePreviewCardProps = Pick<
 };
 
 export type SwiperSectionProps = {
+	title: string;
 	list: Array<Movie>;
+	moviesListCategory: MoviesListCategoryEnum;
 	setMoviesSelectedId: Dispatch<SetStateAction<number | null>>;
+	setMoviesListCategory: Dispatch<
+		SetStateAction<MoviesListCategoryEnum | null>
+	>;
 };
 
 export type VoteAverageProps = {

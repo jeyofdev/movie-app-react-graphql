@@ -10,3 +10,9 @@ export enum BreakpointEnum {
 	LG = 1380,
 	XL = 1920,
 }
+
+export enum MoviesListCategoryEnum {
+	POPULAR = 'popular',
+	UP_COMING = 'upcoming',
+	TOP_RATING = 'top-rating',
+}

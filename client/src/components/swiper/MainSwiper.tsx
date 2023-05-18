@@ -16,7 +16,9 @@ import useStyles from './style';
 const MainSwiper = ({
 	list,
 	component,
+	moviesListCategory,
 	setPopularMoviesSelected,
+	setMoviesListCategory,
 }: MainSwiperProps) => {
 	const styles = useStyles();
 	const { width } = useWindowSize();
@@ -71,6 +73,11 @@ const MainSwiper = ({
 		return null;
 	};
 
+	const handleClick = (item: Movie) => {
+		setPopularMoviesSelected(item.id as number);
+		setMoviesListCategory(moviesListCategory);
+	};
+
 	return (
 		<>
 			<Swiper
@@ -84,7 +91,7 @@ const MainSwiper = ({
 				{list.map(item => (
 					<SwiperSlide key={item.id}>
 						<Button
-							onClick={() => setPopularMoviesSelected(item.id as number)}
+							onClick={() => handleClick(item)}
 							disableRipple={true}
 							sx={{ padding: 0 }}
 						>
