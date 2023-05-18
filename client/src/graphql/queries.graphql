@@ -13,6 +13,51 @@ query PopularMovies($options: OptionsInput) {
 	}
 }
 
+query UpcomingMovies($options: OptionsInput) {
+	upcomingMovies(options: $options) {
+		page
+		total_pages
+		total_results
+		results {
+			adult
+			backdrop_path
+			genre_ids
+			id
+			original_language
+			original_title
+			overview
+			popularity
+			poster_path
+			release_date
+			title
+			video
+			vote_average
+			vote_count
+			images {
+				backdrops {
+					aspect_ratio
+					file_path
+					height
+					iso_639_1
+					vote_average
+					vote_count
+					width
+				}
+				id
+				posters {
+					aspect_ratio
+					file_path
+					height
+					iso_639_1
+					vote_average
+					vote_count
+					width
+				}
+			}
+		}
+	}
+}
+
 query Genres($options: OptionsInput) {
 	genres(options: $options) {
 		genres {

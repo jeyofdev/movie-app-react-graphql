@@ -4,14 +4,20 @@ import { Link } from 'react-router-dom';
 import { SwiperSectionProps } from '../../../types/types/props';
 import useStyles from './style';
 
-const SwiperSection = ({ list, setMoviesSelectedId }: SwiperSectionProps) => {
+const SwiperSection = ({
+	title,
+	list,
+	moviesListCategory,
+	setMoviesSelectedId,
+	setMoviesListCategory,
+}: SwiperSectionProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	return (
 		<>
 			<Box sx={styles.topSectionBox}>
 				<Typography variant='h4' sx={styles.sectionTitle}>
-					Popular movies
+					{title}
 				</Typography>
 
 				<Link to='/' style={styles.link}>
@@ -21,7 +27,9 @@ const SwiperSection = ({ list, setMoviesSelectedId }: SwiperSectionProps) => {
 
 			<MainSwiper
 				list={list}
+				moviesListCategory={moviesListCategory}
 				setPopularMoviesSelected={setMoviesSelectedId}
+				setMoviesListCategory={setMoviesListCategory}
 				component='ThumbnailCard'
 			/>
 		</>
