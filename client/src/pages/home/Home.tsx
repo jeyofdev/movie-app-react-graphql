@@ -1,16 +1,15 @@
 import PreviewMovieCard from '@components/cards/previewMovieCard/MoviePreviewCard';
 import MainContainer from '@components/containers/mainContainer/MainContainer';
+import SwiperSection from '@components/sections/swiperBlock/SwiperSection';
 import Sidebar from '@components/sidebar/sidebar/Sidebar';
-import MainSwiper from '@components/swiper/MainSwiper';
 import { ThemeContext } from '@context/ThemeContext';
 import {
 	Movie,
 	useMoviePreviewQuery,
 	usePopularMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
-import { Box, Button, Typography, useTheme } from '@mui/material';
+import { Box, Button, useTheme } from '@mui/material';
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
 import useStyles from './style';
 
 const Home = () => {
@@ -62,17 +61,11 @@ const Home = () => {
 					</Box>
 
 					<Box sx={styles.sectionBox}>
-						<Typography variant='h4' sx={styles.sectionTitle}>
-							Popular movies
-						</Typography>
-						<Link to='/' style={styles.link}>
-							<Typography>See all</Typography>
-						</Link>
+						<SwiperSection
+							list={popularMovies}
+							setMoviesSelectedId={setPopularMoviesSelectedId}
+						/>
 					</Box>
-					<MainSwiper
-						list={popularMovies}
-						setPopularMoviesSelected={setPopularMoviesSelectedId}
-					/>
 
 					{popularMoviesSelectedId && (
 						<PreviewMovieCard

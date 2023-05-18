@@ -48,6 +48,7 @@ export type BlockSidebarMenuProps = {
 
 export type MainSwiperProps = {
 	list: Array<Movie>;
+	component: 'ThumbnailCard';
 	setPopularMoviesSelected: Dispatch<SetStateAction<number | null>>;
 };
 
@@ -58,4 +59,17 @@ export type MoviePreviewCardProps = Pick<
 	'backdrop_path' | 'title' | 'overview' | 'genres' | 'runtime' | 'vote_average'
 > & {
 	stylesBox: object;
+};
+
+export type SwiperSectionProps = {
+	list: Array<Movie>;
+	setMoviesSelectedId: Dispatch<SetStateAction<number | null>>;
+};
+
+export type VoteAverageProps = {
+	voteAverage: number;
+};
+
+export type LinksGenresProps = {
+	genres: Array<Genre>;
 };

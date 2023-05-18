@@ -1,6 +1,9 @@
 import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
-import { faCircle, faStar } from '@fortawesome/free-solid-svg-icons';
+import LinksGenres from '@components/ui/link/linksGenres/LinkGenre';
+import VoteAverage from '@components/ui/votes/average/VoteAverage';
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Genre } from '@graphql/__generated__/graphql-type';
 import { Box, Typography, useTheme } from '@mui/material';
 import { formatNumberToHours, truncate } from '@utils/index';
 import { useNavigate } from 'react-router-dom';
@@ -20,30 +23,6 @@ const MoviePreviewCard = ({
 	const styles = useStyles(theme);
 	const navigate = useNavigate();
 
-	const generateGenreLink = () =>
-		genres &&
-		genres?.length > 0 && (
-			<Box sx={styles.genresBox}>
-				{genres.map((genre, i) => (
-					<>
-						<BaseButton
-							key={genre?.id}
-							style={styles.genreButton}
-							disableRipple
-							onClick={() =>
-								navigate(`/${genre?.name.toLowerCase().split(' ').join('-')}`)
-							}
-						>
-							{genre?.name}
-						</BaseButton>
-						{genres.length !== i + 1 && (
-							<span style={{ color: theme.palette.primary.main }}>,&nbsp;</span>
-						)}
-					</>
-				))}
-			</Box>
-		);
-
 	return (
 		<Box sx={{ ...styles.root, ...stylesBox }}>
 			<Box sx={styles.imageBox}>
@@ -60,12 +39,7 @@ const MoviePreviewCard = ({
 						{title}
 					</Typography>
 
-					<Box sx={styles.votesBox}>
-						<FontAwesomeIcon icon={faStar} style={styles.voteStar} />
-						<Typography variant='subtitle2' sx={styles.vote}>
-							{vote_average?.toFixed(1)}
-						</Typography>
-					</Box>
+					<VoteAverage voteAverage={vote_average as number} />
 				</Box>
 
 				<Box>
@@ -77,7 +51,7 @@ const MoviePreviewCard = ({
 						)}
 
 						<FontAwesomeIcon icon={faCircle} style={styles.separatorCircle} />
-						{generateGenreLink()}
+						<LinksGenres genres={genres as Array<Genre>} />
 					</Box>
 				</Box>
 
