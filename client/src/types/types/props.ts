@@ -67,10 +67,13 @@ export type MoviePreviewCardProps = Pick<
 };
 
 export type SwiperSectionProps = {
+	swiperType?: 'default' | 'thumbs-gallery';
 	title: string;
 	list: Array<Movie>;
 	moviesListCategory: MoviesListCategoryEnum;
-	setMoviesSelectedId: Dispatch<SetStateAction<number | null>>;
+	activeImage?: string | null;
+	setActiveImage?: Dispatch<SetStateAction<string | null>>;
+	setMoviesSelectedId?: Dispatch<SetStateAction<number | null>>;
 	setMoviesListCategory: Dispatch<
 		SetStateAction<MoviesListCategoryEnum | null>
 	>;
@@ -82,4 +85,11 @@ export type VoteAverageProps = {
 
 export type LinksGenresProps = {
 	genres: Array<Genre>;
+};
+
+export type SwiperThumbsGalleryType = {
+	list: Array<Movie>;
+	hasButton: boolean;
+	swiperBox?: object;
+	setActiveImage: Dispatch<SetStateAction<string | null>>;
 };

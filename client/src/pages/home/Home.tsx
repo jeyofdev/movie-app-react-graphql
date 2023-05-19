@@ -6,6 +6,7 @@ import { ThemeContext } from '@context/ThemeContext';
 import {
 	Movie,
 	useMoviePreviewQuery,
+	useNowPlayingMoviesQuery,
 	usePopularMoviesQuery,
 	useTopRatedMoviesQuery,
 	useUpcomingMoviesQuery,
@@ -18,24 +19,42 @@ import useStyles from './style';
 const Home = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
+	const [nowPlayingMovies, setNowPlayingMovies] = useState<Array<Movie>>([]);
 	const [popularMovies, setPopularMovies] = useState<Array<Movie>>([]);
 	const [upComingMovies, setUpComingMovies] = useState<Array<Movie>>([]);
 	const [topRatedMovies, setTopRatedMovies] = useState<Array<Movie>>([]);
+
+	const [activeImage, setActiveImage] = useState<string | null>(null);
 
 	const [moviesSelectedId, setMoviesSelectedId] = useState<number | null>(null);
 
 	const [moviesListCategory, setMoviesListCategory] =
 		useState<MoviesListCategoryEnum | null>(null);
 
-	const { loading, error } = usePopularMoviesQuery({
+	const { loading, error } = useNowPlayingMoviesQuery({
 		onCompleted(data) {
-			setPopularMovies(
-				data?.popularMovies?.results
-					? (data?.popularMovies?.results as Array<Movie>)
+			setActiveImage(
+				data?.nowPlayingMovies?.results[0]?.backdrop_path as string,
+			);
+
+			setNowPlayingMovies(
+				data?.nowPlayingMovies?.results
+					? (data?.nowPlayingMovies?.results.slice(0, 5) as Array<Movie>)
 					: [],
 			);
 		},
 	});
+
+	const { loading: popularMoviesLoading, error: popularMoviesError } =
+		usePopularMoviesQuery({
+			onCompleted(data) {
+				setPopularMovies(
+					data?.popularMovies?.results
+						? (data?.popularMovies?.results as Array<Movie>)
+						: [],
+				);
+			},
+		});
 
 	const { loading: upComingMovieLoading, error: upComingMovieError } =
 		useUpcomingMoviesQuery({
@@ -65,11 +84,21 @@ const Home = () => {
 
 	const { handleThemeMode } = useContext(ThemeContext);
 
-	if (loading || upComingMovieLoading || topRatedMoviesLoading) {
+	if (
+		loading ||
+		popularMoviesLoading ||
+		upComingMovieLoading ||
+		topRatedMoviesLoading
+	) {
 		return <Box>Loading...</Box>;
 	}
 
-	if (error || upComingMovieError || topRatedMoviesError) {
+	if (
+		error ||
+		popularMoviesError ||
+		upComingMovieError ||
+		topRatedMoviesError
+	) {
 		return <Box>{error?.message}</Box>;
 	}
 
@@ -87,6 +116,18 @@ const Home = () => {
 						>
 							darkmode
 						</Button>
+					</Box>
+
+					<Box sx={styles.sectionBox}>
+						<SwiperSection
+							swiperType='thumbs-gallery'
+							title='Popular movies'
+							list={nowPlayingMovies}
+							activeImage={activeImage}
+							moviesListCategory={MoviesListCategoryEnum.POPULAR}
+							setMoviesListCategory={setMoviesListCategory}
+							setActiveImage={setActiveImage}
+						/>
 					</Box>
 
 					<Box sx={styles.sectionBox}>

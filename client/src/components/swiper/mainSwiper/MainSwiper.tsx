@@ -9,8 +9,8 @@ import { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { useWindowSize } from 'usehooks-ts';
-import { BreakpointEnum } from '../../types/enums';
-import { MainSwiperProps } from '../../types/types/props';
+import { BreakpointEnum } from '../../../types/enums';
+import { MainSwiperProps } from '../../../types/types/props';
 import useStyles from './style';
 
 const MainSwiper = ({
