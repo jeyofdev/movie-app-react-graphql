@@ -373,6 +373,44 @@ export type Spoken_Languages = {
 	name?: Maybe<Scalars['String']>;
 };
 
+export type NowPlayingMoviesQueryVariables = Exact<{
+	options?: InputMaybe<OptionsInput>;
+}>;
+
+export type NowPlayingMoviesQuery = {
+	__typename?: 'Query';
+	nowPlayingMovies?: {
+		__typename?: 'MoviesResponse';
+		page: number;
+		total_pages: number;
+		total_results: number;
+		results: Array<{
+			__typename?: 'Movie';
+			adult?: boolean | null;
+			backdrop_path?: string | null;
+			genre_ids?: Array<number | null> | null;
+			id?: number | null;
+			original_language?: string | null;
+			original_title?: string | null;
+			overview?: string | null;
+			popularity?: number | null;
+			poster_path?: string | null;
+			release_date?: string | null;
+			title?: string | null;
+			video?: boolean | null;
+			vote_average?: number | null;
+			vote_count?: number | null;
+			images?: {
+				__typename?: 'MovieImageResponse';
+				backdrops?: Array<{
+					__typename?: 'PosterMovie';
+					file_path?: string | null;
+				} | null> | null;
+			} | null;
+		} | null>;
+	} | null;
+};
+
 export type PopularMoviesQueryVariables = Exact<{
 	options?: InputMaybe<OptionsInput>;
 }>;
@@ -677,6 +715,87 @@ export type MoviePreviewQuery = {
 	} | null;
 };
 
+export const NowPlayingMoviesDocument = gql`
+	query NowPlayingMovies($options: OptionsInput) {
+		nowPlayingMovies(options: $options) {
+			page
+			total_pages
+			total_results
+			results {
+				adult
+				backdrop_path
+				genre_ids
+				id
+				original_language
+				original_title
+				overview
+				popularity
+				poster_path
+				release_date
+				title
+				video
+				vote_average
+				vote_count
+				images {
+					backdrops {
+						file_path
+					}
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useNowPlayingMoviesQuery__
+ *
+ * To run a query within a React component, call `useNowPlayingMoviesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNowPlayingMoviesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNowPlayingMoviesQuery({
+ *   variables: {
+ *      options: // value for 'options'
+ *   },
+ * });
+ */
+export function useNowPlayingMoviesQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		NowPlayingMoviesQuery,
+		NowPlayingMoviesQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useQuery<NowPlayingMoviesQuery, NowPlayingMoviesQueryVariables>(
+		NowPlayingMoviesDocument,
+		options,
+	);
+}
+export function useNowPlayingMoviesLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		NowPlayingMoviesQuery,
+		NowPlayingMoviesQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useLazyQuery<
+		NowPlayingMoviesQuery,
+		NowPlayingMoviesQueryVariables
+	>(NowPlayingMoviesDocument, options);
+}
+export type NowPlayingMoviesQueryHookResult = ReturnType<
+	typeof useNowPlayingMoviesQuery
+>;
+export type NowPlayingMoviesLazyQueryHookResult = ReturnType<
+	typeof useNowPlayingMoviesLazyQuery
+>;
+export type NowPlayingMoviesQueryResult = Apollo.QueryResult<
+	NowPlayingMoviesQuery,
+	NowPlayingMoviesQueryVariables
+>;
 export const PopularMoviesDocument = gql`
 	query PopularMovies($options: OptionsInput) {
 		popularMovies(options: $options) {

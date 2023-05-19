@@ -83,3 +83,10 @@ export type VoteAverageProps = {
 export type LinksGenresProps = {
 	genres: Array<Genre>;
 };
+
+export type SwiperThumbsGalleryType = {
+	list: Array<Movie>;
+	hasButton: boolean;
+	swiperBox?: object;
+	setActiveImage: Dispatch<SetStateAction<string | null | undefined>>;
+};

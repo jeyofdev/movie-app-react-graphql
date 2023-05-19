@@ -1,4 +1,4 @@
-import MainSwiper from '@components/swiper/MainSwiper';
+import MainSwiper from '@components/swiper/mainSwiper/MainSwiper';
 import { Box, Typography, useTheme } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { SwiperSectionProps } from '../../../types/types/props';
