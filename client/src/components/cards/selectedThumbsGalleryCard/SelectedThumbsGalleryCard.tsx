@@ -1,5 +1,6 @@
 import Tags from '@components/tags/Tags';
 import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
+import VoteAverage from '@components/ui/votes/average/VoteAverage';
 import { Box, Typography, useTheme } from '@mui/material';
 import { truncate } from '@utils/index';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +12,7 @@ const SelectedThumbsGalleryCard = ({
 	genres,
 	runtime,
 	overview,
+	vote_average,
 }: SelectedThumbsGalleryCardProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
@@ -18,15 +20,27 @@ const SelectedThumbsGalleryCard = ({
 
 	return (
 		<Box style={styles.root as object}>
-			<Box>
-				<Typography variant='h4' sx={styles.title}>
-					{title}
-				</Typography>
+			<Box sx={styles.contentBox}>
+				<Box sx={styles.contentTop}>
+					<Typography variant='h4' sx={{ ...styles.title, ...styles.zIndex }}>
+						{title}
+					</Typography>
 
-				<Tags genres={genres} runtime={runtime} />
+					<Box sx={styles.zIndex}>
+						<VoteAverage
+							voteAverage={vote_average as number}
+							sx={styles.voteAverage}
+						/>
+					</Box>
+				</Box>
+
+				<Tags genres={genres} runtime={runtime} sx={styles.voteAverage} />
 
 				{overview && (
-					<Typography variant='body2' sx={styles.overview}>
+					<Typography
+						variant='body2'
+						sx={{ ...styles.overview, ...styles.zIndex }}
+					>
 						{truncate(overview as string, 40)}
 					</Typography>
 				)}
@@ -34,9 +48,9 @@ const SelectedThumbsGalleryCard = ({
 
 			<Box>
 				<BaseButton
-					variant='outlined'
+					variant='contained'
 					onClick={() => navigate('/')}
-					style={styles.button}
+					style={{ ...styles.button, ...styles.zIndex }}
 				>
 					View more
 				</BaseButton>

@@ -35,6 +35,7 @@ const useStyles = (theme: Theme) => ({
 		backgroundColor: theme.palette.common.black,
 		opacity: 0.5,
 		zIndex: 1,
+		borderRadius: '1rem',
 	},
 });
 

@@ -1,29 +1,41 @@
 import { Theme } from '@mui/material';
 
 const useStyles = (theme: Theme) => ({
+	zIndex: {
+		position: 'relative',
+		zIndex: 100,
+	},
 	root: {
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
 		height: `calc(300px - ${theme.spacing(8)})`,
 	},
+	contentBox: {
+		display: 'flex',
+		flexDirection: 'column',
+		gap: '1rem',
+	},
+	contentTop: {
+		display: 'flex',
+		justifyContent: 'flex-start',
+		alignItems: 'center',
+	},
 	title: {
-		position: 'relative',
-		color: theme.palette.primary.main,
-		zIndex: 100,
-		marginBottom: theme.spacing(1.25),
+		color: theme.palette.common.white,
 	},
 	overview: {
-		position: 'relative',
-		color: theme.palette.primary.main,
-		zIndex: 100,
-		marginTop: theme.spacing(1.25),
+		color: theme.palette.common.white,
 		maxWidth: '65%',
 	},
 	button: {
-		position: 'relative',
-		color: theme.palette.primary.main,
-		zIndex: 100,
+		color: theme.palette.common.black,
+		backgroundColor: theme.palette.common.white,
+		border: 'none',
+		boxShadow: 'none',
+	},
+	voteAverage: {
+		color: theme.palette.common.white,
 	},
 });
 

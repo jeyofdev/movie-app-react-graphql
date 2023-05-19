@@ -68,7 +68,7 @@ export type MoviePreviewCardProps = Pick<
 
 export type SelectedThumbsGalleryCardProps = Pick<
 	MovieDetails,
-	'title' | 'runtime' | 'genres' | 'overview'
+	'title' | 'runtime' | 'genres' | 'overview' | 'vote_average'
 >;
 
 export type SwiperSectionProps = {
@@ -86,10 +86,12 @@ export type SwiperSectionProps = {
 
 export type VoteAverageProps = {
 	voteAverage: number;
+	sx?: object;
 };
 
 export type LinksGenresProps = {
 	genres: Array<Genre>;
+	sx?: object;
 };
 
 export type SwiperThumbsGalleryType = {
@@ -100,4 +102,6 @@ export type SwiperThumbsGalleryType = {
 	setActiveImage: Dispatch<SetStateAction<Movie | null>>;
 };
 
-export type TagsProps = Pick<MovieDetails, 'genres' | 'runtime'>;
+export type TagsProps = Pick<MovieDetails, 'genres' | 'runtime'> & {
+	sx?: object;
+};

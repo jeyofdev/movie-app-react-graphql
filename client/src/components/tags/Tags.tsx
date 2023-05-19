@@ -7,7 +7,7 @@ import { formatNumberToHours } from '@utils/index';
 import { TagsProps } from '../../types/types/props';
 import useStyles from './style';
 
-const Tags = ({ runtime, genres }: TagsProps) => {
+const Tags = ({ runtime, genres, sx }: TagsProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 
@@ -15,13 +15,16 @@ const Tags = ({ runtime, genres }: TagsProps) => {
 		<Box sx={styles.root}>
 			<Box sx={styles.movieInfosBox}>
 				{runtime && (
-					<Typography variant='body2' sx={styles.runtime}>
+					<Typography variant='body2' sx={{ ...styles.runtime, ...sx }}>
 						{formatNumberToHours(runtime)}
 					</Typography>
 				)}
 
-				<FontAwesomeIcon icon={faCircle} style={styles.separatorCircle} />
-				<LinksGenres genres={genres as Array<Genre>} />
+				<FontAwesomeIcon
+					icon={faCircle}
+					style={{ ...styles.separatorCircle, ...sx }}
+				/>
+				<LinksGenres genres={genres as Array<Genre>} sx={sx} />
 			</Box>
 		</Box>
 	);
