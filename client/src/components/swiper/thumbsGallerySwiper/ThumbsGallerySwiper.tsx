@@ -20,7 +20,7 @@ const ThumbsGallerySwiper = ({
 	swiperBox,
 }: SwiperThumbsGalleryType) => {
 	const style = useStyles();
-	const handleClick = (newActiveImage: string) => {
+	const handleClick = (newActiveImage: Movie) => {
 		setActiveImage(newActiveImage);
 	};
 
@@ -49,7 +49,7 @@ const ThumbsGallerySwiper = ({
 							sx={{
 								cursor: 'pointer',
 							}}
-							onClick={() => handleClick(item.backdrop_path as string)}
+							onClick={() => handleClick(item)}
 						>
 							{setImageRender(item.backdrop_path as string)}
 						</Button>

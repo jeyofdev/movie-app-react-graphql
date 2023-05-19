@@ -23,7 +23,19 @@ const useStyles = (theme: Theme) => ({
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'top center',
 		backgroundSize: 'cover',
+		borderRadius: '1rem',
+		padding: '2rem 1.25rem',
 	}),
+	mask: {
+		position: 'absolute',
+		top: 0,
+		right: 0,
+		bottom: 0,
+		left: 0,
+		backgroundColor: theme.palette.common.black,
+		opacity: 0.5,
+		zIndex: 1,
+	},
 });
 
 export default useStyles;

@@ -24,7 +24,8 @@ const Home = () => {
 	const [upComingMovies, setUpComingMovies] = useState<Array<Movie>>([]);
 	const [topRatedMovies, setTopRatedMovies] = useState<Array<Movie>>([]);
 
-	const [activeImage, setActiveImage] = useState<string | null>(null);
+	const [activeItemSwiperGallery, setActiveItemSwiperGallery] =
+		useState<Movie | null>(null);
 
 	const [moviesSelectedId, setMoviesSelectedId] = useState<number | null>(null);
 
@@ -33,9 +34,7 @@ const Home = () => {
 
 	const { loading, error } = useNowPlayingMoviesQuery({
 		onCompleted(data) {
-			setActiveImage(
-				data?.nowPlayingMovies?.results[0]?.backdrop_path as string,
-			);
+			setActiveItemSwiperGallery(data?.nowPlayingMovies?.results[0] as Movie);
 
 			setNowPlayingMovies(
 				data?.nowPlayingMovies?.results
@@ -123,10 +122,10 @@ const Home = () => {
 							swiperType='thumbs-gallery'
 							title='Popular movies'
 							list={nowPlayingMovies}
-							activeImage={activeImage}
+							activeItemSwiperGallery={activeItemSwiperGallery}
 							moviesListCategory={MoviesListCategoryEnum.POPULAR}
 							setMoviesListCategory={setMoviesListCategory}
-							setActiveImage={setActiveImage}
+							setActiveItemSwiperGallery={setActiveItemSwiperGallery}
 						/>
 					</Box>
 

@@ -66,13 +66,18 @@ export type MoviePreviewCardProps = Pick<
 	stylesBox: object;
 };
 
+export type SelectedThumbsGalleryCardProps = Pick<
+	MovieDetails,
+	'title' | 'runtime' | 'genres'
+>;
+
 export type SwiperSectionProps = {
 	swiperType?: 'default' | 'thumbs-gallery';
 	title: string;
 	list: Array<Movie>;
 	moviesListCategory: MoviesListCategoryEnum;
-	activeImage?: string | null;
-	setActiveImage?: Dispatch<SetStateAction<string | null>>;
+	activeItemSwiperGallery?: Movie | null;
+	setActiveItemSwiperGallery?: Dispatch<SetStateAction<Movie | null>>;
 	setMoviesSelectedId?: Dispatch<SetStateAction<number | null>>;
 	setMoviesListCategory: Dispatch<
 		SetStateAction<MoviesListCategoryEnum | null>
@@ -91,5 +96,7 @@ export type SwiperThumbsGalleryType = {
 	list: Array<Movie>;
 	hasButton: boolean;
 	swiperBox?: object;
-	setActiveImage: Dispatch<SetStateAction<string | null>>;
+	setActiveImage: Dispatch<SetStateAction<Movie | null>>;
 };
+
+export type TagsProps = Pick<MovieDetails, 'genres' | 'runtime'>;
