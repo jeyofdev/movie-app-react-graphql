@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Button, useTheme } from '@mui/material';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { FreeMode, Navigation, Thumbs } from 'swiper';
@@ -16,18 +16,22 @@ import useStyles from './style';
 const ThumbsGallerySwiper = ({
 	list,
 	hasButton,
+	activeItemSwiperGallery,
 	setActiveImage,
 	swiperBox,
 }: SwiperThumbsGalleryType) => {
-	const style = useStyles();
-	const handleClick = (newActiveImage: string) => {
+	const theme = useTheme();
+	const style = useStyles(theme);
+	const handleClick = (newActiveImage: Movie) => {
 		setActiveImage(newActiveImage);
 	};
 
-	const setImageRender = (imageSrc: string) => (
+	const setImageRender = (movie: Movie) => (
 		<img
-			src={`https://image.tmdb.org/t/p/w500/${imageSrc}`}
-			style={style.swiperSlideImg}
+			src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+			style={{
+				...style.swiperSlideImg(activeItemSwiperGallery.id === movie.id),
+			}}
 		/>
 	);
 
@@ -49,12 +53,12 @@ const ThumbsGallerySwiper = ({
 							sx={{
 								cursor: 'pointer',
 							}}
-							onClick={() => handleClick(item.backdrop_path as string)}
+							onClick={() => handleClick(item)}
 						>
-							{setImageRender(item.backdrop_path as string)}
+							{setImageRender(item)}
 						</Button>
 					) : (
-						setImageRender(item.backdrop_path as string)
+						setImageRender(item)
 					)}
 				</SwiperSlide>
 			))}

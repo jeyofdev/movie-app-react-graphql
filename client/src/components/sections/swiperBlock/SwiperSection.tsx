@@ -1,5 +1,7 @@
+import SelectedThumbsGalleryCard from '@components/cards/selectedThumbsGalleryCard/SelectedThumbsGalleryCard';
 import MainSwiper from '@components/swiper/mainSwiper/MainSwiper';
 import ThumbsGallerySwiper from '@components/swiper/thumbsGallerySwiper/ThumbsGallerySwiper';
+import { Movie } from '@graphql/__generated__/graphql-type';
 import { Box, Typography, useTheme } from '@mui/material';
 import { Dispatch, SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
@@ -11,8 +13,8 @@ const SwiperSection = ({
 	title,
 	list,
 	moviesListCategory,
-	activeImage,
-	setActiveImage,
+	activeItemSwiperGallery,
+	setActiveItemSwiperGallery,
 	setMoviesSelectedId,
 	setMoviesListCategory,
 }: SwiperSectionProps) => {
@@ -44,13 +46,30 @@ const SwiperSection = ({
 					/>
 				</>
 			) : (
-				<Box sx={styles.swiperContentBox(activeImage as string)}>
+				<Box
+					sx={styles.swiperContentBox(
+						activeItemSwiperGallery?.backdrop_path as string,
+					)}
+				>
+					<Box style={styles.mask as object} />
+					<SelectedThumbsGalleryCard
+						title={activeItemSwiperGallery?.title}
+						vote_average={activeItemSwiperGallery?.vote_average}
+						runtime={125}
+						genres={[
+							{ id: 1, name: 'action' },
+							{ id: 2, name: 'Comedy' },
+						]}
+						overview={activeItemSwiperGallery?.overview}
+					/>
+
 					<ThumbsGallerySwiper
 						list={list}
 						hasButton
+						activeItemSwiperGallery={activeItemSwiperGallery as Movie}
 						setActiveImage={
-							setActiveImage as React.Dispatch<
-								React.SetStateAction<string | null>
+							setActiveItemSwiperGallery as Dispatch<
+								SetStateAction<Movie | null>
 							>
 						}
 						swiperBox={{}}

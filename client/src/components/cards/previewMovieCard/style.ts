@@ -46,20 +46,8 @@ const useStyles = (theme: Theme) => ({
 	overview: {
 		color: theme.palette.primary.main,
 	},
-	runtime: {
-		color: theme.palette.primary.main,
-	},
 	button: {
 		alignSelf: 'flex-start',
-	},
-	separatorCircle: {
-		color: theme.palette.primary.main,
-		fontSize: '0.4rem',
-		margin: `0 ${theme.spacing(1)}`,
-	},
-	movieInfosBox: {
-		display: 'flex',
-		alignItems: 'center',
 	},
 });
 

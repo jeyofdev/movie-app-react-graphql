@@ -1,11 +1,8 @@
+import Tags from '@components/tags/Tags';
 import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
-import LinksGenres from '@components/ui/link/linksGenres/LinkGenre';
 import VoteAverage from '@components/ui/votes/average/VoteAverage';
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Genre } from '@graphql/__generated__/graphql-type';
 import { Box, Typography, useTheme } from '@mui/material';
-import { formatNumberToHours, truncate } from '@utils/index';
+import { truncate } from '@utils/index';
 import { useNavigate } from 'react-router-dom';
 import { useWindowSize } from 'usehooks-ts';
 import { BreakpointEnum } from '../../../types/enums';
@@ -45,18 +42,7 @@ const MoviePreviewCard = ({
 					<VoteAverage voteAverage={vote_average as number} />
 				</Box>
 
-				<Box>
-					<Box sx={styles.movieInfosBox}>
-						{runtime && (
-							<Typography variant='body2' sx={styles.runtime}>
-								{formatNumberToHours(runtime)}
-							</Typography>
-						)}
-
-						<FontAwesomeIcon icon={faCircle} style={styles.separatorCircle} />
-						<LinksGenres genres={genres as Array<Genre>} />
-					</Box>
-				</Box>
+				<Tags genres={genres} runtime={runtime} />
 
 				{overview && (
 					<Typography variant='body2' sx={styles.overview}>
