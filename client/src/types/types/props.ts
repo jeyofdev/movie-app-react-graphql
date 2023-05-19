@@ -96,6 +96,7 @@ export type SwiperThumbsGalleryType = {
 	list: Array<Movie>;
 	hasButton: boolean;
 	swiperBox?: object;
+	activeItemSwiperGallery: Movie;
 	setActiveImage: Dispatch<SetStateAction<Movie | null>>;
 };
 

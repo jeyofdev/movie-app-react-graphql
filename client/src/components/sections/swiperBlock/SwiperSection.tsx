@@ -65,6 +65,7 @@ const SwiperSection = ({
 					<ThumbsGallerySwiper
 						list={list}
 						hasButton
+						activeItemSwiperGallery={activeItemSwiperGallery as Movie}
 						setActiveImage={
 							setActiveItemSwiperGallery as Dispatch<
 								SetStateAction<Movie | null>
