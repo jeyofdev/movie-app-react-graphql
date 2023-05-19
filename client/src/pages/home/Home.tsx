@@ -25,7 +25,6 @@ const Home = () => {
 	const [upComingMovies, setUpComingMovies] = useState<Array<Movie>>([]);
 	const [topRatedMovies, setTopRatedMovies] = useState<Array<Movie>>([]);
 
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [activeImages, setActiveImages] = useState<string | null | undefined>(
 		null,
 	);
@@ -37,6 +36,8 @@ const Home = () => {
 
 	const { loading, error } = useNowPlayingMoviesQuery({
 		onCompleted(data) {
+			setActiveImages(data?.nowPlayingMovies?.results[0]?.backdrop_path);
+
 			setNowPlayingMovies(
 				data?.nowPlayingMovies?.results
 					? (data?.nowPlayingMovies?.results.slice(0, 5) as Array<Movie>)
@@ -119,11 +120,14 @@ const Home = () => {
 					</Box>
 
 					<Box sx={styles.sectionBox}>
-						<ThumbsGallerySwiper
-							list={nowPlayingMovies}
-							hasButton
-							setActiveImage={setActiveImages}
-						/>
+						<Box sx={styles.swiperContentBox(activeImages as string)}>
+							<ThumbsGallerySwiper
+								list={nowPlayingMovies}
+								hasButton
+								setActiveImage={setActiveImages}
+								swiperBox={{}}
+							/>
+						</Box>
 					</Box>
 
 					<Box sx={styles.sectionBox}>

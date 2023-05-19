@@ -36,11 +36,11 @@ const ThumbsGallerySwiper = ({
 			spaceBetween={10}
 			slidesPerView={4}
 			freeMode={true}
-			navigation={true}
+			navigation={false}
 			loop={true}
 			watchSlidesProgress={true}
 			modules={[FreeMode, Navigation, Thumbs]}
-			style={{ ...style.swiper, ...swiperBox }}
+			style={{ ...style.swiper, ...swiperBox } as object}
 		>
 			{list.map((item: Movie) => (
 				<SwiperSlide key={item.id} style={style.swiperSlide}>

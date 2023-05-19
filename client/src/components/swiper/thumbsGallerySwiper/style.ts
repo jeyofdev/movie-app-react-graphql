@@ -1,6 +1,9 @@
 const useStyles = () => ({
 	swiper: {
-		width: '100%',
+		position: 'absolute',
+		bottom: '0px',
+		right: 0,
+		width: '50%',
 	},
 	swiperSlide: {
 		backgroundPosition: 'center',
@@ -9,7 +12,7 @@ const useStyles = () => ({
 	swiperSlideImg: {
 		display: 'block',
 		width: '100%',
-		height: '90px',
+		height: '50px',
 		borderRadius: '0.75rem',
 	},
 	swiperSlideBtn: {
