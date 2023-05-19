@@ -51,7 +51,7 @@ const SwiperSection = ({
 						activeItemSwiperGallery?.backdrop_path as string,
 					)}
 				>
-					<Box style={styles.mask}>{undefined}</Box>
+					<Box style={styles.mask as object} />
 					<SelectedThumbsGalleryCard
 						title={activeItemSwiperGallery?.title}
 						runtime={125}
@@ -59,6 +59,7 @@ const SwiperSection = ({
 							{ id: 1, name: 'action' },
 							{ id: 2, name: 'Comedy' },
 						]}
+						overview={activeItemSwiperGallery?.overview}
 					/>
 
 					<ThumbsGallerySwiper

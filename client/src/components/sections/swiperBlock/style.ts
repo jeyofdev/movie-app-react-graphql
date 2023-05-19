@@ -24,7 +24,7 @@ const useStyles = (theme: Theme) => ({
 		backgroundPosition: 'top center',
 		backgroundSize: 'cover',
 		borderRadius: '1rem',
-		padding: '2rem 1.25rem',
+		padding: `${theme.spacing(8)} ${theme.spacing(5)}`,
 	}),
 	mask: {
 		position: 'absolute',

@@ -68,7 +68,7 @@ export type MoviePreviewCardProps = Pick<
 
 export type SelectedThumbsGalleryCardProps = Pick<
 	MovieDetails,
-	'title' | 'runtime' | 'genres'
+	'title' | 'runtime' | 'genres' | 'overview'
 >;
 
 export type SwiperSectionProps = {
