@@ -29,16 +29,6 @@ const useStyles = (theme: Theme) => ({
 	previewBox: {
 		marginTop: theme.spacing(1.5),
 	},
-	swiperContentBox: (backgroundImage: string) => ({
-		position: 'relative',
-		width: '100%',
-		minHeight: '300px',
-		backgroundColor: 'transparent',
-		backgroundImage: `url(https://image.tmdb.org/t/p/original/${backgroundImage})`,
-		backgroundRepeat: 'no-repeat',
-		backgroundPosition: 'top center',
-		backgroundSize: 'cover',
-	}),
 });
 
 export default useStyles;

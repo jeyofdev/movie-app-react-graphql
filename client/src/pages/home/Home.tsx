@@ -2,7 +2,6 @@ import PreviewMovieCard from '@components/cards/previewMovieCard/MoviePreviewCar
 import MainContainer from '@components/containers/mainContainer/MainContainer';
 import SwiperSection from '@components/sections/swiperBlock/SwiperSection';
 import Sidebar from '@components/sidebar/sidebar/Sidebar';
-import ThumbsGallerySwiper from '@components/swiper/thumbsGallerySwiper/ThumbsGallerySwiper';
 import { ThemeContext } from '@context/ThemeContext';
 import {
 	Movie,
@@ -25,9 +24,7 @@ const Home = () => {
 	const [upComingMovies, setUpComingMovies] = useState<Array<Movie>>([]);
 	const [topRatedMovies, setTopRatedMovies] = useState<Array<Movie>>([]);
 
-	const [activeImages, setActiveImages] = useState<string | null | undefined>(
-		null,
-	);
+	const [activeImage, setActiveImage] = useState<string | null>(null);
 
 	const [moviesSelectedId, setMoviesSelectedId] = useState<number | null>(null);
 
@@ -36,7 +33,9 @@ const Home = () => {
 
 	const { loading, error } = useNowPlayingMoviesQuery({
 		onCompleted(data) {
-			setActiveImages(data?.nowPlayingMovies?.results[0]?.backdrop_path);
+			setActiveImage(
+				data?.nowPlayingMovies?.results[0]?.backdrop_path as string,
+			);
 
 			setNowPlayingMovies(
 				data?.nowPlayingMovies?.results
@@ -120,14 +119,15 @@ const Home = () => {
 					</Box>
 
 					<Box sx={styles.sectionBox}>
-						<Box sx={styles.swiperContentBox(activeImages as string)}>
-							<ThumbsGallerySwiper
-								list={nowPlayingMovies}
-								hasButton
-								setActiveImage={setActiveImages}
-								swiperBox={{}}
-							/>
-						</Box>
+						<SwiperSection
+							swiperType='thumbs-gallery'
+							title='Popular movies'
+							list={nowPlayingMovies}
+							activeImage={activeImage}
+							moviesListCategory={MoviesListCategoryEnum.POPULAR}
+							setMoviesListCategory={setMoviesListCategory}
+							setActiveImage={setActiveImage}
+						/>
 					</Box>
 
 					<Box sx={styles.sectionBox}>
