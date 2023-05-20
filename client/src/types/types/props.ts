@@ -75,6 +75,7 @@ export type SwiperSectionProps = {
 	swiperType?: 'default' | 'thumbs-gallery';
 	title: string;
 	list: Array<Movie>;
+	linkAllResult?: string;
 	moviesListCategory: MoviesListCategoryEnum;
 	activeItemSwiperGallery?: Movie | null;
 	setActiveItemSwiperGallery?: Dispatch<SetStateAction<Movie | null>>;
