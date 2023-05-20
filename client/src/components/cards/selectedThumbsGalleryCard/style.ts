@@ -9,7 +9,7 @@ const useStyles = (theme: Theme) => ({
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
-		height: `calc(300px - ${theme.spacing(8)})`,
+		gap: '1rem',
 	},
 	contentBox: {
 		display: 'flex',
@@ -26,13 +26,20 @@ const useStyles = (theme: Theme) => ({
 	},
 	overview: {
 		color: theme.palette.common.white,
-		maxWidth: '65%',
+		maxWidth: {
+			sm: '100%',
+			md: '80%',
+		},
 	},
 	button: {
 		color: theme.palette.common.black,
 		backgroundColor: theme.palette.common.white,
 		border: 'none',
 		boxShadow: 'none',
+
+		'&:hover': {
+			backgroundColor: theme.palette.common.white,
+		},
 	},
 	voteAverage: {
 		color: theme.palette.common.white,
