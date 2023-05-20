@@ -5,6 +5,7 @@ import {
 	MovieDetails,
 } from '@graphql/__generated__/graphql-type';
 import { Dispatch, ReactNode, SetStateAction } from 'react';
+import { Variant } from '@mui/material/styles/createTypography';
 import { MoviesListCategoryEnum } from '../enums';
 
 export type ThemeContextProviderPropsType = {
@@ -87,7 +88,9 @@ export type SwiperSectionProps = {
 
 export type VoteAverageProps = {
 	voteAverage: number;
-	sx?: object;
+	typoStyle?: object;
+	typoVariant?: Variant;
+	iconStyle?: object;
 };
 
 export type LinksGenresProps = {
@@ -106,3 +109,8 @@ export type SwiperThumbsGalleryType = {
 export type TagsProps = Pick<MovieDetails, 'genres' | 'runtime'> & {
 	sx?: object;
 };
+
+export type ListResultCardProps = Pick<
+	Movie,
+	'id' | 'title' | 'poster_path' | 'vote_average'
+>;

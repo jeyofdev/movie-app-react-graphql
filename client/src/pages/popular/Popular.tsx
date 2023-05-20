@@ -1,8 +1,9 @@
+import ListResultCard from '@components/cards/listResultCard/ListResultCard';
 import MainContainer from '@components/containers/mainContainer/MainContainer';
 import Sidebar from '@components/sidebar/sidebar/Sidebar';
 import { ThemeContext } from '@context/ThemeContext';
 import { usePopularMoviesQuery } from '@graphql/__generated__/graphql-type';
-import { Box, Button, Typography, useTheme } from '@mui/material';
+import { Box, Button, useTheme } from '@mui/material';
 import { useContext } from 'react';
 import useStyles from './style';
 
@@ -37,11 +38,17 @@ const Popular = () => {
 						</Button>
 					</Box>
 
-					{data?.popularMovies?.results?.map(movie => (
-						<Typography key={movie?.id} variant='h5' sx={styles.title}>
-							{movie?.title}
-						</Typography>
-					))}
+					<Box sx={styles.cards}>
+						{data?.popularMovies?.results?.map(movie => (
+							<ListResultCard
+								key={movie?.id}
+								id={movie?.id}
+								poster_path={movie?.poster_path}
+								title={movie?.title}
+								vote_average={movie?.vote_average}
+							/>
+						))}
+					</Box>
 				</Box>
 			</MainContainer>
 		</Box>

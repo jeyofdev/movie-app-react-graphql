@@ -185,7 +185,7 @@ export const globalTheme = createTheme({
 			fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
 			fontWeight: 400,
 			fontSize: '1rem',
-			lineHeight: 1.75,
+			lineHeight: 1.25,
 			letterSpacing: '0.00938em',
 
 			[theme.breakpoints.up('sm')]: {
@@ -385,7 +385,7 @@ export const lightTheme = createTheme({
 			main: '#222933',
 			dark: '#222933',
 			light: '#ffffff',
-			contrastText: '#222933',
+			contrastText: '#ffffff',
 		},
 		secondary: {
 			dark: '#222933',

@@ -32,7 +32,7 @@ const SelectedThumbsGalleryCard = ({
 					<Box sx={styles.zIndex}>
 						<VoteAverage
 							voteAverage={vote_average as number}
-							sx={styles.voteAverage}
+							typoStyle={styles.voteAverage}
 						/>
 					</Box>
 				</Box>

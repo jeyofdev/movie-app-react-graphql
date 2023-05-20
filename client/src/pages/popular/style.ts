@@ -19,8 +19,10 @@ const useStyles = (theme: Theme) => ({
 			xl: 'auto / span 11',
 		},
 	},
-	title: {
-		color: theme.palette.primary.main,
+	cards: {
+		display: 'grid',
+		gridTemplateColumns: 'repeat(12, 1fr)',
+		gap: `${theme.spacing(4)} ${theme.spacing(2)}`,
 	},
 });
 
