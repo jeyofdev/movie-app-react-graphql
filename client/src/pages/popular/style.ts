@@ -18,11 +18,31 @@ const useStyles = (theme: Theme) => ({
 			lg: 'auto / span 10',
 			xl: 'auto / span 11',
 		},
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+	},
+	darkMode: {
+		alignSelf: 'flex-start',
 	},
 	cards: {
 		display: 'grid',
 		gridTemplateColumns: 'repeat(12, 1fr)',
-		gap: `${theme.spacing(4)} ${theme.spacing(2)}`,
+		gap: {
+			xs: `${theme.spacing(4)} ${theme.spacing(2)}`,
+			sm: `${theme.spacing(4)} ${theme.spacing(3)}`,
+			md: `${theme.spacing(4)} ${theme.spacing(3)}`,
+			lg: `${theme.spacing(4)} ${theme.spacing(3)}`,
+			xl: `${theme.spacing(5)} ${theme.spacing(4)}`,
+		},
+		maxWidth: {
+			xs: '200px',
+			sm: '400px',
+			md: '600px',
+			lg: '850px',
+			xl: '1350px',
+		},
+		justifyContent: 'center',
 	},
 });
 
