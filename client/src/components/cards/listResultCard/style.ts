@@ -3,7 +3,13 @@ import { Theme } from '@mui/material';
 const useStyles = (theme: Theme) => ({
 	root: {
 		position: 'relative',
-		gridColumn: 'auto / span 3',
+		gridColumn: {
+			xs: 'auto / span 12',
+			sm: 'auto / span 6',
+			md: 'auto / span 4',
+			lg: 'auto / span 3',
+			xl: 'auto / span 2',
+		},
 		borderRadius: '0.625rem',
 		overflow: 'hidden',
 		border: `2px solid ${theme.palette.primary.main}`,
@@ -11,7 +17,13 @@ const useStyles = (theme: Theme) => ({
 	},
 	poster: {
 		width: '100%',
-		height: 280,
+		height: {
+			xs: '250px',
+			sm: '250px',
+			md: '250px',
+			lg: '260px',
+			xl: '260px',
+		},
 		backgroundSize: 'contain',
 	},
 	contentBox: {

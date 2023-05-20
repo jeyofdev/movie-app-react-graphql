@@ -27,7 +27,7 @@ const Popular = () => {
 			<MainContainer>
 				<Sidebar />
 				<Box sx={styles.primaryContentBox}>
-					<Box>
+					<Box sx={styles.darkMode}>
 						<Button
 							color='primary'
 							onClick={() => {
