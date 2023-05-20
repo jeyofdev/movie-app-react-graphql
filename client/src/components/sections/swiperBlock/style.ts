@@ -17,14 +17,23 @@ const useStyles = (theme: Theme) => ({
 	swiperContentBox: (backgroundImage: string) => ({
 		position: 'relative',
 		width: '100%',
-		minHeight: '300px',
+		minHeight: {
+			xs: '450px',
+			sm: '425px',
+			md: '400px',
+		},
 		backgroundColor: 'transparent',
 		backgroundImage: `url(https://image.tmdb.org/t/p/original/${backgroundImage})`,
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'top center',
 		backgroundSize: 'cover',
 		borderRadius: '1rem',
-		padding: `${theme.spacing(8)} ${theme.spacing(5)}`,
+		padding: {
+			xs: `${theme.spacing(3.5)} ${theme.spacing(3)}`,
+			sm: `${theme.spacing(4.5)} ${theme.spacing(4)}`,
+			md: `${theme.spacing(5.5)} ${theme.spacing(4)}`,
+			lg: `${theme.spacing(8)} ${theme.spacing(6)}`,
+		},
 	}),
 	mask: {
 		position: 'absolute',

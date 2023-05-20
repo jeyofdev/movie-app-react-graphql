@@ -5,6 +5,8 @@ import { Movie } from '@graphql/__generated__/graphql-type';
 import { Box, Typography, useTheme } from '@mui/material';
 import { Dispatch, SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
+import { useWindowSize } from 'usehooks-ts';
+import { BreakpointEnum } from '../../../types/enums';
 import { SwiperSectionProps } from '../../../types/types/props';
 import useStyles from './style';
 
@@ -20,6 +22,17 @@ const SwiperSection = ({
 }: SwiperSectionProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
+	const { width } = useWindowSize();
+
+	const thumbsBoxSize = () => {
+		if (width >= BreakpointEnum.XL) return { width: '50%', right: '0' };
+		if (width >= BreakpointEnum.LG) return { width: '50%', right: '0' };
+		if (width >= 1200) return { width: '75%', right: '0' };
+		if (width >= BreakpointEnum.MD) return { width: '90%', right: '0' };
+		if (width >= BreakpointEnum.SM) return { width: '90%', right: '0' };
+
+		return { width: '100%', left: '0' };
+	};
 
 	return (
 		<>
@@ -72,7 +85,7 @@ const SwiperSection = ({
 								SetStateAction<Movie | null>
 							>
 						}
-						swiperBox={{}}
+						swiperBox={thumbsBoxSize() as object}
 					/>
 				</Box>
 			)}
