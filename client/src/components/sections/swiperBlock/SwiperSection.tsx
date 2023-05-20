@@ -14,6 +14,7 @@ const SwiperSection = ({
 	swiperType,
 	title,
 	list,
+	linkAllResult,
 	moviesListCategory,
 	activeItemSwiperGallery,
 	setActiveItemSwiperGallery,
@@ -43,7 +44,7 @@ const SwiperSection = ({
 							{title}
 						</Typography>
 
-						<Link to='/' style={styles.link}>
+						<Link to={linkAllResult as string} style={styles.link}>
 							<Typography variant='h6'>See all</Typography>
 						</Link>
 					</Box>

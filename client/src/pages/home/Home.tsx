@@ -133,6 +133,7 @@ const Home = () => {
 						<SwiperSection
 							title='Popular movies'
 							list={popularMovies}
+							linkAllResult='/movies/popular'
 							moviesListCategory={MoviesListCategoryEnum.POPULAR}
 							setMoviesSelectedId={setMoviesSelectedId}
 							setMoviesListCategory={setMoviesListCategory}
