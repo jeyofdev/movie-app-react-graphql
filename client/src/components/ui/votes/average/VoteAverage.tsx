@@ -9,12 +9,19 @@ const VoteAverage = ({
 	typoStyle,
 	typoVariant,
 	iconStyle,
+	hasBackground,
 }: VoteAverageProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 
 	return (
-		<Box sx={styles.root}>
+		<Box
+			sx={
+				hasBackground
+					? { ...styles.root, ...styles.boxWithBackground }
+					: styles.root
+			}
+		>
 			<FontAwesomeIcon
 				icon={faStar}
 				style={{ ...styles.voteStar, ...iconStyle }}

@@ -36,17 +36,9 @@ const useStyles = (theme: Theme) => ({
 		position: 'absolute',
 		top: '0.75rem',
 		left: '0.75rem',
-		background: theme.palette.common.black,
-		borderRadius: '1rem',
-		padding: `${theme.spacing(0.35)} ${theme.spacing(0.9)}`,
 	},
 	voteIcon: {
 		fontSize: '0.75rem',
-		margin: '0',
-		marginRight: theme.spacing(1),
-	},
-	typeIcon: {
-		color: theme.palette.common.white,
 	},
 });
 
