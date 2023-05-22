@@ -157,6 +157,7 @@ const Home = () => {
 						<SwiperSection
 							title='Upcoming movies'
 							list={upComingMovies}
+							linkAllResult='/movies/upcoming'
 							moviesListCategory={MoviesListCategoryEnum.UP_COMING}
 							setMoviesSelectedId={setMoviesSelectedId}
 							setMoviesListCategory={setMoviesListCategory}
