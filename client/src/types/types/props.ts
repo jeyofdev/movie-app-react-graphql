@@ -115,3 +115,7 @@ export type ListResultCardProps = Pick<
 	Movie,
 	'id' | 'title' | 'poster_path' | 'vote_average'
 >;
+
+export type ListContainerProps = {
+	list: Array<Movie>;
+};
