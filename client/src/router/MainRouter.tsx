@@ -1,4 +1,3 @@
-import ComingSoon from '@pages/comingSoon/ComingSoon';
 import Home from '@pages/home/Home';
 import NotFound from '@pages/notFound/NotFound';
 import NowPlaying from '@pages/nowPlaying/NowPlaying';
@@ -17,8 +16,6 @@ const MainRouter = () => (
 		<Route path='/' element={<Home />}>
 			<Route path='home' element={<Home />} />
 		</Route>
-
-		<Route path='coming-soon' element={<ComingSoon />} />
 
 		<Route path='*' element={<NotFound />} />
 	</Routes>

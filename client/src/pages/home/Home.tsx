@@ -38,7 +38,7 @@ const Home = () => {
 
 			setNowPlayingMovies(
 				data?.nowPlayingMovies?.results
-					? (data?.nowPlayingMovies?.results.slice(0, 5) as Array<Movie>)
+					? (data?.nowPlayingMovies?.results as Array<Movie>)
 					: [],
 			);
 		},
@@ -121,7 +121,7 @@ const Home = () => {
 						<SwiperSection
 							swiperType='thumbs-gallery'
 							title='Popular movies'
-							list={nowPlayingMovies}
+							list={nowPlayingMovies?.slice(0, 10)}
 							activeItemSwiperGallery={activeItemSwiperGallery}
 							moviesListCategory={MoviesListCategoryEnum.POPULAR}
 							setMoviesListCategory={setMoviesListCategory}
@@ -188,6 +188,30 @@ const Home = () => {
 						/>
 
 						{moviesListCategory === MoviesListCategoryEnum.TOP_RATING &&
+							moviesSelectedId && (
+								<PreviewMovieCard
+									title={moviePreviewData?.movieDetails?.title}
+									backdrop_path={moviePreviewData?.movieDetails?.backdrop_path}
+									overview={moviePreviewData?.movieDetails?.overview}
+									genres={moviePreviewData?.movieDetails?.genres}
+									runtime={moviePreviewData?.movieDetails?.runtime}
+									vote_average={moviePreviewData?.movieDetails?.vote_average}
+									stylesBox={styles.previewBox}
+								/>
+							)}
+					</Box>
+
+					<Box sx={styles.sectionBox}>
+						<SwiperSection
+							title='Now Playing'
+							list={nowPlayingMovies}
+							linkAllResult='/movies/now-playing'
+							moviesListCategory={MoviesListCategoryEnum.NOW_PLAYING}
+							setMoviesSelectedId={setMoviesSelectedId}
+							setMoviesListCategory={setMoviesListCategory}
+						/>
+
+						{moviesListCategory === MoviesListCategoryEnum.NOW_PLAYING &&
 							moviesSelectedId && (
 								<PreviewMovieCard
 									title={moviePreviewData?.movieDetails?.title}

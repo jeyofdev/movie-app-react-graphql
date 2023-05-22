@@ -22,7 +22,7 @@ const newsFeedItems: MenuItemType[] = [
 		id: uuidv4(),
 		name: 'coming soon',
 		icon: faCalendarCheck,
-		link: '/coming-soon',
+		link: '/movies/upcoming',
 	},
 	{ id: uuidv4(), name: 'playlist', icon: faRectangleList, link: '/playlist' },
 	{ id: uuidv4(), name: 'videos', icon: faFilm, link: '/video' },

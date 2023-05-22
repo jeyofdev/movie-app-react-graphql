@@ -15,4 +15,5 @@ export enum MoviesListCategoryEnum {
 	POPULAR = 'popular',
 	UP_COMING = 'upcoming',
 	TOP_RATING = 'top-rating',
+	NOW_PLAYING = 'now-playing',
 }
