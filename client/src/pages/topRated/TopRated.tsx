@@ -6,6 +6,7 @@ import {
 	useTopRatedMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
 import { Box, useTheme } from '@mui/material';
+import { useEffect } from 'react';
 import useStyles from './style';
 
 const TopRated = () => {
@@ -13,6 +14,10 @@ const TopRated = () => {
 	const styles = useStyles(theme);
 
 	const { loading, error, data } = useTopRatedMoviesQuery();
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	if (loading) {
 		return <Box>Loading...</Box>;

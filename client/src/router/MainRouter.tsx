@@ -2,7 +2,7 @@ import ComingSoon from '@pages/comingSoon/ComingSoon';
 import Home from '@pages/home/Home';
 import NotFound from '@pages/notFound/NotFound';
 import Popular from '@pages/popular/Popular';
-import TopRated from '@pages/topRated/UpComing';
+import TopRated from '@pages/topRated/TopRated';
 import Upcoming from '@pages/upComing/UpComing';
 import { Route, Routes } from 'react-router-dom';
 

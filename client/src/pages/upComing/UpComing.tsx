@@ -6,6 +6,7 @@ import {
 	useUpcomingMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
 import { Box, useTheme } from '@mui/material';
+import { useEffect } from 'react';
 import useStyles from './style';
 
 const Upcoming = () => {
@@ -13,6 +14,10 @@ const Upcoming = () => {
 	const styles = useStyles(theme);
 
 	const { loading, error, data } = useUpcomingMoviesQuery();
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	if (loading) {
 		return <Box>Loading...</Box>;
