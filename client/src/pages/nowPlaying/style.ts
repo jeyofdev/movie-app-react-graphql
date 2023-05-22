@@ -8,7 +8,7 @@ const useStyles = (theme: Theme) => ({
 		justifyContent: 'center',
 		minHeight: '100vh',
 		backgroundColor: theme.palette.background.default,
-		padding: `0 ${theme.spacing(2)}`,
+		padding: { xs: 0, sm: theme.spacing(3) },
 	},
 });
 

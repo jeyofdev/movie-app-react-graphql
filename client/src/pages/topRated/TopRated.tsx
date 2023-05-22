@@ -3,17 +3,17 @@ import MainContainer from '@components/containers/mainContainer/MainContainer';
 import Sidebar from '@components/sidebar/sidebar/Sidebar';
 import {
 	Movie,
-	usePopularMoviesQuery,
+	useTopRatedMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
 import { Box, useTheme } from '@mui/material';
 import { useEffect } from 'react';
 import useStyles from './style';
 
-const Popular = () => {
+const TopRated = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 
-	const { loading, error, data } = usePopularMoviesQuery();
+	const { loading, error, data } = useTopRatedMoviesQuery();
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -31,10 +31,10 @@ const Popular = () => {
 		<Box sx={styles.root}>
 			<MainContainer>
 				<Sidebar />
-				<ListContainer list={data?.popularMovies?.results as Array<Movie>} />
+				<ListContainer list={data?.topRatedMovies?.results as Array<Movie>} />
 			</MainContainer>
 		</Box>
 	);
 };
 
-export default Popular;
+export default TopRated;
