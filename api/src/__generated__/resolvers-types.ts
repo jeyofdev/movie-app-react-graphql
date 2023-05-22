@@ -273,6 +273,7 @@ export type Query = {
 	personCrewByMovie?: Maybe<PersonCrewResponse>;
 	personDetails?: Maybe<Person>;
 	popularMovies?: Maybe<MoviesResponse>;
+	searchMoviesByGenre?: Maybe<MoviesResponse>;
 	similarMovie?: Maybe<MoviesResponse>;
 	topRatedMovies?: Maybe<MoviesResponse>;
 	translationsByCollection?: Maybe<MoviesCollectionTranslateResponse>;
@@ -340,6 +341,10 @@ export type QueryPopularMoviesArgs = {
 	options?: InputMaybe<OptionsInput>;
 };
 
+export type QuerySearchMoviesByGenreArgs = {
+	searchOptions?: InputMaybe<SearchInput>;
+};
+
 export type QuerySimilarMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
 	options?: InputMaybe<OptionsInput>;
@@ -364,6 +369,13 @@ export enum RegionEnum {
 	Fr = 'FR',
 	Us = 'US',
 }
+
+export type SearchInput = {
+	language?: InputMaybe<LanguageEnum>;
+	page?: InputMaybe<Scalars['Int']>;
+	region?: InputMaybe<RegionEnum>;
+	with_genres?: InputMaybe<Scalars['Int']>;
+};
 
 export type Spoken_Languages = {
 	__typename?: 'spoken_languages';
@@ -511,6 +523,7 @@ export type ResolversTypes = ResolversObject<{
 	ProductionCountry: ResolverTypeWrapper<ProductionCountry>;
 	Query: ResolverTypeWrapper<{}>;
 	RegionEnum: RegionEnum;
+	SearchInput: SearchInput;
 	String: ResolverTypeWrapper<Scalars['String']>;
 	spoken_languages: ResolverTypeWrapper<Spoken_Languages>;
 }>;
@@ -545,6 +558,7 @@ export type ResolversParentTypes = ResolversObject<{
 	ProductionCompany: ProductionCompany;
 	ProductionCountry: ProductionCountry;
 	Query: {};
+	SearchInput: SearchInput;
 	String: Scalars['String'];
 	spoken_languages: Spoken_Languages;
 }>;
@@ -1180,6 +1194,12 @@ export type QueryResolvers<
 		ParentType,
 		ContextType,
 		Partial<QueryPopularMoviesArgs>
+	>;
+	searchMoviesByGenre?: Resolver<
+		Maybe<ResolversTypes['MoviesResponse']>,
+		ParentType,
+		ContextType,
+		Partial<QuerySearchMoviesByGenreArgs>
 	>;
 	similarMovie?: Resolver<
 		Maybe<ResolversTypes['MoviesResponse']>,
