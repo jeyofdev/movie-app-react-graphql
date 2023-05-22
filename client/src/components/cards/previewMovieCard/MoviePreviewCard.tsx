@@ -39,7 +39,7 @@ const MoviePreviewCard = ({
 						{title}
 					</Typography>
 
-					<VoteAverage voteAverage={vote_average as number} />
+					<VoteAverage voteAverage={vote_average as number} hasBackground />
 				</Box>
 
 				<Tags genres={genres} runtime={runtime} />

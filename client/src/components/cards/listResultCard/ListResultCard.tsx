@@ -26,7 +26,7 @@ const ListResultCard = ({
 					voteAverage={vote_average as number}
 					typoVariant='body1'
 					iconStyle={styles.voteIcon}
-					typoStyle={styles.typeIcon}
+					hasBackground
 				/>
 			</Box>
 

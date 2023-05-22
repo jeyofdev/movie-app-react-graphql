@@ -18,7 +18,7 @@ export const globalTheme = createTheme({
 	...theme,
 	palette: {
 		common: {
-			black: '#000',
+			black: '#121212',
 			white: '#fff',
 		},
 		grey: {

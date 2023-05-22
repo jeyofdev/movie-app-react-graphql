@@ -91,6 +91,7 @@ export type VoteAverageProps = {
 	typoStyle?: object;
 	typoVariant?: Variant;
 	iconStyle?: object;
+	hasBackground?: boolean;
 };
 
 export type LinksGenresProps = {
