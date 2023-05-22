@@ -181,6 +181,7 @@ const Home = () => {
 						<SwiperSection
 							title='Top rated'
 							list={topRatedMovies}
+							linkAllResult='/movies/top-rated'
 							moviesListCategory={MoviesListCategoryEnum.TOP_RATING}
 							setMoviesSelectedId={setMoviesSelectedId}
 							setMoviesListCategory={setMoviesListCategory}
