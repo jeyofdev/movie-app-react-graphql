@@ -1,5 +1,6 @@
 import Genre from '@pages/genre/Genre';
 import Home from '@pages/home/Home';
+import MovieDetails from '@pages/movieDetails/MovieDetails';
 import NotFound from '@pages/notFound/NotFound';
 import NowPlaying from '@pages/nowPlaying/NowPlaying';
 import Popular from '@pages/popular/Popular';
@@ -14,6 +15,7 @@ const MainRouter = () => (
 		<Route path='movies/top-rated' element={<TopRated />} />
 		<Route path='movies/now-playing' element={<NowPlaying />} />
 		<Route path='movies/genre/:genreName' element={<Genre />} />
+		<Route path='movie/:movieId' element={<MovieDetails />} />
 
 		<Route path='/' element={<Home />}>
 			<Route path='home' element={<Home />} />

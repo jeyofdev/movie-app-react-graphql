@@ -10,6 +10,7 @@ import { MoviePreviewCardProps } from '../../../types/types/props';
 import useStyles from './style';
 
 const MoviePreviewCard = ({
+	id,
 	backdrop_path,
 	title,
 	overview,
@@ -52,7 +53,7 @@ const MoviePreviewCard = ({
 
 				<BaseButton
 					variant='outlined'
-					onClick={() => navigate('/')}
+					onClick={() => navigate(`/movie/${id}`)}
 					style={styles.button}
 				>
 					View more

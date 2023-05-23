@@ -142,6 +142,7 @@ const Home = () => {
 						{moviesListCategory === MoviesListCategoryEnum.POPULAR &&
 							moviesSelectedId && (
 								<PreviewMovieCard
+									id={moviePreviewData?.movieDetails?.id}
 									title={moviePreviewData?.movieDetails?.title}
 									backdrop_path={moviePreviewData?.movieDetails?.backdrop_path}
 									overview={moviePreviewData?.movieDetails?.overview}
@@ -166,6 +167,7 @@ const Home = () => {
 						{moviesListCategory === MoviesListCategoryEnum.UP_COMING &&
 							moviesSelectedId && (
 								<PreviewMovieCard
+									id={moviePreviewData?.movieDetails?.id}
 									title={moviePreviewData?.movieDetails?.title}
 									backdrop_path={moviePreviewData?.movieDetails?.backdrop_path}
 									overview={moviePreviewData?.movieDetails?.overview}
@@ -190,6 +192,7 @@ const Home = () => {
 						{moviesListCategory === MoviesListCategoryEnum.TOP_RATING &&
 							moviesSelectedId && (
 								<PreviewMovieCard
+									id={moviePreviewData?.movieDetails?.id}
 									title={moviePreviewData?.movieDetails?.title}
 									backdrop_path={moviePreviewData?.movieDetails?.backdrop_path}
 									overview={moviePreviewData?.movieDetails?.overview}
@@ -214,6 +217,7 @@ const Home = () => {
 						{moviesListCategory === MoviesListCategoryEnum.NOW_PLAYING &&
 							moviesSelectedId && (
 								<PreviewMovieCard
+									id={moviePreviewData?.movieDetails?.id}
 									title={moviePreviewData?.movieDetails?.title}
 									backdrop_path={moviePreviewData?.movieDetails?.backdrop_path}
 									overview={moviePreviewData?.movieDetails?.overview}
