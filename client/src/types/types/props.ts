@@ -46,6 +46,7 @@ export type BlockSidebarMenuProps = {
 	menuItemActive: string | number;
 	setMenuItemActive: Dispatch<SetStateAction<string | number>>;
 	mobile?: boolean;
+	isGenre?: boolean;
 };
 
 export type MainSwiperProps = {
