@@ -1,5 +1,6 @@
 import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
 import { Box, useTheme } from '@mui/material';
+import { formatGenreForUrl } from '@utils/index';
 import { useNavigate } from 'react-router-dom';
 import { LinksGenresProps } from '../../../../types/types/props';
 import useStyles from './style';
@@ -21,7 +22,9 @@ const LinksGenres = ({ genres, sx }: LinksGenresProps) => {
 						style={{ ...styles.genreButton, ...sx }}
 						disableRipple
 						onClick={() =>
-							navigate(`/${genre?.name.toLowerCase().split(' ').join('-')}`)
+							navigate(formatGenreForUrl(genre?.name), {
+								state: { genreId: genre?.id },
+							})
 						}
 					>
 						{genre?.name}
