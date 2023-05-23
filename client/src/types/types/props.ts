@@ -126,3 +126,8 @@ export type ListResultCardProps = Pick<
 export type ListContainerProps = {
 	list: Array<Movie>;
 };
+
+export type DetailsMovieCardProps = Pick<
+	MovieDetails,
+	'title' | 'overview' | 'genres' | 'runtime' | 'vote_average' | 'poster_path'
+>;

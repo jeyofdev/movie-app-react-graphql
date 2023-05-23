@@ -10,9 +10,21 @@ const useStyles = (theme: Theme) => ({
 		backgroundColor: theme.palette.background.default,
 		padding: { xs: 0, sm: theme.spacing(3) },
 	},
-	title: {
-		gridColumn: 'auto / span 8',
-		color: theme.palette.primary.main,
+	primaryContentBox: {
+		gridColumn: {
+			xs: 'auto / span 12',
+			sm: 'auto / span 8',
+			md: 'auto / span 9',
+			lg: 'auto / span 10',
+			xl: 'auto / span 11',
+		},
+		display: 'grid',
+		gridTemplateColumns: 'repeat(12, 1fr)',
+		gap: theme.spacing(4),
+	},
+	darkMode: {
+		alignSelf: 'flex-start',
+		gridColumn: 'auto / span 12',
 	},
 });
 

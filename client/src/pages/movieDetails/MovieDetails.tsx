@@ -1,7 +1,8 @@
+import DetailsMovieCard from '@components/cards/detailsMovieCard/DetailsMovieCard';
 import MainContainer from '@components/containers/mainContainer/MainContainer';
 import Sidebar from '@components/sidebar/sidebar/Sidebar';
 import { useMovieDetailsQuery } from '@graphql/__generated__/graphql-type';
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import useStyles from './style';
 
@@ -26,9 +27,16 @@ const MovieDetails = () => {
 		<Box sx={styles.root}>
 			<MainContainer>
 				<Sidebar />
-				<Typography variant='h2' sx={styles.title}>
-					{data?.movieDetails?.title}
-				</Typography>
+				<Box sx={styles.primaryContentBox}>
+					<DetailsMovieCard
+						title={data?.movieDetails?.title}
+						overview={data?.movieDetails?.overview}
+						genres={data?.movieDetails?.genres}
+						runtime={data?.movieDetails?.runtime}
+						vote_average={data?.movieDetails?.vote_average}
+						poster_path={data?.movieDetails?.poster_path}
+					/>
+				</Box>
 			</MainContainer>
 		</Box>
 	);
