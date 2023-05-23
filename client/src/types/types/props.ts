@@ -63,14 +63,20 @@ export type ThumbnailCardProps = Pick<Movie, 'title' | 'poster_path'>;
 
 export type MoviePreviewCardProps = Pick<
 	MovieDetails,
-	'backdrop_path' | 'title' | 'overview' | 'genres' | 'runtime' | 'vote_average'
+	| 'id'
+	| 'backdrop_path'
+	| 'title'
+	| 'overview'
+	| 'genres'
+	| 'runtime'
+	| 'vote_average'
 > & {
 	stylesBox: object;
 };
 
 export type SelectedThumbsGalleryCardProps = Pick<
 	MovieDetails,
-	'title' | 'runtime' | 'genres' | 'overview' | 'vote_average'
+	'id' | 'title' | 'runtime' | 'genres' | 'overview' | 'vote_average'
 >;
 
 export type SwiperSectionProps = {
@@ -120,3 +126,8 @@ export type ListResultCardProps = Pick<
 export type ListContainerProps = {
 	list: Array<Movie>;
 };
+
+export type DetailsMovieCardProps = Pick<
+	MovieDetails,
+	'title' | 'overview' | 'genres' | 'runtime' | 'vote_average' | 'poster_path'
+>;

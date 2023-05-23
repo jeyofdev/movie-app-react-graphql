@@ -10,6 +10,7 @@ import { SelectedThumbsGalleryCardProps } from '../../../types/types/props';
 import useStyles from './style';
 
 const SelectedThumbsGalleryCard = ({
+	id,
 	title,
 	genres,
 	runtime,
@@ -52,7 +53,7 @@ const SelectedThumbsGalleryCard = ({
 			<Box>
 				<BaseButton
 					variant='contained'
-					onClick={() => navigate('/')}
+					onClick={() => navigate(`/movie/${id}`)}
 					style={{ ...styles.button, ...styles.zIndex }}
 				>
 					View more

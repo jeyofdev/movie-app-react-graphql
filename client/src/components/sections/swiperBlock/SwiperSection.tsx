@@ -67,6 +67,7 @@ const SwiperSection = ({
 				>
 					<Box style={styles.mask as object} />
 					<SelectedThumbsGalleryCard
+						id={activeItemSwiperGallery?.id}
 						title={activeItemSwiperGallery?.title}
 						vote_average={activeItemSwiperGallery?.vote_average}
 						runtime={125}
