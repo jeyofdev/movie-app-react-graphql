@@ -10,6 +10,7 @@ const MenuItemsBlock = ({
 	menuItemActive,
 	setMenuItemActive,
 	mobile = false,
+	isGenre = false,
 }: BlockSidebarMenuProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
@@ -28,7 +29,11 @@ const MenuItemsBlock = ({
 					id={menuItem?.id}
 					label={!mobile && menuItem?.name}
 					icon={menuItem?.icon}
-					link={menuItem?.link}
+					link={
+						isGenre
+							? `/movies/genre/${menuItem?.name.toLowerCase()}`
+							: menuItem?.link
+					}
 					active={menuItemActive === menuItem?.id}
 					setMenuItemActive={setMenuItemActive}
 					disableRipple={mobile}

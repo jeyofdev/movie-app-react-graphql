@@ -20,7 +20,7 @@ const MenuItem = ({
 
 	const handleClick = () => {
 		setMenuItemActive(id);
-		navigate(link);
+		navigate(link, { state: { genreId: id } });
 	};
 
 	return (

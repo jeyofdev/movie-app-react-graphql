@@ -31,3 +31,6 @@ export const formatNumberToHours = (totalMinutes: number): string => {
 
 	return `${hours}h ${minutes}min`;
 };
+
+export const formatGenreForUrl = (genre: string) =>
+	`/movies/genre/${genre.toLowerCase().split(' ').join('-')}`;

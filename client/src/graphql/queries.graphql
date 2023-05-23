@@ -268,3 +268,32 @@ query MoviePreview($movieId: Int, $options: OptionsInput) {
 		}
 	}
 }
+
+query SearchMoviesByGenre($searchOptions: SearchInput) {
+	searchMoviesByGenre(searchOptions: $searchOptions) {
+		page
+		results {
+			adult
+			backdrop_path
+			genre_ids
+			id
+			original_language
+			original_title
+			overview
+			popularity
+			poster_path
+			release_date
+			title
+			video
+			vote_average
+			vote_count
+			images {
+				backdrops {
+					file_path
+				}
+			}
+		}
+		total_pages
+		total_results
+	}
+}

@@ -84,6 +84,7 @@ const Sidebar = () => {
 						menuItems={genresItems}
 						menuItemActive={menuItemActive}
 						setMenuItemActive={setMenuItemActive}
+						isGenre
 					/>
 
 					<Divider sx={styles.divider} />

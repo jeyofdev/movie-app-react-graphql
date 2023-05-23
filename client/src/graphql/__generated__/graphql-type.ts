@@ -275,6 +275,7 @@ export type Query = {
 	personCrewByMovie?: Maybe<PersonCrewResponse>;
 	personDetails?: Maybe<Person>;
 	popularMovies?: Maybe<MoviesResponse>;
+	searchMoviesByGenre?: Maybe<MoviesResponse>;
 	similarMovie?: Maybe<MoviesResponse>;
 	topRatedMovies?: Maybe<MoviesResponse>;
 	translationsByCollection?: Maybe<MoviesCollectionTranslateResponse>;
@@ -342,6 +343,10 @@ export type QueryPopularMoviesArgs = {
 	options?: InputMaybe<OptionsInput>;
 };
 
+export type QuerySearchMoviesByGenreArgs = {
+	searchOptions?: InputMaybe<SearchInput>;
+};
+
 export type QuerySimilarMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
 	options?: InputMaybe<OptionsInput>;
@@ -366,6 +371,13 @@ export enum RegionEnum {
 	Fr = 'FR',
 	Us = 'US',
 }
+
+export type SearchInput = {
+	language?: InputMaybe<LanguageEnum>;
+	page?: InputMaybe<Scalars['Int']>;
+	region?: InputMaybe<RegionEnum>;
+	with_genres?: InputMaybe<Scalars['Int']>;
+};
 
 export type Spoken_Languages = {
 	__typename?: 'spoken_languages';
@@ -712,6 +724,44 @@ export type MoviePreviewQuery = {
 				width?: number | null;
 			} | null> | null;
 		} | null;
+	} | null;
+};
+
+export type SearchMoviesByGenreQueryVariables = Exact<{
+	searchOptions?: InputMaybe<SearchInput>;
+}>;
+
+export type SearchMoviesByGenreQuery = {
+	__typename?: 'Query';
+	searchMoviesByGenre?: {
+		__typename?: 'MoviesResponse';
+		page: number;
+		total_pages: number;
+		total_results: number;
+		results: Array<{
+			__typename?: 'Movie';
+			adult?: boolean | null;
+			backdrop_path?: string | null;
+			genre_ids?: Array<number | null> | null;
+			id?: number | null;
+			original_language?: string | null;
+			original_title?: string | null;
+			overview?: string | null;
+			popularity?: number | null;
+			poster_path?: string | null;
+			release_date?: string | null;
+			title?: string | null;
+			video?: boolean | null;
+			vote_average?: number | null;
+			vote_count?: number | null;
+			images?: {
+				__typename?: 'MovieImageResponse';
+				backdrops?: Array<{
+					__typename?: 'PosterMovie';
+					file_path?: string | null;
+				} | null> | null;
+			} | null;
+		} | null>;
 	} | null;
 };
 
@@ -1341,4 +1391,85 @@ export type MoviePreviewLazyQueryHookResult = ReturnType<
 export type MoviePreviewQueryResult = Apollo.QueryResult<
 	MoviePreviewQuery,
 	MoviePreviewQueryVariables
+>;
+export const SearchMoviesByGenreDocument = gql`
+	query SearchMoviesByGenre($searchOptions: SearchInput) {
+		searchMoviesByGenre(searchOptions: $searchOptions) {
+			page
+			results {
+				adult
+				backdrop_path
+				genre_ids
+				id
+				original_language
+				original_title
+				overview
+				popularity
+				poster_path
+				release_date
+				title
+				video
+				vote_average
+				vote_count
+				images {
+					backdrops {
+						file_path
+					}
+				}
+			}
+			total_pages
+			total_results
+		}
+	}
+`;
+
+/**
+ * __useSearchMoviesByGenreQuery__
+ *
+ * To run a query within a React component, call `useSearchMoviesByGenreQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSearchMoviesByGenreQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSearchMoviesByGenreQuery({
+ *   variables: {
+ *      searchOptions: // value for 'searchOptions'
+ *   },
+ * });
+ */
+export function useSearchMoviesByGenreQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		SearchMoviesByGenreQuery,
+		SearchMoviesByGenreQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useQuery<
+		SearchMoviesByGenreQuery,
+		SearchMoviesByGenreQueryVariables
+	>(SearchMoviesByGenreDocument, options);
+}
+export function useSearchMoviesByGenreLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		SearchMoviesByGenreQuery,
+		SearchMoviesByGenreQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useLazyQuery<
+		SearchMoviesByGenreQuery,
+		SearchMoviesByGenreQueryVariables
+	>(SearchMoviesByGenreDocument, options);
+}
+export type SearchMoviesByGenreQueryHookResult = ReturnType<
+	typeof useSearchMoviesByGenreQuery
+>;
+export type SearchMoviesByGenreLazyQueryHookResult = ReturnType<
+	typeof useSearchMoviesByGenreLazyQuery
+>;
+export type SearchMoviesByGenreQueryResult = Apollo.QueryResult<
+	SearchMoviesByGenreQuery,
+	SearchMoviesByGenreQueryVariables
 >;
