@@ -16,23 +16,13 @@ const useStyles = (theme: Theme) => ({
 		padding: theme.spacing(2),
 		height: '100%',
 	}),
-	// mask: {
-	// 	position: 'absolute',
-	// 	top: 0,
-	// 	right: 0,
-	// 	bottom: 0,
-	// 	left: 0,
-	// 	backgroundColor: theme.palette.common.black,
-	// 	opacity: 0.,
-	// 	zIndex: 1,
-	// },
 	poster: {
 		width: '100%',
 		height: {
 			xs: '350px',
 		},
 		gridColumn: {
-			xs: 'auto / span 2',
+			xs: '2 / span 2',
 		},
 		backgroundSize: 'contain',
 		zIndex: 100,
@@ -40,7 +30,7 @@ const useStyles = (theme: Theme) => ({
 	},
 	contentBox: {
 		gridColumn: {
-			xs: 'auto / span 5',
+			xs: 'auto / span 4',
 		},
 		display: 'flex',
 		flexDirection: 'column',
@@ -52,6 +42,11 @@ const useStyles = (theme: Theme) => ({
 	},
 	overview: {
 		color: theme.palette.primary.main,
+	},
+	swipersBox: {
+		gridColumn: {
+			xs: 'auto / span 4',
+		},
 	},
 });
 

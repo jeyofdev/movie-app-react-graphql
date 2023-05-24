@@ -297,3 +297,23 @@ query SearchMoviesByGenre($searchOptions: SearchInput) {
 		total_results
 	}
 }
+
+query CastByMovie($movieId: Int, $options: OptionsInput) {
+	castByMovie(movieId: $movieId, options: $options) {
+		cast {
+			adult
+			gender
+			id
+			known_for_department
+			name
+			original_name
+			popularity
+			profile_path
+			cast_id
+			character
+			credit_id
+			order
+		}
+		id
+	}
+}

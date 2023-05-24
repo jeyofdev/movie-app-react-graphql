@@ -1,3 +1,4 @@
+import SwiperSection from '@components/sections/swiperBlock/SwiperSection';
 import Tags from '@components/tags/Tags';
 import VoteAverage from '@components/ui/votes/average/VoteAverage';
 import { Box, Typography, useTheme } from '@mui/material';
@@ -12,6 +13,7 @@ const DetailsMovieCard = ({
 	vote_average,
 	poster_path,
 	backdrop_path,
+	cast,
 }: DetailsMovieCardProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
@@ -38,6 +40,11 @@ const DetailsMovieCard = ({
 				<Typography variant='body2' sx={styles.overview}>
 					{overview}
 				</Typography>
+			</Box>
+
+			<Box sx={styles.swipersBox}>
+				{/* <RoundedSwiper list={cast} /> */}
+				<SwiperSection swiperType='person' title='Cast' list={cast} />
 			</Box>
 		</Box>
 	);

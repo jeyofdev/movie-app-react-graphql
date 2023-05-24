@@ -1,5 +1,6 @@
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
+	CastMovie,
 	Genre,
 	Movie,
 	MovieDetails,
@@ -59,7 +60,13 @@ export type MainSwiperProps = {
 	>;
 };
 
+export type RoundedSwiperProps = {
+	list: Array<CastMovie>;
+};
+
 export type ThumbnailCardProps = Pick<Movie, 'title' | 'poster_path'>;
+
+export type PersonThumbnailCardProps = Pick<CastMovie, 'name' | 'profile_path'>;
 
 export type MoviePreviewCardProps = Pick<
 	MovieDetails,
@@ -80,15 +87,15 @@ export type SelectedThumbsGalleryCardProps = Pick<
 >;
 
 export type SwiperSectionProps = {
-	swiperType?: 'default' | 'thumbs-gallery';
+	swiperType?: 'default' | 'thumbs-gallery' | 'person';
 	title: string;
-	list: Array<Movie>;
+	list: Array<Movie | CastMovie>;
 	linkAllResult?: string;
-	moviesListCategory: MoviesListCategoryEnum;
+	moviesListCategory?: MoviesListCategoryEnum;
 	activeItemSwiperGallery?: Movie | null;
 	setActiveItemSwiperGallery?: Dispatch<SetStateAction<Movie | null>>;
 	setMoviesSelectedId?: Dispatch<SetStateAction<number | null>>;
-	setMoviesListCategory: Dispatch<
+	setMoviesListCategory?: Dispatch<
 		SetStateAction<MoviesListCategoryEnum | null>
 	>;
 };
@@ -136,4 +143,6 @@ export type DetailsMovieCardProps = Pick<
 	| 'vote_average'
 	| 'poster_path'
 	| 'backdrop_path'
->;
+> & {
+	cast: Array<CastMovie>;
+};
