@@ -129,5 +129,11 @@ export type ListContainerProps = {
 
 export type DetailsMovieCardProps = Pick<
 	MovieDetails,
-	'title' | 'overview' | 'genres' | 'runtime' | 'vote_average' | 'poster_path'
+	| 'title'
+	| 'overview'
+	| 'genres'
+	| 'runtime'
+	| 'vote_average'
+	| 'poster_path'
+	| 'backdrop_path'
 >;

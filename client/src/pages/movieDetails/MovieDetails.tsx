@@ -35,6 +35,7 @@ const MovieDetails = () => {
 						runtime={data?.movieDetails?.runtime}
 						vote_average={data?.movieDetails?.vote_average}
 						poster_path={data?.movieDetails?.poster_path}
+						backdrop_path={data?.movieDetails?.backdrop_path}
 					/>
 				</Box>
 			</MainContainer>

@@ -11,24 +11,27 @@ const DetailsMovieCard = ({
 	runtime,
 	vote_average,
 	poster_path,
+	backdrop_path,
 }: DetailsMovieCardProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 
 	return (
-		<>
+		<Box sx={styles.root(backdrop_path as string)}>
+			{/* <Box style={styles.mask as object} /> */}
 			<Box
 				component='img'
 				sx={styles.poster}
 				alt={title as string}
 				src={`https://image.tmdb.org/t/p/w500${poster_path}`}
 			/>
-			<Box sx={styles.root}>
+			<Box sx={styles.contentBox}>
 				<Typography variant='h2' sx={styles.title}>
 					{title}
+					<Box sx={{ display: 'flex' }}>
+						<VoteAverage voteAverage={vote_average as number} hasBackground />
+					</Box>
 				</Typography>
-
-				<VoteAverage voteAverage={vote_average as number} hasBackground />
 
 				<Tags genres={genres} runtime={runtime} />
 
@@ -36,7 +39,7 @@ const DetailsMovieCard = ({
 					{overview}
 				</Typography>
 			</Box>
-		</>
+		</Box>
 	);
 };
 
