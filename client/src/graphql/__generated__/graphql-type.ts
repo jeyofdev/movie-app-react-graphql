@@ -765,6 +765,34 @@ export type SearchMoviesByGenreQuery = {
 	} | null;
 };
 
+export type CastByMovieQueryVariables = Exact<{
+	movieId?: InputMaybe<Scalars['Int']>;
+	options?: InputMaybe<OptionsInput>;
+}>;
+
+export type CastByMovieQuery = {
+	__typename?: 'Query';
+	castByMovie?: {
+		__typename?: 'MovieCastResponse';
+		id?: number | null;
+		cast?: Array<{
+			__typename?: 'CastMovie';
+			adult?: boolean | null;
+			gender?: number | null;
+			id?: number | null;
+			known_for_department?: string | null;
+			name?: string | null;
+			original_name?: string | null;
+			popularity?: number | null;
+			profile_path?: string | null;
+			cast_id?: number | null;
+			character?: string | null;
+			credit_id?: string | null;
+			order?: number | null;
+		} | null> | null;
+	} | null;
+};
+
 export const NowPlayingMoviesDocument = gql`
 	query NowPlayingMovies($options: OptionsInput) {
 		nowPlayingMovies(options: $options) {
@@ -1472,4 +1500,75 @@ export type SearchMoviesByGenreLazyQueryHookResult = ReturnType<
 export type SearchMoviesByGenreQueryResult = Apollo.QueryResult<
 	SearchMoviesByGenreQuery,
 	SearchMoviesByGenreQueryVariables
+>;
+export const CastByMovieDocument = gql`
+	query CastByMovie($movieId: Int, $options: OptionsInput) {
+		castByMovie(movieId: $movieId, options: $options) {
+			cast {
+				adult
+				gender
+				id
+				known_for_department
+				name
+				original_name
+				popularity
+				profile_path
+				cast_id
+				character
+				credit_id
+				order
+			}
+			id
+		}
+	}
+`;
+
+/**
+ * __useCastByMovieQuery__
+ *
+ * To run a query within a React component, call `useCastByMovieQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCastByMovieQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCastByMovieQuery({
+ *   variables: {
+ *      movieId: // value for 'movieId'
+ *      options: // value for 'options'
+ *   },
+ * });
+ */
+export function useCastByMovieQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		CastByMovieQuery,
+		CastByMovieQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useQuery<CastByMovieQuery, CastByMovieQueryVariables>(
+		CastByMovieDocument,
+		options,
+	);
+}
+export function useCastByMovieLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		CastByMovieQuery,
+		CastByMovieQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useLazyQuery<CastByMovieQuery, CastByMovieQueryVariables>(
+		CastByMovieDocument,
+		options,
+	);
+}
+export type CastByMovieQueryHookResult = ReturnType<typeof useCastByMovieQuery>;
+export type CastByMovieLazyQueryHookResult = ReturnType<
+	typeof useCastByMovieLazyQuery
+>;
+export type CastByMovieQueryResult = Apollo.QueryResult<
+	CastByMovieQuery,
+	CastByMovieQueryVariables
 >;

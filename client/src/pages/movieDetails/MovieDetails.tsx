@@ -1,7 +1,11 @@
 import DetailsMovieCard from '@components/cards/detailsMovieCard/DetailsMovieCard';
 import MainContainer from '@components/containers/mainContainer/MainContainer';
 import Sidebar from '@components/sidebar/sidebar/Sidebar';
-import { useMovieDetailsQuery } from '@graphql/__generated__/graphql-type';
+import {
+	CastMovie,
+	useCastByMovieQuery,
+	useMovieDetailsQuery,
+} from '@graphql/__generated__/graphql-type';
 import { Box, useTheme } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import useStyles from './style';
@@ -15,11 +19,19 @@ const MovieDetails = () => {
 		variables: { movieId: Number(movieId) },
 	});
 
-	if (loading) {
+	const {
+		loading: castLoading,
+		error: castError,
+		data: castData,
+	} = useCastByMovieQuery({
+		variables: { movieId: Number(movieId) },
+	});
+
+	if (loading || castLoading) {
 		return <Box>Loading...</Box>;
 	}
 
-	if (error) {
+	if (error || castError) {
 		return <Box>{error?.message}</Box>;
 	}
 
@@ -35,6 +47,8 @@ const MovieDetails = () => {
 						runtime={data?.movieDetails?.runtime}
 						vote_average={data?.movieDetails?.vote_average}
 						poster_path={data?.movieDetails?.poster_path}
+						backdrop_path={data?.movieDetails?.backdrop_path}
+						cast={castData?.castByMovie?.cast as Array<CastMovie>}
 					/>
 				</Box>
 			</MainContainer>
