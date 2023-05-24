@@ -32,7 +32,7 @@ export type CastMovie = {
 	name?: Maybe<Scalars['String']>;
 	order?: Maybe<Scalars['Int']>;
 	original_name?: Maybe<Scalars['String']>;
-	popularity?: Maybe<Scalars['Int']>;
+	popularity?: Maybe<Scalars['Float']>;
 	profile_path?: Maybe<Scalars['String']>;
 };
 
@@ -593,7 +593,11 @@ export type CastMovieResolvers<
 		ParentType,
 		ContextType
 	>;
-	popularity?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+	popularity?: Resolver<
+		Maybe<ResolversTypes['Float']>,
+		ParentType,
+		ContextType
+	>;
 	profile_path?: Resolver<
 		Maybe<ResolversTypes['String']>,
 		ParentType,

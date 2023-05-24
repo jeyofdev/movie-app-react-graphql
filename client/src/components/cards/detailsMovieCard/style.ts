@@ -39,6 +39,7 @@ const useStyles = (theme: Theme) => ({
 	},
 	title: {
 		color: theme.palette.primary.main,
+		gridColumn: '1 / span 12',
 	},
 	overview: {
 		color: theme.palette.primary.main,
