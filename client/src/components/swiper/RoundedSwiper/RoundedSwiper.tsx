@@ -1,4 +1,5 @@
 import PersonThumbnailCard from '@components/cards/PersonThumbnailCard/PersonThumbnailCard';
+import BaseTooltip from '@components/ui/tooltips/baseTooltip/BaseTooltip';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CastMovie } from '@graphql/__generated__/graphql-type';
@@ -44,9 +45,15 @@ const RoundedSwiper = ({ list }: RoundedSwiperProps) => {
 			>
 				{list.map(item => (
 					<SwiperSlide key={item.id}>
-						<Button onClick={() => {}} disableRipple={true} sx={{ padding: 0 }}>
-							{card(item)}
-						</Button>
+						<BaseTooltip title={item.name} arrow>
+							<Button
+								onClick={() => {}}
+								disableRipple={true}
+								sx={{ padding: 0 }}
+							>
+								{card(item)}
+							</Button>
+						</BaseTooltip>
 					</SwiperSlide>
 				))}
 			</Swiper>
