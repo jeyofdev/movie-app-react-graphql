@@ -9,7 +9,7 @@ const MainContainer = ({ children }: MainContainerPropsType) => {
 	return (
 		<Box sx={styles.root}>
 			<Sidebar />
-			{children}
+			<Box sx={styles.contentBox}>{children}</Box>
 		</Box>
 	);
 };

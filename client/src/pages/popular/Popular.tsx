@@ -1,18 +1,16 @@
 import ListContainer from '@components/containers/listContainer/ListContainer';
-import MainContainer from '@components/containers/mainContainer/MainContainer';
 import {
 	Movie,
 	usePopularMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
-import { Box, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 import { firstLetterCapitalize } from '@utils/index';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import useStyles from './style';
 
 const Popular = () => {
-	const theme = useTheme();
-	const styles = useStyles(theme);
+	const styles = useStyles();
 	const location = useLocation();
 
 	const getTitle = (): string => {
@@ -36,12 +34,10 @@ const Popular = () => {
 
 	return (
 		<Box sx={styles.root}>
-			<MainContainer>
-				<ListContainer
-					list={data?.popularMovies?.results as Array<Movie>}
-					title={firstLetterCapitalize(getTitle())}
-				/>
-			</MainContainer>
+			<ListContainer
+				list={data?.popularMovies?.results as Array<Movie>}
+				title={firstLetterCapitalize(getTitle())}
+			/>
 		</Box>
 	);
 };

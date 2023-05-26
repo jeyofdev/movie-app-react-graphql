@@ -1,17 +1,15 @@
 import DetailsMovieCard from '@components/cards/detailsMovieCard/DetailsMovieCard';
-import MainContainer from '@components/containers/mainContainer/MainContainer';
 import {
 	CastMovie,
 	useCastByMovieQuery,
 	useMovieDetailsQuery,
 } from '@graphql/__generated__/graphql-type';
-import { Box, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import useStyles from './style';
 
 const MovieDetails = () => {
-	const theme = useTheme();
-	const styles = useStyles(theme);
+	const styles = useStyles();
 	const { movieId } = useParams();
 
 	const { loading, error, data } = useMovieDetailsQuery({
@@ -36,20 +34,18 @@ const MovieDetails = () => {
 
 	return (
 		<Box sx={styles.root}>
-			<MainContainer>
-				<Box sx={styles.primaryContentBox}>
-					<DetailsMovieCard
-						title={data?.movieDetails?.title}
-						overview={data?.movieDetails?.overview}
-						genres={data?.movieDetails?.genres}
-						runtime={data?.movieDetails?.runtime}
-						vote_average={data?.movieDetails?.vote_average}
-						poster_path={data?.movieDetails?.poster_path}
-						backdrop_path={data?.movieDetails?.backdrop_path}
-						cast={castData?.castByMovie?.cast as Array<CastMovie>}
-					/>
-				</Box>
-			</MainContainer>
+			<Box sx={styles.primaryContentBox}>
+				<DetailsMovieCard
+					title={data?.movieDetails?.title}
+					overview={data?.movieDetails?.overview}
+					genres={data?.movieDetails?.genres}
+					runtime={data?.movieDetails?.runtime}
+					vote_average={data?.movieDetails?.vote_average}
+					poster_path={data?.movieDetails?.poster_path}
+					backdrop_path={data?.movieDetails?.backdrop_path}
+					cast={castData?.castByMovie?.cast as Array<CastMovie>}
+				/>
+			</Box>
 		</Box>
 	);
 };

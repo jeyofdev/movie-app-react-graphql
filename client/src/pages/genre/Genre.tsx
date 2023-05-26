@@ -1,18 +1,16 @@
 import ListContainer from '@components/containers/listContainer/ListContainer';
-import MainContainer from '@components/containers/mainContainer/MainContainer';
 import {
 	Movie,
 	useSearchMoviesByGenreQuery,
 } from '@graphql/__generated__/graphql-type';
-import { Box, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 import { firstLetterCapitalize } from '@utils/index';
 import { useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import useStyles from './style';
 
 const Genre = () => {
-	const theme = useTheme();
-	const styles = useStyles(theme);
+	const styles = useStyles();
 	const location = useLocation();
 	const { genreName } = useParams();
 
@@ -38,14 +36,10 @@ const Genre = () => {
 
 	return (
 		<Box sx={styles.root}>
-			<MainContainer>
-				<ListContainer
-					list={data?.searchMoviesByGenre?.results as Array<Movie>}
-					title={firstLetterCapitalize(
-						genreName?.replaceAll('-', ' ') as string,
-					)}
-				/>
-			</MainContainer>
+			<ListContainer
+				list={data?.searchMoviesByGenre?.results as Array<Movie>}
+				title={firstLetterCapitalize(genreName?.replaceAll('-', ' ') as string)}
+			/>
 		</Box>
 	);
 };

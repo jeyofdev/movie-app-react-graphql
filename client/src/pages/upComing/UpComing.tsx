@@ -1,18 +1,16 @@
 import ListContainer from '@components/containers/listContainer/ListContainer';
-import MainContainer from '@components/containers/mainContainer/MainContainer';
 import {
 	Movie,
 	useUpcomingMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
-import { Box, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 import { firstLetterCapitalize } from '@utils/index';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import useStyles from './style';
 
 const Upcoming = () => {
-	const theme = useTheme();
-	const styles = useStyles(theme);
+	const styles = useStyles();
 	const location = useLocation();
 
 	const { loading, error, data } = useUpcomingMoviesQuery();
@@ -36,12 +34,10 @@ const Upcoming = () => {
 
 	return (
 		<Box sx={styles.root}>
-			<MainContainer>
-				<ListContainer
-					list={data?.upcomingMovies?.results as Array<Movie>}
-					title={firstLetterCapitalize(getTitle())}
-				/>
-			</MainContainer>
+			<ListContainer
+				list={data?.upcomingMovies?.results as Array<Movie>}
+				title={firstLetterCapitalize(getTitle())}
+			/>
 		</Box>
 	);
 };

@@ -1,18 +1,16 @@
 import ListContainer from '@components/containers/listContainer/ListContainer';
-import MainContainer from '@components/containers/mainContainer/MainContainer';
 import {
 	Movie,
 	useTopRatedMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
-import { Box, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 import { firstLetterCapitalize } from '@utils/index';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import useStyles from './style';
 
 const TopRated = () => {
-	const theme = useTheme();
-	const styles = useStyles(theme);
+	const styles = useStyles();
 	const location = useLocation();
 
 	const { loading, error, data } = useTopRatedMoviesQuery();
@@ -36,12 +34,10 @@ const TopRated = () => {
 
 	return (
 		<Box sx={styles.root}>
-			<MainContainer>
-				<ListContainer
-					list={data?.topRatedMovies?.results as Array<Movie>}
-					title={firstLetterCapitalize(getTitle())}
-				/>
-			</MainContainer>
+			<ListContainer
+				list={data?.topRatedMovies?.results as Array<Movie>}
+				title={firstLetterCapitalize(getTitle())}
+			/>
 		</Box>
 	);
 };
