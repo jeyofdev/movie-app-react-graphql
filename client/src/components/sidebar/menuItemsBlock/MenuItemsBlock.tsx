@@ -31,7 +31,9 @@ const MenuItemsBlock = ({
 					icon={menuItem?.icon}
 					link={
 						isGenre
-							? `/movies/genre/${menuItem?.name.toLowerCase()}`
+							? `/movies/genre/${menuItem?.name
+									.toLowerCase()
+									.replaceAll(' ', '-')}`
 							: menuItem?.link
 					}
 					active={menuItemActive === menuItem?.id}

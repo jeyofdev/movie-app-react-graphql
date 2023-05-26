@@ -36,6 +36,10 @@ const useStyles = (theme: Theme) => ({
 		},
 		justifyContent: 'center',
 	},
+	title: {
+		marginBottom: theme.spacing(5),
+		color: theme.palette.primary.main,
+	},
 });
 
 export default useStyles;

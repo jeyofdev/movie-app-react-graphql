@@ -54,15 +54,20 @@ const useStyles = (theme: Theme) => ({
 		background: theme.palette.error.main,
 		borderRadius: '1rem',
 		width: 'fit-content',
+		color: theme.palette.common.white,
 
 		'&:hover': {
 			background: theme.palette.error.main,
+			color: theme.palette.common.white,
 		},
 	},
 	showAllGenresIcon: {
 		fontSize: '1rem',
+		color: theme.palette.common.white,
 	},
-	showAllGenresTypo: {},
+	showAllGenresTypo: {
+		color: theme.palette.common.white,
+	},
 });
 
 export default useStyles;
