@@ -1,6 +1,5 @@
 import DetailsMovieCard from '@components/cards/detailsMovieCard/DetailsMovieCard';
 import MainContainer from '@components/containers/mainContainer/MainContainer';
-import Sidebar from '@components/sidebar/sidebar/Sidebar';
 import {
 	CastMovie,
 	useCastByMovieQuery,
@@ -38,7 +37,6 @@ const MovieDetails = () => {
 	return (
 		<Box sx={styles.root}>
 			<MainContainer>
-				<Sidebar />
 				<Box sx={styles.primaryContentBox}>
 					<DetailsMovieCard
 						title={data?.movieDetails?.title}

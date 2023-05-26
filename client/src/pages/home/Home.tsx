@@ -1,7 +1,6 @@
 import PreviewMovieCard from '@components/cards/previewMovieCard/MoviePreviewCard';
 import MainContainer from '@components/containers/mainContainer/MainContainer';
 import SwiperSection from '@components/sections/swiperBlock/SwiperSection';
-import Sidebar from '@components/sidebar/sidebar/Sidebar';
 import { ThemeContext } from '@context/ThemeContext';
 import {
 	Movie,
@@ -104,7 +103,6 @@ const Home = () => {
 	return (
 		<Box sx={styles.root}>
 			<MainContainer>
-				<Sidebar />
 				<Box sx={styles.primaryContentBox}>
 					<Box>
 						<Button

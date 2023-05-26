@@ -1,6 +1,5 @@
 import ListContainer from '@components/containers/listContainer/ListContainer';
 import MainContainer from '@components/containers/mainContainer/MainContainer';
-import Sidebar from '@components/sidebar/sidebar/Sidebar';
 import {
 	Movie,
 	useSearchMoviesByGenreQuery,
@@ -40,7 +39,6 @@ const Genre = () => {
 	return (
 		<Box sx={styles.root}>
 			<MainContainer>
-				<Sidebar />
 				<ListContainer
 					list={data?.searchMoviesByGenre?.results as Array<Movie>}
 					title={firstLetterCapitalize(

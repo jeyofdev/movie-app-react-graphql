@@ -1,6 +1,5 @@
 import ListContainer from '@components/containers/listContainer/ListContainer';
 import MainContainer from '@components/containers/mainContainer/MainContainer';
-import Sidebar from '@components/sidebar/sidebar/Sidebar';
 import {
 	Movie,
 	useNowPlayingMoviesQuery,
@@ -38,7 +37,6 @@ const NowPlaying = () => {
 	return (
 		<Box sx={styles.root}>
 			<MainContainer>
-				<Sidebar />
 				<ListContainer
 					list={data?.nowPlayingMovies?.results as Array<Movie>}
 					title={firstLetterCapitalize(getTitle())}
