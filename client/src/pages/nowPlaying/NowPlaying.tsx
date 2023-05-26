@@ -6,14 +6,22 @@ import {
 	useNowPlayingMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
 import { Box, useTheme } from '@mui/material';
+import { firstLetterCapitalize } from '@utils/index';
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import useStyles from './style';
 
 const NowPlaying = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
+	const location = useLocation();
 
 	const { loading, error, data } = useNowPlayingMoviesQuery();
+
+	const getTitle = (): string => {
+		const splitUrl = location.pathname.split('/');
+		return splitUrl[splitUrl.length - 1].replaceAll('-', ' ');
+	};
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -31,7 +39,10 @@ const NowPlaying = () => {
 		<Box sx={styles.root}>
 			<MainContainer>
 				<Sidebar />
-				<ListContainer list={data?.nowPlayingMovies?.results as Array<Movie>} />
+				<ListContainer
+					list={data?.nowPlayingMovies?.results as Array<Movie>}
+					title={firstLetterCapitalize(getTitle())}
+				/>
 			</MainContainer>
 		</Box>
 	);

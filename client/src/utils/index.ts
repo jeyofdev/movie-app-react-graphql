@@ -34,3 +34,6 @@ export const formatNumberToHours = (totalMinutes: number): string => {
 
 export const formatGenreForUrl = (genre: string) =>
 	`/movies/genre/${genre.toLowerCase().split(' ').join('-')}`;
+
+export const firstLetterCapitalize = (text: string): string =>
+	text.slice(0, 1).toUpperCase() + text.slice(1);

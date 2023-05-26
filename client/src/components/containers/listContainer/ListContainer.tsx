@@ -1,11 +1,11 @@
 import ListResultCard from '@components/cards/listResultCard/ListResultCard';
 import { ThemeContext } from '@context/ThemeContext';
-import { Box, Button, useTheme } from '@mui/material';
+import { Box, Button, Typography, useTheme } from '@mui/material';
 import { useContext } from 'react';
 import { ListContainerProps } from '../../../types/types/props';
 import useStyles from './style';
 
-const ListContainer = ({ list }: ListContainerProps) => {
+const ListContainer = ({ list, title }: ListContainerProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const { handleThemeMode } = useContext(ThemeContext);
@@ -22,6 +22,9 @@ const ListContainer = ({ list }: ListContainerProps) => {
 					darkmode
 				</Button>
 			</Box>
+			<Typography variant='h3' sx={styles.title}>
+				{title}
+			</Typography>
 
 			<Box sx={styles.cards}>
 				{list?.map(movie => (

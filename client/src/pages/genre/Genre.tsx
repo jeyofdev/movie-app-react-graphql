@@ -6,14 +6,16 @@ import {
 	useSearchMoviesByGenreQuery,
 } from '@graphql/__generated__/graphql-type';
 import { Box, useTheme } from '@mui/material';
+import { firstLetterCapitalize } from '@utils/index';
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import useStyles from './style';
 
 const Genre = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const location = useLocation();
+	const { genreName } = useParams();
 
 	const { loading, error, data } = useSearchMoviesByGenreQuery({
 		variables: {
@@ -41,6 +43,9 @@ const Genre = () => {
 				<Sidebar />
 				<ListContainer
 					list={data?.searchMoviesByGenre?.results as Array<Movie>}
+					title={firstLetterCapitalize(
+						genreName?.replaceAll('-', ' ') as string,
+					)}
 				/>
 			</MainContainer>
 		</Box>

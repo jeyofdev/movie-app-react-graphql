@@ -1,6 +1,4 @@
-import SwiperSection from '@components/sections/swiperBlock/SwiperSection';
-import Tags from '@components/tags/Tags';
-import VoteAverage from '@components/ui/votes/average/VoteAverage';
+/* eslint-disable */
 import { Box, Typography, useTheme } from '@mui/material';
 import { DetailsMovieCardProps } from '../../../types/types/props';
 import useStyles from './style';
@@ -20,8 +18,11 @@ const DetailsMovieCard = ({
 
 	return (
 		<Box sx={styles.root(backdrop_path as string)}>
+			<Typography variant='h2' sx={styles.title}>
+				{title}
+			</Typography>
 			{/* <Box style={styles.mask as object} /> */}
-			<Box
+			{/* <Box
 				component='img'
 				sx={styles.poster}
 				alt={title as string}
@@ -43,9 +44,9 @@ const DetailsMovieCard = ({
 			</Box>
 
 			<Box sx={styles.swipersBox}>
-				{/* <RoundedSwiper list={cast} /> */}
+				{/* <RoundedSwiper list={cast} />
 				<SwiperSection swiperType='person' title='Cast' list={cast} />
-			</Box>
+			</Box> */}
 		</Box>
 	);
 };
