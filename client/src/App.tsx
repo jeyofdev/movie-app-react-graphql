@@ -1,3 +1,4 @@
+import MainContainer from '@components/containers/mainContainer/MainContainer';
 import { ThemeContext } from '@context/ThemeContext';
 import { Box, ThemeProvider } from '@mui/material';
 import { darkTheme, lightTheme } from '@theme/globalTheme';
@@ -14,8 +15,18 @@ const App = () => {
 				themeMode && themeMode === DarkModeEnum.DARK ? darkTheme : lightTheme
 			}
 		>
-			<Box className='app'>
-				<MainRouter />
+			<Box
+				sx={{
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'center',
+					minHeight: '100vh',
+					padding: { xs: 0, sm: '24px' },
+				}}
+			>
+				<MainContainer>
+					<MainRouter />
+				</MainContainer>
 			</Box>
 		</ThemeProvider>
 	);

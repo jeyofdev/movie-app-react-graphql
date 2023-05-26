@@ -1,19 +1,16 @@
 import ListContainer from '@components/containers/listContainer/ListContainer';
-import MainContainer from '@components/containers/mainContainer/MainContainer';
-import Sidebar from '@components/sidebar/sidebar/Sidebar';
 import {
 	Movie,
 	useNowPlayingMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
-import { Box, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 import { firstLetterCapitalize } from '@utils/index';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import useStyles from './style';
 
 const NowPlaying = () => {
-	const theme = useTheme();
-	const styles = useStyles(theme);
+	const styles = useStyles();
 	const location = useLocation();
 
 	const { loading, error, data } = useNowPlayingMoviesQuery();
@@ -37,13 +34,10 @@ const NowPlaying = () => {
 
 	return (
 		<Box sx={styles.root}>
-			<MainContainer>
-				<Sidebar />
-				<ListContainer
-					list={data?.nowPlayingMovies?.results as Array<Movie>}
-					title={firstLetterCapitalize(getTitle())}
-				/>
-			</MainContainer>
+			<ListContainer
+				list={data?.nowPlayingMovies?.results as Array<Movie>}
+				title={firstLetterCapitalize(getTitle())}
+			/>
 		</Box>
 	);
 };

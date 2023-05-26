@@ -35,6 +35,15 @@ const useStyles = (theme: Theme) => ({
 			minHeight: `calc(100vh - (2 * ${theme.spacing(5)}))`,
 		},
 	},
+	contentBox: {
+		gridColumn: {
+			xs: 'auto / span 12',
+			sm: 'auto / span 8',
+			md: 'auto / span 9',
+			lg: 'auto / span 10',
+			xl: 'auto / span 11',
+		},
+	},
 });
 
 export default useStyles;

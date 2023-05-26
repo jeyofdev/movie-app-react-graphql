@@ -1,11 +1,14 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useTheme } from '@mui/material';
 import useStyles from './style';
 
 const NotFound = () => {
-	const styles = useStyles();
+	const theme = useTheme();
+	const styles = useStyles(theme);
 	return (
 		<Box sx={styles.root}>
-			<Typography variant='h3'>Page Not Found</Typography>
+			<Typography variant='h3' sx={styles.typo}>
+				Page Not Found
+			</Typography>
 		</Box>
 	);
 };

@@ -1,7 +1,5 @@
 import PreviewMovieCard from '@components/cards/previewMovieCard/MoviePreviewCard';
-import MainContainer from '@components/containers/mainContainer/MainContainer';
 import SwiperSection from '@components/sections/swiperBlock/SwiperSection';
-import Sidebar from '@components/sidebar/sidebar/Sidebar';
 import { ThemeContext } from '@context/ThemeContext';
 import {
 	Movie,
@@ -103,133 +101,130 @@ const Home = () => {
 
 	return (
 		<Box sx={styles.root}>
-			<MainContainer>
-				<Sidebar />
-				<Box sx={styles.primaryContentBox}>
-					<Box>
-						<Button
-							color='primary'
-							onClick={() => {
-								handleThemeMode();
-							}}
-						>
-							darkmode
-						</Button>
-					</Box>
-
-					<Box sx={styles.sectionBox}>
-						<SwiperSection
-							swiperType='thumbs-gallery'
-							title='Popular movies'
-							list={nowPlayingMovies?.slice(0, 10)}
-							activeItemSwiperGallery={activeItemSwiperGallery}
-							moviesListCategory={MoviesListCategoryEnum.POPULAR}
-							setMoviesListCategory={setMoviesListCategory}
-							setActiveItemSwiperGallery={setActiveItemSwiperGallery}
-						/>
-					</Box>
-
-					<Box sx={styles.sectionBox}>
-						<SwiperSection
-							title='Popular movies'
-							list={popularMovies}
-							linkAllResult='/movies/popular'
-							moviesListCategory={MoviesListCategoryEnum.POPULAR}
-							setMoviesSelectedId={setMoviesSelectedId}
-							setMoviesListCategory={setMoviesListCategory}
-						/>
-
-						{moviesListCategory === MoviesListCategoryEnum.POPULAR &&
-							moviesSelectedId && (
-								<PreviewMovieCard
-									id={moviePreviewData?.movieDetails?.id}
-									title={moviePreviewData?.movieDetails?.title}
-									backdrop_path={moviePreviewData?.movieDetails?.backdrop_path}
-									overview={moviePreviewData?.movieDetails?.overview}
-									genres={moviePreviewData?.movieDetails?.genres}
-									runtime={moviePreviewData?.movieDetails?.runtime}
-									vote_average={moviePreviewData?.movieDetails?.vote_average}
-									stylesBox={styles.previewBox}
-								/>
-							)}
-					</Box>
-
-					<Box sx={styles.sectionBox}>
-						<SwiperSection
-							title='Upcoming movies'
-							list={upComingMovies}
-							linkAllResult='/movies/upcoming'
-							moviesListCategory={MoviesListCategoryEnum.UP_COMING}
-							setMoviesSelectedId={setMoviesSelectedId}
-							setMoviesListCategory={setMoviesListCategory}
-						/>
-
-						{moviesListCategory === MoviesListCategoryEnum.UP_COMING &&
-							moviesSelectedId && (
-								<PreviewMovieCard
-									id={moviePreviewData?.movieDetails?.id}
-									title={moviePreviewData?.movieDetails?.title}
-									backdrop_path={moviePreviewData?.movieDetails?.backdrop_path}
-									overview={moviePreviewData?.movieDetails?.overview}
-									genres={moviePreviewData?.movieDetails?.genres}
-									runtime={moviePreviewData?.movieDetails?.runtime}
-									vote_average={moviePreviewData?.movieDetails?.vote_average}
-									stylesBox={styles.previewBox}
-								/>
-							)}
-					</Box>
-
-					<Box sx={styles.sectionBox}>
-						<SwiperSection
-							title='Top rated'
-							list={topRatedMovies}
-							linkAllResult='/movies/top-rated'
-							moviesListCategory={MoviesListCategoryEnum.TOP_RATING}
-							setMoviesSelectedId={setMoviesSelectedId}
-							setMoviesListCategory={setMoviesListCategory}
-						/>
-
-						{moviesListCategory === MoviesListCategoryEnum.TOP_RATING &&
-							moviesSelectedId && (
-								<PreviewMovieCard
-									id={moviePreviewData?.movieDetails?.id}
-									title={moviePreviewData?.movieDetails?.title}
-									backdrop_path={moviePreviewData?.movieDetails?.backdrop_path}
-									overview={moviePreviewData?.movieDetails?.overview}
-									genres={moviePreviewData?.movieDetails?.genres}
-									runtime={moviePreviewData?.movieDetails?.runtime}
-									vote_average={moviePreviewData?.movieDetails?.vote_average}
-									stylesBox={styles.previewBox}
-								/>
-							)}
-					</Box>
-
-					<Box sx={styles.sectionBox}>
-						<SwiperSection
-							title='Now Playing'
-							list={nowPlayingMovies}
-							linkAllResult='/movies/now-playing'
-							moviesListCategory={MoviesListCategoryEnum.NOW_PLAYING}
-							setMoviesSelectedId={setMoviesSelectedId}
-							setMoviesListCategory={setMoviesListCategory}
-						/>
-
-						{moviesListCategory === MoviesListCategoryEnum.NOW_PLAYING &&
-							moviesSelectedId && (
-								<PreviewMovieCard
-									id={moviePreviewData?.movieDetails?.id}
-									title={moviePreviewData?.movieDetails?.title}
-									backdrop_path={moviePreviewData?.movieDetails?.backdrop_path}
-									overview={moviePreviewData?.movieDetails?.overview}
-									genres={moviePreviewData?.movieDetails?.genres}
-									runtime={moviePreviewData?.movieDetails?.runtime}
-									vote_average={moviePreviewData?.movieDetails?.vote_average}
-									stylesBox={styles.previewBox}
-								/>
-							)}
-					</Box>
+			<Box sx={styles.primaryContentBox}>
+				<Box>
+					<Button
+						color='primary'
+						onClick={() => {
+							handleThemeMode();
+						}}
+					>
+						darkmode
+					</Button>
 				</Box>
-			</MainContainer>
+
+				<Box sx={styles.sectionBox}>
+					<SwiperSection
+						swiperType='thumbs-gallery'
+						title='Popular movies'
+						list={nowPlayingMovies?.slice(0, 10)}
+						activeItemSwiperGallery={activeItemSwiperGallery}
+						moviesListCategory={MoviesListCategoryEnum.POPULAR}
+						setMoviesListCategory={setMoviesListCategory}
+						setActiveItemSwiperGallery={setActiveItemSwiperGallery}
+					/>
+				</Box>
+
+				<Box sx={styles.sectionBox}>
+					<SwiperSection
+						title='Popular movies'
+						list={popularMovies}
+						linkAllResult='/movies/popular'
+						moviesListCategory={MoviesListCategoryEnum.POPULAR}
+						setMoviesSelectedId={setMoviesSelectedId}
+						setMoviesListCategory={setMoviesListCategory}
+					/>
+
+					{moviesListCategory === MoviesListCategoryEnum.POPULAR &&
+						moviesSelectedId && (
+							<PreviewMovieCard
+								id={moviePreviewData?.movieDetails?.id}
+								title={moviePreviewData?.movieDetails?.title}
+								backdrop_path={moviePreviewData?.movieDetails?.backdrop_path}
+								overview={moviePreviewData?.movieDetails?.overview}
+								genres={moviePreviewData?.movieDetails?.genres}
+								runtime={moviePreviewData?.movieDetails?.runtime}
+								vote_average={moviePreviewData?.movieDetails?.vote_average}
+								stylesBox={styles.previewBox}
+							/>
+						)}
+				</Box>
+
+				<Box sx={styles.sectionBox}>
+					<SwiperSection
+						title='Upcoming movies'
+						list={upComingMovies}
+						linkAllResult='/movies/upcoming'
+						moviesListCategory={MoviesListCategoryEnum.UP_COMING}
+						setMoviesSelectedId={setMoviesSelectedId}
+						setMoviesListCategory={setMoviesListCategory}
+					/>
+
+					{moviesListCategory === MoviesListCategoryEnum.UP_COMING &&
+						moviesSelectedId && (
+							<PreviewMovieCard
+								id={moviePreviewData?.movieDetails?.id}
+								title={moviePreviewData?.movieDetails?.title}
+								backdrop_path={moviePreviewData?.movieDetails?.backdrop_path}
+								overview={moviePreviewData?.movieDetails?.overview}
+								genres={moviePreviewData?.movieDetails?.genres}
+								runtime={moviePreviewData?.movieDetails?.runtime}
+								vote_average={moviePreviewData?.movieDetails?.vote_average}
+								stylesBox={styles.previewBox}
+							/>
+						)}
+				</Box>
+
+				<Box sx={styles.sectionBox}>
+					<SwiperSection
+						title='Top rated'
+						list={topRatedMovies}
+						linkAllResult='/movies/top-rated'
+						moviesListCategory={MoviesListCategoryEnum.TOP_RATING}
+						setMoviesSelectedId={setMoviesSelectedId}
+						setMoviesListCategory={setMoviesListCategory}
+					/>
+
+					{moviesListCategory === MoviesListCategoryEnum.TOP_RATING &&
+						moviesSelectedId && (
+							<PreviewMovieCard
+								id={moviePreviewData?.movieDetails?.id}
+								title={moviePreviewData?.movieDetails?.title}
+								backdrop_path={moviePreviewData?.movieDetails?.backdrop_path}
+								overview={moviePreviewData?.movieDetails?.overview}
+								genres={moviePreviewData?.movieDetails?.genres}
+								runtime={moviePreviewData?.movieDetails?.runtime}
+								vote_average={moviePreviewData?.movieDetails?.vote_average}
+								stylesBox={styles.previewBox}
+							/>
+						)}
+				</Box>
+
+				<Box sx={styles.sectionBox}>
+					<SwiperSection
+						title='Now Playing'
+						list={nowPlayingMovies}
+						linkAllResult='/movies/now-playing'
+						moviesListCategory={MoviesListCategoryEnum.NOW_PLAYING}
+						setMoviesSelectedId={setMoviesSelectedId}
+						setMoviesListCategory={setMoviesListCategory}
+					/>
+
+					{moviesListCategory === MoviesListCategoryEnum.NOW_PLAYING &&
+						moviesSelectedId && (
+							<PreviewMovieCard
+								id={moviePreviewData?.movieDetails?.id}
+								title={moviePreviewData?.movieDetails?.title}
+								backdrop_path={moviePreviewData?.movieDetails?.backdrop_path}
+								overview={moviePreviewData?.movieDetails?.overview}
+								genres={moviePreviewData?.movieDetails?.genres}
+								runtime={moviePreviewData?.movieDetails?.runtime}
+								vote_average={moviePreviewData?.movieDetails?.vote_average}
+								stylesBox={styles.previewBox}
+							/>
+						)}
+				</Box>
+			</Box>
 		</Box>
 	);
 };
