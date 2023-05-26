@@ -49,6 +49,20 @@ const useStyles = (theme: Theme) => ({
 		background: theme.palette.primary.dark,
 		border: 'none',
 	},
+	showAllGenresBtn: {
+		gap: '0.75rem',
+		background: theme.palette.error.main,
+		borderRadius: '1rem',
+		width: 'fit-content',
+
+		'&:hover': {
+			background: theme.palette.error.main,
+		},
+	},
+	showAllGenresIcon: {
+		fontSize: '1rem',
+	},
+	showAllGenresTypo: {},
 });
 
 export default useStyles;

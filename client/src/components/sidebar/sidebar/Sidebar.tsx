@@ -1,5 +1,8 @@
+import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
 import {
 	faCalendarCheck,
+	faCircleArrowDown,
+	faCircleArrowUp,
 	faCompass,
 	faFilm,
 	faRectangleList,
@@ -9,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Genre, useGenresQuery } from '@graphql/__generated__/graphql-type';
 import useWindowSize from '@hooks/useWindowSize';
 import { Box, Divider, Typography, useTheme } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { BreakpointEnum } from '../../../types/enums';
 import { MenuItemType } from '../../../types/types/props';
@@ -36,8 +39,14 @@ const Sidebar = () => {
 	const [menuItemActive, setMenuItemActive] = useState<string | number>(
 		newsFeedItems[0]?.id,
 	);
+
+	const [showAllGenres, setShowAllGenres] = useState<boolean>(false);
 	const [genresItems, setGenresItems] = useState<Array<Genre>>([]);
-	const { loading, error } = useGenresQuery({
+	const {
+		data: dataGenres,
+		loading,
+		error,
+	} = useGenresQuery({
 		onCompleted(data) {
 			setGenresItems(
 				data?.genres?.genres
@@ -46,6 +55,26 @@ const Sidebar = () => {
 			);
 		},
 	});
+
+	const handleClickShowAllGenres = () => {
+		setShowAllGenres(!showAllGenres);
+	};
+
+	useEffect(() => {
+		if (!showAllGenres) {
+			setGenresItems(
+				dataGenres?.genres?.genres
+					? (dataGenres?.genres?.genres.slice(0, 5) as Array<Genre>)
+					: [],
+			);
+		} else {
+			setGenresItems(
+				dataGenres?.genres?.genres
+					? (dataGenres?.genres?.genres as Array<Genre>)
+					: [],
+			);
+		}
+	}, [dataGenres?.genres?.genres, showAllGenres]);
 
 	if (loading) {
 		return <Box>Loading...</Box>;
@@ -86,6 +115,20 @@ const Sidebar = () => {
 						setMenuItemActive={setMenuItemActive}
 						isGenre
 					/>
+
+					<BaseButton
+						onClick={handleClickShowAllGenres}
+						disableRipple={true}
+						style={styles.showAllGenresBtn}
+					>
+						<FontAwesomeIcon
+							icon={!showAllGenres ? faCircleArrowDown : faCircleArrowUp}
+							style={styles.showAllGenresIcon}
+						/>
+						<Typography variant='body1' sx={styles.showAllGenresTypo}>
+							{!showAllGenres ? 'show more' : 'hide'}
+						</Typography>
+					</BaseButton>
 
 					<Divider sx={styles.divider} />
 				</>
