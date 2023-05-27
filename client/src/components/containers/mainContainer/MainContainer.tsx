@@ -1,5 +1,6 @@
 import Sidebar from '@components/sidebar/sidebar/Sidebar';
-import { Box, useTheme } from '@mui/material';
+import Topbar from '@components/topbar/Topbar';
+import { Box, Divider, useTheme } from '@mui/material';
 import { MainContainerPropsType } from '../../../types/types/props';
 import useStyles from './style';
 
@@ -9,7 +10,11 @@ const MainContainer = ({ children }: MainContainerPropsType) => {
 	return (
 		<Box sx={styles.root}>
 			<Sidebar />
-			<Box sx={styles.contentBox}>{children}</Box>
+			<Box sx={styles.contentBox}>
+				<Topbar />
+				<Divider />
+				{children}
+			</Box>
 		</Box>
 	);
 };

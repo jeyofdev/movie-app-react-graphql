@@ -1,27 +1,14 @@
 import ListResultCard from '@components/cards/listResultCard/ListResultCard';
-import { ThemeContext } from '@context/ThemeContext';
-import { Box, Button, Typography, useTheme } from '@mui/material';
-import { useContext } from 'react';
+import { Box, Typography, useTheme } from '@mui/material';
 import { ListContainerProps } from '../../../types/types/props';
 import useStyles from './style';
 
 const ListContainer = ({ list, title }: ListContainerProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
-	const { handleThemeMode } = useContext(ThemeContext);
 
 	return (
 		<Box sx={styles.primaryContentBox}>
-			<Box sx={styles.darkMode}>
-				<Button
-					color='primary'
-					onClick={() => {
-						handleThemeMode();
-					}}
-				>
-					darkmode
-				</Button>
-			</Box>
 			<Typography variant='h3' sx={styles.title}>
 				{title}
 			</Typography>

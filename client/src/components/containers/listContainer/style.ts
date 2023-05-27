@@ -7,9 +7,6 @@ const useStyles = (theme: Theme) => ({
 		flexDirection: 'column',
 		alignItems: 'center',
 	},
-	darkMode: {
-		alignSelf: 'flex-start',
-	},
 	cards: {
 		display: 'grid',
 		gridTemplateColumns: 'repeat(12, 1fr)',
