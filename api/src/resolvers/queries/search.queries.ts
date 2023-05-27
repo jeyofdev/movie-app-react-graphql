@@ -9,7 +9,7 @@ const searchQueries = {
 		context: IContext,
 	) => {
 		try {
-			return await context.dataSource.search.searchMovie(args);
+			return await context.dataSource.search.searchMovies(args);
 		} catch (err) {
 			throw new NotFoundError('No movies was found');
 		}

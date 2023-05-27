@@ -1,14 +1,18 @@
 import request from 'supertest';
-import { OptionsInput } from '../__generated__/resolvers-types';
+import {
+	DiscoverInput,
+	OptionsInput,
+	SearchInput,
+} from '../__generated__/resolvers-types';
 
 export const formatUrlQuery = (
 	baseUrl: string,
 	apiKey: string,
 	pathParams?: string | number,
-	queryString?: OptionsInput,
+	queryString?: OptionsInput | DiscoverInput | SearchInput,
 ) => {
-	let url = `${baseUrl}/`;
-	url += pathParams ?? `${pathParams}`;
+	let url = `${baseUrl}`;
+	url += pathParams ? `/${pathParams}` : '';
 	url += `?api_key=${apiKey}&`;
 
 	if (queryString) {

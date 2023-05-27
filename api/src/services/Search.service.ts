@@ -4,6 +4,7 @@ import {
 	MoviesResponse,
 	QuerySearchMoviesArgs,
 } from '__generated__/resolvers-types';
+import { formatUrlQuery } from '../utils/helpers';
 
 class SearchService extends RESTDataSource {
 	baseURL!: string;
@@ -21,13 +22,14 @@ class SearchService extends RESTDataSource {
 		this.apiKey = process.env.TMDB_API_KEY;
 	}
 
-	async searchMovie(args: QuerySearchMoviesArgs): Promise<MoviesResponse> {
+	async searchMovies(args: QuerySearchMoviesArgs): Promise<MoviesResponse> {
 		return this.get(
-			`${this.baseURL}?api_key=${this.apiKey}&query=${args?.searchOptions?.query
-				?.split(' ')
-				.join('+')}&language=${args?.searchOptions?.language}&page=${
-				args?.searchOptions?.page
-			}`,
+			formatUrlQuery(this.baseURL, this.apiKey, '', {
+				language: args?.searchOptions?.language,
+				page: args?.searchOptions?.page,
+				region: args?.searchOptions?.region,
+				query: args?.searchOptions?.query?.split(' ').join('+'),
+			}),
 		);
 	}
 }

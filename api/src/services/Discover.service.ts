@@ -4,6 +4,7 @@ import {
 	MoviesResponse,
 	QueryDiscoverMoviesByGenreArgs,
 } from '__generated__/resolvers-types';
+import { formatUrlQuery } from '../utils/helpers';
 
 class DiscoverService extends RESTDataSource {
 	baseURL!: string;
@@ -25,7 +26,12 @@ class DiscoverService extends RESTDataSource {
 		args: QueryDiscoverMoviesByGenreArgs,
 	): Promise<MoviesResponse> {
 		return this.get(
-			`${this.baseURL}?api_key=${this.apiKey}&with_genres=${args?.discoverOptions?.with_genres}&language=${args?.discoverOptions?.language}&page=${args?.discoverOptions?.page}`,
+			formatUrlQuery(this.baseURL, this.apiKey, '', {
+				language: args?.discoverOptions?.language,
+				page: args?.discoverOptions?.page,
+				region: args?.discoverOptions?.region,
+				with_genres: args?.discoverOptions?.with_genres,
+			}),
 		);
 	}
 }
