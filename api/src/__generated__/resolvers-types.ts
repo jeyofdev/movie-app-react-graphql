@@ -67,6 +67,13 @@ export type CrewMovie = {
 	profile_path?: Maybe<Scalars['String']>;
 };
 
+export type DiscoverInput = {
+	language?: InputMaybe<LanguageEnum>;
+	page?: InputMaybe<Scalars['Int']>;
+	region?: InputMaybe<RegionEnum>;
+	with_genres?: InputMaybe<Scalars['Int']>;
+};
+
 export type Genre = {
 	__typename?: 'Genre';
 	id: Scalars['Int'];
@@ -292,7 +299,7 @@ export type QueryCrewByMovieArgs = {
 };
 
 export type QueryDiscoverMoviesByGenreArgs = {
-	searchOptions?: InputMaybe<SearchInput>;
+	discoverOptions?: InputMaybe<DiscoverInput>;
 };
 
 export type QueryGenresArgs = {
@@ -378,8 +385,8 @@ export enum RegionEnum {
 export type SearchInput = {
 	language?: InputMaybe<LanguageEnum>;
 	page?: InputMaybe<Scalars['Int']>;
+	query?: InputMaybe<Scalars['String']>;
 	region?: InputMaybe<RegionEnum>;
-	with_genres?: InputMaybe<Scalars['Int']>;
 };
 
 export type Spoken_Languages = {
@@ -503,6 +510,7 @@ export type ResolversTypes = ResolversObject<{
 	CollectionTranslate: ResolverTypeWrapper<CollectionTranslate>;
 	CollectionTranslateData: ResolverTypeWrapper<CollectionTranslateData>;
 	CrewMovie: ResolverTypeWrapper<CrewMovie>;
+	DiscoverInput: DiscoverInput;
 	Float: ResolverTypeWrapper<Scalars['Float']>;
 	Genre: ResolverTypeWrapper<Genre>;
 	GenreResponses: ResolverTypeWrapper<GenreResponses>;
@@ -540,6 +548,7 @@ export type ResolversParentTypes = ResolversObject<{
 	CollectionTranslate: CollectionTranslate;
 	CollectionTranslateData: CollectionTranslateData;
 	CrewMovie: CrewMovie;
+	DiscoverInput: DiscoverInput;
 	Float: Scalars['Float'];
 	Genre: Genre;
 	GenreResponses: GenreResponses;

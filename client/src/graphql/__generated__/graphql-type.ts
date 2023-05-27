@@ -69,6 +69,13 @@ export type CrewMovie = {
 	profile_path?: Maybe<Scalars['String']>;
 };
 
+export type DiscoverInput = {
+	language?: InputMaybe<LanguageEnum>;
+	page?: InputMaybe<Scalars['Int']>;
+	region?: InputMaybe<RegionEnum>;
+	with_genres?: InputMaybe<Scalars['Int']>;
+};
+
 export type Genre = {
 	__typename?: 'Genre';
 	id: Scalars['Int'];
@@ -276,7 +283,6 @@ export type Query = {
 	personCrewByMovie?: Maybe<PersonCrewResponse>;
 	personDetails?: Maybe<Person>;
 	popularMovies?: Maybe<MoviesResponse>;
-	searchMovies?: Maybe<MoviesResponse>;
 	similarMovie?: Maybe<MoviesResponse>;
 	topRatedMovies?: Maybe<MoviesResponse>;
 	translationsByCollection?: Maybe<MoviesCollectionTranslateResponse>;
@@ -294,7 +300,7 @@ export type QueryCrewByMovieArgs = {
 };
 
 export type QueryDiscoverMoviesByGenreArgs = {
-	searchOptions?: InputMaybe<SearchInput>;
+	discoverOptions?: InputMaybe<DiscoverInput>;
 };
 
 export type QueryGenresArgs = {
@@ -348,10 +354,6 @@ export type QueryPopularMoviesArgs = {
 	options?: InputMaybe<OptionsInput>;
 };
 
-export type QuerySearchMoviesArgs = {
-	searchOptions?: InputMaybe<SearchInput>;
-};
-
 export type QuerySimilarMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
 	options?: InputMaybe<OptionsInput>;
@@ -376,13 +378,6 @@ export enum RegionEnum {
 	Fr = 'FR',
 	Us = 'US',
 }
-
-export type SearchInput = {
-	language?: InputMaybe<LanguageEnum>;
-	page?: InputMaybe<Scalars['Int']>;
-	region?: InputMaybe<RegionEnum>;
-	with_genres?: InputMaybe<Scalars['Int']>;
-};
 
 export type Spoken_Languages = {
 	__typename?: 'spoken_languages';
@@ -733,7 +728,7 @@ export type MoviePreviewQuery = {
 };
 
 export type DiscoverMoviesByGenreQueryVariables = Exact<{
-	searchOptions?: InputMaybe<SearchInput>;
+	discoverOptions?: InputMaybe<DiscoverInput>;
 }>;
 
 export type DiscoverMoviesByGenreQuery = {
@@ -1426,8 +1421,8 @@ export type MoviePreviewQueryResult = Apollo.QueryResult<
 	MoviePreviewQueryVariables
 >;
 export const DiscoverMoviesByGenreDocument = gql`
-	query DiscoverMoviesByGenre($searchOptions: SearchInput) {
-		discoverMoviesByGenre(searchOptions: $searchOptions) {
+	query DiscoverMoviesByGenre($discoverOptions: DiscoverInput) {
+		discoverMoviesByGenre(discoverOptions: $discoverOptions) {
 			page
 			results {
 				adult
@@ -1468,7 +1463,7 @@ export const DiscoverMoviesByGenreDocument = gql`
  * @example
  * const { data, loading, error } = useDiscoverMoviesByGenreQuery({
  *   variables: {
- *      searchOptions: // value for 'searchOptions'
+ *      discoverOptions: // value for 'discoverOptions'
  *   },
  * });
  */

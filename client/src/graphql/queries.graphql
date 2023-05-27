@@ -269,8 +269,8 @@ query MoviePreview($movieId: Int, $options: OptionsInput) {
 	}
 }
 
-query DiscoverMoviesByGenre($searchOptions: SearchInput) {
-	discoverMoviesByGenre(searchOptions: $searchOptions) {
+query DiscoverMoviesByGenre($discoverOptions: DiscoverInput) {
+	discoverMoviesByGenre(discoverOptions: $discoverOptions) {
 		page
 		results {
 			adult

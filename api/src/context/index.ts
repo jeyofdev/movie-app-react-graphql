@@ -4,6 +4,7 @@ import MovieService from '../services/Movie.service';
 import KeywordService from '../services/Keyword.service';
 import GenreService from '../services/Genre.service';
 import DiscoverService from '../services/Discover.service';
+import SearchService from '../services/Search.service';
 
 export interface IContext {
 	dataSource: {
@@ -13,6 +14,7 @@ export interface IContext {
 		keywords: KeywordService;
 		genres: GenreService;
 		discover: DiscoverService;
+		search: SearchService;
 	};
 }
 
@@ -24,5 +26,6 @@ export const context: IContext = {
 		keywords: new KeywordService(),
 		genres: new GenreService(),
 		discover: new DiscoverService(),
+		search: new SearchService(),
 	},
 };

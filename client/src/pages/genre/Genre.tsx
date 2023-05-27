@@ -16,7 +16,7 @@ const Genre = () => {
 
 	const { loading, error, data } = useDiscoverMoviesByGenreQuery({
 		variables: {
-			searchOptions: {
+			discoverOptions: {
 				with_genres: Number(location?.state?.genreId),
 			},
 		},

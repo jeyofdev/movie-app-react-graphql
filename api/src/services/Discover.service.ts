@@ -25,7 +25,7 @@ class DiscoverService extends RESTDataSource {
 		args: QueryDiscoverMoviesByGenreArgs,
 	): Promise<MoviesResponse> {
 		return this.get(
-			`${this.baseURL}?api_key=${this.apiKey}&with_genres=${args?.searchOptions?.with_genres}&language=${args?.searchOptions?.language}&page=${args?.searchOptions?.page}`,
+			`${this.baseURL}?api_key=${this.apiKey}&with_genres=${args?.discoverOptions?.with_genres}&language=${args?.discoverOptions?.language}&page=${args?.discoverOptions?.page}`,
 		);
 	}
 }
