@@ -475,6 +475,18 @@
 						"deprecationReason": null
 					},
 					{
+						"name": "sort_by",
+						"description": null,
+						"type": {
+							"kind": "ENUM",
+							"name": "SortEnum",
+							"ofType": null
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
 						"name": "with_genres",
 						"description": null,
 						"type": {
@@ -2656,6 +2668,31 @@
 						"deprecationReason": null
 					},
 					{
+						"name": "sortMovies",
+						"description": null,
+						"args": [
+							{
+								"name": "discoverOptions",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "DiscoverInput",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "MoviesResponse",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
 						"name": "topRatedMovies",
 						"description": null,
 						"args": [
@@ -2840,6 +2877,53 @@
 				],
 				"interfaces": null,
 				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "SortEnum",
+				"description": null,
+				"fields": null,
+				"inputFields": null,
+				"interfaces": null,
+				"enumValues": [
+					{
+						"name": "POPULARITY_ASC",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "POPULARITY_DESC",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "PRIMARY_RELEASE_DATE_ASC",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "PRIMARY_RELEASE_DATE_DESC",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "VOTE_ASC",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "VOTE_DESC",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
 				"possibleTypes": null
 			},
 			{
