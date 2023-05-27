@@ -1,6 +1,5 @@
 import PreviewMovieCard from '@components/cards/previewMovieCard/MoviePreviewCard';
 import SwiperSection from '@components/sections/swiperBlock/SwiperSection';
-import { ThemeContext } from '@context/ThemeContext';
 import {
 	Movie,
 	useMoviePreviewQuery,
@@ -9,8 +8,8 @@ import {
 	useTopRatedMoviesQuery,
 	useUpcomingMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
-import { Box, Button, useTheme } from '@mui/material';
-import { useContext, useState } from 'react';
+import { Box, useTheme } from '@mui/material';
+import { useState } from 'react';
 import { MoviesListCategoryEnum } from '../../types/enums';
 import useStyles from './style';
 
@@ -79,8 +78,6 @@ const Home = () => {
 		variables: { movieId: moviesSelectedId },
 	});
 
-	const { handleThemeMode } = useContext(ThemeContext);
-
 	if (
 		loading ||
 		popularMoviesLoading ||
@@ -102,17 +99,6 @@ const Home = () => {
 	return (
 		<Box sx={styles.root}>
 			<Box sx={styles.primaryContentBox}>
-				<Box>
-					<Button
-						color='primary'
-						onClick={() => {
-							handleThemeMode();
-						}}
-					>
-						darkmode
-					</Button>
-				</Box>
-
 				<Box sx={styles.sectionBox}>
 					<SwiperSection
 						swiperType='thumbs-gallery'
