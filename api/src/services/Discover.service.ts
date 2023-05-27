@@ -2,10 +2,10 @@ import { RESTDataSource } from '@apollo/datasource-rest';
 import 'dotenv/config';
 import {
 	MoviesResponse,
-	QuerySearchMoviesByGenreArgs,
+	QueryDiscoverMoviesByGenreArgs,
 } from '__generated__/resolvers-types';
 
-class SearchService extends RESTDataSource {
+class DiscoverService extends RESTDataSource {
 	baseURL!: string;
 	apiKey!: string;
 
@@ -22,7 +22,7 @@ class SearchService extends RESTDataSource {
 	}
 
 	async findMoviesByGenre(
-		args: QuerySearchMoviesByGenreArgs,
+		args: QueryDiscoverMoviesByGenreArgs,
 	): Promise<MoviesResponse> {
 		return this.get(
 			`${this.baseURL}?api_key=${this.apiKey}&with_genres=${args?.searchOptions?.with_genres}&language=${args?.searchOptions?.language}&page=${args?.searchOptions?.page}`,
@@ -30,4 +30,4 @@ class SearchService extends RESTDataSource {
 	}
 }
 
-export default SearchService;
+export default DiscoverService;

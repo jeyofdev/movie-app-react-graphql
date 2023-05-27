@@ -147,7 +147,7 @@
 						"args": [],
 						"type": {
 							"kind": "SCALAR",
-							"name": "Int",
+							"name": "Float",
 							"ofType": null
 						},
 						"isDeprecated": false,
@@ -2151,6 +2151,31 @@
 						"deprecationReason": null
 					},
 					{
+						"name": "discoverMoviesByGenre",
+						"description": null,
+						"args": [
+							{
+								"name": "searchOptions",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "SearchInput",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "MoviesResponse",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
 						"name": "genres",
 						"description": null,
 						"args": [
@@ -2510,7 +2535,7 @@
 						"deprecationReason": null
 					},
 					{
-						"name": "searchMoviesByGenre",
+						"name": "searchMovies",
 						"description": null,
 						"args": [
 							{

@@ -262,6 +262,7 @@ export type Query = {
 	__typename?: 'Query';
 	castByMovie?: Maybe<MovieCastResponse>;
 	crewByMovie?: Maybe<MovieCrewResponse>;
+	discoverMoviesByGenre?: Maybe<MoviesResponse>;
 	genres?: Maybe<GenreResponses>;
 	imagesByMovie?: Maybe<MovieImageResponse>;
 	keywordsByMovie?: Maybe<MoviesKeywordsResponse>;
@@ -273,7 +274,7 @@ export type Query = {
 	personCrewByMovie?: Maybe<PersonCrewResponse>;
 	personDetails?: Maybe<Person>;
 	popularMovies?: Maybe<MoviesResponse>;
-	searchMoviesByGenre?: Maybe<MoviesResponse>;
+	searchMovies?: Maybe<MoviesResponse>;
 	similarMovie?: Maybe<MoviesResponse>;
 	topRatedMovies?: Maybe<MoviesResponse>;
 	translationsByCollection?: Maybe<MoviesCollectionTranslateResponse>;
@@ -288,6 +289,10 @@ export type QueryCastByMovieArgs = {
 export type QueryCrewByMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
 	options?: InputMaybe<OptionsInput>;
+};
+
+export type QueryDiscoverMoviesByGenreArgs = {
+	searchOptions?: InputMaybe<SearchInput>;
 };
 
 export type QueryGenresArgs = {
@@ -341,7 +346,7 @@ export type QueryPopularMoviesArgs = {
 	options?: InputMaybe<OptionsInput>;
 };
 
-export type QuerySearchMoviesByGenreArgs = {
+export type QuerySearchMoviesArgs = {
 	searchOptions?: InputMaybe<SearchInput>;
 };
 
@@ -1133,6 +1138,12 @@ export type QueryResolvers<
 		ContextType,
 		Partial<QueryCrewByMovieArgs>
 	>;
+	discoverMoviesByGenre?: Resolver<
+		Maybe<ResolversTypes['MoviesResponse']>,
+		ParentType,
+		ContextType,
+		Partial<QueryDiscoverMoviesByGenreArgs>
+	>;
 	genres?: Resolver<
 		Maybe<ResolversTypes['GenreResponses']>,
 		ParentType,
@@ -1199,11 +1210,11 @@ export type QueryResolvers<
 		ContextType,
 		Partial<QueryPopularMoviesArgs>
 	>;
-	searchMoviesByGenre?: Resolver<
+	searchMovies?: Resolver<
 		Maybe<ResolversTypes['MoviesResponse']>,
 		ParentType,
 		ContextType,
-		Partial<QuerySearchMoviesByGenreArgs>
+		Partial<QuerySearchMoviesArgs>
 	>;
 	similarMovie?: Resolver<
 		Maybe<ResolversTypes['MoviesResponse']>,

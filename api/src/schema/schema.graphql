@@ -261,5 +261,6 @@ type Query {
 	personCrewByMovie(personId: Int, options: OptionsInput): PersonCrewResponse
 	moviesByKeyword(keywordId: Int, options: OptionsInput): KeywordMoviesResponse
 	genres(options: OptionsInput): GenreResponses
-	searchMoviesByGenre(searchOptions: SearchInput): MoviesResponse
+	discoverMoviesByGenre(searchOptions: SearchInput): MoviesResponse
+	searchMovies(searchOptions: SearchInput): MoviesResponse
 }

@@ -3,7 +3,7 @@ import CollectionService from '../services/Collection.service';
 import MovieService from '../services/Movie.service';
 import KeywordService from '../services/Keyword.service';
 import GenreService from '../services/Genre.service';
-import SearchService from '../services/Search.service';
+import DiscoverService from '../services/Discover.service';
 
 export interface IContext {
 	dataSource: {
@@ -12,7 +12,7 @@ export interface IContext {
 		persons: PersonService;
 		keywords: KeywordService;
 		genres: GenreService;
-		search: SearchService;
+		discover: DiscoverService;
 	};
 }
 
@@ -23,6 +23,6 @@ export const context: IContext = {
 		persons: new PersonService(),
 		keywords: new KeywordService(),
 		genres: new GenreService(),
-		search: new SearchService(),
+		discover: new DiscoverService(),
 	},
 };

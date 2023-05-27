@@ -1,7 +1,7 @@
 import ListContainer from '@components/containers/listContainer/ListContainer';
 import {
 	Movie,
-	useSearchMoviesByGenreQuery,
+	useDiscoverMoviesByGenreQuery,
 } from '@graphql/__generated__/graphql-type';
 import { Box } from '@mui/material';
 import { firstLetterCapitalize } from '@utils/index';
@@ -14,7 +14,7 @@ const Genre = () => {
 	const location = useLocation();
 	const { genreName } = useParams();
 
-	const { loading, error, data } = useSearchMoviesByGenreQuery({
+	const { loading, error, data } = useDiscoverMoviesByGenreQuery({
 		variables: {
 			searchOptions: {
 				with_genres: Number(location?.state?.genreId),
@@ -37,7 +37,7 @@ const Genre = () => {
 	return (
 		<Box sx={styles.root}>
 			<ListContainer
-				list={data?.searchMoviesByGenre?.results as Array<Movie>}
+				list={data?.discoverMoviesByGenre?.results as Array<Movie>}
 				title={firstLetterCapitalize(genreName?.replaceAll('-', ' ') as string)}
 			/>
 		</Box>
