@@ -1,15 +1,15 @@
 import { IContext } from '../../context';
-import { QuerySearchMoviesByGenreArgs } from '../../__generated__/resolvers-types';
+import { QuerySearchMoviesArgs } from '../../__generated__/resolvers-types';
 import NotFoundError from '../../errors/NotFound.error';
 
 const searchQueries = {
-	searchMoviesByGenre: async (
+	searchMovies: async (
 		_: never,
-		args: QuerySearchMoviesByGenreArgs,
+		args: QuerySearchMoviesArgs,
 		context: IContext,
 	) => {
 		try {
-			return await context.dataSource.search.findMoviesByGenre(args);
+			return await context.dataSource.search.searchMovie(args);
 		} catch (err) {
 			throw new NotFoundError('No movies was found');
 		}

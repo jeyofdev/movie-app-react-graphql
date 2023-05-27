@@ -34,7 +34,7 @@ export type CastMovie = {
 	name?: Maybe<Scalars['String']>;
 	order?: Maybe<Scalars['Int']>;
 	original_name?: Maybe<Scalars['String']>;
-	popularity?: Maybe<Scalars['Int']>;
+	popularity?: Maybe<Scalars['Float']>;
 	profile_path?: Maybe<Scalars['String']>;
 };
 
@@ -67,6 +67,13 @@ export type CrewMovie = {
 	original_name?: Maybe<Scalars['String']>;
 	popularity?: Maybe<Scalars['Int']>;
 	profile_path?: Maybe<Scalars['String']>;
+};
+
+export type DiscoverInput = {
+	language?: InputMaybe<LanguageEnum>;
+	page?: InputMaybe<Scalars['Int']>;
+	region?: InputMaybe<RegionEnum>;
+	with_genres?: InputMaybe<Scalars['Int']>;
 };
 
 export type Genre = {
@@ -264,6 +271,7 @@ export type Query = {
 	__typename?: 'Query';
 	castByMovie?: Maybe<MovieCastResponse>;
 	crewByMovie?: Maybe<MovieCrewResponse>;
+	discoverMoviesByGenre?: Maybe<MoviesResponse>;
 	genres?: Maybe<GenreResponses>;
 	imagesByMovie?: Maybe<MovieImageResponse>;
 	keywordsByMovie?: Maybe<MoviesKeywordsResponse>;
@@ -275,7 +283,6 @@ export type Query = {
 	personCrewByMovie?: Maybe<PersonCrewResponse>;
 	personDetails?: Maybe<Person>;
 	popularMovies?: Maybe<MoviesResponse>;
-	searchMoviesByGenre?: Maybe<MoviesResponse>;
 	similarMovie?: Maybe<MoviesResponse>;
 	topRatedMovies?: Maybe<MoviesResponse>;
 	translationsByCollection?: Maybe<MoviesCollectionTranslateResponse>;
@@ -290,6 +297,10 @@ export type QueryCastByMovieArgs = {
 export type QueryCrewByMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
 	options?: InputMaybe<OptionsInput>;
+};
+
+export type QueryDiscoverMoviesByGenreArgs = {
+	discoverOptions?: InputMaybe<DiscoverInput>;
 };
 
 export type QueryGenresArgs = {
@@ -343,10 +354,6 @@ export type QueryPopularMoviesArgs = {
 	options?: InputMaybe<OptionsInput>;
 };
 
-export type QuerySearchMoviesByGenreArgs = {
-	searchOptions?: InputMaybe<SearchInput>;
-};
-
 export type QuerySimilarMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
 	options?: InputMaybe<OptionsInput>;
@@ -371,13 +378,6 @@ export enum RegionEnum {
 	Fr = 'FR',
 	Us = 'US',
 }
-
-export type SearchInput = {
-	language?: InputMaybe<LanguageEnum>;
-	page?: InputMaybe<Scalars['Int']>;
-	region?: InputMaybe<RegionEnum>;
-	with_genres?: InputMaybe<Scalars['Int']>;
-};
 
 export type Spoken_Languages = {
 	__typename?: 'spoken_languages';
@@ -727,13 +727,13 @@ export type MoviePreviewQuery = {
 	} | null;
 };
 
-export type SearchMoviesByGenreQueryVariables = Exact<{
-	searchOptions?: InputMaybe<SearchInput>;
+export type DiscoverMoviesByGenreQueryVariables = Exact<{
+	discoverOptions?: InputMaybe<DiscoverInput>;
 }>;
 
-export type SearchMoviesByGenreQuery = {
+export type DiscoverMoviesByGenreQuery = {
 	__typename?: 'Query';
-	searchMoviesByGenre?: {
+	discoverMoviesByGenre?: {
 		__typename?: 'MoviesResponse';
 		page: number;
 		total_pages: number;
@@ -1420,9 +1420,9 @@ export type MoviePreviewQueryResult = Apollo.QueryResult<
 	MoviePreviewQuery,
 	MoviePreviewQueryVariables
 >;
-export const SearchMoviesByGenreDocument = gql`
-	query SearchMoviesByGenre($searchOptions: SearchInput) {
-		searchMoviesByGenre(searchOptions: $searchOptions) {
+export const DiscoverMoviesByGenreDocument = gql`
+	query DiscoverMoviesByGenre($discoverOptions: DiscoverInput) {
+		discoverMoviesByGenre(discoverOptions: $discoverOptions) {
 			page
 			results {
 				adult
@@ -1452,54 +1452,54 @@ export const SearchMoviesByGenreDocument = gql`
 `;
 
 /**
- * __useSearchMoviesByGenreQuery__
+ * __useDiscoverMoviesByGenreQuery__
  *
- * To run a query within a React component, call `useSearchMoviesByGenreQuery` and pass it any options that fit your needs.
- * When your component renders, `useSearchMoviesByGenreQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useDiscoverMoviesByGenreQuery` and pass it any options that fit your needs.
+ * When your component renders, `useDiscoverMoviesByGenreQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useSearchMoviesByGenreQuery({
+ * const { data, loading, error } = useDiscoverMoviesByGenreQuery({
  *   variables: {
- *      searchOptions: // value for 'searchOptions'
+ *      discoverOptions: // value for 'discoverOptions'
  *   },
  * });
  */
-export function useSearchMoviesByGenreQuery(
+export function useDiscoverMoviesByGenreQuery(
 	baseOptions?: Apollo.QueryHookOptions<
-		SearchMoviesByGenreQuery,
-		SearchMoviesByGenreQueryVariables
+		DiscoverMoviesByGenreQuery,
+		DiscoverMoviesByGenreQueryVariables
 	>,
 ) {
 	const options = { ...defaultOptions, ...baseOptions };
 	return Apollo.useQuery<
-		SearchMoviesByGenreQuery,
-		SearchMoviesByGenreQueryVariables
-	>(SearchMoviesByGenreDocument, options);
+		DiscoverMoviesByGenreQuery,
+		DiscoverMoviesByGenreQueryVariables
+	>(DiscoverMoviesByGenreDocument, options);
 }
-export function useSearchMoviesByGenreLazyQuery(
+export function useDiscoverMoviesByGenreLazyQuery(
 	baseOptions?: Apollo.LazyQueryHookOptions<
-		SearchMoviesByGenreQuery,
-		SearchMoviesByGenreQueryVariables
+		DiscoverMoviesByGenreQuery,
+		DiscoverMoviesByGenreQueryVariables
 	>,
 ) {
 	const options = { ...defaultOptions, ...baseOptions };
 	return Apollo.useLazyQuery<
-		SearchMoviesByGenreQuery,
-		SearchMoviesByGenreQueryVariables
-	>(SearchMoviesByGenreDocument, options);
+		DiscoverMoviesByGenreQuery,
+		DiscoverMoviesByGenreQueryVariables
+	>(DiscoverMoviesByGenreDocument, options);
 }
-export type SearchMoviesByGenreQueryHookResult = ReturnType<
-	typeof useSearchMoviesByGenreQuery
+export type DiscoverMoviesByGenreQueryHookResult = ReturnType<
+	typeof useDiscoverMoviesByGenreQuery
 >;
-export type SearchMoviesByGenreLazyQueryHookResult = ReturnType<
-	typeof useSearchMoviesByGenreLazyQuery
+export type DiscoverMoviesByGenreLazyQueryHookResult = ReturnType<
+	typeof useDiscoverMoviesByGenreLazyQuery
 >;
-export type SearchMoviesByGenreQueryResult = Apollo.QueryResult<
-	SearchMoviesByGenreQuery,
-	SearchMoviesByGenreQueryVariables
+export type DiscoverMoviesByGenreQueryResult = Apollo.QueryResult<
+	DiscoverMoviesByGenreQuery,
+	DiscoverMoviesByGenreQueryVariables
 >;
 export const CastByMovieDocument = gql`
 	query CastByMovie($movieId: Int, $options: OptionsInput) {

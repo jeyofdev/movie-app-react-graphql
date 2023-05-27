@@ -433,6 +433,65 @@
 				"possibleTypes": null
 			},
 			{
+				"kind": "INPUT_OBJECT",
+				"name": "DiscoverInput",
+				"description": null,
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "language",
+						"description": null,
+						"type": {
+							"kind": "ENUM",
+							"name": "LanguageEnum",
+							"ofType": null
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "page",
+						"description": null,
+						"type": {
+							"kind": "SCALAR",
+							"name": "Int",
+							"ofType": null
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "region",
+						"description": null,
+						"type": {
+							"kind": "ENUM",
+							"name": "RegionEnum",
+							"ofType": null
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "with_genres",
+						"description": null,
+						"type": {
+							"kind": "SCALAR",
+							"name": "Int",
+							"ofType": null
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
 				"kind": "SCALAR",
 				"name": "Float",
 				"description": "The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).",
@@ -2151,6 +2210,31 @@
 						"deprecationReason": null
 					},
 					{
+						"name": "discoverMoviesByGenre",
+						"description": null,
+						"args": [
+							{
+								"name": "discoverOptions",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "DiscoverInput",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "MoviesResponse",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
 						"name": "genres",
 						"description": null,
 						"args": [
@@ -2510,7 +2594,7 @@
 						"deprecationReason": null
 					},
 					{
-						"name": "searchMoviesByGenre",
+						"name": "searchMovies",
 						"description": null,
 						"args": [
 							{
@@ -2730,11 +2814,11 @@
 						"deprecationReason": null
 					},
 					{
-						"name": "region",
+						"name": "query",
 						"description": null,
 						"type": {
-							"kind": "ENUM",
-							"name": "RegionEnum",
+							"kind": "SCALAR",
+							"name": "String",
 							"ofType": null
 						},
 						"defaultValue": null,
@@ -2742,11 +2826,11 @@
 						"deprecationReason": null
 					},
 					{
-						"name": "with_genres",
+						"name": "region",
 						"description": null,
 						"type": {
-							"kind": "SCALAR",
-							"name": "Int",
+							"kind": "ENUM",
+							"name": "RegionEnum",
 							"ofType": null
 						},
 						"defaultValue": null,

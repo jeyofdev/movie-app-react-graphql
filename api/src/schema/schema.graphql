@@ -230,8 +230,15 @@ input OptionsInput {
 	region: RegionEnum
 }
 
-input SearchInput {
+input DiscoverInput {
 	with_genres: Int
+	language: LanguageEnum
+	page: Int
+	region: RegionEnum
+}
+
+input SearchInput {
+	query: String
 	language: LanguageEnum
 	page: Int
 	region: RegionEnum
@@ -261,5 +268,6 @@ type Query {
 	personCrewByMovie(personId: Int, options: OptionsInput): PersonCrewResponse
 	moviesByKeyword(keywordId: Int, options: OptionsInput): KeywordMoviesResponse
 	genres(options: OptionsInput): GenreResponses
-	searchMoviesByGenre(searchOptions: SearchInput): MoviesResponse
+	discoverMoviesByGenre(discoverOptions: DiscoverInput): MoviesResponse
+	searchMovies(searchOptions: SearchInput): MoviesResponse
 }

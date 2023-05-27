@@ -2,7 +2,7 @@ import { RESTDataSource } from '@apollo/datasource-rest';
 import 'dotenv/config';
 import {
 	MoviesResponse,
-	QuerySearchMoviesByGenreArgs,
+	QuerySearchMoviesArgs,
 } from '__generated__/resolvers-types';
 
 class SearchService extends RESTDataSource {
@@ -11,7 +11,7 @@ class SearchService extends RESTDataSource {
 
 	constructor() {
 		super();
-		this.baseURL = 'https://api.themoviedb.org/3/discover/movie';
+		this.baseURL = 'https://api.themoviedb.org/3/search/movie';
 
 		if (!process.env.TMDB_API_KEY) {
 			throw new Error(
@@ -21,11 +21,13 @@ class SearchService extends RESTDataSource {
 		this.apiKey = process.env.TMDB_API_KEY;
 	}
 
-	async findMoviesByGenre(
-		args: QuerySearchMoviesByGenreArgs,
-	): Promise<MoviesResponse> {
+	async searchMovie(args: QuerySearchMoviesArgs): Promise<MoviesResponse> {
 		return this.get(
-			`${this.baseURL}?api_key=${this.apiKey}&with_genres=${args?.searchOptions?.with_genres}&language=${args?.searchOptions?.language}&page=${args?.searchOptions?.page}`,
+			`${this.baseURL}?api_key=${this.apiKey}&query=${args?.searchOptions?.query
+				?.split(' ')
+				.join('+')}&language=${args?.searchOptions?.language}&page=${
+				args?.searchOptions?.page
+			}`,
 		);
 	}
 }
