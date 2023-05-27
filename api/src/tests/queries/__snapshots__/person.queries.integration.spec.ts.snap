@@ -25,7 +25,7 @@ exports[`init server > Queries persons > Returns a person's information 1`] = `
   "known_for_department": "Acting",
   "name": "Mark Hamill",
   "place_of_birth": "Oakland, California, USA",
-  "popularity": 25.158,
+  "popularity": 27.979,
   "profile_path": "/2ZulC2Ccq1yv3pemusks6Zlfy2s.jpg",
 }
 `;
@@ -44,7 +44,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 154.505,
       "profile_path": null,
     },
     {
@@ -58,7 +58,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 33.076,
       "profile_path": null,
     },
     {
@@ -72,7 +72,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 37.559,
       "profile_path": null,
     },
     {
@@ -86,7 +86,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 5.409,
       "profile_path": null,
     },
     {
@@ -100,7 +100,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 14.451,
       "profile_path": null,
     },
     {
@@ -114,7 +114,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.31,
       "profile_path": null,
     },
     {
@@ -128,7 +128,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 7.666,
       "profile_path": null,
     },
     {
@@ -142,7 +142,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.123,
       "profile_path": null,
     },
     {
@@ -156,7 +156,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.053,
       "profile_path": null,
     },
     {
@@ -170,7 +170,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 10.547,
       "profile_path": null,
     },
     {
@@ -184,7 +184,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.874,
       "profile_path": null,
     },
     {
@@ -198,7 +198,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.551,
       "profile_path": null,
     },
     {
@@ -212,7 +212,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.4,
       "profile_path": null,
     },
     {
@@ -226,7 +226,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 46.743,
       "profile_path": null,
     },
     {
@@ -240,7 +240,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 15.21,
       "profile_path": null,
     },
     {
@@ -254,7 +254,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.011,
       "profile_path": null,
     },
     {
@@ -268,7 +268,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.6,
       "profile_path": null,
     },
     {
@@ -282,7 +282,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.6,
       "profile_path": null,
     },
     {
@@ -296,7 +296,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.4,
       "profile_path": null,
     },
     {
@@ -310,7 +310,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.823,
       "profile_path": null,
     },
     {
@@ -324,7 +324,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.127,
       "profile_path": null,
     },
     {
@@ -338,7 +338,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.974,
       "profile_path": null,
     },
     {
@@ -352,7 +352,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 4.702,
       "profile_path": null,
     },
     {
@@ -366,7 +366,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.283,
       "profile_path": null,
     },
     {
@@ -380,7 +380,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.883,
       "profile_path": null,
     },
     {
@@ -394,7 +394,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 0,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.6,
       "profile_path": null,
     },
     {
@@ -408,7 +408,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.189,
       "profile_path": null,
     },
     {
@@ -422,7 +422,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.904,
       "profile_path": null,
     },
     {
@@ -436,7 +436,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.696,
       "profile_path": null,
     },
     {
@@ -450,7 +450,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 15.322,
       "profile_path": null,
     },
     {
@@ -464,7 +464,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 6.698,
       "profile_path": null,
     },
     {
@@ -478,21 +478,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
-      "profile_path": null,
-    },
-    {
-      "adult": false,
-      "cast_id": null,
-      "character": "Griff",
-      "credit_id": "52fe46a49251416c7507ed05",
-      "gender": null,
-      "id": 16121,
-      "known_for_department": null,
-      "name": null,
-      "order": 1,
-      "original_name": null,
-      "popularity": null,
+      "popularity": 8.849,
       "profile_path": null,
     },
     {
@@ -506,7 +492,21 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 4.339,
+      "profile_path": null,
+    },
+    {
+      "adult": false,
+      "cast_id": null,
+      "character": "Griff",
+      "credit_id": "52fe46a49251416c7507ed05",
+      "gender": null,
+      "id": 16121,
+      "known_for_department": null,
+      "name": null,
+      "order": 1,
+      "original_name": null,
+      "popularity": 8.436,
       "profile_path": null,
     },
     {
@@ -520,7 +520,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 35.385,
       "profile_path": null,
     },
     {
@@ -534,7 +534,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 53.991,
       "profile_path": null,
     },
     {
@@ -548,7 +548,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.966,
       "profile_path": null,
     },
     {
@@ -562,7 +562,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 7.61,
       "profile_path": null,
     },
     {
@@ -576,7 +576,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.575,
       "profile_path": null,
     },
     {
@@ -590,7 +590,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.871,
       "profile_path": null,
     },
     {
@@ -604,7 +604,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 6.961,
       "profile_path": null,
     },
     {
@@ -618,7 +618,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 24.645,
       "profile_path": null,
     },
     {
@@ -632,7 +632,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 17.746,
       "profile_path": null,
     },
     {
@@ -646,7 +646,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 4.053,
       "profile_path": null,
     },
     {
@@ -660,7 +660,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.401,
       "profile_path": null,
     },
     {
@@ -674,7 +674,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.871,
       "profile_path": null,
     },
     {
@@ -688,7 +688,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.231,
       "profile_path": null,
     },
     {
@@ -702,7 +702,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.739,
       "profile_path": null,
     },
     {
@@ -716,7 +716,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.732,
       "profile_path": null,
     },
     {
@@ -730,7 +730,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 5.456,
       "profile_path": null,
     },
     {
@@ -744,7 +744,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 51.031,
       "profile_path": null,
     },
     {
@@ -758,7 +758,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.003,
       "profile_path": null,
     },
     {
@@ -772,7 +772,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.6,
       "profile_path": null,
     },
     {
@@ -786,7 +786,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.6,
       "profile_path": null,
     },
     {
@@ -800,7 +800,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 58.102,
       "profile_path": null,
     },
     {
@@ -814,7 +814,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.6,
       "profile_path": null,
     },
     {
@@ -828,7 +828,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.6,
       "profile_path": null,
     },
     {
@@ -842,7 +842,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 4.524,
       "profile_path": null,
     },
     {
@@ -856,7 +856,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 1,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.126,
       "profile_path": null,
     },
     {
@@ -870,7 +870,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 2,
       "original_name": null,
-      "popularity": null,
+      "popularity": 17.071,
       "profile_path": null,
     },
     {
@@ -884,7 +884,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 2,
       "original_name": null,
-      "popularity": null,
+      "popularity": 4.791,
       "profile_path": null,
     },
     {
@@ -898,7 +898,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 2,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.283,
       "profile_path": null,
     },
     {
@@ -912,7 +912,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 2,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.535,
       "profile_path": null,
     },
     {
@@ -926,7 +926,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 2,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.6,
       "profile_path": null,
     },
     {
@@ -940,7 +940,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 2,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.926,
       "profile_path": null,
     },
     {
@@ -954,7 +954,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 2,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.305,
       "profile_path": null,
     },
     {
@@ -968,7 +968,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 2,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.355,
       "profile_path": null,
     },
     {
@@ -982,7 +982,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 2,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.339,
       "profile_path": null,
     },
     {
@@ -996,7 +996,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 2,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.782,
       "profile_path": null,
     },
     {
@@ -1010,7 +1010,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 2,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.6,
       "profile_path": null,
     },
     {
@@ -1024,7 +1024,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 2,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.829,
       "profile_path": null,
     },
     {
@@ -1038,7 +1038,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 3,
       "original_name": null,
-      "popularity": null,
+      "popularity": 12.154,
       "profile_path": null,
     },
     {
@@ -1052,7 +1052,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 3,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.463,
       "profile_path": null,
     },
     {
@@ -1066,7 +1066,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 3,
       "original_name": null,
-      "popularity": null,
+      "popularity": 4.059,
       "profile_path": null,
     },
     {
@@ -1080,7 +1080,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 3,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.235,
       "profile_path": null,
     },
     {
@@ -1094,7 +1094,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 3,
       "original_name": null,
-      "popularity": null,
+      "popularity": 4.138,
       "profile_path": null,
     },
     {
@@ -1108,7 +1108,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 3,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.755,
       "profile_path": null,
     },
     {
@@ -1122,7 +1122,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 3,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.526,
       "profile_path": null,
     },
     {
@@ -1136,7 +1136,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 3,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.466,
       "profile_path": null,
     },
     {
@@ -1150,7 +1150,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 3,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.507,
       "profile_path": null,
     },
     {
@@ -1164,7 +1164,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 3,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.713,
       "profile_path": null,
     },
     {
@@ -1178,7 +1178,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 3,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.906,
       "profile_path": null,
     },
     {
@@ -1192,7 +1192,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 3,
       "original_name": null,
-      "popularity": null,
+      "popularity": 14.768,
       "profile_path": null,
     },
     {
@@ -1206,7 +1206,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 3,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.6,
       "profile_path": null,
     },
     {
@@ -1220,7 +1220,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 3,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.6,
       "profile_path": null,
     },
     {
@@ -1234,7 +1234,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 3,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.6,
       "profile_path": null,
     },
     {
@@ -1248,21 +1248,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 3,
       "original_name": null,
-      "popularity": null,
-      "profile_path": null,
-    },
-    {
-      "adult": false,
-      "cast_id": null,
-      "character": "Self (Archive Footage)",
-      "credit_id": "6458159577d23b017036b849",
-      "gender": null,
-      "id": 1122542,
-      "known_for_department": null,
-      "name": null,
-      "order": 3,
-      "original_name": null,
-      "popularity": null,
+      "popularity": 0.66,
       "profile_path": null,
     },
     {
@@ -1276,7 +1262,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 4,
       "original_name": null,
-      "popularity": null,
+      "popularity": 13.776,
       "profile_path": null,
     },
     {
@@ -1290,7 +1276,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 4,
       "original_name": null,
-      "popularity": null,
+      "popularity": 6.051,
       "profile_path": null,
     },
     {
@@ -1304,7 +1290,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 4,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.731,
       "profile_path": null,
     },
     {
@@ -1318,7 +1304,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 4,
       "original_name": null,
-      "popularity": null,
+      "popularity": 11.486,
       "profile_path": null,
     },
     {
@@ -1332,7 +1318,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 4,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.682,
       "profile_path": null,
     },
     {
@@ -1346,7 +1332,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 4,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.804,
       "profile_path": null,
     },
     {
@@ -1360,7 +1346,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 4,
       "original_name": null,
-      "popularity": null,
+      "popularity": 10.767,
       "profile_path": null,
     },
     {
@@ -1374,7 +1360,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 4,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.841,
       "profile_path": null,
     },
     {
@@ -1388,7 +1374,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 4,
       "original_name": null,
-      "popularity": null,
+      "popularity": 6.373,
       "profile_path": null,
     },
     {
@@ -1402,7 +1388,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 4,
       "original_name": null,
-      "popularity": null,
+      "popularity": 5.874,
       "profile_path": null,
     },
     {
@@ -1416,7 +1402,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 4,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.701,
       "profile_path": null,
     },
     {
@@ -1430,7 +1416,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 4,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.4,
       "profile_path": null,
     },
     {
@@ -1444,7 +1430,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 4,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.279,
       "profile_path": null,
     },
     {
@@ -1458,7 +1444,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 4,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.231,
       "profile_path": null,
     },
     {
@@ -1472,7 +1458,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 4,
       "original_name": null,
-      "popularity": null,
+      "popularity": 7.576,
       "profile_path": null,
     },
     {
@@ -1486,7 +1472,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 4,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.6,
       "profile_path": null,
     },
     {
@@ -1500,7 +1486,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 4,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.169,
       "profile_path": null,
     },
     {
@@ -1514,7 +1500,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 4,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.84,
       "profile_path": null,
     },
     {
@@ -1528,7 +1514,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 5,
       "original_name": null,
-      "popularity": null,
+      "popularity": 12.933,
       "profile_path": null,
     },
     {
@@ -1542,7 +1528,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 5,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.283,
       "profile_path": null,
     },
     {
@@ -1556,7 +1542,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 5,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.252,
       "profile_path": null,
     },
     {
@@ -1570,7 +1556,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 5,
       "original_name": null,
-      "popularity": null,
+      "popularity": 16.021,
       "profile_path": null,
     },
     {
@@ -1584,7 +1570,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 5,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.042,
       "profile_path": null,
     },
     {
@@ -1598,7 +1584,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 5,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.107,
       "profile_path": null,
     },
     {
@@ -1612,7 +1598,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 5,
       "original_name": null,
-      "popularity": null,
+      "popularity": 8.49,
       "profile_path": null,
     },
     {
@@ -1626,7 +1612,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 5,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.224,
       "profile_path": null,
     },
     {
@@ -1640,7 +1626,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 5,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.006,
       "profile_path": null,
     },
     {
@@ -1654,7 +1640,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 5,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.724,
       "profile_path": null,
     },
     {
@@ -1668,7 +1654,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 6,
       "original_name": null,
-      "popularity": null,
+      "popularity": 7.069,
       "profile_path": null,
     },
     {
@@ -1682,7 +1668,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 6,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.329,
       "profile_path": null,
     },
     {
@@ -1696,7 +1682,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 6,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.688,
       "profile_path": null,
     },
     {
@@ -1710,7 +1696,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 6,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.723,
       "profile_path": null,
     },
     {
@@ -1724,7 +1710,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 6,
       "original_name": null,
-      "popularity": null,
+      "popularity": 4.13,
       "profile_path": null,
     },
     {
@@ -1738,7 +1724,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 6,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.861,
       "profile_path": null,
     },
     {
@@ -1752,7 +1738,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 6,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.161,
       "profile_path": null,
     },
     {
@@ -1766,7 +1752,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 6,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.059,
       "profile_path": null,
     },
     {
@@ -1780,7 +1766,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 6,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.177,
       "profile_path": null,
     },
     {
@@ -1794,7 +1780,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 6,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.09,
       "profile_path": null,
     },
     {
@@ -1808,7 +1794,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 7,
       "original_name": null,
-      "popularity": null,
+      "popularity": 60.699,
       "profile_path": null,
     },
     {
@@ -1822,7 +1808,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 7,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.703,
       "profile_path": null,
     },
     {
@@ -1836,7 +1822,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 7,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.6,
       "profile_path": null,
     },
     {
@@ -1850,7 +1836,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 8,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.989,
       "profile_path": null,
     },
     {
@@ -1864,7 +1850,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 8,
       "original_name": null,
-      "popularity": null,
+      "popularity": 8.026,
       "profile_path": null,
     },
     {
@@ -1878,7 +1864,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 8,
       "original_name": null,
-      "popularity": null,
+      "popularity": 6.452,
       "profile_path": null,
     },
     {
@@ -1892,7 +1878,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 8,
       "original_name": null,
-      "popularity": null,
+      "popularity": 5.114,
       "profile_path": null,
     },
     {
@@ -1906,7 +1892,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 8,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.543,
       "profile_path": null,
     },
     {
@@ -1920,7 +1906,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 8,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.684,
       "profile_path": null,
     },
     {
@@ -1934,7 +1920,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 8,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.689,
       "profile_path": null,
     },
     {
@@ -1948,7 +1934,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 9,
       "original_name": null,
-      "popularity": null,
+      "popularity": 10.196,
       "profile_path": null,
     },
     {
@@ -1962,7 +1948,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 9,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.477,
       "profile_path": null,
     },
     {
@@ -1976,7 +1962,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 9,
       "original_name": null,
-      "popularity": null,
+      "popularity": 16.065,
       "profile_path": null,
     },
     {
@@ -1990,7 +1976,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 9,
       "original_name": null,
-      "popularity": null,
+      "popularity": 4.053,
       "profile_path": null,
     },
     {
@@ -2004,7 +1990,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 9,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.812,
       "profile_path": null,
     },
     {
@@ -2018,7 +2004,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 10,
       "original_name": null,
-      "popularity": null,
+      "popularity": 16.594,
       "profile_path": null,
     },
     {
@@ -2032,7 +2018,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 10,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.131,
       "profile_path": null,
     },
     {
@@ -2046,7 +2032,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 10,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.107,
       "profile_path": null,
     },
     {
@@ -2060,7 +2046,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 10,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.592,
       "profile_path": null,
     },
     {
@@ -2074,7 +2060,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 11,
       "original_name": null,
-      "popularity": null,
+      "popularity": 17.193,
       "profile_path": null,
     },
     {
@@ -2088,7 +2074,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 11,
       "original_name": null,
-      "popularity": null,
+      "popularity": 5.068,
       "profile_path": null,
     },
     {
@@ -2102,7 +2088,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 11,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.978,
       "profile_path": null,
     },
     {
@@ -2116,7 +2102,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 12,
       "original_name": null,
-      "popularity": null,
+      "popularity": 9.122,
       "profile_path": null,
     },
     {
@@ -2130,7 +2116,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 12,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.962,
       "profile_path": null,
     },
     {
@@ -2144,7 +2130,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 13,
       "original_name": null,
-      "popularity": null,
+      "popularity": 13.272,
       "profile_path": null,
     },
     {
@@ -2158,7 +2144,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 13,
       "original_name": null,
-      "popularity": null,
+      "popularity": 12.967,
       "profile_path": null,
     },
     {
@@ -2172,7 +2158,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 14,
       "original_name": null,
-      "popularity": null,
+      "popularity": 10.406,
       "profile_path": null,
     },
     {
@@ -2186,7 +2172,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 14,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.058,
       "profile_path": null,
     },
     {
@@ -2200,7 +2186,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 15,
       "original_name": null,
-      "popularity": null,
+      "popularity": 10.604,
       "profile_path": null,
     },
     {
@@ -2214,7 +2200,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 15,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.456,
       "profile_path": null,
     },
     {
@@ -2228,7 +2214,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 16,
       "original_name": null,
-      "popularity": null,
+      "popularity": 9.833,
       "profile_path": null,
     },
     {
@@ -2242,13 +2228,13 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 17,
       "original_name": null,
-      "popularity": null,
+      "popularity": 5.753,
       "profile_path": null,
     },
     {
       "adult": false,
       "cast_id": null,
-      "character": "Self - Luke Skywalker (uncredited / archive footage)",
+      "character": "Self - Luke Skywalker (archive footage) (uncredited)",
       "credit_id": "631c0848b234b90087a503c9",
       "gender": null,
       "id": 1015606,
@@ -2256,7 +2242,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 20,
       "original_name": null,
-      "popularity": null,
+      "popularity": 29.729,
       "profile_path": null,
     },
     {
@@ -2270,7 +2256,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 21,
       "original_name": null,
-      "popularity": null,
+      "popularity": 6.925,
       "profile_path": null,
     },
     {
@@ -2284,7 +2270,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 21,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.631,
       "profile_path": null,
     },
     {
@@ -2298,7 +2284,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 23,
       "original_name": null,
-      "popularity": null,
+      "popularity": 2.606,
       "profile_path": null,
     },
     {
@@ -2312,7 +2298,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 24,
       "original_name": null,
-      "popularity": null,
+      "popularity": 13.77,
       "profile_path": null,
     },
     {
@@ -2326,7 +2312,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 29,
       "original_name": null,
-      "popularity": null,
+      "popularity": 0.754,
       "profile_path": null,
     },
     {
@@ -2340,7 +2326,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 30,
       "original_name": null,
-      "popularity": null,
+      "popularity": 3.01,
       "profile_path": null,
     },
     {
@@ -2354,7 +2340,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 36,
       "original_name": null,
-      "popularity": null,
+      "popularity": 11.794,
       "profile_path": null,
     },
     {
@@ -2368,7 +2354,21 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 41,
       "original_name": null,
-      "popularity": null,
+      "popularity": 5.903,
+      "profile_path": null,
+    },
+    {
+      "adult": false,
+      "cast_id": null,
+      "character": "Luke Skywalker (archive footage) (uncredited)",
+      "credit_id": "646bcc1dd18572016192d664",
+      "gender": null,
+      "id": 1076366,
+      "known_for_department": null,
+      "name": null,
+      "order": 41,
+      "original_name": null,
+      "popularity": 5.935,
       "profile_path": null,
     },
     {
@@ -2382,7 +2382,7 @@ exports[`init server > Queries persons > returns a person's information as an ac
       "name": null,
       "order": 106,
       "original_name": null,
-      "popularity": null,
+      "popularity": 1.026,
       "profile_path": null,
     },
   ],
