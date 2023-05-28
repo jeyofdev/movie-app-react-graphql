@@ -2,17 +2,18 @@ import SearchResultMovieCard from '@components/cards/searchResultMovieCard/Searc
 import { useSearchMoviesQuery } from '@graphql/__generated__/graphql-type';
 import { Box, Typography, useTheme } from '@mui/material';
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import useStyles from './style';
 
 const SearchResults = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
+	const { search } = useParams();
 
 	const { loading, error, data } = useSearchMoviesQuery({
 		variables: {
 			searchOptions: {
-				query: 'star wars',
-				page: 1,
+				query: search?.split(' ').join('+'),
 			},
 		},
 	});

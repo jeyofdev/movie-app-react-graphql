@@ -35,9 +35,11 @@ const SearchResultMovieCard = ({
 					{title}
 				</Typography>
 
-				<Typography variant='body1' sx={styles.releaseDate}>
-					{formatDate(release_date as string)}
-				</Typography>
+				{release_date && (
+					<Typography variant='body1' sx={styles.releaseDate}>
+						{formatDate(release_date as string)}
+					</Typography>
+				)}
 
 				{overview && (
 					<Typography variant='body2' sx={styles.overview}>
