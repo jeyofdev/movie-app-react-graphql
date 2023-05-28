@@ -43,7 +43,12 @@ const Topbar = () => {
 		setSearch(e.target.value);
 	};
 
-	const handleClick = () => navigate(`/search/${search.split(' ').join('-')}`);
+	const handleClick = () => {
+		navigate(`/search/${search.split(' ').join('-')}`);
+		setSearch('');
+		setShowSearchBtnMobile(true);
+		setShowInputSearch(false);
+	};
 
 	const handleKeyUp = (e: KeyboardEvent<HTMLInputElement>) => {
 		if (e.code === 'Enter') {

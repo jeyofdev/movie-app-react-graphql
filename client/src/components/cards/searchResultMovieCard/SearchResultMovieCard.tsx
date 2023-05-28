@@ -41,9 +41,9 @@ const SearchResultMovieCard = ({
 					</Typography>
 				)}
 
-				{overview && (
+				{overview && width >= BreakpointEnum.SM && (
 					<Typography variant='body2' sx={styles.overview}>
-						{truncate(overview, width < BreakpointEnum.LG ? 50 : 70)}
+						{truncate(overview, width < BreakpointEnum.LG ? 20 : 30)}
 					</Typography>
 				)}
 			</Box>

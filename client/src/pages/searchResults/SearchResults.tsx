@@ -36,15 +36,17 @@ const SearchResults = () => {
 				Search results ({data?.searchMovies?.results?.length})
 			</Typography>
 
-			{data?.searchMovies?.results?.map(movie => (
-				<SearchResultMovieCard
-					key={movie?.id}
-					title={movie?.title}
-					poster_path={movie?.poster_path}
-					overview={movie?.overview}
-					release_date={movie?.release_date}
-				/>
-			))}
+			<Box sx={styles.resultsBox}>
+				{data?.searchMovies?.results?.map(movie => (
+					<SearchResultMovieCard
+						key={movie?.id}
+						title={movie?.title}
+						poster_path={movie?.poster_path}
+						overview={movie?.overview}
+						release_date={movie?.release_date}
+					/>
+				))}
+			</Box>
 		</Box>
 	);
 };
