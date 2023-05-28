@@ -3,6 +3,7 @@ import { Theme } from '@mui/material';
 const useStyles = (theme: Theme) => ({
 	root: {
 		display: 'flex',
+		justifyContent: 'flex-start',
 		gap: theme.spacing(3),
 		borderRadius: '0.625rem',
 		border: `2px solid ${theme.palette.primary.main}`,
@@ -17,6 +18,11 @@ const useStyles = (theme: Theme) => ({
 			xs: '300px',
 			sm: 'none',
 		},
+		textTransform: 'none',
+
+		'&:hover': {
+			backgroundColor: theme.palette.primary.main,
+		},
 	},
 	poster: {
 		height: {
@@ -27,6 +33,8 @@ const useStyles = (theme: Theme) => ({
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
+		alignItems: 'flex-start',
+		textAlign: 'left',
 	},
 	title: {
 		color: theme.palette.primary.contrastText,

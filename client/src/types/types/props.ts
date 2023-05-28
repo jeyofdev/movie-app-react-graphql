@@ -150,5 +150,5 @@ export type DetailsMovieCardProps = Pick<
 
 export type SearchResultMovieCardProps = Pick<
 	MovieDetails,
-	'title' | 'poster_path' | 'overview' | 'release_date'
+	'id' | 'title' | 'poster_path' | 'overview' | 'release_date'
 >;

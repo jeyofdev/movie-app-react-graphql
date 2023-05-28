@@ -1,12 +1,14 @@
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Button, Typography, useTheme } from '@mui/material';
 import { truncate } from '@utils/index';
 import { format } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
 import { useWindowSize } from 'usehooks-ts';
 import { BreakpointEnum } from '../../../types/enums';
 import { SearchResultMovieCardProps } from '../../../types/types/props';
 import useStyles from './style';
 
 const SearchResultMovieCard = ({
+	id,
 	title,
 	poster_path,
 	overview,
@@ -15,6 +17,7 @@ const SearchResultMovieCard = ({
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
+	const navigate = useNavigate();
 
 	const formatDate = (date: string) => {
 		const newDate = new Date(date);
@@ -22,7 +25,7 @@ const SearchResultMovieCard = ({
 	};
 
 	return (
-		<Box sx={styles.root}>
+		<Button onClick={() => navigate(`/movie/${id}`)} sx={styles.root}>
 			<Box
 				component='img'
 				sx={styles.poster}
@@ -47,7 +50,7 @@ const SearchResultMovieCard = ({
 					</Typography>
 				)}
 			</Box>
-		</Box>
+		</Button>
 	);
 };
 
