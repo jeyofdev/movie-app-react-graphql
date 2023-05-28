@@ -5,13 +5,18 @@ const useStyles = (theme: Theme) => ({
 	root: {
 		display: 'grid',
 		gridTemplateColumns: 'repeat(12, 1fr)',
+		gap: theme.spacing(3),
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		padding: theme.spacing(1),
-		paddingTop: 0,
+		minHeight: '58.7px',
 	},
 	searchBox: {
-		gridColumn: '1 / span 5',
+		gridColumn: {
+			xs: '1 / span 11',
+			md: '1 / span 9',
+			lg: '1 / span 5',
+		},
 	},
 	darkModeBtn: {
 		gridColumn: '12 / span 1',
@@ -25,7 +30,7 @@ const useStyles = (theme: Theme) => ({
 			background: theme.palette.primary.main,
 		},
 	},
-	darkModeIcon: {
+	icon: {
 		fontSize: '1.1rem',
 	},
 	searchIcon: {

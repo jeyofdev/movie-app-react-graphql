@@ -46,7 +46,10 @@ const useStyles = (theme: Theme) => ({
 		},
 	},
 	divider: (darkMode: DarkModeEnum) => ({
-		marginTop: theme.spacing(1.5),
+		marginTop: {
+			xs: 0,
+			sm: theme.spacing(1.5),
+		},
 		marginBottom: theme.spacing(3),
 		borderColor:
 			darkMode === DarkModeEnum.DARK

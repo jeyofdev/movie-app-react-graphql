@@ -14,19 +14,30 @@ import {
 	InputAdornment,
 	useTheme,
 } from '@mui/material';
-import { ChangeEvent, KeyboardEvent, useContext, useState } from 'react';
+import {
+	ChangeEvent,
+	KeyboardEvent,
+	useContext,
+	useEffect,
+	useState,
+} from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DarkModeEnum } from '../../types/enums';
+import { useWindowSize } from 'usehooks-ts';
+import { BreakpointEnum, DarkModeEnum } from '../../types/enums';
 import useStyles from './style';
 
 const Topbar = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const navigate = useNavigate();
+	const { width } = useWindowSize();
 
 	const { themeMode, handleThemeMode } = useContext(ThemeContext);
 
 	const [search, setSearch] = useState<string>('');
+	const [showSearchBtnMobile, setShowSearchBtnMobile] =
+		useState<boolean>(false);
+	const [showInputSearch, setShowInputSearch] = useState<boolean>(false);
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setSearch(e.target.value);
@@ -40,37 +51,68 @@ const Topbar = () => {
 		}
 	};
 
+	useEffect(() => {
+		if (width < BreakpointEnum.SM && !showInputSearch) {
+			setShowSearchBtnMobile(true);
+		} else {
+			setShowSearchBtnMobile(false);
+		}
+
+		if (width >= BreakpointEnum.SM) {
+			setShowInputSearch(true);
+		}
+	}, [showInputSearch, width]);
+
 	return (
 		<Box sx={styles.root}>
 			<Box sx={styles.searchBox}>
-				<FormControl
-					sx={styles.searchFormControl(themeMode)}
-					variant='standard'
-				>
-					<Input
-						sx={styles.searchInput}
-						type={'text'}
-						placeholder='Search movie...'
-						value={search}
-						onChange={handleChange}
-						onKeyUp={handleKeyUp}
-						disableUnderline
-						endAdornment={
-							<InputAdornment position='end'>
-								<IconButton
-									aria-label='toggle password visibility'
-									onClick={handleClick}
-								>
-									<FontAwesomeIcon
-										icon={faMagnifyingGlass}
-										color={theme.palette.common.black}
-										style={styles.searchIcon}
-									/>
-								</IconButton>
-							</InputAdornment>
-						}
-					/>
-				</FormControl>
+				{showSearchBtnMobile && (
+					<Button
+						color='primary'
+						onClick={() => {
+							setShowInputSearch(!showInputSearch);
+							setShowSearchBtnMobile(false);
+						}}
+						sx={styles.darkModeBtn}
+					>
+						<FontAwesomeIcon
+							icon={faMagnifyingGlass}
+							color={theme.palette.primary.contrastText}
+							style={styles.searchIcon}
+						/>
+					</Button>
+				)}
+
+				{showInputSearch && (
+					<FormControl
+						sx={styles.searchFormControl(themeMode)}
+						variant='standard'
+					>
+						<Input
+							sx={styles.searchInput}
+							type={'text'}
+							placeholder='Search movie...'
+							value={search}
+							onChange={handleChange}
+							onKeyUp={handleKeyUp}
+							disableUnderline
+							endAdornment={
+								<InputAdornment position='end'>
+									<IconButton
+										aria-label='toggle password visibility'
+										onClick={handleClick}
+									>
+										<FontAwesomeIcon
+											icon={faMagnifyingGlass}
+											color={theme.palette.common.black}
+											style={styles.searchIcon}
+										/>
+									</IconButton>
+								</InputAdornment>
+							}
+						/>
+					</FormControl>
+				)}
 			</Box>
 
 			<Button
@@ -83,7 +125,7 @@ const Topbar = () => {
 				<FontAwesomeIcon
 					icon={themeMode === DarkModeEnum.DARK ? faMoon : faSun}
 					color={theme.palette.primary.contrastText}
-					style={styles.darkModeIcon}
+					style={styles.icon}
 				/>
 			</Button>
 		</Box>
