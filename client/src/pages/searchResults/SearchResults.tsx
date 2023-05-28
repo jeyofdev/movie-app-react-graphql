@@ -1,3 +1,4 @@
+import SearchResultMovieCard from '@components/cards/searchResultMovieCard/SearchResultMovieCard';
 import { useSearchMoviesQuery } from '@graphql/__generated__/graphql-type';
 import { Box, Typography, useTheme } from '@mui/material';
 import { useEffect } from 'react';
@@ -30,17 +31,18 @@ const SearchResults = () => {
 
 	return (
 		<Box sx={styles.root}>
-			<Typography variant='h1' sx={styles.title}>
-				Search Results
+			<Typography variant='h3' sx={styles.title}>
+				Search results ({data?.searchMovies?.results?.length})
 			</Typography>
+
 			{data?.searchMovies?.results?.map(movie => (
-				<Typography
-					variant='h5'
+				<SearchResultMovieCard
 					key={movie?.id}
-					sx={{ color: theme.palette.primary.main }}
-				>
-					{movie?.title}
-				</Typography>
+					title={movie?.title}
+					poster_path={movie?.poster_path}
+					overview={movie?.overview}
+					release_date={movie?.release_date}
+				/>
 			))}
 		</Box>
 	);
