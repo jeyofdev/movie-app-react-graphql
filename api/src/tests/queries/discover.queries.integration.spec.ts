@@ -4,7 +4,7 @@ import { IContext } from '../../context';
 import getServer from '../../config/server';
 import 'dotenv/config';
 import { executeRequestForTesting } from '../../utils/helpers';
-import searchMoviesQueryOperations from '../../operations/search.query.operations';
+import discoverMoviesQueryOperations from '../../operations/discover.query.operations';
 
 describe('init server', () => {
 	let server: ApolloServer<IContext>;
@@ -23,41 +23,39 @@ describe('init server', () => {
 		await server.stop();
 	});
 
-	describe('Queries search', () => {
-		it('When the search returns no result', async () => {
+	describe('Queries discover', () => {
+		it('Returns the list of movies sort by date asc', async () => {
 			const response = await executeRequestForTesting(
 				url,
-				searchMoviesQueryOperations.searchMovies,
+				discoverMoviesQueryOperations.sortMovies,
 				{
-					searchOptions: {
-						query: 'tutuy',
+					discoverOptions: {
 						language: 'FR',
-						page: 1,
-						region: 'FR',
+						page: 2,
+						sort_by: 'PRIMARY_RELEASE_DATE_ASC',
 					},
 				},
 			);
 
 			expect(response.error).not.toBeUndefined();
-			expect(response.body.data.searchMovies).toMatchSnapshot();
+			expect(response.body.data.sortMovies).toMatchSnapshot();
 		});
+	});
 
-		it('Returns the result of search', async () => {
-			const response = await executeRequestForTesting(
-				url,
-				searchMoviesQueryOperations.searchMovies,
-				{
-					searchOptions: {
-						query: 'star wars',
-						language: 'FR',
-						page: 1,
-						region: 'FR',
-					},
+	it('Returns the list of movies sort by popularity desc', async () => {
+		const response = await executeRequestForTesting(
+			url,
+			discoverMoviesQueryOperations.sortMovies,
+			{
+				discoverOptions: {
+					language: 'FR',
+					page: 2,
+					sort_by: 'POPULARITY_DESC',
 				},
-			);
+			},
+		);
 
-			expect(response.error).not.toBeUndefined();
-			expect(response.body.data.searchMovies).toMatchSnapshot();
-		});
+		expect(response.error).not.toBeUndefined();
+		expect(response.body.data.sortMovies).toMatchSnapshot();
 	});
 });
