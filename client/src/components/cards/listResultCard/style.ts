@@ -10,10 +10,16 @@ const useStyles = (theme: Theme) => ({
 			lg: 'auto / span 3',
 			xl: 'auto / span 2',
 		},
+		display: 'flex',
+		alignItems: 'flex-start',
 		borderRadius: '0.625rem',
 		overflow: 'hidden',
 		border: `2px solid ${theme.palette.primary.main}`,
 		backgroundColor: theme.palette.primary.main,
+
+		'&:hover': {
+			backgroundColor: theme.palette.primary.main,
+		},
 	},
 	poster: {
 		width: '100%',
