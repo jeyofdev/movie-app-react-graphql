@@ -14,7 +14,10 @@ const useStyles = (theme: Theme) => ({
 		borderRadius: '1rem',
 		overflow: 'hidden',
 		padding: theme.spacing(2),
-		height: '100%',
+		height: {
+			xs: `calc(100% - 58.7px)`,
+			sm: `calc(100% - (58.7px + ${theme.spacing(1.5)} + ${theme.spacing(6)}))`,
+		},
 	}),
 	poster: {
 		width: '100%',
