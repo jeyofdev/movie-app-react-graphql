@@ -147,3 +147,8 @@ export type DetailsMovieCardProps = Pick<
 > & {
 	cast: Array<CastMovie>;
 };
+
+export type SearchResultMovieCardProps = Pick<
+	MovieDetails,
+	'title' | 'poster_path' | 'overview' | 'release_date'
+>;

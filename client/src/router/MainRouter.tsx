@@ -4,6 +4,7 @@ import MovieDetails from '@pages/movieDetails/MovieDetails';
 import NotFound from '@pages/notFound/NotFound';
 import NowPlaying from '@pages/nowPlaying/NowPlaying';
 import Popular from '@pages/popular/Popular';
+import SearchResults from '@pages/searchResults/SearchResults';
 import TopRated from '@pages/topRated/TopRated';
 import Upcoming from '@pages/upComing/UpComing';
 import { Route, Routes } from 'react-router-dom';
@@ -16,6 +17,7 @@ const MainRouter = () => (
 		<Route path='movies/now-playing' element={<NowPlaying />} />
 		<Route path='movies/genre/:genreName' element={<Genre />} />
 		<Route path='movie/:movieId' element={<MovieDetails />} />
+		<Route path='search/:search' element={<SearchResults />} />
 
 		<Route path='/' element={<Home />}>
 			<Route path='home' element={<Home />} />

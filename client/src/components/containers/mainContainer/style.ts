@@ -1,4 +1,5 @@
 import { Theme } from '@mui/material';
+import { DarkModeEnum } from '../../../types/enums';
 
 const useStyles = (theme: Theme) => ({
 	root: {
@@ -44,6 +45,17 @@ const useStyles = (theme: Theme) => ({
 			xl: 'auto / span 11',
 		},
 	},
+	divider: (darkMode: DarkModeEnum) => ({
+		marginTop: {
+			xs: 0,
+			sm: theme.spacing(1.5),
+		},
+		marginBottom: theme.spacing(3),
+		borderColor:
+			darkMode === DarkModeEnum.DARK
+				? theme.palette.grey[800]
+				: theme.palette.grey[200],
+	}),
 });
 
 export default useStyles;
