@@ -12,6 +12,15 @@ enum RegionEnum {
 	ES
 }
 
+enum SortEnum {
+	POPULARITY_ASC
+	POPULARITY_DESC
+	VOTE_ASC
+	VOTE_DESC
+	PRIMARY_RELEASE_DATE_ASC
+	PRIMARY_RELEASE_DATE_DESC
+}
+
 type Movie {
 	adult: Boolean
 	backdrop_path: String
@@ -232,6 +241,7 @@ input OptionsInput {
 
 input DiscoverInput {
 	with_genres: Int
+	sort_by: SortEnum
 	language: LanguageEnum
 	page: Int
 	region: RegionEnum
@@ -269,5 +279,6 @@ type Query {
 	moviesByKeyword(keywordId: Int, options: OptionsInput): KeywordMoviesResponse
 	genres(options: OptionsInput): GenreResponses
 	discoverMoviesByGenre(discoverOptions: DiscoverInput): MoviesResponse
+	sortMovies(discoverOptions: DiscoverInput): MoviesResponse
 	searchMovies(searchOptions: SearchInput): MoviesResponse
 }

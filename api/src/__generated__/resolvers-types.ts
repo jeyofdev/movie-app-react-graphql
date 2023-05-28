@@ -71,6 +71,7 @@ export type DiscoverInput = {
 	language?: InputMaybe<LanguageEnum>;
 	page?: InputMaybe<Scalars['Int']>;
 	region?: InputMaybe<RegionEnum>;
+	sort_by?: InputMaybe<SortEnum>;
 	with_genres?: InputMaybe<Scalars['Int']>;
 };
 
@@ -283,6 +284,7 @@ export type Query = {
 	popularMovies?: Maybe<MoviesResponse>;
 	searchMovies?: Maybe<MoviesResponse>;
 	similarMovie?: Maybe<MoviesResponse>;
+	sortMovies?: Maybe<MoviesResponse>;
 	topRatedMovies?: Maybe<MoviesResponse>;
 	translationsByCollection?: Maybe<MoviesCollectionTranslateResponse>;
 	upcomingMovies?: Maybe<MoviesResponse>;
@@ -362,6 +364,10 @@ export type QuerySimilarMovieArgs = {
 	options?: InputMaybe<OptionsInput>;
 };
 
+export type QuerySortMoviesArgs = {
+	discoverOptions?: InputMaybe<DiscoverInput>;
+};
+
 export type QueryTopRatedMoviesArgs = {
 	options?: InputMaybe<OptionsInput>;
 };
@@ -388,6 +394,15 @@ export type SearchInput = {
 	query?: InputMaybe<Scalars['String']>;
 	region?: InputMaybe<RegionEnum>;
 };
+
+export enum SortEnum {
+	PopularityAsc = 'POPULARITY_ASC',
+	PopularityDesc = 'POPULARITY_DESC',
+	PrimaryReleaseDateAsc = 'PRIMARY_RELEASE_DATE_ASC',
+	PrimaryReleaseDateDesc = 'PRIMARY_RELEASE_DATE_DESC',
+	VoteAsc = 'VOTE_ASC',
+	VoteDesc = 'VOTE_DESC',
+}
 
 export type Spoken_Languages = {
 	__typename?: 'spoken_languages';
@@ -537,6 +552,7 @@ export type ResolversTypes = ResolversObject<{
 	Query: ResolverTypeWrapper<{}>;
 	RegionEnum: RegionEnum;
 	SearchInput: SearchInput;
+	SortEnum: SortEnum;
 	String: ResolverTypeWrapper<Scalars['String']>;
 	spoken_languages: ResolverTypeWrapper<Spoken_Languages>;
 }>;
@@ -1230,6 +1246,12 @@ export type QueryResolvers<
 		ParentType,
 		ContextType,
 		Partial<QuerySimilarMovieArgs>
+	>;
+	sortMovies?: Resolver<
+		Maybe<ResolversTypes['MoviesResponse']>,
+		ParentType,
+		ContextType,
+		Partial<QuerySortMoviesArgs>
 	>;
 	topRatedMovies?: Resolver<
 		Maybe<ResolversTypes['MoviesResponse']>,

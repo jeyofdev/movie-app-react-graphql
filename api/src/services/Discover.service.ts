@@ -3,6 +3,7 @@ import 'dotenv/config';
 import {
 	MoviesResponse,
 	QueryDiscoverMoviesByGenreArgs,
+	QuerySortMoviesArgs,
 } from '__generated__/resolvers-types';
 import { formatUrlQuery } from '../utils/helpers';
 
@@ -31,6 +32,18 @@ class DiscoverService extends RESTDataSource {
 				page: args?.discoverOptions?.page,
 				region: args?.discoverOptions?.region,
 				with_genres: args?.discoverOptions?.with_genres,
+				sort_by: args?.discoverOptions?.sort_by,
+			}),
+		);
+	}
+
+	async sortMovie(args: QuerySortMoviesArgs): Promise<MoviesResponse> {
+		return this.get(
+			formatUrlQuery(this.baseURL, this.apiKey, '', {
+				language: args?.discoverOptions?.language,
+				page: args?.discoverOptions?.page,
+				region: args?.discoverOptions?.region,
+				sort_by: args?.discoverOptions?.sort_by,
 			}),
 		);
 	}
