@@ -73,6 +73,7 @@ export type DiscoverInput = {
 	language?: InputMaybe<LanguageEnum>;
 	page?: InputMaybe<Scalars['Int']>;
 	region?: InputMaybe<RegionEnum>;
+	sort_by?: InputMaybe<SortEnum>;
 	with_genres?: InputMaybe<Scalars['Int']>;
 };
 
@@ -283,7 +284,9 @@ export type Query = {
 	personCrewByMovie?: Maybe<PersonCrewResponse>;
 	personDetails?: Maybe<Person>;
 	popularMovies?: Maybe<MoviesResponse>;
+	searchMovies?: Maybe<MoviesResponse>;
 	similarMovie?: Maybe<MoviesResponse>;
+	sortMovies?: Maybe<MoviesResponse>;
 	topRatedMovies?: Maybe<MoviesResponse>;
 	translationsByCollection?: Maybe<MoviesCollectionTranslateResponse>;
 	upcomingMovies?: Maybe<MoviesResponse>;
@@ -354,9 +357,17 @@ export type QueryPopularMoviesArgs = {
 	options?: InputMaybe<OptionsInput>;
 };
 
+export type QuerySearchMoviesArgs = {
+	searchOptions?: InputMaybe<SearchInput>;
+};
+
 export type QuerySimilarMovieArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
 	options?: InputMaybe<OptionsInput>;
+};
+
+export type QuerySortMoviesArgs = {
+	discoverOptions?: InputMaybe<DiscoverInput>;
 };
 
 export type QueryTopRatedMoviesArgs = {
@@ -377,6 +388,22 @@ export enum RegionEnum {
 	Es = 'ES',
 	Fr = 'FR',
 	Us = 'US',
+}
+
+export type SearchInput = {
+	language?: InputMaybe<LanguageEnum>;
+	page?: InputMaybe<Scalars['Int']>;
+	query?: InputMaybe<Scalars['String']>;
+	region?: InputMaybe<RegionEnum>;
+};
+
+export enum SortEnum {
+	PopularityAsc = 'POPULARITY_ASC',
+	PopularityDesc = 'POPULARITY_DESC',
+	PrimaryReleaseDateAsc = 'PRIMARY_RELEASE_DATE_ASC',
+	PrimaryReleaseDateDesc = 'PRIMARY_RELEASE_DATE_DESC',
+	VoteAsc = 'VOTE_ASC',
+	VoteDesc = 'VOTE_DESC',
 }
 
 export type Spoken_Languages = {
@@ -790,6 +817,66 @@ export type CastByMovieQuery = {
 			credit_id?: string | null;
 			order?: number | null;
 		} | null> | null;
+	} | null;
+};
+
+export type SearchMoviesQueryVariables = Exact<{
+	searchOptions?: InputMaybe<SearchInput>;
+}>;
+
+export type SearchMoviesQuery = {
+	__typename?: 'Query';
+	searchMovies?: {
+		__typename?: 'MoviesResponse';
+		page: number;
+		total_pages: number;
+		total_results: number;
+		results: Array<{
+			__typename?: 'Movie';
+			id?: number | null;
+			title?: string | null;
+			adult?: boolean | null;
+			backdrop_path?: string | null;
+			genre_ids?: Array<number | null> | null;
+			original_language?: string | null;
+			original_title?: string | null;
+			overview?: string | null;
+			popularity?: number | null;
+			poster_path?: string | null;
+			release_date?: string | null;
+			video?: boolean | null;
+			vote_average?: number | null;
+			vote_count?: number | null;
+			genres?: Array<{
+				__typename?: 'Genre';
+				id: number;
+				name: string;
+			} | null> | null;
+			images?: {
+				__typename?: 'MovieImageResponse';
+				id?: number | null;
+				backdrops?: Array<{
+					__typename?: 'PosterMovie';
+					aspect_ratio?: number | null;
+					file_path?: string | null;
+					height?: number | null;
+					iso_639_1?: string | null;
+					vote_average?: number | null;
+					vote_count?: number | null;
+					width?: number | null;
+				} | null> | null;
+				posters?: Array<{
+					__typename?: 'PosterMovie';
+					aspect_ratio?: number | null;
+					file_path?: string | null;
+					height?: number | null;
+					iso_639_1?: string | null;
+					vote_average?: number | null;
+					vote_count?: number | null;
+					width?: number | null;
+				} | null> | null;
+			} | null;
+		} | null>;
 	} | null;
 };
 
@@ -1571,4 +1658,105 @@ export type CastByMovieLazyQueryHookResult = ReturnType<
 export type CastByMovieQueryResult = Apollo.QueryResult<
 	CastByMovieQuery,
 	CastByMovieQueryVariables
+>;
+export const SearchMoviesDocument = gql`
+	query SearchMovies($searchOptions: SearchInput) {
+		searchMovies(searchOptions: $searchOptions) {
+			page
+			results {
+				id
+				title
+				adult
+				backdrop_path
+				genre_ids
+				genres {
+					id
+					name
+				}
+				images {
+					backdrops {
+						aspect_ratio
+						file_path
+						height
+						iso_639_1
+						vote_average
+						vote_count
+						width
+					}
+					id
+					posters {
+						aspect_ratio
+						file_path
+						height
+						iso_639_1
+						vote_average
+						vote_count
+						width
+					}
+				}
+				original_language
+				original_title
+				overview
+				popularity
+				poster_path
+				release_date
+				video
+				vote_average
+				vote_count
+			}
+			total_pages
+			total_results
+		}
+	}
+`;
+
+/**
+ * __useSearchMoviesQuery__
+ *
+ * To run a query within a React component, call `useSearchMoviesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSearchMoviesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSearchMoviesQuery({
+ *   variables: {
+ *      searchOptions: // value for 'searchOptions'
+ *   },
+ * });
+ */
+export function useSearchMoviesQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		SearchMoviesQuery,
+		SearchMoviesQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useQuery<SearchMoviesQuery, SearchMoviesQueryVariables>(
+		SearchMoviesDocument,
+		options,
+	);
+}
+export function useSearchMoviesLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		SearchMoviesQuery,
+		SearchMoviesQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useLazyQuery<SearchMoviesQuery, SearchMoviesQueryVariables>(
+		SearchMoviesDocument,
+		options,
+	);
+}
+export type SearchMoviesQueryHookResult = ReturnType<
+	typeof useSearchMoviesQuery
+>;
+export type SearchMoviesLazyQueryHookResult = ReturnType<
+	typeof useSearchMoviesLazyQuery
+>;
+export type SearchMoviesQueryResult = Apollo.QueryResult<
+	SearchMoviesQuery,
+	SearchMoviesQueryVariables
 >;

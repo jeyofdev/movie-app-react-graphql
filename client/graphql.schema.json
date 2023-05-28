@@ -475,6 +475,18 @@
 						"deprecationReason": null
 					},
 					{
+						"name": "sort_by",
+						"description": null,
+						"type": {
+							"kind": "ENUM",
+							"name": "SortEnum",
+							"ofType": null
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
 						"name": "with_genres",
 						"description": null,
 						"type": {
@@ -2594,6 +2606,31 @@
 						"deprecationReason": null
 					},
 					{
+						"name": "searchMovies",
+						"description": null,
+						"args": [
+							{
+								"name": "searchOptions",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "SearchInput",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "MoviesResponse",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
 						"name": "similarMovie",
 						"description": null,
 						"args": [
@@ -2615,6 +2652,31 @@
 								"type": {
 									"kind": "INPUT_OBJECT",
 									"name": "OptionsInput",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "MoviesResponse",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "sortMovies",
+						"description": null,
+						"args": [
+							{
+								"name": "discoverOptions",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "DiscoverInput",
 									"ofType": null
 								},
 								"defaultValue": null,
@@ -2751,6 +2813,112 @@
 					},
 					{
 						"name": "US",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "SearchInput",
+				"description": null,
+				"fields": null,
+				"inputFields": [
+					{
+						"name": "language",
+						"description": null,
+						"type": {
+							"kind": "ENUM",
+							"name": "LanguageEnum",
+							"ofType": null
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "page",
+						"description": null,
+						"type": {
+							"kind": "SCALAR",
+							"name": "Int",
+							"ofType": null
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "query",
+						"description": null,
+						"type": {
+							"kind": "SCALAR",
+							"name": "String",
+							"ofType": null
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "region",
+						"description": null,
+						"type": {
+							"kind": "ENUM",
+							"name": "RegionEnum",
+							"ofType": null
+						},
+						"defaultValue": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"interfaces": null,
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "SortEnum",
+				"description": null,
+				"fields": null,
+				"inputFields": null,
+				"interfaces": null,
+				"enumValues": [
+					{
+						"name": "POPULARITY_ASC",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "POPULARITY_DESC",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "PRIMARY_RELEASE_DATE_ASC",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "PRIMARY_RELEASE_DATE_DESC",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "VOTE_ASC",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "VOTE_DESC",
 						"description": null,
 						"isDeprecated": false,
 						"deprecationReason": null
