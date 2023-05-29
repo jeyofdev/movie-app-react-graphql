@@ -11,12 +11,15 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { useWindowSize } from 'usehooks-ts';
+import { BreakpointEnum } from '../../../types/enums';
 import { RoundedSwiperProps } from '../../../types/types/props';
 import useStyles from './style';
 
 const RoundedSwiper = ({ list }: RoundedSwiperProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
+	const { width } = useWindowSize();
 
 	const card = (item: CastMovie): ReactNode | null => (
 		<>
@@ -33,10 +36,22 @@ const RoundedSwiper = ({ list }: RoundedSwiperProps) => {
 		</>
 	);
 
+	const slidePerView = () => {
+		if (width >= BreakpointEnum.XL) return 7;
+		if (width >= BreakpointEnum.LG) return 6;
+		if (width >= BreakpointEnum.MD) return 4;
+		if (width >= BreakpointEnum.SM) return 4;
+		if (width >= 600) return 6;
+		if (width >= 500) return 5;
+		if (width >= BreakpointEnum.XS) return 3;
+
+		return 4;
+	};
+
 	return (
 		<>
 			<Swiper
-				slidesPerView={6}
+				slidesPerView={slidePerView()}
 				spaceBetween={20}
 				navigation={false}
 				modules={[Navigation]}

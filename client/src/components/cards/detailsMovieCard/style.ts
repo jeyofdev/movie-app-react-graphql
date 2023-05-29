@@ -24,19 +24,42 @@ const useStyles = (theme: Theme) => ({
 		gap: theme.spacing(4),
 	},
 	voteBox: {
+		display: {
+			xs: 'none',
+			md: 'flex',
+		},
 		position: 'absolute',
 		top: '0.5rem',
-		left: 'calc((100% / 12) + 0.75rem)',
+		left: {
+			xs: 'calc((100% / 12) + 0.75rem)',
+			sm: 'calc((100% / 12) + 0.75rem)',
+			md: '0.75rem',
+			lg: 'calc((100% / 12) + 0.75rem)',
+			xl: 'calc((100% / 6) + 0.75rem)',
+		},
 		zIndex: 100,
 	},
 	poster: {
+		display: {
+			xs: 'none',
+			sm: 'none',
+			md: 'flex',
+		},
+		alignSelf: 'flex-start',
 		width: '100%',
 		height: {
 			xs: '350px',
-			md: '350px',
+			sm: '350px',
+			md: '280px',
+			lg: '300px',
+			xl: '300px',
 		},
 		gridColumn: {
 			xs: '2 / span 3',
+			sm: '1 / span 5',
+			md: '1 / span 4',
+			lg: '2 / span 3',
+			xl: '3 / span 2',
 		},
 		backgroundSize: 'contain',
 		zIndex: 10,
@@ -44,7 +67,11 @@ const useStyles = (theme: Theme) => ({
 	},
 	contentBox: {
 		gridColumn: {
-			xs: 'auto / span 7',
+			xs: 'auto / span 12',
+			sm: 'auto / span 12',
+			md: 'auto / span 8',
+			lg: 'auto / span 7',
+			xl: 'auto / span 6',
 		},
 		display: 'flex',
 		flexDirection: 'column',
