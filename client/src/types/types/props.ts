@@ -98,6 +98,7 @@ export type SwiperSectionProps = {
 	setMoviesListCategory?: Dispatch<
 		SetStateAction<MoviesListCategoryEnum | null>
 	>;
+	titleStyle?: object;
 };
 
 export type VoteAverageProps = {

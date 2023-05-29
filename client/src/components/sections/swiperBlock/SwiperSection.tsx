@@ -21,6 +21,7 @@ const SwiperSection = ({
 	setActiveItemSwiperGallery,
 	setMoviesSelectedId,
 	setMoviesListCategory,
+	titleStyle,
 }: SwiperSectionProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
@@ -40,7 +41,10 @@ const SwiperSection = ({
 		return (
 			<>
 				<Box sx={styles.topSectionBox}>
-					<Typography variant='h4' sx={styles.sectionTitle}>
+					<Typography
+						variant='h4'
+						sx={{ ...styles.sectionTitle, ...titleStyle }}
+					>
 						{title}
 					</Typography>
 
@@ -102,8 +106,11 @@ const SwiperSection = ({
 	if (swiperType === 'person') {
 		return (
 			<>
-				<Box sx={styles.topSectionBox}>
-					<Typography variant='h5' sx={styles.sectionTitle}>
+				<Box sx={{ ...styles.topSectionBox, marginBottom: 0 }}>
+					<Typography
+						variant='h5'
+						sx={{ ...styles.sectionTitle, ...titleStyle }}
+					>
 						{title}
 					</Typography>
 				</Box>
