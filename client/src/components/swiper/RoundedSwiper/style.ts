@@ -3,7 +3,7 @@ import { Theme } from '@mui/material';
 const useStyles = (theme: Theme) => ({
 	root: {
 		width: '100%',
-		height: '234px',
+		// height: '234px',
 	},
 	swiperSlide: {
 		textAlign: 'center',
