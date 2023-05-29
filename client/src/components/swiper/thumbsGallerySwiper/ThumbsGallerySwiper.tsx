@@ -1,17 +1,18 @@
-import { Button, useTheme } from '@mui/material';
+import { Box, Button, useTheme } from '@mui/material';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { FreeMode, Navigation, Thumbs } from 'swiper';
+import { A11y, FreeMode, Navigation, Thumbs } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
+import SwiperButton from '@components/ui/Button/swiperButton/SwiperButton';
 import { Movie } from '@graphql/__generated__/graphql-type';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import { useWindowSize } from 'usehooks-ts';
-import { BreakpointEnum } from '../../../types/enums';
+import { BreakpointEnum, SwiperDirectionEnum } from '../../../types/enums';
 import { SwiperThumbsGalleryType } from '../../../types/types/props';
 import useStyles from './style';
 
@@ -23,7 +24,7 @@ const ThumbsGallerySwiper = ({
 	swiperBox,
 }: SwiperThumbsGalleryType) => {
 	const theme = useTheme();
-	const style = useStyles(theme);
+	const styles = useStyles(theme);
 	const { width } = useWindowSize();
 
 	const handleClick = (newActiveImage: Movie) => {
@@ -56,7 +57,7 @@ const ThumbsGallerySwiper = ({
 		<img
 			src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
 			style={{
-				...style.swiperSlideImg(activeItemSwiperGallery.id === movie.id),
+				...styles.swiperSlideImg(activeItemSwiperGallery.id === movie.id),
 				height: slideHeight(),
 			}}
 		/>
@@ -66,15 +67,15 @@ const ThumbsGallerySwiper = ({
 		<Swiper
 			spaceBetween={0}
 			slidesPerView={slidePerView()}
-			freeMode={true}
+			freeMode
 			navigation={false}
-			loop={true}
-			watchSlidesProgress={true}
-			modules={[FreeMode, Navigation, Thumbs]}
-			style={{ ...style.swiper, ...swiperBox } as object}
+			loop
+			watchSlidesProgress
+			modules={[FreeMode, Navigation, Thumbs, A11y]}
+			style={{ ...styles.swiper, ...swiperBox } as object}
 		>
 			{list.map((item: Movie) => (
-				<SwiperSlide key={item.id} style={{ ...style.swiperSlide }}>
+				<SwiperSlide key={item.id} style={{ ...styles.swiperSlide }}>
 					{hasButton ? (
 						<Button
 							sx={{
@@ -90,6 +91,14 @@ const ThumbsGallerySwiper = ({
 					)}
 				</SwiperSlide>
 			))}
+
+			<Box sx={{ ...styles.btnBox, ...styles.btnLeftBox }}>
+				<SwiperButton direction={SwiperDirectionEnum.LEFT} />
+			</Box>
+
+			<Box sx={{ ...styles.btnBox, ...styles.btnRightBox }}>
+				<SwiperButton direction={SwiperDirectionEnum.RIGHT} />
+			</Box>
 		</Swiper>
 	);
 };

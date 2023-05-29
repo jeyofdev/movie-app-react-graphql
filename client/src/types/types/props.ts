@@ -7,7 +7,7 @@ import {
 } from '@graphql/__generated__/graphql-type';
 import { Dispatch, ReactNode, SetStateAction } from 'react';
 import { Variant } from '@mui/material/styles/createTypography';
-import { MoviesListCategoryEnum } from '../enums';
+import { MoviesListCategoryEnum, SwiperDirectionEnum } from '../enums';
 
 export type ThemeContextProviderPropsType = {
 	children: ReactNode;
@@ -153,3 +153,7 @@ export type SearchResultMovieCardProps = Pick<
 	MovieDetails,
 	'id' | 'title' | 'poster_path' | 'overview' | 'release_date'
 >;
+
+export type SwiperButtonProps = {
+	direction: SwiperDirectionEnum;
+};

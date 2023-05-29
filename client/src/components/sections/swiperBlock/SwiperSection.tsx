@@ -90,15 +90,19 @@ const SwiperSection = ({
 					overview={activeItemSwiperGallery?.overview}
 				/>
 
-				<ThumbsGallerySwiper
-					list={list as Array<Movie>}
-					hasButton
-					activeItemSwiperGallery={activeItemSwiperGallery as Movie}
-					setActiveImage={
-						setActiveItemSwiperGallery as Dispatch<SetStateAction<Movie | null>>
-					}
-					swiperBox={thumbsBoxSize() as object}
-				/>
+				<Box sx={styles.thumbsGalleryCardBox}>
+					<ThumbsGallerySwiper
+						list={list as Array<Movie>}
+						hasButton
+						activeItemSwiperGallery={activeItemSwiperGallery as Movie}
+						setActiveImage={
+							setActiveItemSwiperGallery as Dispatch<
+								SetStateAction<Movie | null>
+							>
+						}
+						swiperBox={thumbsBoxSize() as object}
+					/>
+				</Box>
 			</Box>
 		);
 	}

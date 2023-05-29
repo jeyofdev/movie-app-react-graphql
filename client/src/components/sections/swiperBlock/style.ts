@@ -46,6 +46,12 @@ const useStyles = (theme: Theme) => ({
 		zIndex: 1,
 		borderRadius: '1rem',
 	},
+	thumbsGalleryCardBox: {
+		position: 'absolute',
+		bottom: '0.75rem',
+		left: 0,
+		right: 0,
+	},
 });
 
 export default useStyles;

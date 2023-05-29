@@ -2,8 +2,9 @@ import { Theme } from '@mui/material';
 
 const useStyles = (theme: Theme) => ({
 	swiper: {
-		position: 'absolute',
-		bottom: '0.75rem',
+		// position: 'absolute',
+		// bottom: '0.75rem',
+		marginRight: '2rem',
 	},
 	swiperSlide: {
 		backgroundPosition: 'center',
@@ -22,11 +23,17 @@ const useStyles = (theme: Theme) => ({
 			isActive ? theme.palette.common.white : 'transparent'
 		}`,
 	}),
-	swiperSlideBtn: {
-		cursor: 'pointer',
+	btnBox: {
+		position: 'absolute',
+		top: '50%',
+		zIndex: 1000,
+		transform: 'translateY(-50%)',
 	},
-	swiperButtonPrev: {
-		color: 'white',
+	btnLeftBox: {
+		left: '0rem',
+	},
+	btnRightBox: {
+		right: '0rem',
 	},
 });
 
