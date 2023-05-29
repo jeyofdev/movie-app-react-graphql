@@ -17,3 +17,8 @@ export enum MoviesListCategoryEnum {
 	TOP_RATING = 'top-rating',
 	NOW_PLAYING = 'now-playing',
 }
+
+export enum SwiperDirectionEnum {
+	LEFT = 'left',
+	RIGHT = 'right',
+}

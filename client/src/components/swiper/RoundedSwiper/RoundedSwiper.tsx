@@ -38,12 +38,15 @@ const RoundedSwiper = ({ list }: RoundedSwiperProps) => {
 
 	const slidePerView = () => {
 		if (width >= BreakpointEnum.XL) return 7;
+		if (width >= 1700) return 7;
 		if (width >= BreakpointEnum.LG) return 6;
+		if (width >= 1000) return 5;
 		if (width >= BreakpointEnum.MD) return 4;
+		if (width >= 850) return 5;
 		if (width >= BreakpointEnum.SM) return 4;
 		if (width >= 600) return 6;
 		if (width >= 500) return 5;
-		if (width >= BreakpointEnum.XS) return 3;
+		if (width >= BreakpointEnum.XS) return 4;
 
 		return 4;
 	};
@@ -71,6 +74,14 @@ const RoundedSwiper = ({ list }: RoundedSwiperProps) => {
 						</BaseTooltip>
 					</SwiperSlide>
 				))}
+
+				{/* <Box sx={{ ...styles.btnBox, ...styles.btnLeftBox }}>
+					<SwiperButton direction={SwiperDirectionEnum.LEFT} />
+				</Box>
+
+				<Box sx={{ ...styles.btnBox, ...styles.btnRightBox }}>
+					<SwiperButton direction={SwiperDirectionEnum.RIGHT} />
+				</Box> */}
 			</Swiper>
 		</>
 	);

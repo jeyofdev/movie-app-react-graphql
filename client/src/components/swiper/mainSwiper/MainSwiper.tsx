@@ -1,6 +1,7 @@
 import ThumbnailCard from '@components/cards/thumbnailCard/ThumbnailCard';
+import SwiperButton from '@components/ui/Button/swiperButton/SwiperButton';
 import { Movie } from '@graphql/__generated__/graphql-type';
-import { Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { ReactNode } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -9,7 +10,7 @@ import { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { useWindowSize } from 'usehooks-ts';
-import { BreakpointEnum } from '../../../types/enums';
+import { BreakpointEnum, SwiperDirectionEnum } from '../../../types/enums';
 import { MainSwiperProps } from '../../../types/types/props';
 import useStyles from './style';
 
@@ -24,41 +25,15 @@ const MainSwiper = ({
 	const { width } = useWindowSize();
 
 	const getSlidesPerView = () => {
-		if (width < 300) {
-			return 1;
-		}
-
-		if (width >= 200 && width < 400) {
-			return 2;
-		}
-
-		if (width >= 400 && width < 600) {
-			return 3;
-		}
-
-		if (width >= 600 && width < BreakpointEnum.SM) {
-			return 4;
-		}
-
-		if (width >= BreakpointEnum.SM && width < BreakpointEnum.MD) {
-			return 3;
-		}
-
-		if (width >= BreakpointEnum.MD && width < 1200) {
-			return 4;
-		}
-
-		if (width >= 1200 && width < BreakpointEnum.LG) {
-			return 5;
-		}
-
-		if (width >= BreakpointEnum.LG && width < 1600) {
-			return 6;
-		}
-
-		if (width >= 1600 && width < BreakpointEnum.XL) {
-			return 7;
-		}
+		if (width < 300) return 1;
+		if (width >= 200 && width < 400) return 2;
+		if (width >= 400 && width < 600) return 3;
+		if (width >= 600 && width < BreakpointEnum.SM) return 4;
+		if (width >= BreakpointEnum.SM && width < BreakpointEnum.MD) return 3;
+		if (width >= BreakpointEnum.MD && width < 1200) return 4;
+		if (width >= 1200 && width < BreakpointEnum.LG) return 5;
+		if (width >= BreakpointEnum.LG && width < 1600) return 6;
+		if (width >= 1600 && width < BreakpointEnum.XL) return 7;
 
 		return 9;
 	};
@@ -99,6 +74,13 @@ const MainSwiper = ({
 						</Button>
 					</SwiperSlide>
 				))}
+				<Box sx={{ ...styles.btnBox, ...styles.btnLeftBox }}>
+					<SwiperButton direction={SwiperDirectionEnum.LEFT} />
+				</Box>
+
+				<Box sx={{ ...styles.btnBox, ...styles.btnRightBox }}>
+					<SwiperButton direction={SwiperDirectionEnum.RIGHT} />
+				</Box>
 			</Swiper>
 		</>
 	);
