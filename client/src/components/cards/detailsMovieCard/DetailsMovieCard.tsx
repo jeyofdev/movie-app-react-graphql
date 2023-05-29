@@ -1,4 +1,3 @@
-/* eslint-disable */
 import SwiperSection from '@components/sections/swiperBlock/SwiperSection';
 import Tags from '@components/tags/Tags';
 import VoteAverage from '@components/ui/votes/average/VoteAverage';
