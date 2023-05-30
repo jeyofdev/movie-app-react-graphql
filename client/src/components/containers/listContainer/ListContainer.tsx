@@ -9,9 +9,11 @@ const ListContainer = ({ list, title }: ListContainerProps) => {
 
 	return (
 		<Box sx={styles.primaryContentBox}>
-			<Typography variant='h3' sx={styles.title}>
-				{title}
-			</Typography>
+			{title && (
+				<Typography variant='h3' sx={styles.title}>
+					{title}
+				</Typography>
+			)}
 
 			<Box sx={styles.cards}>
 				{list?.map(movie => (

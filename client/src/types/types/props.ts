@@ -133,7 +133,7 @@ export type ListResultCardProps = Pick<
 
 export type ListContainerProps = {
 	list: Array<Movie>;
-	title: string;
+	title?: string;
 };
 
 export type DetailsMovieCardProps = Pick<

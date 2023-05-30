@@ -41,6 +41,13 @@ const useStyles = (theme: Theme) => ({
 	viewMoreTypo: {
 		color: theme.palette.primary.contrastText,
 	},
+	listMoviesBox: {
+		marginTop: theme.spacing(4),
+	},
+	listMoviesTitle: {
+		color: theme.palette.primary.main,
+		marginBottom: theme.spacing(4),
+	},
 });
 
 export default useStyles;
