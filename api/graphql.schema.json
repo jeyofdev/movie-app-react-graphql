@@ -1415,6 +1415,45 @@
 			},
 			{
 				"kind": "OBJECT",
+				"name": "MoviesByCastPersonResponse",
+				"description": null,
+				"fields": [
+					{
+						"name": "cast",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "LIST",
+							"name": null,
+							"ofType": {
+								"kind": "OBJECT",
+								"name": "Movie",
+								"ofType": null
+							}
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "id",
+						"description": null,
+						"args": [],
+						"type": {
+							"kind": "SCALAR",
+							"name": "Int",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"inputFields": null,
+				"interfaces": [],
+				"enumValues": null,
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
 				"name": "MoviesCollectionResponse",
 				"description": null,
 				"fields": [
@@ -2365,6 +2404,43 @@
 						"type": {
 							"kind": "OBJECT",
 							"name": "MovieDetails",
+							"ofType": null
+						},
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "moviesByCastPerson",
+						"description": null,
+						"args": [
+							{
+								"name": "options",
+								"description": null,
+								"type": {
+									"kind": "INPUT_OBJECT",
+									"name": "OptionsInput",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
+							},
+							{
+								"name": "personId",
+								"description": null,
+								"type": {
+									"kind": "SCALAR",
+									"name": "Int",
+									"ofType": null
+								},
+								"defaultValue": null,
+								"isDeprecated": false,
+								"deprecationReason": null
+							}
+						],
+						"type": {
+							"kind": "OBJECT",
+							"name": "MoviesByCastPersonResponse",
 							"ofType": null
 						},
 						"isDeprecated": false,

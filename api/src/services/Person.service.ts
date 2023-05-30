@@ -1,8 +1,10 @@
 import { RESTDataSource } from '@apollo/datasource-rest';
 import {
+	MoviesByCastPersonResponse,
 	Person,
 	PersonCastResponse,
 	PersonCrewResponse,
+	QueryMoviesByCastPersonArgs,
 	QueryPersonCastByMovieArgs,
 	QueryPersonCrewByMovieArgs,
 	QueryPersonDetailsArgs,
@@ -60,6 +62,18 @@ class PersonService extends RESTDataSource {
 				{
 					language: args?.options?.language,
 				},
+			),
+		);
+	}
+
+	async moviesByCastPerson(
+		args: QueryMoviesByCastPersonArgs,
+	): Promise<MoviesByCastPersonResponse> {
+		return this.get(
+			formatUrlQuery(
+				this.baseURL,
+				this.apiKey,
+				`${String(args.personId)}/movie_credits`,
 			),
 		);
 	}

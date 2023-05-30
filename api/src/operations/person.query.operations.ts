@@ -62,6 +62,54 @@ const personsQueryOperations = {
       }
     }
   `,
+
+	moviesByCastPerson: `
+    query MoviesByCastPerson($personId: Int, $options: OptionsInput) {
+      moviesByCastPerson(personId: $personId, options: $options) {
+        cast {
+          adult
+          backdrop_path
+          genre_ids
+          id
+          genres {
+            id
+            name
+          }
+          original_language
+          original_title
+          overview
+          popularity
+          poster_path
+          release_date
+          title
+          video
+          vote_average
+          vote_count
+          images {
+            backdrops {
+              aspect_ratio
+              file_path
+              height
+              iso_639_1
+              vote_average
+              vote_count
+              width
+            }
+            id
+            posters {
+              aspect_ratio
+              file_path
+              height
+              iso_639_1
+              vote_average
+              vote_count
+              width
+            }
+          }
+        }
+      }
+    }
+  `,
 };
 
 export default personsQueryOperations;

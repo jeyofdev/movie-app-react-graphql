@@ -220,6 +220,11 @@ type PersonCastResponse {
 	cast: [CastMovie]
 }
 
+type MoviesByCastPersonResponse {
+	id: Int
+	cast: [Movie]
+}
+
 type PersonCrewResponse {
 	id: Int
 	crew: [CrewMovie]
@@ -281,4 +286,8 @@ type Query {
 	discoverMoviesByGenre(discoverOptions: DiscoverInput): MoviesResponse
 	sortMovies(discoverOptions: DiscoverInput): MoviesResponse
 	searchMovies(searchOptions: SearchInput): MoviesResponse
+	moviesByCastPerson(
+		personId: Int
+		options: OptionsInput
+	): MoviesByCastPersonResponse
 }
