@@ -880,6 +880,32 @@ export type SearchMoviesQuery = {
 	} | null;
 };
 
+export type PersonDetailsQueryVariables = Exact<{
+	personId?: InputMaybe<Scalars['Int']>;
+	options?: InputMaybe<OptionsInput>;
+}>;
+
+export type PersonDetailsQuery = {
+	__typename?: 'Query';
+	personDetails?: {
+		__typename?: 'Person';
+		birthday?: string | null;
+		known_for_department?: string | null;
+		deathday?: string | null;
+		id?: number | null;
+		name?: string | null;
+		also_known_as?: Array<string | null> | null;
+		gender?: string | null;
+		biography?: string | null;
+		popularity?: number | null;
+		place_of_birth?: string | null;
+		profile_path?: string | null;
+		adult?: boolean | null;
+		imdb_id?: string | null;
+		homepage?: string | null;
+	} | null;
+};
+
 export const NowPlayingMoviesDocument = gql`
 	query NowPlayingMovies($options: OptionsInput) {
 		nowPlayingMovies(options: $options) {
@@ -1759,4 +1785,76 @@ export type SearchMoviesLazyQueryHookResult = ReturnType<
 export type SearchMoviesQueryResult = Apollo.QueryResult<
 	SearchMoviesQuery,
 	SearchMoviesQueryVariables
+>;
+export const PersonDetailsDocument = gql`
+	query PersonDetails($personId: Int, $options: OptionsInput) {
+		personDetails(personId: $personId, options: $options) {
+			birthday
+			known_for_department
+			deathday
+			id
+			name
+			also_known_as
+			gender
+			biography
+			popularity
+			place_of_birth
+			profile_path
+			adult
+			imdb_id
+			homepage
+		}
+	}
+`;
+
+/**
+ * __usePersonDetailsQuery__
+ *
+ * To run a query within a React component, call `usePersonDetailsQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePersonDetailsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePersonDetailsQuery({
+ *   variables: {
+ *      personId: // value for 'personId'
+ *      options: // value for 'options'
+ *   },
+ * });
+ */
+export function usePersonDetailsQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		PersonDetailsQuery,
+		PersonDetailsQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useQuery<PersonDetailsQuery, PersonDetailsQueryVariables>(
+		PersonDetailsDocument,
+		options,
+	);
+}
+export function usePersonDetailsLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		PersonDetailsQuery,
+		PersonDetailsQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useLazyQuery<PersonDetailsQuery, PersonDetailsQueryVariables>(
+		PersonDetailsDocument,
+		options,
+	);
+}
+export type PersonDetailsQueryHookResult = ReturnType<
+	typeof usePersonDetailsQuery
+>;
+export type PersonDetailsLazyQueryHookResult = ReturnType<
+	typeof usePersonDetailsLazyQuery
+>;
+export type PersonDetailsQueryResult = Apollo.QueryResult<
+	PersonDetailsQuery,
+	PersonDetailsQueryVariables
 >;
