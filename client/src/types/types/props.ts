@@ -129,11 +129,14 @@ export type TagsProps = Pick<MovieDetails, 'genres' | 'runtime'> & {
 export type ListResultCardProps = Pick<
 	Movie,
 	'id' | 'title' | 'poster_path' | 'vote_average'
->;
+> & {
+	cardGridColumn: object;
+};
 
 export type ListContainerProps = {
 	list: Array<Movie>;
-	title: string;
+	title?: string;
+	cardGridColumn?: object;
 };
 
 export type DetailsMovieCardProps = Pick<

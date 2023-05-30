@@ -178,6 +178,12 @@ export type MovieImageResponse = {
 	posters?: Maybe<Array<Maybe<PosterMovie>>>;
 };
 
+export type MoviesByCastPersonResponse = {
+	__typename?: 'MoviesByCastPersonResponse';
+	cast?: Maybe<Array<Maybe<Movie>>>;
+	id?: Maybe<Scalars['Int']>;
+};
+
 export type MoviesCollectionResponse = {
 	__typename?: 'MoviesCollectionResponse';
 	backdrop_path?: Maybe<Scalars['String']>;
@@ -277,6 +283,7 @@ export type Query = {
 	imagesByMovie?: Maybe<MovieImageResponse>;
 	keywordsByMovie?: Maybe<MoviesKeywordsResponse>;
 	movieDetails?: Maybe<MovieDetails>;
+	moviesByCastPerson?: Maybe<MoviesByCastPersonResponse>;
 	moviesByCollection?: Maybe<MoviesCollectionResponse>;
 	moviesByKeyword?: Maybe<KeywordMoviesResponse>;
 	nowPlayingMovies?: Maybe<MoviesResponse>;
@@ -322,6 +329,11 @@ export type QueryKeywordsByMovieArgs = {
 export type QueryMovieDetailsArgs = {
 	movieId?: InputMaybe<Scalars['Int']>;
 	options?: InputMaybe<OptionsInput>;
+};
+
+export type QueryMoviesByCastPersonArgs = {
+	options?: InputMaybe<OptionsInput>;
+	personId?: InputMaybe<Scalars['Int']>;
 };
 
 export type QueryMoviesByCollectionArgs = {
@@ -903,6 +915,64 @@ export type PersonDetailsQuery = {
 		adult?: boolean | null;
 		imdb_id?: string | null;
 		homepage?: string | null;
+	} | null;
+};
+
+export type MoviesByCastPersonQueryVariables = Exact<{
+	personId?: InputMaybe<Scalars['Int']>;
+	options?: InputMaybe<OptionsInput>;
+}>;
+
+export type MoviesByCastPersonQuery = {
+	__typename?: 'Query';
+	moviesByCastPerson?: {
+		__typename?: 'MoviesByCastPersonResponse';
+		cast?: Array<{
+			__typename?: 'Movie';
+			adult?: boolean | null;
+			backdrop_path?: string | null;
+			genre_ids?: Array<number | null> | null;
+			id?: number | null;
+			original_language?: string | null;
+			original_title?: string | null;
+			overview?: string | null;
+			popularity?: number | null;
+			poster_path?: string | null;
+			release_date?: string | null;
+			title?: string | null;
+			video?: boolean | null;
+			vote_average?: number | null;
+			vote_count?: number | null;
+			genres?: Array<{
+				__typename?: 'Genre';
+				id: number;
+				name: string;
+			} | null> | null;
+			images?: {
+				__typename?: 'MovieImageResponse';
+				id?: number | null;
+				backdrops?: Array<{
+					__typename?: 'PosterMovie';
+					aspect_ratio?: number | null;
+					file_path?: string | null;
+					height?: number | null;
+					iso_639_1?: string | null;
+					vote_average?: number | null;
+					vote_count?: number | null;
+					width?: number | null;
+				} | null> | null;
+				posters?: Array<{
+					__typename?: 'PosterMovie';
+					aspect_ratio?: number | null;
+					file_path?: string | null;
+					height?: number | null;
+					iso_639_1?: string | null;
+					vote_average?: number | null;
+					vote_count?: number | null;
+					width?: number | null;
+				} | null> | null;
+			} | null;
+		} | null> | null;
 	} | null;
 };
 
@@ -1857,4 +1927,103 @@ export type PersonDetailsLazyQueryHookResult = ReturnType<
 export type PersonDetailsQueryResult = Apollo.QueryResult<
 	PersonDetailsQuery,
 	PersonDetailsQueryVariables
+>;
+export const MoviesByCastPersonDocument = gql`
+	query MoviesByCastPerson($personId: Int, $options: OptionsInput) {
+		moviesByCastPerson(personId: $personId, options: $options) {
+			cast {
+				adult
+				backdrop_path
+				genre_ids
+				id
+				genres {
+					id
+					name
+				}
+				original_language
+				original_title
+				overview
+				popularity
+				poster_path
+				release_date
+				title
+				video
+				vote_average
+				vote_count
+				images {
+					backdrops {
+						aspect_ratio
+						file_path
+						height
+						iso_639_1
+						vote_average
+						vote_count
+						width
+					}
+					id
+					posters {
+						aspect_ratio
+						file_path
+						height
+						iso_639_1
+						vote_average
+						vote_count
+						width
+					}
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useMoviesByCastPersonQuery__
+ *
+ * To run a query within a React component, call `useMoviesByCastPersonQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMoviesByCastPersonQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMoviesByCastPersonQuery({
+ *   variables: {
+ *      personId: // value for 'personId'
+ *      options: // value for 'options'
+ *   },
+ * });
+ */
+export function useMoviesByCastPersonQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		MoviesByCastPersonQuery,
+		MoviesByCastPersonQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useQuery<
+		MoviesByCastPersonQuery,
+		MoviesByCastPersonQueryVariables
+	>(MoviesByCastPersonDocument, options);
+}
+export function useMoviesByCastPersonLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		MoviesByCastPersonQuery,
+		MoviesByCastPersonQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useLazyQuery<
+		MoviesByCastPersonQuery,
+		MoviesByCastPersonQueryVariables
+	>(MoviesByCastPersonDocument, options);
+}
+export type MoviesByCastPersonQueryHookResult = ReturnType<
+	typeof useMoviesByCastPersonQuery
+>;
+export type MoviesByCastPersonLazyQueryHookResult = ReturnType<
+	typeof useMoviesByCastPersonLazyQuery
+>;
+export type MoviesByCastPersonQueryResult = Apollo.QueryResult<
+	MoviesByCastPersonQuery,
+	MoviesByCastPersonQueryVariables
 >;
