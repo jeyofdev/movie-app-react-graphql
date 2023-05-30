@@ -87,5 +87,21 @@ describe('init server', () => {
 			expect(response.error).not.toBeUndefined();
 			expect(response.body.data.personCrewByMovie).toMatchSnapshot();
 		});
+
+		it('returns the movies of a cast person', async () => {
+			const response = await executeRequestForTesting(
+				url,
+				personsQueryOperations.moviesByCastPerson,
+				{
+					personId: 6384,
+					options: {
+						language: 'FR',
+					},
+				},
+			);
+
+			expect(response.error).not.toBeUndefined();
+			expect(response.body.data.moviesByCastPerson).toMatchSnapshot();
+		});
 	});
 });
