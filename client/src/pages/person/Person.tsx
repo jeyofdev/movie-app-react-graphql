@@ -1,8 +1,8 @@
 import PersonInfo from '@components/ui/personInfo/PersonInfo';
 import { usePersonDetailsQuery } from '@graphql/__generated__/graphql-type';
-import { Box, Typography, useTheme } from '@mui/material';
-import { getAge, getAgeBetweenTwoDate } from '@utils/index';
-import { useEffect } from 'react';
+import { Box, Button, Typography, useTheme } from '@mui/material';
+import { getAge, getAgeBetweenTwoDate, truncate } from '@utils/index';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useStyles from './style';
 
@@ -10,6 +10,7 @@ const Person = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const { personId } = useParams();
+	const [viewMoreDescription, setViewMoreDescription] = useState(false);
 
 	const { loading, error, data } = usePersonDetailsQuery({
 		variables: {
@@ -21,8 +22,13 @@ const Person = () => {
 		window.scrollTo(0, 0);
 	}, []);
 
-	// eslint-disable-next-line no-console
-	console.log(loading, error, data);
+	if (loading) {
+		return <Box>Loading...</Box>;
+	}
+
+	if (error) {
+		return <Box>{error?.message}</Box>;
+	}
 
 	return (
 		<Box>
@@ -80,8 +86,21 @@ const Person = () => {
 					<Box sx={styles.infoBox}>
 						<PersonInfo
 							title='Description'
-							value={data?.personDetails?.biography as string}
+							value={
+								viewMoreDescription
+									? (data?.personDetails?.biography as string)
+									: truncate(data?.personDetails?.biography as string, 200)
+							}
 						/>
+
+						<Button
+							sx={styles.viewMoreBtn}
+							onClick={() => setViewMoreDescription(!viewMoreDescription)}
+						>
+							<Typography variant='body1' sx={styles.viewMoreTypo}>
+								{!viewMoreDescription ? 'View more' : 'hide'}
+							</Typography>
+						</Button>
 					</Box>
 				</Box>
 			</Box>

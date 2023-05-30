@@ -29,6 +29,18 @@ const useStyles = (theme: Theme) => ({
 		flexDirection: 'column',
 		gap: theme.spacing(1),
 	},
+	viewMoreBtn: {
+		backgroundColor: theme.palette.primary.main,
+		minWidth: 'auto',
+		alignSelf: 'flex-start',
+
+		'&:hover': {
+			backgroundColor: theme.palette.primary.main,
+		},
+	},
+	viewMoreTypo: {
+		color: theme.palette.primary.contrastText,
+	},
 });
 
 export default useStyles;
