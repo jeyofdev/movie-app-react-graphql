@@ -157,3 +157,10 @@ export type SearchResultMovieCardProps = Pick<
 export type SwiperButtonProps = {
 	direction: SwiperDirectionEnum;
 };
+
+export type PersonInfoProps = {
+	title: string;
+	value: string;
+	subValue?: number | null | '';
+	subValueEnd?: string | null | '';
+};
