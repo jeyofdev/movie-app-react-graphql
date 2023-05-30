@@ -37,3 +37,20 @@ export const formatGenreForUrl = (genre: string) =>
 
 export const firstLetterCapitalize = (text: string): string =>
 	text.slice(0, 1).toUpperCase() + text.slice(1);
+
+export const getAge = (birthday: string) => {
+	const date = new Date(birthday);
+	const diff = Date.now() - date.getTime();
+	const age = new Date(diff);
+
+	return Math.abs(age.getUTCFullYear() - 1970);
+};
+
+export const getAgeBetweenTwoDate = (birthday: string, deathday: string) => {
+	const dateBirthday = new Date(birthday);
+	const dateDeathday = new Date(deathday);
+	const diff = dateDeathday.getTime() - dateBirthday.getTime();
+	const age = new Date(diff);
+
+	return Math.abs(age.getUTCFullYear() - 1970);
+};

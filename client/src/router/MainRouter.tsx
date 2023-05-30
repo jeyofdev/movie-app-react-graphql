@@ -3,6 +3,7 @@ import Home from '@pages/home/Home';
 import MovieDetails from '@pages/movieDetails/MovieDetails';
 import NotFound from '@pages/notFound/NotFound';
 import NowPlaying from '@pages/nowPlaying/NowPlaying';
+import Person from '@pages/person/Person';
 import Popular from '@pages/popular/Popular';
 import SearchResults from '@pages/searchResults/SearchResults';
 import TopRated from '@pages/topRated/TopRated';
@@ -18,6 +19,7 @@ const MainRouter = () => (
 		<Route path='movies/genre/:genreName' element={<Genre />} />
 		<Route path='movie/:movieId' element={<MovieDetails />} />
 		<Route path='search/:search' element={<SearchResults />} />
+		<Route path='person/:personId' element={<Person />} />
 
 		<Route path='/' element={<Home />}>
 			<Route path='home' element={<Home />} />

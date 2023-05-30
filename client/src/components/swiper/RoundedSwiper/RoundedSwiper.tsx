@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CastMovie } from '@graphql/__generated__/graphql-type';
 import { Box, Button, useTheme } from '@mui/material';
 import { ReactNode } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -20,6 +21,7 @@ const RoundedSwiper = ({ list }: RoundedSwiperProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
+	const navigate = useNavigate();
 
 	const card = (item: CastMovie): ReactNode | null => (
 		<>
@@ -65,7 +67,7 @@ const RoundedSwiper = ({ list }: RoundedSwiperProps) => {
 					<SwiperSlide key={item.id}>
 						<BaseTooltip title={item.name} arrow>
 							<Button
-								onClick={() => {}}
+								onClick={() => navigate(`/person/${item.id}`)}
 								disableRipple={true}
 								sx={{ padding: 0 }}
 							>
@@ -74,14 +76,6 @@ const RoundedSwiper = ({ list }: RoundedSwiperProps) => {
 						</BaseTooltip>
 					</SwiperSlide>
 				))}
-
-				{/* <Box sx={{ ...styles.btnBox, ...styles.btnLeftBox }}>
-					<SwiperButton direction={SwiperDirectionEnum.LEFT} />
-				</Box>
-
-				<Box sx={{ ...styles.btnBox, ...styles.btnRightBox }}>
-					<SwiperButton direction={SwiperDirectionEnum.RIGHT} />
-				</Box> */}
 			</Swiper>
 		</>
 	);
