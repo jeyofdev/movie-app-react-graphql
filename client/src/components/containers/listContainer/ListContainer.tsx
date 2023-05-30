@@ -3,7 +3,11 @@ import { Box, Typography, useTheme } from '@mui/material';
 import { ListContainerProps } from '../../../types/types/props';
 import useStyles from './style';
 
-const ListContainer = ({ list, title }: ListContainerProps) => {
+const ListContainer = ({
+	list,
+	title,
+	cardGridColumn = {},
+}: ListContainerProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 
@@ -23,6 +27,7 @@ const ListContainer = ({ list, title }: ListContainerProps) => {
 						poster_path={movie?.poster_path}
 						title={movie?.title}
 						vote_average={movie?.vote_average}
+						cardGridColumn={cardGridColumn}
 					/>
 				))}
 			</Box>

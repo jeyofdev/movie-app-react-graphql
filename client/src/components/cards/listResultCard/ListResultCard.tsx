@@ -9,13 +9,17 @@ const ListResultCard = ({
 	title,
 	poster_path,
 	vote_average,
+	cardGridColumn,
 }: ListResultCardProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const navigate = useNavigate();
 
 	return (
-		<Button onClick={() => navigate(`/movie/${id}`)} sx={styles.root}>
+		<Button
+			onClick={() => navigate(`/movie/${id}`)}
+			sx={{ ...styles.root, ...cardGridColumn }}
+		>
 			<Box>
 				<Box
 					component='img'

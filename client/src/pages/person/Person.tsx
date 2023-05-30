@@ -145,6 +145,7 @@ const Person = () => {
 					list={
 						moviesByCastPersonData?.moviesByCastPerson?.cast as Array<Movie>
 					}
+					cardGridColumn={styles.cardsMovies}
 				/>
 			</Box>
 		</Box>
