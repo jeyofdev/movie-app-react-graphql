@@ -6,7 +6,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import useStyles from './style';
 
-const Login = () => {
+const SignIn = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 
@@ -44,4 +44,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default SignIn;

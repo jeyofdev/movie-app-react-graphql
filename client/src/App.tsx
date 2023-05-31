@@ -26,7 +26,7 @@ const App = () => {
 					padding: { xs: 0, sm: '24px' },
 				}}
 			>
-				{location.pathname !== '/auth/login' ? (
+				{location.pathname !== '/login' && location.pathname !== '/register' ? (
 					<MainContainer>
 						<MainRouter />
 					</MainContainer>
