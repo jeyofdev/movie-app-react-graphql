@@ -33,6 +33,7 @@ module.exports = {
 					['@config', './src/config'],
 					['@graphql', './src/graphql'],
 					['@theme', './src/theme'],
+					['@services', './src/services'],
 				],
 				extensions: ['.js', '.ts', '.jsx', '.tsx'],
 			},

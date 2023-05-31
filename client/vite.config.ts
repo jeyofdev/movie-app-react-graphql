@@ -16,6 +16,7 @@ export default defineConfig({
 			'@config': `${path.resolve(__dirname, 'src/config')}`,
 			'@graphql': `${path.resolve(__dirname, 'src/graphql')}`,
 			'@theme': `${path.resolve(__dirname, 'src/theme')}`,
+			'@services': `${path.resolve(__dirname, 'src/services')}`,
 		},
 	},
 });
