@@ -5,6 +5,9 @@ const useStyles = (theme: Theme) => ({
 	title: {
 		color: theme.palette.primary.contrastText,
 	},
+	btn: {
+		color: theme.palette.primary.contrastText,
+	},
 });
 
 export default useStyles;

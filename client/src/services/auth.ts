@@ -3,6 +3,7 @@ import {
 	GithubAuthProvider,
 	GoogleAuthProvider,
 	signInWithPopup,
+	createUserWithEmailAndPassword,
 } from 'firebase/auth';
 import { auth } from './firebase';
 
@@ -25,3 +26,10 @@ export const logOut = () => {
 			console.log(error.message);
 		});
 };
+
+export const signup = (email: string, password: string) =>
+	createUserWithEmailAndPassword(auth, email, password)
+		.then(res => res.user)
+		.catch(err => {
+			console.log(err.message);
+		});
