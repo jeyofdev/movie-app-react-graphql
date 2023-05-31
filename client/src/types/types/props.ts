@@ -17,6 +17,10 @@ export type MainContainerPropsType = {
 	children: ReactNode;
 };
 
+export type AuthMainContainerPropsType = {
+	children: ReactNode;
+};
+
 export type MenuItemPropsType = {
 	id: string | number;
 	label: string;
