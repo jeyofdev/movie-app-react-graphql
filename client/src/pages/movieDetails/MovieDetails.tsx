@@ -1,4 +1,5 @@
 import DetailsMovieCard from '@components/cards/detailsMovieCard/DetailsMovieCard';
+import MainContainer from '@components/containers/mainContainer/MainContainer';
 import {
 	CastMovie,
 	useCastByMovieQuery,
@@ -33,20 +34,22 @@ const MovieDetails = () => {
 	}
 
 	return (
-		<Box sx={styles.root}>
-			<Box sx={styles.primaryContentBox}>
-				<DetailsMovieCard
-					title={data?.movieDetails?.title}
-					overview={data?.movieDetails?.overview}
-					genres={data?.movieDetails?.genres}
-					runtime={data?.movieDetails?.runtime}
-					vote_average={data?.movieDetails?.vote_average}
-					poster_path={data?.movieDetails?.poster_path}
-					backdrop_path={data?.movieDetails?.backdrop_path}
-					cast={castData?.castByMovie?.cast as Array<CastMovie>}
-				/>
+		<MainContainer>
+			<Box sx={styles.root}>
+				<Box sx={styles.primaryContentBox}>
+					<DetailsMovieCard
+						title={data?.movieDetails?.title}
+						overview={data?.movieDetails?.overview}
+						genres={data?.movieDetails?.genres}
+						runtime={data?.movieDetails?.runtime}
+						vote_average={data?.movieDetails?.vote_average}
+						poster_path={data?.movieDetails?.poster_path}
+						backdrop_path={data?.movieDetails?.backdrop_path}
+						cast={castData?.castByMovie?.cast as Array<CastMovie>}
+					/>
+				</Box>
 			</Box>
-		</Box>
+		</MainContainer>
 	);
 };
 

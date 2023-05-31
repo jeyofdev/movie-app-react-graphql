@@ -1,4 +1,5 @@
 import ListContainer from '@components/containers/listContainer/ListContainer';
+import MainContainer from '@components/containers/mainContainer/MainContainer';
 import {
 	Movie,
 	usePopularMoviesQuery,
@@ -33,12 +34,14 @@ const Popular = () => {
 	}
 
 	return (
-		<Box sx={styles.root}>
-			<ListContainer
-				list={data?.popularMovies?.results as Array<Movie>}
-				title={firstLetterCapitalize(getTitle())}
-			/>
-		</Box>
+		<MainContainer>
+			<Box sx={styles.root}>
+				<ListContainer
+					list={data?.popularMovies?.results as Array<Movie>}
+					title={firstLetterCapitalize(getTitle())}
+				/>
+			</Box>
+		</MainContainer>
 	);
 };
 

@@ -1,3 +1,4 @@
+import AuthMainContainer from '@components/containers/authMainContainer/AuthMainContainer';
 import {
 	Alert,
 	Box,
@@ -46,42 +47,44 @@ const SignUp = () => {
 	};
 
 	return (
-		<Box sx={styles.root}>
-			<Typography variant='h2' sx={styles.title}>
-				Register
-			</Typography>
+		<AuthMainContainer>
+			<Box sx={styles.root}>
+				<Typography variant='h2' sx={styles.title}>
+					Register
+				</Typography>
 
-			{error && (
-				<Alert variant='filled' severity='error'>
-					{error}
-				</Alert>
-			)}
+				{error && (
+					<Alert variant='filled' severity='error'>
+						{error}
+					</Alert>
+				)}
 
-			<TextField
-				onChange={handleChange}
-				name='email'
-				value={formDatas.email}
-				placeholder={'enter your email...'}
-			/>
+				<TextField
+					onChange={handleChange}
+					name='email'
+					value={formDatas.email}
+					placeholder={'enter your email...'}
+				/>
 
-			<TextField
-				onChange={handleChange}
-				name='password'
-				value={formDatas.password}
-				placeholder={'enter your password...'}
-			/>
+				<TextField
+					onChange={handleChange}
+					name='password'
+					value={formDatas.password}
+					placeholder={'enter your password...'}
+				/>
 
-			<TextField
-				onChange={handleChange}
-				name='passwordConfirm'
-				value={formDatas.passwordConfirm}
-				placeholder={'enter your password comfirm...'}
-			/>
+				<TextField
+					onChange={handleChange}
+					name='passwordConfirm'
+					value={formDatas.passwordConfirm}
+					placeholder={'enter your password comfirm...'}
+				/>
 
-			<Button sx={styles.btn} onClick={handleSubmit}>
-				Submit
-			</Button>
-		</Box>
+				<Button sx={styles.btn} onClick={handleSubmit}>
+					Submit
+				</Button>
+			</Box>
+		</AuthMainContainer>
 	);
 };
 

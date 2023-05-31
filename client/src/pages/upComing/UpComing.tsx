@@ -1,4 +1,5 @@
 import ListContainer from '@components/containers/listContainer/ListContainer';
+import MainContainer from '@components/containers/mainContainer/MainContainer';
 import {
 	Movie,
 	useUpcomingMoviesQuery,
@@ -33,12 +34,14 @@ const Upcoming = () => {
 	}
 
 	return (
-		<Box sx={styles.root}>
-			<ListContainer
-				list={data?.upcomingMovies?.results as Array<Movie>}
-				title={firstLetterCapitalize(getTitle())}
-			/>
-		</Box>
+		<MainContainer>
+			<Box sx={styles.root}>
+				<ListContainer
+					list={data?.upcomingMovies?.results as Array<Movie>}
+					title={firstLetterCapitalize(getTitle())}
+				/>
+			</Box>
+		</MainContainer>
 	);
 };
 
