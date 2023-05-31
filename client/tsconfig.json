@@ -30,7 +30,8 @@
 			"@context/*": ["./src/context/*"],
 			"@config/*": ["./src/config/*"],
 			"@graphql/*": ["./src/graphql/*"],
-			"@theme/*": ["./src/theme/*"]
+			"@theme/*": ["./src/theme/*"],
+			"@services/*": ["./src/services/*"]
 		}
 	},
 	"include": ["src"],
