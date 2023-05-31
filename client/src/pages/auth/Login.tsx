@@ -1,6 +1,6 @@
 import { Box, Button, Typography, useTheme } from '@mui/material';
 import { logOut, socialMediaAuth } from '@services/auth';
-import { googleProvider } from '@services/auth.providers';
+import { githubProvider, googleProvider } from '@services/auth.providers';
 import { auth } from '@services/firebase';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -33,8 +33,12 @@ const Login = () => {
 				Login
 			</Typography>
 
-			<Button sx={styles.title} onClick={() => handleLogin(googleProvider)}>
+			<Button sx={styles.loginBtn} onClick={() => handleLogin(googleProvider)}>
 				Google
+			</Button>
+
+			<Button sx={styles.loginBtn} onClick={() => handleLogin(githubProvider)}>
+				Github
 			</Button>
 		</Box>
 	);

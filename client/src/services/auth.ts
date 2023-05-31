@@ -1,8 +1,14 @@
 /* eslint-disable no-console */
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import {
+	GithubAuthProvider,
+	GoogleAuthProvider,
+	signInWithPopup,
+} from 'firebase/auth';
 import { auth } from './firebase';
 
-export const socialMediaAuth = (provider: GoogleAuthProvider) =>
+export const socialMediaAuth = (
+	provider: GoogleAuthProvider | GithubAuthProvider,
+) =>
 	signInWithPopup(auth, provider)
 		.then(res => res.user)
 		.catch(err => {
