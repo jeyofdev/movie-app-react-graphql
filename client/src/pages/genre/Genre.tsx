@@ -1,4 +1,5 @@
 import ListContainer from '@components/containers/listContainer/ListContainer';
+import MainContainer from '@components/containers/mainContainer/MainContainer';
 import {
 	Movie,
 	useDiscoverMoviesByGenreQuery,
@@ -35,12 +36,16 @@ const Genre = () => {
 	}
 
 	return (
-		<Box sx={styles.root}>
-			<ListContainer
-				list={data?.discoverMoviesByGenre?.results as Array<Movie>}
-				title={firstLetterCapitalize(genreName?.replaceAll('-', ' ') as string)}
-			/>
-		</Box>
+		<MainContainer>
+			<Box sx={styles.root}>
+				<ListContainer
+					list={data?.discoverMoviesByGenre?.results as Array<Movie>}
+					title={firstLetterCapitalize(
+						genreName?.replaceAll('-', ' ') as string,
+					)}
+				/>
+			</Box>
+		</MainContainer>
 	);
 };
 

@@ -1,3 +1,4 @@
+import AuthMainContainer from '@components/containers/authMainContainer/AuthMainContainer';
 import { Box, Button, Typography, useTheme } from '@mui/material';
 import { logOut, socialMediaAuth } from '@services/auth';
 import { githubProvider, googleProvider } from '@services/auth.providers';
@@ -28,19 +29,27 @@ const SignIn = () => {
 	}
 
 	return (
-		<Box sx={styles.root}>
-			<Typography variant='h2' sx={styles.title}>
-				Login
-			</Typography>
+		<AuthMainContainer>
+			<Box sx={styles.root}>
+				<Typography variant='h2' sx={styles.title}>
+					Login
+				</Typography>
 
-			<Button sx={styles.loginBtn} onClick={() => handleLogin(googleProvider)}>
-				Google
-			</Button>
+				<Button
+					sx={styles.loginBtn}
+					onClick={() => handleLogin(googleProvider)}
+				>
+					Google
+				</Button>
 
-			<Button sx={styles.loginBtn} onClick={() => handleLogin(githubProvider)}>
-				Github
-			</Button>
-		</Box>
+				<Button
+					sx={styles.loginBtn}
+					onClick={() => handleLogin(githubProvider)}
+				>
+					Github
+				</Button>
+			</Box>
+		</AuthMainContainer>
 	);
 };
 
