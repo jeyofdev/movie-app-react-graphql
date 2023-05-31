@@ -1,3 +1,4 @@
+import Login from '@pages/auth/Login';
 import Genre from '@pages/genre/Genre';
 import Home from '@pages/home/Home';
 import MovieDetails from '@pages/movieDetails/MovieDetails';
@@ -20,6 +21,8 @@ const MainRouter = () => (
 		<Route path='movie/:movieId' element={<MovieDetails />} />
 		<Route path='search/:search' element={<SearchResults />} />
 		<Route path='person/:personId' element={<Person />} />
+
+		<Route path='auth/login' element={<Login />} />
 
 		<Route path='/' element={<Home />}>
 			<Route path='home' element={<Home />} />
