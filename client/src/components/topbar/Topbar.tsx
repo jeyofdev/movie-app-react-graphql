@@ -1,4 +1,4 @@
-import SignUpModal from '@components/modals/signupModal/SignUpModal';
+import SignUpModal from '@components/modals/signUpModal/SignUpModal';
 import { ThemeContext } from '@context/ThemeContext';
 import {
 	faMagnifyingGlass,
@@ -13,7 +13,6 @@ import {
 	IconButton,
 	Input,
 	InputAdornment,
-	Typography,
 	useTheme,
 } from '@mui/material';
 import {
@@ -41,6 +40,7 @@ const Topbar = () => {
 		useState<boolean>(false);
 	const [showInputSearch, setShowInputSearch] = useState<boolean>(false);
 	const [showModalSignUp, setShowModalSignUp] = useState<boolean>(false);
+	const [signInStep, setSignInStep] = useState<number>(0);
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setSearch(e.target.value);
@@ -128,6 +128,7 @@ const Topbar = () => {
 						variant='outlined'
 						onClick={() => {
 							setShowModalSignUp(true);
+							setSignInStep(1);
 						}}
 					>
 						Sign up
@@ -151,15 +152,22 @@ const Topbar = () => {
 
 			<SignUpModal
 				open={showModalSignUp}
+				setOpen={() => {
+					setShowModalSignUp(false);
+				}}
+				step={signInStep}
+				setStep={setSignInStep}
+				title={{
+					stepOne: 'Sign up',
+					stepTwo: 'Finish Signing up',
+				}}
+			/>
+
+			{/* <SignUpEmailModal
+				open={showModalSignUp}
 				setOpen={() => setShowModalSignUp(false)}
-				title='Sign up'
-			>
-				<Typography variant='body1'>
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore,
-					ut, harum modi ex, voluptatum ea quis autem odit quibusdam earum enim
-					expedita accusamus pariatur rerum quasi. Unde non eos velit.
-				</Typography>
-			</SignUpModal>
+				title='Finish signing up'
+			/> */}
 		</>
 	);
 };

@@ -182,11 +182,20 @@ export type ModalPropsType = {
 
 export type SignUpModalPropsType = Pick<
 	ModalPropsType,
-	'open' | 'setOpen' | 'title' | 'children'
->;
+	'open' | 'setOpen' | 'children'
+> & {
+	title: { stepOne: string; stepTwo: string };
+	step: number;
+	setStep: Dispatch<SetStateAction<number>>;
+};
 
 export type SocialButtonPropsType = {
 	icon: IconDefinition;
 	label: string;
 	onClick: () => void;
+};
+
+export type InputTextPropsType = {
+	label: string;
+	icon: IconDefinition;
 };
