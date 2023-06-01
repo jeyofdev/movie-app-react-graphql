@@ -171,3 +171,14 @@ export type PersonInfoProps = {
 	subValue?: number | null | '';
 	subValueEnd?: string | null | '';
 };
+
+export type ModalPropsType = {
+	open: boolean;
+	setOpen: Dispatch<SetStateAction<boolean>>;
+	children?: ReactNode;
+};
+
+export type SignUpModalPropsType = Pick<
+	ModalPropsType,
+	'open' | 'setOpen' | 'children'
+>;

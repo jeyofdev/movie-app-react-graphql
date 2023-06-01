@@ -18,8 +18,12 @@ const useStyles = (theme: Theme) => ({
 			lg: '1 / span 5',
 		},
 	},
-	darkModeBtn: {
+	LinksBox: {
 		gridColumn: '12 / span 1',
+		display: 'flex',
+		alignItems: 'center',
+	},
+	darkModeBtn: {
 		background: theme.palette.primary.main,
 		borderRadius: '100%',
 		width: '26px',
