@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, Typography, useTheme } from '@mui/material';
+import { Box, Button, Typography, useTheme } from '@mui/material';
 import { SocialButtonPropsType } from '../../../../types/types/props';
 import useStyles from './style';
 
-const SocialButton = ({ icon, label }: SocialButtonPropsType) => {
+const SocialButton = ({ icon, label, onClick }: SocialButtonPropsType) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 
@@ -11,6 +11,7 @@ const SocialButton = ({ icon, label }: SocialButtonPropsType) => {
 		<Button
 			variant='outlined'
 			sx={styles.socialBtn}
+			onClick={onClick}
 			startIcon={
 				<FontAwesomeIcon
 					icon={icon}
@@ -19,7 +20,11 @@ const SocialButton = ({ icon, label }: SocialButtonPropsType) => {
 				/>
 			}
 		>
-			<Typography sx={styles.typo}>{label}</Typography>
+			<Box sx={styles.typoBox}>
+				<Typography variant='body1' sx={styles.typo}>
+					{label}
+				</Typography>
+			</Box>
 		</Button>
 	);
 };

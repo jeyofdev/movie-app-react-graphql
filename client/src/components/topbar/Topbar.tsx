@@ -130,7 +130,7 @@ const Topbar = () => {
 							setShowModalSignUp(true);
 						}}
 					>
-						Open alert dialog
+						Sign up
 					</Button>
 
 					<Button

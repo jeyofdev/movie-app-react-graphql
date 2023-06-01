@@ -188,4 +188,5 @@ export type SignUpModalPropsType = Pick<
 export type SocialButtonPropsType = {
 	icon: IconDefinition;
 	label: string;
+	onClick: () => void;
 };
