@@ -16,15 +16,20 @@ const useStyles = (theme: Theme) => ({
 		color: theme.palette.primary.contrastText,
 		textAlign: 'center',
 	},
-	closeIconBox: {
+	iconBox: {
 		position: 'absolute',
 		top: '0.5rem',
+	},
+	iconCloseBox: {
 		right: '0.75rem',
 	},
-	closeBtn: {
+	iconBackBox: {
+		left: '0.75rem',
+	},
+	iconBtn: {
 		minWidth: 'auto',
 	},
-	closeIcon: {
+	icon: {
 		fontSize: '1.25rem',
 		color: theme.palette.primary.contrastText,
 	},

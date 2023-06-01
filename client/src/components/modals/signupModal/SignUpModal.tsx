@@ -63,7 +63,9 @@ const SignUpModal = ({
 					open={open}
 					setOpen={() => setOpen(false)}
 					close
+					back
 					title={title?.stepTwo}
+					setStep={setStep}
 				>
 					<Box sx={styles.socialBtns}>
 						<Box sx={styles.inputsBox}>
