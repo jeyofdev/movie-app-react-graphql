@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	Box,
 	FormControl,
-	IconButton,
 	Input,
 	InputAdornment,
 	InputLabel,
@@ -12,7 +11,14 @@ import {
 import { InputTextPropsType } from '../../../../types/types/props';
 import useStyles from './style';
 
-const InputText = ({ label, icon }: InputTextPropsType) => {
+const InputText = ({
+	label,
+	id,
+	name,
+	icon,
+	value,
+	onChange,
+}: InputTextPropsType) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 
@@ -27,22 +33,20 @@ const InputText = ({ label, icon }: InputTextPropsType) => {
 			<FormControl variant='standard' sx={styles.formControl}>
 				<Input
 					type='text'
-					id='bootstrap-input'
+					id={id}
+					name={name}
 					placeholder='ex. username@mail.com'
 					sx={styles.inputText}
-					// value={search}
-					// onChange={handleChange}
-					// onKeyUp={handleKeyUp}
+					value={value}
+					onChange={onChange}
 					disableUnderline
 					startAdornment={
 						<InputAdornment position='start'>
-							<IconButton>
-								<FontAwesomeIcon
-									icon={icon}
-									color={theme.palette.common.black}
-									style={styles.inputIcon}
-								/>
-							</IconButton>
+							<FontAwesomeIcon
+								icon={icon}
+								color={theme.palette.common.black}
+								style={styles.inputIcon}
+							/>
 						</InputAdornment>
 					}
 				/>

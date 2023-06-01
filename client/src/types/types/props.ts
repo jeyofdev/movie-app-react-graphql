@@ -5,7 +5,7 @@ import {
 	Movie,
 	MovieDetails,
 } from '@graphql/__generated__/graphql-type';
-import { Dispatch, ReactNode, SetStateAction } from 'react';
+import { ChangeEvent, Dispatch, ReactNode, SetStateAction } from 'react';
 import { Variant } from '@mui/material/styles/createTypography';
 import { MoviesListCategoryEnum, SwiperDirectionEnum } from '../enums';
 
@@ -199,5 +199,9 @@ export type SocialButtonPropsType = {
 
 export type InputTextPropsType = {
 	label: string;
+	id: string;
+	name: string;
 	icon: IconDefinition;
+	value: string;
+	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
