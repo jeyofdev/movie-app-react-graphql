@@ -10,7 +10,7 @@ const SignUpModal = ({ open, setOpen, title }: SignUpModalPropsType) => {
 	const styles = useStyles(theme);
 
 	return (
-		<Modal open={open} setOpen={() => setOpen(false)} title={title}>
+		<Modal open={open} setOpen={() => setOpen(false)} close title={title}>
 			<Box sx={styles.socialBtns}>
 				<SocialButton icon={faGoogle} label='Continue with Google' />
 				<SocialButton icon={faGithub} label='Continue with GitHub' />

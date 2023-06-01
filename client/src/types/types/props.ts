@@ -175,6 +175,7 @@ export type PersonInfoProps = {
 export type ModalPropsType = {
 	open: boolean;
 	setOpen: Dispatch<SetStateAction<boolean>>;
+	close: boolean;
 	title: string | ReactNode;
 	children?: ReactNode;
 };
