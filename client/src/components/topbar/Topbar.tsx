@@ -152,6 +152,7 @@ const Topbar = () => {
 			<SignUpModal
 				open={showModalSignUp}
 				setOpen={() => setShowModalSignUp(false)}
+				title='Sign up'
 			>
 				<Typography variant='body1'>
 					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore,

@@ -1,7 +1,10 @@
-import { Box, Dialog } from '@mui/material';
+import { Box, Dialog, Typography, useTheme } from '@mui/material';
 import { ModalPropsType } from '../../../types/types/props';
+import useStyles from './style';
 
-const Modal = ({ open, setOpen, children }: ModalPropsType) => {
+const Modal = ({ open, setOpen, title, children }: ModalPropsType) => {
+	const theme = useTheme();
+	const styles = useStyles(theme);
 	const handleClose = () => {
 		setOpen(false);
 	};
@@ -13,7 +16,11 @@ const Modal = ({ open, setOpen, children }: ModalPropsType) => {
 				onClose={handleClose}
 				aria-labelledby='alert-dialog-title'
 				aria-describedby='alert-dialog-description'
+				sx={styles.modalBox}
 			>
+				<Typography variant='h2' sx={styles.title}>
+					{title}
+				</Typography>
 				{children}
 			</Dialog>
 		</Box>

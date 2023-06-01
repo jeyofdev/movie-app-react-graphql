@@ -175,10 +175,16 @@ export type PersonInfoProps = {
 export type ModalPropsType = {
 	open: boolean;
 	setOpen: Dispatch<SetStateAction<boolean>>;
+	title: string | ReactNode;
 	children?: ReactNode;
 };
 
 export type SignUpModalPropsType = Pick<
 	ModalPropsType,
-	'open' | 'setOpen' | 'children'
+	'open' | 'setOpen' | 'title' | 'children'
 >;
+
+export type SocialButtonPropsType = {
+	icon: IconDefinition;
+	label: string;
+};
