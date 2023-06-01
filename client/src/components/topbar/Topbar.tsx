@@ -1,3 +1,4 @@
+import SignUpModal from '@components/modals/signUpModal/SignUpModal';
 import { ThemeContext } from '@context/ThemeContext';
 import {
 	faMagnifyingGlass,
@@ -38,6 +39,8 @@ const Topbar = () => {
 	const [showSearchBtnMobile, setShowSearchBtnMobile] =
 		useState<boolean>(false);
 	const [showInputSearch, setShowInputSearch] = useState<boolean>(false);
+	const [showModalSignUp, setShowModalSignUp] = useState<boolean>(false);
+	const [signInStep, setSignInStep] = useState<number>(0);
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setSearch(e.target.value);
@@ -69,71 +72,103 @@ const Topbar = () => {
 	}, [showInputSearch, width]);
 
 	return (
-		<Box sx={styles.root}>
-			<Box sx={styles.searchBox}>
-				{showSearchBtnMobile && (
+		<>
+			<Box sx={styles.root}>
+				<Box sx={styles.searchBox}>
+					{showSearchBtnMobile && (
+						<Button
+							color='primary'
+							onClick={() => {
+								setShowInputSearch(!showInputSearch);
+								setShowSearchBtnMobile(false);
+							}}
+							sx={styles.darkModeBtn}
+						>
+							<FontAwesomeIcon
+								icon={faMagnifyingGlass}
+								color={theme.palette.primary.contrastText}
+								style={styles.searchIcon}
+							/>
+						</Button>
+					)}
+
+					{showInputSearch && (
+						<FormControl
+							sx={styles.searchFormControl(themeMode)}
+							variant='standard'
+						>
+							<Input
+								sx={styles.searchInput}
+								type={'text'}
+								placeholder='Search movie...'
+								value={search}
+								onChange={handleChange}
+								onKeyUp={handleKeyUp}
+								disableUnderline
+								endAdornment={
+									<InputAdornment position='end'>
+										<IconButton
+											aria-label='toggle password visibility'
+											onClick={handleClick}
+										>
+											<FontAwesomeIcon
+												icon={faMagnifyingGlass}
+												color={theme.palette.common.black}
+												style={styles.searchIcon}
+											/>
+										</IconButton>
+									</InputAdornment>
+								}
+							/>
+						</FormControl>
+					)}
+				</Box>
+				<Box sx={styles.LinksBox}>
+					<Button
+						variant='outlined'
+						onClick={() => {
+							setShowModalSignUp(true);
+							setSignInStep(1);
+						}}
+					>
+						Sign up
+					</Button>
+
 					<Button
 						color='primary'
 						onClick={() => {
-							setShowInputSearch(!showInputSearch);
-							setShowSearchBtnMobile(false);
+							handleThemeMode();
 						}}
 						sx={styles.darkModeBtn}
 					>
 						<FontAwesomeIcon
-							icon={faMagnifyingGlass}
+							icon={themeMode === DarkModeEnum.DARK ? faMoon : faSun}
 							color={theme.palette.primary.contrastText}
-							style={styles.searchIcon}
+							style={styles.icon}
 						/>
 					</Button>
-				)}
-
-				{showInputSearch && (
-					<FormControl
-						sx={styles.searchFormControl(themeMode)}
-						variant='standard'
-					>
-						<Input
-							sx={styles.searchInput}
-							type={'text'}
-							placeholder='Search movie...'
-							value={search}
-							onChange={handleChange}
-							onKeyUp={handleKeyUp}
-							disableUnderline
-							endAdornment={
-								<InputAdornment position='end'>
-									<IconButton
-										aria-label='toggle password visibility'
-										onClick={handleClick}
-									>
-										<FontAwesomeIcon
-											icon={faMagnifyingGlass}
-											color={theme.palette.common.black}
-											style={styles.searchIcon}
-										/>
-									</IconButton>
-								</InputAdornment>
-							}
-						/>
-					</FormControl>
-				)}
+				</Box>
 			</Box>
 
-			<Button
-				color='primary'
-				onClick={() => {
-					handleThemeMode();
+			<SignUpModal
+				open={showModalSignUp}
+				setOpen={() => {
+					setShowModalSignUp(false);
 				}}
-				sx={styles.darkModeBtn}
-			>
-				<FontAwesomeIcon
-					icon={themeMode === DarkModeEnum.DARK ? faMoon : faSun}
-					color={theme.palette.primary.contrastText}
-					style={styles.icon}
-				/>
-			</Button>
-		</Box>
+				step={signInStep}
+				setStep={setSignInStep}
+				title={{
+					stepOne: 'Sign up',
+					stepTwo: 'Finish Signing up',
+				}}
+			/>
+
+			{/* <SignUpEmailModal
+				open={showModalSignUp}
+				setOpen={() => setShowModalSignUp(false)}
+				title='Finish signing up'
+			/> */}
+		</>
 	);
 };
 

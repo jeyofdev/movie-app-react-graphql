@@ -27,7 +27,7 @@ export const logOut = () => {
 		});
 };
 
-export const signup = (email: string, password: string) =>
+export const signUp = (email: string, password: string) =>
 	createUserWithEmailAndPassword(auth, email, password)
 		.then(res => res.user)
 		.catch(err => {

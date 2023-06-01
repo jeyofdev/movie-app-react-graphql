@@ -5,7 +5,7 @@ import {
 	Movie,
 	MovieDetails,
 } from '@graphql/__generated__/graphql-type';
-import { Dispatch, ReactNode, SetStateAction } from 'react';
+import { ChangeEvent, Dispatch, ReactNode, SetStateAction } from 'react';
 import { Variant } from '@mui/material/styles/createTypography';
 import { MoviesListCategoryEnum, SwiperDirectionEnum } from '../enums';
 
@@ -170,4 +170,38 @@ export type PersonInfoProps = {
 	value: string;
 	subValue?: number | null | '';
 	subValueEnd?: string | null | '';
+};
+
+export type ModalPropsType = {
+	open: boolean;
+	setOpen: Dispatch<SetStateAction<boolean>>;
+	close?: boolean;
+	back?: boolean;
+	setStep?: Dispatch<SetStateAction<number>>;
+	title: string | ReactNode;
+	children?: ReactNode;
+};
+
+export type SignUpModalPropsType = Pick<
+	ModalPropsType,
+	'open' | 'setOpen' | 'children'
+> & {
+	title: { stepOne: string; stepTwo: string };
+	step: number;
+	setStep: Dispatch<SetStateAction<number>>;
+};
+
+export type SocialButtonPropsType = {
+	icon: IconDefinition;
+	label: string;
+	onClick: () => void;
+};
+
+export type InputTextPropsType = {
+	label: string;
+	id: string;
+	name: string;
+	icon: IconDefinition;
+	value: string;
+	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };

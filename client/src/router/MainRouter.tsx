@@ -1,5 +1,3 @@
-import SignUp from '@pages/auth/SignIn/SignUp';
-import SignIn from '@pages/auth/SignUp/SignIn';
 import Genre from '@pages/genre/Genre';
 import Home from '@pages/home/Home';
 import MovieDetails from '@pages/movieDetails/MovieDetails';
@@ -22,9 +20,6 @@ const MainRouter = () => (
 		<Route path='movie/:movieId' element={<MovieDetails />} />
 		<Route path='search/:search' element={<SearchResults />} />
 		<Route path='person/:personId' element={<Person />} />
-
-		<Route path='login' element={<SignIn />} />
-		<Route path='register' element={<SignUp />} />
 
 		<Route path='/' element={<Home />}>
 			<Route path='home' element={<Home />} />
