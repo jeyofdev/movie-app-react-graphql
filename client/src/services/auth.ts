@@ -4,6 +4,7 @@ import {
 	GoogleAuthProvider,
 	signInWithPopup,
 	createUserWithEmailAndPassword,
+	signInWithEmailAndPassword,
 } from 'firebase/auth';
 import { auth } from './firebase';
 
@@ -33,3 +34,6 @@ export const signUp = (email: string, password: string) =>
 		.catch(err => {
 			console.log(err.message);
 		});
+
+export const signIn = (email: string, password: string) =>
+	signInWithEmailAndPassword(auth, email, password);

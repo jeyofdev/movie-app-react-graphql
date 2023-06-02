@@ -191,6 +191,11 @@ export type SignUpModalPropsType = Pick<
 	setStep: Dispatch<SetStateAction<number>>;
 };
 
+export type SignInModalPropsType = Pick<
+	ModalPropsType,
+	'open' | 'setOpen' | 'title' | 'children'
+>;
+
 export type SocialButtonPropsType = {
 	icon: IconDefinition;
 	label: string;
@@ -202,6 +207,7 @@ export type InputTextPropsType = {
 	id: string;
 	name: string;
 	icon: IconDefinition;
+	password?: boolean;
 	value: string;
 	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };

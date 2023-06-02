@@ -1,3 +1,4 @@
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	Box,
@@ -8,6 +9,7 @@ import {
 	Typography,
 	useTheme,
 } from '@mui/material';
+import { useState } from 'react';
 import { InputTextPropsType } from '../../../../types/types/props';
 import useStyles from './style';
 
@@ -16,11 +18,15 @@ const InputText = ({
 	id,
 	name,
 	icon,
+	password,
 	value,
 	onChange,
 }: InputTextPropsType) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
+
+	const [showPassword, setShowPassword] = useState(false);
+	const [type, setType] = useState<'text' | 'password'>('text');
 
 	return (
 		<Box>
@@ -32,7 +38,7 @@ const InputText = ({
 
 			<FormControl variant='standard' sx={styles.formControl}>
 				<Input
-					type='text'
+					type={type}
 					id={id}
 					name={name}
 					placeholder='ex. username@mail.com'
@@ -48,6 +54,21 @@ const InputText = ({
 								style={styles.inputIcon}
 							/>
 						</InputAdornment>
+					}
+					endAdornment={
+						password ? (
+							<InputAdornment position='end'>
+								<FontAwesomeIcon
+									icon={showPassword ? faEyeSlash : faEye}
+									color={theme.palette.common.black}
+									style={styles.inputIconShowPassword}
+									onClick={() => {
+										setShowPassword(!showPassword);
+										setType(type === 'password' ? 'text' : 'password');
+									}}
+								/>
+							</InputAdornment>
+						) : null
 					}
 				/>
 			</FormControl>

@@ -7,6 +7,15 @@ const useStyles = (theme: Theme) => ({
 		flexDirection: 'column',
 		gap: theme.spacing(2),
 	},
+	dividerBox: {
+		display: 'flex',
+		justifyContent: 'center',
+	},
+	divider: {
+		maxWidth: '200px',
+		width: '100%',
+	},
+	dividerContent: {},
 	form: {
 		display: 'flex',
 		flexDirection: 'column',

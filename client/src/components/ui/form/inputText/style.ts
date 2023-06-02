@@ -19,6 +19,11 @@ const useStyles = (theme: Theme) => ({
 	labelTypo: {
 		color: theme.palette.primary.contrastText,
 	},
+	inputIconShowPassword: {
+		color: theme.palette.grey[600],
+		fontSize: '0.85rem',
+		cursor: 'pointer',
+	},
 });
 
 export default useStyles;
