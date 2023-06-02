@@ -36,6 +36,19 @@ const useStyles = (theme: Theme) => ({
 		color: theme.palette.primary.main,
 		textTransform: 'none',
 	},
+	redirectBox: {
+		display: 'flex',
+		justifyContent: 'center',
+	},
+	btnRedirect: {
+		textTransform: 'none',
+		color: theme.palette.primary.contrastText,
+		fontWeight: 'bold',
+
+		'&:bold': {
+			backgroundColor: 'transparent',
+		},
+	},
 });
 
 export default useStyles;

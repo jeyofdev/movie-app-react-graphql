@@ -16,6 +16,8 @@ import {
 	InputAdornment,
 	useTheme,
 } from '@mui/material';
+import { logOut } from '@services/auth';
+import { auth } from '@services/firebase';
 import {
 	ChangeEvent,
 	KeyboardEvent,
@@ -23,6 +25,7 @@ import {
 	useEffect,
 	useState,
 } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { useWindowSize } from 'usehooks-ts';
 import { BreakpointEnum, DarkModeEnum } from '../../types/enums';
@@ -33,6 +36,7 @@ const Topbar = () => {
 	const styles = useStyles(theme);
 	const navigate = useNavigate();
 	const { width } = useWindowSize();
+	const [user] = useAuthState(auth);
 
 	const { themeMode, handleThemeMode } = useContext(ThemeContext);
 
@@ -126,24 +130,39 @@ const Topbar = () => {
 					)}
 				</Box>
 				<Box sx={styles.LinksBox}>
-					<Button
-						variant='outlined'
-						onClick={() => {
-							setShowModalSignIn(true);
-						}}
-					>
-						Log in
-					</Button>
+					{!user && (
+						<>
+							<Button
+								variant='outlined'
+								onClick={() => {
+									setShowModalSignIn(true);
+								}}
+							>
+								Log in
+							</Button>
 
-					<Button
-						variant='outlined'
-						onClick={() => {
-							setShowModalSignUp(true);
-							setSignInStep(1);
-						}}
-					>
-						Sign up
-					</Button>
+							<Button
+								variant='outlined'
+								onClick={() => {
+									setShowModalSignUp(true);
+									setSignInStep(1);
+								}}
+							>
+								Sign up
+							</Button>
+						</>
+					)}
+
+					{user && (
+						<Button
+							variant='outlined'
+							onClick={() => {
+								logOut();
+							}}
+						>
+							logOut
+						</Button>
+					)}
 
 					<Button
 						color='primary'
@@ -170,12 +189,20 @@ const Topbar = () => {
 					stepOne: 'Sign up',
 					stepTwo: 'Finish Signing up',
 				}}
+				onRedirect={() => {
+					setShowModalSignIn(true);
+					setShowModalSignUp(false);
+				}}
 			/>
 
 			<SignInModal
 				open={showModalSignIn}
 				setOpen={setShowModalSignIn}
 				title={'Log in'}
+				onRedirect={() => {
+					setShowModalSignUp(true);
+					setShowModalSignIn(false);
+				}}
 			/>
 		</>
 	);

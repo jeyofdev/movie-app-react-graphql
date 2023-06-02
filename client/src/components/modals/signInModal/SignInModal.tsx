@@ -19,7 +19,12 @@ import { FormDatasLoginType } from '../../../types';
 import { SignInModalPropsType } from '../../../types/types/props';
 import useStyles from './style';
 
-const SignInModal = ({ open, setOpen, title }: SignInModalPropsType) => {
+const SignInModal = ({
+	open,
+	setOpen,
+	title,
+	onRedirect,
+}: SignInModalPropsType) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 
@@ -114,6 +119,15 @@ const SignInModal = ({ open, setOpen, title }: SignInModalPropsType) => {
 						Log in
 					</Typography>
 				</Button>
+			</Box>
+
+			<Box sx={styles.redirectBox}>
+				<Typography variant='body2' sx={{}}>
+					Don&apos;t have an account ?{' '}
+					<Button sx={styles.btnRedirect} disableRipple onClick={onRedirect}>
+						Sign up
+					</Button>
+				</Typography>
 			</Box>
 		</Modal>
 	);

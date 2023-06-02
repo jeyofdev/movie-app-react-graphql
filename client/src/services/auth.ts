@@ -5,6 +5,7 @@ import {
 	signInWithPopup,
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
+	signOut,
 } from 'firebase/auth';
 import { auth } from './firebase';
 
@@ -18,8 +19,7 @@ export const socialMediaAuth = (
 		});
 
 export const logOut = () => {
-	auth
-		.signOut()
+	signOut(auth)
 		.then(() => {
 			console.log('logged out');
 		})
@@ -36,4 +36,8 @@ export const signUp = (email: string, password: string) =>
 		});
 
 export const signIn = (email: string, password: string) =>
-	signInWithEmailAndPassword(auth, email, password);
+	signInWithEmailAndPassword(auth, email, password)
+		.then(res => res.user)
+		.catch(err => {
+			console.log(err.message);
+		});

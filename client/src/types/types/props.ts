@@ -189,12 +189,15 @@ export type SignUpModalPropsType = Pick<
 	title: { stepOne: string; stepTwo: string };
 	step: number;
 	setStep: Dispatch<SetStateAction<number>>;
+	onRedirect: () => void;
 };
 
 export type SignInModalPropsType = Pick<
 	ModalPropsType,
 	'open' | 'setOpen' | 'title' | 'children'
->;
+> & {
+	onRedirect: () => void;
+};
 
 export type SocialButtonPropsType = {
 	icon: IconDefinition;
