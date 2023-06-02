@@ -1,3 +1,4 @@
+import SignInModal from '@components/modals/signInModal/SignInModal';
 import SignUpModal from '@components/modals/signUpModal/SignUpModal';
 import { ThemeContext } from '@context/ThemeContext';
 import {
@@ -40,6 +41,7 @@ const Topbar = () => {
 		useState<boolean>(false);
 	const [showInputSearch, setShowInputSearch] = useState<boolean>(false);
 	const [showModalSignUp, setShowModalSignUp] = useState<boolean>(false);
+	const [showModalSignIn, setShowModalSignIn] = useState<boolean>(false);
 	const [signInStep, setSignInStep] = useState<number>(0);
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -127,6 +129,15 @@ const Topbar = () => {
 					<Button
 						variant='outlined'
 						onClick={() => {
+							setShowModalSignIn(true);
+						}}
+					>
+						Log in
+					</Button>
+
+					<Button
+						variant='outlined'
+						onClick={() => {
 							setShowModalSignUp(true);
 							setSignInStep(1);
 						}}
@@ -152,9 +163,7 @@ const Topbar = () => {
 
 			<SignUpModal
 				open={showModalSignUp}
-				setOpen={() => {
-					setShowModalSignUp(false);
-				}}
+				setOpen={setShowModalSignUp}
 				step={signInStep}
 				setStep={setSignInStep}
 				title={{
@@ -163,11 +172,11 @@ const Topbar = () => {
 				}}
 			/>
 
-			{/* <SignUpEmailModal
-				open={showModalSignUp}
-				setOpen={() => setShowModalSignUp(false)}
-				title='Finish signing up'
-			/> */}
+			<SignInModal
+				open={showModalSignIn}
+				setOpen={setShowModalSignIn}
+				title={'Log in'}
+			/>
 		</>
 	);
 };
