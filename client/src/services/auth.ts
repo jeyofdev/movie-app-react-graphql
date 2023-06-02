@@ -6,6 +6,7 @@ import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	signOut,
+	sendPasswordResetEmail,
 } from 'firebase/auth';
 import { auth } from './firebase';
 
@@ -41,3 +42,6 @@ export const signIn = (email: string, password: string) =>
 		.catch(err => {
 			console.log(err.message);
 		});
+
+export const forgotPassword = (email: string) =>
+	sendPasswordResetEmail(auth, email);

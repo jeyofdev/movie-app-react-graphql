@@ -11,7 +11,7 @@ import {
 	Typography,
 	useTheme,
 } from '@mui/material';
-import { signIn, socialMediaAuth } from '@services/auth';
+import { forgotPassword, signIn, socialMediaAuth } from '@services/auth';
 import { githubProvider, googleProvider } from '@services/auth.providers';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { ChangeEvent, useState } from 'react';
@@ -74,8 +74,14 @@ const SignInModal = ({
 		if (!forgotFormDatas.email) {
 			setError('All form fields are required');
 		} else {
-			// eslint-disable-next-line no-console
-			console.log(forgotFormDatas);
+			forgotPassword(forgotFormDatas.email);
+
+			setLoginFormDatas({
+				email: '',
+				password: '',
+			});
+
+			setOpen(false);
 		}
 	};
 
