@@ -189,12 +189,20 @@ const Topbar = () => {
 					stepOne: 'Sign up',
 					stepTwo: 'Finish Signing up',
 				}}
+				onRedirect={() => {
+					setShowModalSignIn(true);
+					setShowModalSignUp(false);
+				}}
 			/>
 
 			<SignInModal
 				open={showModalSignIn}
 				setOpen={setShowModalSignIn}
 				title={'Log in'}
+				onRedirect={() => {
+					setShowModalSignUp(true);
+					setShowModalSignIn(false);
+				}}
 			/>
 		</>
 	);

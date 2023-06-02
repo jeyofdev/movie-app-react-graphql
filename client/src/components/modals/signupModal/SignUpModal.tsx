@@ -18,6 +18,7 @@ const SignUpModal = ({
 	title,
 	step,
 	setStep,
+	onRedirect,
 }: SignUpModalPropsType) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
@@ -88,6 +89,19 @@ const SignUpModal = ({
 							label='Continue with email'
 							onClick={() => setStep(2)}
 						/>
+					</Box>
+
+					<Box sx={styles.redirectBox}>
+						<Typography variant='body2' sx={{}}>
+							Already a member ?{' '}
+							<Button
+								sx={styles.btnRedirect}
+								disableRipple
+								onClick={onRedirect}
+							>
+								Log in
+							</Button>
+						</Typography>
 					</Box>
 				</Modal>
 			)}
