@@ -117,6 +117,7 @@ const SignUpModal = ({
 								onChange={handleChange}
 							/>
 							<InputText
+								password
 								label='Password'
 								id='password'
 								name='password'
@@ -125,6 +126,7 @@ const SignUpModal = ({
 								onChange={handleChange}
 							/>
 							<InputText
+								password
 								label='Password confirm'
 								id='passwordConfirm'
 								name='passwordConfirm'

@@ -95,6 +95,7 @@ const SignInModal = ({ open, setOpen, title }: SignInModalPropsType) => {
 						onChange={handleChange}
 					/>
 					<InputText
+						password
 						label='Password'
 						id='password'
 						name='password'

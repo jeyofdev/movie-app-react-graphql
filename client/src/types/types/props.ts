@@ -207,6 +207,7 @@ export type InputTextPropsType = {
 	id: string;
 	name: string;
 	icon: IconDefinition;
+	password?: boolean;
 	value: string;
 	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
