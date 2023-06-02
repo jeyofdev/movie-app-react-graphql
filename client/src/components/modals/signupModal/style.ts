@@ -7,6 +7,11 @@ const useStyles = (theme: Theme) => ({
 		flexDirection: 'column',
 		gap: theme.spacing(2),
 	},
+	form: {
+		display: 'flex',
+		flexDirection: 'column',
+		gap: theme.spacing(2),
+	},
 	inputsBox: {
 		display: 'flex',
 		flexDirection: 'column',

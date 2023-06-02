@@ -101,7 +101,7 @@ const SignUpModal = ({
 					title={title?.stepTwo}
 					setStep={setStep}
 				>
-					<Box sx={styles.socialBtns}>
+					<Box sx={styles.form}>
 						{error && (
 							<Alert variant='filled' severity='error'>
 								{error}
