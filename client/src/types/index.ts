@@ -8,3 +8,5 @@ export type FormDatasLoginType = Pick<
 	FormDatasRegisterType,
 	'email' | 'password'
 >;
+
+export type ForgotDatasType = Pick<FormDatasRegisterType, 'email'>;

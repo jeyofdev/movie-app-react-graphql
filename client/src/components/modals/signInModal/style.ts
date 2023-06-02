@@ -36,6 +36,10 @@ const useStyles = (theme: Theme) => ({
 		color: theme.palette.primary.main,
 		textTransform: 'none',
 	},
+	forgotTypo: {
+		color: theme.palette.primary.contrastText,
+		textTransform: 'none',
+	},
 	redirectBox: {
 		display: 'flex',
 		justifyContent: 'center',

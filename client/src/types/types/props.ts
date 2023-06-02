@@ -194,8 +194,11 @@ export type SignUpModalPropsType = Pick<
 
 export type SignInModalPropsType = Pick<
 	ModalPropsType,
-	'open' | 'setOpen' | 'title' | 'children'
+	'open' | 'setOpen' | 'children'
 > & {
+	title: { stepOne: string; stepTwo: string };
+	step: number;
+	setStep: Dispatch<SetStateAction<number>>;
 	onRedirect: () => void;
 };
 
