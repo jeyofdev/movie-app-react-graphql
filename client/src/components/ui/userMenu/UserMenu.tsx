@@ -1,18 +1,20 @@
 import UserMenuItem from '@components/items/userMenuItem/UserMenuItem';
-import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
+import { ThemeContext } from '@context/ThemeContext';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Box, IconButton, Menu, useTheme } from '@mui/material';
+import { Box, Button, Divider, Menu, useTheme } from '@mui/material';
 import { logOut } from '@services/auth';
 import { auth } from '@services/firebase';
-import { MouseEvent, useState } from 'react';
+import { MouseEvent, useContext, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { UserMenuPropsType } from '../../../types/types/props';
 import useStyles from './style';
 
 const UserMenu = ({ onClickLogin, onClickSignUp }: UserMenuPropsType) => {
 	const theme = useTheme();
-	const styles = useStyles();
+	const styles = useStyles(theme);
 	const [user] = useAuthState(auth);
+	const { themeMode } = useContext(ThemeContext);
 
 	const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
@@ -26,16 +28,20 @@ const UserMenu = ({ onClickLogin, onClickSignUp }: UserMenuPropsType) => {
 
 	return (
 		<>
-			<IconButton onClick={handleOpenUserMenu}>
+			<Button
+				color='primary'
+				onClick={handleOpenUserMenu}
+				sx={styles.userIconBtn}
+			>
 				<FontAwesomeIcon
-					icon={faCircleUser}
-					color={theme.palette.primary.main}
+					icon={faUser}
+					color={theme.palette.primary.contrastText}
 					style={styles.topIcon}
 				/>
-			</IconButton>
+			</Button>
 
 			<Menu
-				sx={{ mt: '45px' }}
+				sx={styles.menu}
 				id='menu-appbar'
 				anchorEl={anchorElUser}
 				anchorOrigin={{
@@ -51,7 +57,7 @@ const UserMenu = ({ onClickLogin, onClickSignUp }: UserMenuPropsType) => {
 				onClose={handleCloseUserMenu}
 			>
 				{!user ? (
-					<Box>
+					<Box sx={styles.menuItemsBox}>
 						<UserMenuItem
 							label='Log in'
 							onClick={e => {
@@ -59,6 +65,9 @@ const UserMenu = ({ onClickLogin, onClickSignUp }: UserMenuPropsType) => {
 								handleCloseUserMenu();
 							}}
 						/>
+
+						<Divider sx={styles.divider(themeMode)} />
+
 						<UserMenuItem
 							label='Sign up'
 							onClick={e => {

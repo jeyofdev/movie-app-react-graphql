@@ -142,18 +142,16 @@ const Topbar = () => {
 						/>
 					</Button>
 
-					<Box>
-						<UserMenu
-							onClickLogin={() => {
-								setShowModalSignIn(true);
-								setLogInStep(1);
-							}}
-							onClickSignUp={() => {
-								setShowModalSignUp(true);
-								setSignInStep(1);
-							}}
-						/>
-					</Box>
+					<UserMenu
+						onClickLogin={() => {
+							setShowModalSignIn(true);
+							setLogInStep(1);
+						}}
+						onClickSignUp={() => {
+							setShowModalSignUp(true);
+							setSignInStep(1);
+						}}
+					/>
 				</Box>
 			</Box>
 

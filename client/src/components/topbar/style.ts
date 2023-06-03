@@ -22,6 +22,7 @@ const useStyles = (theme: Theme) => ({
 		gridColumn: '12 / span 1',
 		display: 'flex',
 		alignItems: 'center',
+		gap: theme.spacing(1),
 	},
 	darkModeBtn: {
 		background: theme.palette.primary.main,
