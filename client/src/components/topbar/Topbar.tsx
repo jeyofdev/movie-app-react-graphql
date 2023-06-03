@@ -47,6 +47,7 @@ const Topbar = () => {
 	const [showModalSignUp, setShowModalSignUp] = useState<boolean>(false);
 	const [showModalSignIn, setShowModalSignIn] = useState<boolean>(false);
 	const [signInStep, setSignInStep] = useState<number>(0);
+	const [logInStep, setLogInStep] = useState<number>(0);
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setSearch(e.target.value);
@@ -136,6 +137,7 @@ const Topbar = () => {
 								variant='outlined'
 								onClick={() => {
 									setShowModalSignIn(true);
+									setLogInStep(1);
 								}}
 							>
 								Log in
@@ -198,7 +200,12 @@ const Topbar = () => {
 			<SignInModal
 				open={showModalSignIn}
 				setOpen={setShowModalSignIn}
-				title={'Log in'}
+				step={logInStep}
+				setStep={setLogInStep}
+				title={{
+					stepOne: 'Log in',
+					stepTwo: 'Forgot Password ?',
+				}}
 				onRedirect={() => {
 					setShowModalSignUp(true);
 					setShowModalSignIn(false);
