@@ -17,7 +17,7 @@ const MainContainer = ({ children }: MainContainerPropsType) => {
 			<Box sx={styles.contentBox}>
 				<Topbar />
 				<Divider sx={styles.divider(themeMode)} />
-				{children}
+				<Box sx={styles.mainContentBox}>{children}</Box>
 			</Box>
 		</Box>
 	);

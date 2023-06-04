@@ -4,7 +4,7 @@ const useStyles = (theme: Theme) => ({
 	label: {
 		textTransform: 'normal',
 		textAlign: 'center',
-		color: theme.palette.primary.contrastText,
+		color: theme.palette.primary.main,
 	},
 	menuItem: {
 		backgroundColor: 'transparent',

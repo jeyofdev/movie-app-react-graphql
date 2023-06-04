@@ -15,23 +15,24 @@ const useStyles = (theme: Theme) => ({
 					: '0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12)',
 			backgroundImage: 'none',
 			padding: {
-				xs: `${theme.spacing(4)} ${theme.spacing(2)}`,
+				xs: `${theme.spacing(4)} ${theme.spacing(0.5)}`,
 				sm: `${theme.spacing(4)} ${theme.spacing(5)}`,
 				md: `${theme.spacing(4)} ${theme.spacing(7)}`,
 				lg: `${theme.spacing(4)} ${theme.spacing(8)}`,
 			},
 			margin: {
-				xs: `${theme.spacing(4)} ${theme.spacing(2)}`,
+				xs: `${theme.spacing(4)} ${theme.spacing(1)}`,
 				sm: `${theme.spacing(4)} ${theme.spacing(5)}`,
 				md: `${theme.spacing(4)} ${theme.spacing(7)}`,
 				lg: `${theme.spacing(4)} ${theme.spacing(8)}`,
 			},
 			display: 'flex',
+			alignItems: 'center',
 			justifyContent: 'flex-start',
 			gap: theme.spacing(4),
 			borderRadius: '10px',
 			width: {
-				xs: `calc(100% - (2 * ${theme.spacing(2)}))`,
+				xs: `calc(100% - (2 * ${theme.spacing(1)}))`,
 				sm: 'auto',
 			},
 			maxHeight: {
@@ -70,6 +71,10 @@ const useStyles = (theme: Theme) => ({
 		},
 		overflowY: 'scroll',
 		padding: `0px ${theme.spacing(1.5)}`,
+		maxWidth: {
+			xs: 270,
+			sm: 'none',
+		},
 	},
 	title: {
 		color: theme.palette.primary.main,
