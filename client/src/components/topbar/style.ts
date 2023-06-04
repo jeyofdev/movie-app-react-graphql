@@ -13,13 +13,13 @@ const useStyles = (theme: Theme) => ({
 	},
 	searchBox: {
 		gridColumn: {
-			xs: '1 / span 11',
+			xs: '1 / span 9',
 			md: '1 / span 9',
 			lg: '1 / span 5',
 		},
 	},
 	LinksBox: {
-		gridColumn: '12 / span 1',
+		gridColumn: '10 / span 3',
 		display: 'flex',
 		alignItems: 'center',
 		gap: theme.spacing(1),

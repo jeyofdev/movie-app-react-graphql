@@ -41,7 +41,7 @@ const UserMenu = ({ onClickLogin, onClickSignUp }: UserMenuPropsType) => {
 			</Button>
 
 			<Menu
-				sx={styles.menu}
+				sx={styles.menu(themeMode)}
 				id='menu-appbar'
 				anchorEl={anchorElUser}
 				anchorOrigin={{

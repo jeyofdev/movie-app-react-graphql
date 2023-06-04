@@ -56,6 +56,12 @@ const useStyles = (theme: Theme) => ({
 				? theme.palette.grey[800]
 				: theme.palette.grey[200],
 	}),
+	mainContentBox: {
+		margin: {
+			xs: `0px ${theme.spacing(1)}`,
+			sm: '0px',
+		},
+	},
 });
 
 export default useStyles;

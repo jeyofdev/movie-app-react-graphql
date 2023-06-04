@@ -8,7 +8,7 @@ const useStyles = (theme: Theme) => ({
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		minWidth: {
-			xs: 280,
+			xs: 246,
 			md: 300,
 		},
 		padding: theme.spacing(2),

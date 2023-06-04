@@ -17,13 +17,21 @@ const useStyles = (theme: Theme) => ({
 	topIcon: {
 		fontSize: '1.05rem',
 	},
-	menu: {
+	menu: (darkMode: DarkModeEnum) => ({
 		mt: '45px',
 
 		'& .MuiMenu-paper': {
-			backgroundColor: theme.palette.primary.main,
+			backgroundColor:
+				darkMode === DarkModeEnum.DARK
+					? '#0d0b0b'
+					: theme.palette.background.paper,
+			backgroundImage: 'none',
+			boxShadow:
+				darkMode === DarkModeEnum.DARK
+					? '0px 1px 15px -7px rgba(255,255,255,0.5),0px 2px 1px 3px rgba(255,255,255,0.03),0px 2px 46px 8px rgba(255,255,255,0.05)'
+					: '0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12)',
 		},
-	},
+	}),
 	menuItemsBox: {
 		padding: `${theme.spacing(0)} ${theme.spacing(0.5)}`,
 	},
