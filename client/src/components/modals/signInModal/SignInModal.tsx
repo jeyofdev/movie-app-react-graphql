@@ -1,3 +1,4 @@
+import RedirectWithTextButton from '@components/ui/Button/redirectWithTextButton/RedirectWithTextButton';
 import SocialButton from '@components/ui/Button/socialButton/SocialButton';
 import InputText from '@components/ui/form/inputText/InputText';
 import Modal from '@components/ui/modals/Modal';
@@ -129,6 +130,7 @@ const SignInModal = ({
 									label='Email'
 									id='email'
 									name='email'
+									placeholder='ex. username@gmail.com'
 									icon={faEnvelope}
 									value={loginFormDatas.email}
 									onChange={handleChangeLogin}
@@ -140,6 +142,7 @@ const SignInModal = ({
 									label='Password'
 									id='password'
 									name='password'
+									placeholder='************'
 									icon={faLock}
 									value={loginFormDatas.password}
 									onChange={handleChangeLogin}
@@ -150,16 +153,10 @@ const SignInModal = ({
 										justifyContent: 'flex-end',
 									}}
 								>
-									<Button
-										variant='text'
-										sx={styles.btnRedirect}
-										disableRipple
+									<RedirectWithTextButton
+										labelBtn='Forgot password'
 										onClick={() => setStep(2)}
-									>
-										<Typography variant='h6' sx={styles.forgotTypo}>
-											Forgot password
-										</Typography>
-									</Button>
+									/>
 								</Box>
 							</Box>
 						</Box>
@@ -176,16 +173,11 @@ const SignInModal = ({
 					</Box>
 
 					<Box sx={styles.redirectBox}>
-						<Typography variant='body2' sx={{}}>
-							Don&apos;t have an account ?{' '}
-							<Button
-								sx={styles.btnRedirect}
-								disableRipple
-								onClick={onRedirect}
-							>
-								Sign up
-							</Button>
-						</Typography>
+						<RedirectWithTextButton
+							labelBtn='Sign up'
+							content="Don't have an account ?"
+							onClick={onRedirect}
+						/>
 					</Box>
 				</Modal>
 			)}
@@ -212,6 +204,7 @@ const SignInModal = ({
 									label='Email'
 									id='email'
 									name='email'
+									placeholder='ex. username@gmail.com'
 									icon={faEnvelope}
 									value={forgotFormDatas.email}
 									onChange={handleChangeForgot}
@@ -231,16 +224,11 @@ const SignInModal = ({
 					</Box>
 
 					<Box sx={styles.redirectBox}>
-						<Typography variant='body2' sx={{}}>
-							Don&apos;t have an account ?{' '}
-							<Button
-								sx={styles.btnRedirect}
-								disableRipple
-								onClick={onRedirect}
-							>
-								Sign up
-							</Button>
-						</Typography>
+						<RedirectWithTextButton
+							labelBtn='Sign up'
+							content="Don't have an account ?"
+							onClick={onRedirect}
+						/>
 					</Box>
 				</Modal>
 			)}

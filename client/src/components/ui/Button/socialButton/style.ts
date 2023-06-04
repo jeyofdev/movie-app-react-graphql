@@ -17,13 +17,13 @@ const useStyles = (theme: Theme) => ({
 	},
 	icon: {
 		fontSize: '1.25rem',
-		color: theme.palette.primary.contrastText,
+		color: theme.palette.primary.main,
 	},
 	typoBox: {
 		width: '100%',
 	},
 	typo: {
-		color: theme.palette.primary.contrastText,
+		color: theme.palette.primary.main,
 		textTransform: 'none',
 	},
 });

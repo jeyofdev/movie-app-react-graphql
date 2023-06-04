@@ -1,3 +1,4 @@
+import RedirectWithTextButton from '@components/ui/Button/redirectWithTextButton/RedirectWithTextButton';
 import SocialButton from '@components/ui/Button/socialButton/SocialButton';
 import InputText from '@components/ui/form/inputText/InputText';
 import Modal from '@components/ui/modals/Modal';
@@ -92,16 +93,11 @@ const SignUpModal = ({
 					</Box>
 
 					<Box sx={styles.redirectBox}>
-						<Typography variant='body2' sx={{}}>
-							Already a member ?{' '}
-							<Button
-								sx={styles.btnRedirect}
-								disableRipple
-								onClick={onRedirect}
-							>
-								Log in
-							</Button>
-						</Typography>
+						<RedirectWithTextButton
+							labelBtn='Log in'
+							content='Already a member ?'
+							onClick={onRedirect}
+						/>
 					</Box>
 				</Modal>
 			)}
@@ -126,6 +122,7 @@ const SignUpModal = ({
 								label='Email'
 								id='email'
 								name='email'
+								placeholder='ex. username@gmail.com'
 								icon={faEnvelope}
 								value={formDatas.email}
 								onChange={handleChange}
@@ -135,6 +132,7 @@ const SignUpModal = ({
 								label='Password'
 								id='password'
 								name='password'
+								placeholder='************'
 								icon={faLock}
 								value={formDatas.password}
 								onChange={handleChange}
@@ -144,6 +142,7 @@ const SignUpModal = ({
 								label='Password confirm'
 								id='passwordConfirm'
 								name='passwordConfirm'
+								placeholder='************'
 								icon={faLock}
 								value={formDatas.passwordConfirm}
 								onChange={handleChange}
@@ -159,6 +158,14 @@ const SignUpModal = ({
 								Sign in with email
 							</Typography>
 						</Button>
+					</Box>
+
+					<Box sx={styles.redirectBox}>
+						<RedirectWithTextButton
+							labelBtn='Log in'
+							content='Already a member ?'
+							onClick={onRedirect}
+						/>
 					</Box>
 				</Modal>
 			)}

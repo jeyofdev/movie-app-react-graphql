@@ -12,13 +12,7 @@ const SocialButton = ({ icon, label, onClick }: SocialButtonPropsType) => {
 			variant='outlined'
 			sx={styles.socialBtn}
 			onClick={onClick}
-			startIcon={
-				<FontAwesomeIcon
-					icon={icon}
-					color={theme.palette.primary.main}
-					style={styles.icon}
-				/>
-			}
+			startIcon={<FontAwesomeIcon icon={icon} style={styles.icon} />}
 		>
 			<Box sx={styles.typoBox}>
 				<Typography variant='body1' sx={styles.typo}>

@@ -218,6 +218,7 @@ export type InputTextPropsType = {
 	label: string;
 	id: string;
 	name: string;
+	placeholder?: string;
 	icon: IconDefinition;
 	password?: boolean;
 	value: string;
@@ -232,4 +233,10 @@ export type UserMenuPropsType = {
 export type UserMenuItemPropsType = {
 	onClick: MouseEventHandler<HTMLLIElement>;
 	label: string;
+};
+
+export type RedirectWithTextButtonPropsType = {
+	labelBtn: string;
+	content?: string;
+	onClick: () => void;
 };
