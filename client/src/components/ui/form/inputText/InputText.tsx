@@ -1,3 +1,4 @@
+import { ThemeContext } from '@context/ThemeContext';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -9,7 +10,7 @@ import {
 	Typography,
 	useTheme,
 } from '@mui/material';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { InputTextPropsType } from '../../../../types/types/props';
 import useStyles from './style';
 
@@ -18,12 +19,14 @@ const InputText = ({
 	id,
 	name,
 	icon,
+	placeholder,
 	password,
 	value,
 	onChange,
 }: InputTextPropsType) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
+	const { themeMode } = useContext(ThemeContext);
 
 	const [showPassword, setShowPassword] = useState(false);
 	const [type, setType] = useState<'text' | 'password'>('text');
@@ -41,7 +44,7 @@ const InputText = ({
 					type={type}
 					id={id}
 					name={name}
-					placeholder='ex. username@mail.com'
+					placeholder={placeholder ?? ''}
 					sx={styles.inputText}
 					value={value}
 					onChange={onChange}
@@ -61,7 +64,7 @@ const InputText = ({
 								<FontAwesomeIcon
 									icon={showPassword ? faEyeSlash : faEye}
 									color={theme.palette.common.black}
-									style={styles.inputIconShowPassword}
+									style={styles.inputIconShowPassword(themeMode)}
 									onClick={() => {
 										setShowPassword(!showPassword);
 										setType(type === 'password' ? 'text' : 'password');

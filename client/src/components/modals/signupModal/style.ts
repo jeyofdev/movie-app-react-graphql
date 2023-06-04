@@ -18,13 +18,13 @@ const useStyles = (theme: Theme) => ({
 		gap: theme.spacing(2),
 	},
 	btnSubmit: {
-		backgroundColor: theme.palette.primary.contrastText,
+		backgroundColor: theme.palette.primary.main,
 		borderRadius: '7px',
 		marginTop: theme.spacing(2),
 		padding: `${theme.spacing(1.25)} ${theme.spacing(2)}`,
 	},
 	btnSubmitTypo: {
-		color: theme.palette.primary.main,
+		color: theme.palette.primary.contrastText,
 		textTransform: 'none',
 	},
 	redirectBox: {

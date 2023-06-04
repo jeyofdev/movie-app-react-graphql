@@ -5,7 +5,13 @@ import {
 	Movie,
 	MovieDetails,
 } from '@graphql/__generated__/graphql-type';
-import { ChangeEvent, Dispatch, ReactNode, SetStateAction } from 'react';
+import {
+	ChangeEvent,
+	Dispatch,
+	MouseEventHandler,
+	ReactNode,
+	SetStateAction,
+} from 'react';
 import { Variant } from '@mui/material/styles/createTypography';
 import { MoviesListCategoryEnum, SwiperDirectionEnum } from '../enums';
 
@@ -212,8 +218,25 @@ export type InputTextPropsType = {
 	label: string;
 	id: string;
 	name: string;
+	placeholder?: string;
 	icon: IconDefinition;
 	password?: boolean;
 	value: string;
 	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+};
+
+export type UserMenuPropsType = {
+	onClickLogin: MouseEventHandler<HTMLLIElement>;
+	onClickSignUp: MouseEventHandler<HTMLLIElement>;
+};
+
+export type UserMenuItemPropsType = {
+	onClick: MouseEventHandler<HTMLLIElement>;
+	label: string;
+};
+
+export type RedirectWithTextButtonPropsType = {
+	labelBtn: string;
+	content?: string;
+	onClick: () => void;
 };

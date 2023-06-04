@@ -1,5 +1,6 @@
 import SignInModal from '@components/modals/signInModal/SignInModal';
 import SignUpModal from '@components/modals/signUpModal/SignUpModal';
+import UserMenu from '@components/ui/userMenu/UserMenu';
 import { ThemeContext } from '@context/ThemeContext';
 import {
 	faMagnifyingGlass,
@@ -16,8 +17,6 @@ import {
 	InputAdornment,
 	useTheme,
 } from '@mui/material';
-import { logOut } from '@services/auth';
-import { auth } from '@services/firebase';
 import {
 	ChangeEvent,
 	KeyboardEvent,
@@ -25,7 +24,6 @@ import {
 	useEffect,
 	useState,
 } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { useWindowSize } from 'usehooks-ts';
 import { BreakpointEnum, DarkModeEnum } from '../../types/enums';
@@ -36,7 +34,6 @@ const Topbar = () => {
 	const styles = useStyles(theme);
 	const navigate = useNavigate();
 	const { width } = useWindowSize();
-	const [user] = useAuthState(auth);
 
 	const { themeMode, handleThemeMode } = useContext(ThemeContext);
 
@@ -131,41 +128,6 @@ const Topbar = () => {
 					)}
 				</Box>
 				<Box sx={styles.LinksBox}>
-					{!user && (
-						<>
-							<Button
-								variant='outlined'
-								onClick={() => {
-									setShowModalSignIn(true);
-									setLogInStep(1);
-								}}
-							>
-								Log in
-							</Button>
-
-							<Button
-								variant='outlined'
-								onClick={() => {
-									setShowModalSignUp(true);
-									setSignInStep(1);
-								}}
-							>
-								Sign up
-							</Button>
-						</>
-					)}
-
-					{user && (
-						<Button
-							variant='outlined'
-							onClick={() => {
-								logOut();
-							}}
-						>
-							logOut
-						</Button>
-					)}
-
 					<Button
 						color='primary'
 						onClick={() => {
@@ -179,6 +141,17 @@ const Topbar = () => {
 							style={styles.icon}
 						/>
 					</Button>
+
+					<UserMenu
+						onClickLogin={() => {
+							setShowModalSignIn(true);
+							setLogInStep(1);
+						}}
+						onClickSignUp={() => {
+							setShowModalSignUp(true);
+							setSignInStep(1);
+						}}
+					/>
 				</Box>
 			</Box>
 

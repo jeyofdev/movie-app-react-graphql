@@ -7,7 +7,10 @@ const useStyles = (theme: Theme) => ({
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'space-between',
-		minWidth: 300,
+		minWidth: {
+			xs: 280,
+			md: 300,
+		},
 		padding: theme.spacing(2),
 		borderRadius: '10px',
 
@@ -17,13 +20,13 @@ const useStyles = (theme: Theme) => ({
 	},
 	icon: {
 		fontSize: '1.25rem',
-		color: theme.palette.primary.contrastText,
+		color: theme.palette.primary.main,
 	},
 	typoBox: {
 		width: '100%',
 	},
 	typo: {
-		color: theme.palette.primary.contrastText,
+		color: theme.palette.primary.main,
 		textTransform: 'none',
 	},
 });
