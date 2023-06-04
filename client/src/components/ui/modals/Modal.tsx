@@ -59,10 +59,13 @@ const Modal = ({
 						</Button>
 					</Box>
 				)}
-				<Typography variant='h3' sx={styles.title}>
-					{title}
-				</Typography>
-				{children}
+
+				<Box sx={styles.contentBox}>
+					<Typography variant='h3' sx={styles.title}>
+						{title}
+					</Typography>
+					{children}
+				</Box>
 			</Dialog>
 		</Box>
 	);
