@@ -30,6 +30,20 @@ const useStyles = (theme: Theme) => ({
 		marginBottom: theme.spacing(5),
 		color: theme.palette.primary.main,
 	},
+	paginationItem: {
+		'&.MuiPaginationItem-root': {
+			color: theme.palette.primary.main,
+		},
+
+		'&.Mui-selected': {
+			background: 'transparent',
+			fontSize: '1.5rem',
+		},
+
+		'&.MuiPaginationItem-ellipsis': {
+			color: 'red',
+		},
+	},
 });
 
 export default useStyles;
