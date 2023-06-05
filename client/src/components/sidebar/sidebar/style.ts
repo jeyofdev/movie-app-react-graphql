@@ -35,6 +35,7 @@ const useStyles = (theme: Theme) => ({
 		display: 'flex',
 		alignItems: 'center',
 		gap: '1rem',
+		marginTop: theme.spacing(2),
 	},
 	topIcon: {
 		fontSize: '1.75rem',

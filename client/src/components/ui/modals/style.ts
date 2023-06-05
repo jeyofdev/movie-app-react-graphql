@@ -69,7 +69,7 @@ const useStyles = (theme: Theme) => ({
 			xs: theme.spacing(3),
 			sm: theme.spacing(4),
 		},
-		overflowY: 'scroll',
+		overflowY: 'auto',
 		padding: `0px ${theme.spacing(1.5)}`,
 		maxWidth: {
 			xs: 270,

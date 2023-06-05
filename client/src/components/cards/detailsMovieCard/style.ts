@@ -12,7 +12,7 @@ const useStyles = (theme: Theme) => ({
 		overflow: 'hidden',
 		padding: theme.spacing(2),
 		height: {
-			xs: `calc(100% - 58.7px)`,
+			xs: `calc(100% - 85px)`,
 			sm: `calc(100% - (58.7px + ${theme.spacing(1.5)} + ${theme.spacing(6)}))`,
 		},
 	}),
