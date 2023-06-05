@@ -6,7 +6,7 @@ import {
 } from '@graphql/__generated__/graphql-type';
 import { Box } from '@mui/material';
 import { firstLetterCapitalize } from '@utils/index';
-import { useEffect } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import useStyles from './style';
 
@@ -14,7 +14,19 @@ const NowPlaying = () => {
 	const styles = useStyles();
 	const location = useLocation();
 
-	const { loading, error, data } = useNowPlayingMoviesQuery();
+	const [page, setPage] = useState(1);
+
+	const { loading, error, data } = useNowPlayingMoviesQuery({
+		variables: {
+			options: {
+				page,
+			},
+		},
+	});
+
+	const handleChangePage = (e: ChangeEvent<unknown>, value: number) => {
+		setPage(value);
+	};
 
 	const getTitle = (): string => {
 		const splitUrl = location.pathname.split('/');
@@ -39,6 +51,9 @@ const NowPlaying = () => {
 				<ListContainer
 					list={data?.nowPlayingMovies?.results as Array<Movie>}
 					title={firstLetterCapitalize(getTitle())}
+					totalPages={data?.nowPlayingMovies?.total_pages as number}
+					currentPage={page}
+					setCurrentPage={handleChangePage}
 				/>
 			</Box>
 		</MainContainer>
