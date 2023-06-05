@@ -3,9 +3,10 @@ import {
 	faCalendarCheck,
 	faCircleArrowDown,
 	faCircleArrowUp,
+	faCirclePlay,
 	faCompass,
-	faFilm,
-	faRectangleList,
+	faMedal,
+	faThumbsUp,
 	faTicket,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -27,8 +28,24 @@ const newsFeedItems: MenuItemType[] = [
 		icon: faCalendarCheck,
 		link: '/movies/upcoming',
 	},
-	{ id: uuidv4(), name: 'playlist', icon: faRectangleList, link: '/playlist' },
-	{ id: uuidv4(), name: 'videos', icon: faFilm, link: '/video' },
+	{
+		id: uuidv4(),
+		name: 'popular',
+		icon: faThumbsUp,
+		link: '/movies/popular',
+	},
+	{
+		id: uuidv4(),
+		name: 'top rated',
+		icon: faMedal,
+		link: '/movies/top-rated',
+	},
+	{
+		id: uuidv4(),
+		name: 'now playing',
+		icon: faCirclePlay,
+		link: '/movies/now-playing',
+	},
 ];
 
 const Sidebar = () => {

@@ -15,13 +15,21 @@ const useStyles = (theme: Theme) => ({
 		gridColumn: {
 			xs: '1 / span 9',
 			md: '1 / span 9',
-			lg: '1 / span 5',
+			lg: '1 / span 6',
+			xl: '1 / span 5',
 		},
 	},
 	LinksBox: {
-		gridColumn: '10 / span 3',
+		gridColumn: {
+			xs: '10 / span 3',
+			sm: '10 / span 3',
+			md: '11 / span 2',
+			lg: '11 / span 2',
+			xl: '12 / span 1',
+		},
 		display: 'flex',
 		alignItems: 'center',
+		justifyContent: 'flex-end',
 		gap: theme.spacing(1),
 	},
 	darkModeBtn: {

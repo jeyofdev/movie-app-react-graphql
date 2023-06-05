@@ -44,6 +44,7 @@ const useStyles = (theme: Theme) => ({
 			lg: 'auto / span 10',
 			xl: 'auto / span 11',
 		},
+		overflow: 'hidden',
 	},
 	divider: (darkMode: DarkModeEnum) => ({
 		marginTop: {
@@ -61,6 +62,7 @@ const useStyles = (theme: Theme) => ({
 			xs: `0px ${theme.spacing(1)}`,
 			sm: '0px',
 		},
+		height: '100%',
 	},
 });
 
