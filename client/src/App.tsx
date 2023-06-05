@@ -3,10 +3,12 @@ import { Box, ThemeProvider } from '@mui/material';
 import { darkTheme, lightTheme } from '@theme/globalTheme';
 import { useContext } from 'react';
 import MainRouter from './router/MainRouter';
+import useStyles from './style';
 import { DarkModeEnum } from './types/enums';
 
 const App = () => {
 	const { themeMode } = useContext(ThemeContext);
+	const styles = useStyles();
 
 	return (
 		<ThemeProvider
@@ -14,15 +16,7 @@ const App = () => {
 				themeMode && themeMode === DarkModeEnum.DARK ? darkTheme : lightTheme
 			}
 		>
-			<Box
-				sx={{
-					display: 'flex',
-					alignItems: 'center',
-					justifyContent: 'center',
-					minHeight: '100vh',
-					padding: { xs: 0, sm: '24px' },
-				}}
-			>
+			<Box sx={styles.root(themeMode)}>
 				<MainRouter />
 			</Box>
 		</ThemeProvider>
