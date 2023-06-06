@@ -1,5 +1,6 @@
 import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
 import ListContainer from '@components/containers/listContainer/ListContainer';
+import AlertBase from '@components/ui/alert/Alert';
 import PersonInfo from '@components/ui/personInfo/PersonInfo';
 import {
 	Movie,
@@ -58,7 +59,7 @@ const Person = () => {
 	}
 
 	if (personDetailsError || moviesByCastPersonError) {
-		return <Box>{personDetailsError?.message}</Box>;
+		return <AlertBase>An error has occurred !!!</AlertBase>;
 	}
 
 	return (

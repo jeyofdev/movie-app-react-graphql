@@ -243,3 +243,7 @@ export type RedirectWithTextButtonPropsType = {
 	content?: string;
 	onClick: () => void;
 };
+
+export type AlertPropsType = {
+	children: ReactNode;
+};

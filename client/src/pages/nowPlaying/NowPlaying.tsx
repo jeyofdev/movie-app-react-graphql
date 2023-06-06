@@ -1,5 +1,6 @@
 import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
 import ListContainer from '@components/containers/listContainer/ListContainer';
+import AlertBase from '@components/ui/alert/Alert';
 import {
 	Movie,
 	useNowPlayingMoviesQuery,
@@ -42,7 +43,7 @@ const NowPlaying = () => {
 	}
 
 	if (error) {
-		return <Box>{error?.message}</Box>;
+		<AlertBase>An error has occurred !!!</AlertBase>;
 	}
 
 	return (

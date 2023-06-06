@@ -1,6 +1,7 @@
 import PreviewMovieCard from '@components/cards/previewMovieCard/MoviePreviewCard';
 import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
 import SwiperSection from '@components/sections/swiperBlock/SwiperSection';
+import AlertBase from '@components/ui/alert/Alert';
 import {
 	Movie,
 	useMoviePreviewQuery,
@@ -94,7 +95,7 @@ const Home = () => {
 		upComingMovieError ||
 		topRatedMoviesError
 	) {
-		return <Box>{error?.message}</Box>;
+		<AlertBase>An error has occurred !!!</AlertBase>;
 	}
 
 	return (

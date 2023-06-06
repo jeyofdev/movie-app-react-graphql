@@ -1,5 +1,6 @@
 import DetailsMovieCard from '@components/cards/detailsMovieCard/DetailsMovieCard';
 import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
+import AlertBase from '@components/ui/alert/Alert';
 import Loader from '@components/ui/loader/Loader';
 import {
 	CastMovie,
@@ -31,7 +32,7 @@ const MovieDetails = () => {
 	}
 
 	if (error || castError) {
-		return <Box>{error?.message}</Box>;
+		<AlertBase>An error has occurred !!!</AlertBase>;
 	}
 
 	return (

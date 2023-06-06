@@ -345,7 +345,7 @@ export const darkTheme = createTheme({
 		},
 		error: {
 			main: '#ac1a19',
-			light: '#ef5350',
+			light: '#f8d7da',
 			dark: '#c62828',
 			contrastText: '#fff',
 		},
@@ -393,7 +393,6 @@ export const lightTheme = createTheme({
 			light: '#222933',
 			contrastText: '#222933',
 		},
-
 		error: {
 			main: '#ac1a19',
 			light: '#e57373',

@@ -1,5 +1,6 @@
 import SearchResultMovieCard from '@components/cards/searchResultMovieCard/SearchResultMovieCard';
 import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
+import AlertBase from '@components/ui/alert/Alert';
 import { useSearchMoviesQuery } from '@graphql/__generated__/graphql-type';
 import { Box, Typography, useTheme } from '@mui/material';
 import { useEffect } from 'react';
@@ -28,7 +29,7 @@ const SearchResults = () => {
 	}
 
 	if (error) {
-		return <Box>{error?.message}</Box>;
+		<AlertBase>An error has occurred !!!</AlertBase>;
 	}
 
 	return (
