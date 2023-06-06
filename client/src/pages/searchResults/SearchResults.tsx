@@ -1,4 +1,5 @@
 import SearchResultMovieCard from '@components/cards/searchResultMovieCard/SearchResultMovieCard';
+import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
 import { useSearchMoviesQuery } from '@graphql/__generated__/graphql-type';
 import { Box, Typography, useTheme } from '@mui/material';
 import { useEffect } from 'react';
@@ -23,7 +24,7 @@ const SearchResults = () => {
 	}, []);
 
 	if (loading) {
-		return <Box>Loading...</Box>;
+		return <LoaderContainer />;
 	}
 
 	if (error) {

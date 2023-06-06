@@ -1,4 +1,5 @@
 import DetailsMovieCard from '@components/cards/detailsMovieCard/DetailsMovieCard';
+import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
 import Loader from '@components/ui/loader/Loader';
 import {
 	CastMovie,
@@ -26,7 +27,7 @@ const MovieDetails = () => {
 	});
 
 	if (loading || castLoading) {
-		return <Loader />;
+		return <LoaderContainer />;
 	}
 
 	if (error || castError) {

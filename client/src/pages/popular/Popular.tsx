@@ -1,3 +1,4 @@
+import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
 import ListContainer from '@components/containers/listContainer/ListContainer';
 import {
 	Movie,
@@ -37,7 +38,7 @@ const Popular = () => {
 	}, []);
 
 	if (loading) {
-		return <Box>Loading...</Box>;
+		return <LoaderContainer />;
 	}
 
 	if (error) {

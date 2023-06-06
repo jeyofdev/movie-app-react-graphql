@@ -1,4 +1,5 @@
 import PreviewMovieCard from '@components/cards/previewMovieCard/MoviePreviewCard';
+import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
 import SwiperSection from '@components/sections/swiperBlock/SwiperSection';
 import {
 	Movie,
@@ -84,7 +85,7 @@ const Home = () => {
 		upComingMovieLoading ||
 		topRatedMoviesLoading
 	) {
-		return <Box>Loading...</Box>;
+		return <LoaderContainer />;
 	}
 
 	if (

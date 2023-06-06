@@ -1,3 +1,4 @@
+import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
 import ListContainer from '@components/containers/listContainer/ListContainer';
 import PersonInfo from '@components/ui/personInfo/PersonInfo';
 import {
@@ -53,7 +54,7 @@ const Person = () => {
 	};
 
 	if (personDetailsLoading || moviesByCastPersonLoading) {
-		return <Box>Loading...</Box>;
+		return <LoaderContainer />;
 	}
 
 	if (personDetailsError || moviesByCastPersonError) {
