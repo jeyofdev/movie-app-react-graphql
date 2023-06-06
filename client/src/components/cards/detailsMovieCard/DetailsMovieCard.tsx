@@ -21,9 +21,11 @@ const DetailsMovieCard = ({
 	return (
 		<Box sx={styles.root(backdrop_path as string)}>
 			<Box sx={styles.content}>
-				<Box sx={styles.voteBox}>
-					<VoteAverage voteAverage={vote_average as number} hasBackground />
-				</Box>
+				{vote_average && (
+					<Box sx={styles.voteBox}>
+						<VoteAverage voteAverage={vote_average as number} hasBackground />
+					</Box>
+				)}
 				<Box
 					component='img'
 					sx={styles.poster}
@@ -41,16 +43,20 @@ const DetailsMovieCard = ({
 						sx={{ color: theme.palette.common.white }}
 					/>
 
-					<Typography variant='body2' sx={styles.overview}>
-						{overview}
-					</Typography>
+					{overview && (
+						<Typography variant='body2' sx={styles.overview}>
+							{overview}
+						</Typography>
+					)}
 
-					<SwiperSection
-						swiperType='person'
-						title='Cast'
-						list={cast}
-						titleStyle={{ color: theme.palette.common.white }}
-					/>
+					{cast && (
+						<SwiperSection
+							swiperType='person'
+							title='Cast'
+							list={cast}
+							titleStyle={{ color: theme.palette.common.white }}
+						/>
+					)}
 				</Box>
 			</Box>
 		</Box>

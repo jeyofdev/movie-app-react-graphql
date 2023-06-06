@@ -20,11 +20,14 @@ const Tags = ({ runtime, genres, sx }: TagsProps) => {
 					</Typography>
 				)}
 
-				<FontAwesomeIcon
-					icon={faCircle}
-					style={{ ...styles.separatorCircle, ...sx }}
-				/>
-				<LinksGenres genres={genres as Array<Genre>} sx={sx} />
+				{runtime && genres && (
+					<FontAwesomeIcon
+						icon={faCircle}
+						style={{ ...styles.separatorCircle, ...sx }}
+					/>
+				)}
+
+				{genres && <LinksGenres genres={genres as Array<Genre>} sx={sx} />}
 			</Box>
 		</Box>
 	);
