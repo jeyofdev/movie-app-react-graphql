@@ -1,5 +1,4 @@
 import ListContainer from '@components/containers/listContainer/ListContainer';
-import MainContainer from '@components/containers/mainContainer/MainContainer';
 import {
 	Movie,
 	useDiscoverMoviesByGenreQuery,
@@ -43,19 +42,15 @@ const Genre = () => {
 	}
 
 	return (
-		<MainContainer>
-			<Box sx={styles.root}>
-				<ListContainer
-					list={data?.discoverMoviesByGenre?.results as Array<Movie>}
-					title={firstLetterCapitalize(
-						genreName?.replaceAll('-', ' ') as string,
-					)}
-					totalPages={data?.discoverMoviesByGenre?.total_pages as number}
-					currentPage={page}
-					setCurrentPage={handleChangePage}
-				/>
-			</Box>
-		</MainContainer>
+		<Box sx={styles.root}>
+			<ListContainer
+				list={data?.discoverMoviesByGenre?.results as Array<Movie>}
+				title={firstLetterCapitalize(genreName?.replaceAll('-', ' ') as string)}
+				totalPages={data?.discoverMoviesByGenre?.total_pages as number}
+				currentPage={page}
+				setCurrentPage={handleChangePage}
+			/>
+		</Box>
 	);
 };
 

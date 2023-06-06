@@ -1,5 +1,4 @@
 import ListContainer from '@components/containers/listContainer/ListContainer';
-import MainContainer from '@components/containers/mainContainer/MainContainer';
 import {
 	Movie,
 	usePopularMoviesQuery,
@@ -46,17 +45,15 @@ const Popular = () => {
 	}
 
 	return (
-		<MainContainer>
-			<Box sx={styles.root}>
-				<ListContainer
-					list={data?.popularMovies?.results as Array<Movie>}
-					title={firstLetterCapitalize(getTitle())}
-					totalPages={data?.popularMovies?.total_pages as number}
-					currentPage={page}
-					setCurrentPage={handleChangePage}
-				/>
-			</Box>
-		</MainContainer>
+		<Box sx={styles.root}>
+			<ListContainer
+				list={data?.popularMovies?.results as Array<Movie>}
+				title={firstLetterCapitalize(getTitle())}
+				totalPages={data?.popularMovies?.total_pages as number}
+				currentPage={page}
+				setCurrentPage={handleChangePage}
+			/>
+		</Box>
 	);
 };
 

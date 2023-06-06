@@ -1,5 +1,4 @@
 import ListContainer from '@components/containers/listContainer/ListContainer';
-import MainContainer from '@components/containers/mainContainer/MainContainer';
 import PersonInfo from '@components/ui/personInfo/PersonInfo';
 import {
 	Movie,
@@ -62,96 +61,94 @@ const Person = () => {
 	}
 
 	return (
-		<MainContainer>
-			<Box sx={styles.root}>
-				<Typography variant='h3' sx={styles.name}>
-					{personDetailsData?.personDetails?.name}
-				</Typography>
+		<Box sx={styles.root}>
+			<Typography variant='h3' sx={styles.name}>
+				{personDetailsData?.personDetails?.name}
+			</Typography>
 
-				<Box
-					component='img'
-					sx={styles.poster}
-					alt={personDetailsData?.personDetails?.name as string}
-					src={`https://image.tmdb.org/t/p/w500${personDetailsData?.personDetails?.profile_path}`}
+			<Box
+				component='img'
+				sx={styles.poster}
+				alt={personDetailsData?.personDetails?.name as string}
+				src={`https://image.tmdb.org/t/p/w500${personDetailsData?.personDetails?.profile_path}`}
+			/>
+
+			<Box sx={{ ...styles.infoBox, ...styles.birthdayBox }}>
+				<PersonInfo
+					title='Birthday'
+					value={personDetailsData?.personDetails?.birthday as string}
+					subValue={
+						!personDetailsData?.personDetails?.deathday
+							? getAge(personDetailsData?.personDetails?.birthday as string)
+							: null
+					}
+					subValueEnd='years old'
 				/>
+			</Box>
 
-				<Box sx={{ ...styles.infoBox, ...styles.birthdayBox }}>
+			<Box sx={{ ...styles.infoBox, ...styles.deathdayBox }}>
+				{personDetailsData?.personDetails?.deathday && (
 					<PersonInfo
-						title='Birthday'
-						value={personDetailsData?.personDetails?.birthday as string}
+						title='Deathday'
+						value={personDetailsData?.personDetails?.deathday as string}
 						subValue={
-							!personDetailsData?.personDetails?.deathday
-								? getAge(personDetailsData?.personDetails?.birthday as string)
-								: null
+							personDetailsData?.personDetails?.deathday &&
+							getAgeBetweenTwoDate(
+								personDetailsData?.personDetails?.birthday as string,
+								personDetailsData?.personDetails?.deathday as string,
+							)
 						}
 						subValueEnd='years old'
 					/>
-				</Box>
-
-				<Box sx={{ ...styles.infoBox, ...styles.deathdayBox }}>
-					{personDetailsData?.personDetails?.deathday && (
-						<PersonInfo
-							title='Deathday'
-							value={personDetailsData?.personDetails?.deathday as string}
-							subValue={
-								personDetailsData?.personDetails?.deathday &&
-								getAgeBetweenTwoDate(
-									personDetailsData?.personDetails?.birthday as string,
-									personDetailsData?.personDetails?.deathday as string,
-								)
-							}
-							subValueEnd='years old'
-						/>
-					)}
-				</Box>
-
-				<Box sx={{ ...styles.infoBox, ...styles.placeBirthBox }}>
-					<PersonInfo
-						title='Place of Birth'
-						value={personDetailsData?.personDetails?.place_of_birth as string}
-					/>
-				</Box>
-				<Box sx={{ ...styles.infoBox, ...styles.descriptionBox }}>
-					<PersonInfo
-						title='Description'
-						value={
-							viewMoreDescription
-								? (personDetailsData?.personDetails?.biography as string)
-								: truncate(
-										personDetailsData?.personDetails?.biography as string,
-										getTruncateNumberWord(),
-								  )
-						}
-					/>
-
-					{(personDetailsData?.personDetails?.biography as string)?.split(' ')
-						?.length > getTruncateNumberWord() && (
-						<Button
-							sx={styles.viewMoreBtn}
-							onClick={() => setViewMoreDescription(!viewMoreDescription)}
-						>
-							<Typography variant='body1' sx={styles.viewMoreTypo}>
-								{!viewMoreDescription ? 'View more' : 'hide'}
-							</Typography>
-						</Button>
-					)}
-				</Box>
-
-				<Box sx={styles.listMoviesBox}>
-					<Typography variant='h5' sx={styles.listMoviesTitle}>
-						Movies list (
-						{moviesByCastPersonData?.moviesByCastPerson?.cast?.length})
-					</Typography>
-
-					<ListContainer
-						list={
-							moviesByCastPersonData?.moviesByCastPerson?.cast as Array<Movie>
-						}
-						cardGridColumn={styles.cardsMovies}
-					/>
-				</Box>
+				)}
 			</Box>
-		</MainContainer>
+
+			<Box sx={{ ...styles.infoBox, ...styles.placeBirthBox }}>
+				<PersonInfo
+					title='Place of Birth'
+					value={personDetailsData?.personDetails?.place_of_birth as string}
+				/>
+			</Box>
+			<Box sx={{ ...styles.infoBox, ...styles.descriptionBox }}>
+				<PersonInfo
+					title='Description'
+					value={
+						viewMoreDescription
+							? (personDetailsData?.personDetails?.biography as string)
+							: truncate(
+									personDetailsData?.personDetails?.biography as string,
+									getTruncateNumberWord(),
+							  )
+					}
+				/>
+
+				{(personDetailsData?.personDetails?.biography as string)?.split(' ')
+					?.length > getTruncateNumberWord() && (
+					<Button
+						sx={styles.viewMoreBtn}
+						onClick={() => setViewMoreDescription(!viewMoreDescription)}
+					>
+						<Typography variant='body1' sx={styles.viewMoreTypo}>
+							{!viewMoreDescription ? 'View more' : 'hide'}
+						</Typography>
+					</Button>
+				)}
+			</Box>
+
+			<Box sx={styles.listMoviesBox}>
+				<Typography variant='h5' sx={styles.listMoviesTitle}>
+					Movies list (
+					{moviesByCastPersonData?.moviesByCastPerson?.cast?.length})
+				</Typography>
+
+				<ListContainer
+					list={
+						moviesByCastPersonData?.moviesByCastPerson?.cast as Array<Movie>
+					}
+					cardGridColumn={styles.cardsMovies}
+				/>
+			</Box>
+		</Box>
 	);
 };
 

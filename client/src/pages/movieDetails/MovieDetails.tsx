@@ -1,5 +1,4 @@
 import DetailsMovieCard from '@components/cards/detailsMovieCard/DetailsMovieCard';
-import MainContainer from '@components/containers/mainContainer/MainContainer';
 import Loader from '@components/ui/loader/Loader';
 import {
 	CastMovie,
@@ -35,25 +34,23 @@ const MovieDetails = () => {
 	}
 
 	return (
-		<MainContainer>
-			<Box sx={styles.root}>
-				<Box sx={styles.primaryContentBox}>
-					<Loader />
-					{data && (
-						<DetailsMovieCard
-							title={data?.movieDetails?.title}
-							overview={data?.movieDetails?.overview}
-							genres={data?.movieDetails?.genres}
-							runtime={data?.movieDetails?.runtime}
-							vote_average={data?.movieDetails?.vote_average}
-							poster_path={data?.movieDetails?.poster_path}
-							backdrop_path={data?.movieDetails?.backdrop_path}
-							cast={castData?.castByMovie?.cast as Array<CastMovie>}
-						/>
-					)}
-				</Box>
+		<Box sx={styles.root}>
+			<Box sx={styles.primaryContentBox}>
+				<Loader />
+				{data && (
+					<DetailsMovieCard
+						title={data?.movieDetails?.title}
+						overview={data?.movieDetails?.overview}
+						genres={data?.movieDetails?.genres}
+						runtime={data?.movieDetails?.runtime}
+						vote_average={data?.movieDetails?.vote_average}
+						poster_path={data?.movieDetails?.poster_path}
+						backdrop_path={data?.movieDetails?.backdrop_path}
+						cast={castData?.castByMovie?.cast as Array<CastMovie>}
+					/>
+				)}
 			</Box>
-		</MainContainer>
+		</Box>
 	);
 };
 

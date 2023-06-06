@@ -1,5 +1,4 @@
 import ListContainer from '@components/containers/listContainer/ListContainer';
-import MainContainer from '@components/containers/mainContainer/MainContainer';
 import {
 	Movie,
 	useTopRatedMoviesQuery,
@@ -46,17 +45,15 @@ const TopRated = () => {
 	}
 
 	return (
-		<MainContainer>
-			<Box sx={styles.root}>
-				<ListContainer
-					list={data?.topRatedMovies?.results as Array<Movie>}
-					totalPages={data?.topRatedMovies?.total_pages as number}
-					currentPage={page}
-					setCurrentPage={handleChangePage}
-					title={firstLetterCapitalize(getTitle())}
-				/>
-			</Box>
-		</MainContainer>
+		<Box sx={styles.root}>
+			<ListContainer
+				list={data?.topRatedMovies?.results as Array<Movie>}
+				totalPages={data?.topRatedMovies?.total_pages as number}
+				currentPage={page}
+				setCurrentPage={handleChangePage}
+				title={firstLetterCapitalize(getTitle())}
+			/>
+		</Box>
 	);
 };
 

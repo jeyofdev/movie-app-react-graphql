@@ -147,9 +147,9 @@ export type ListContainerProps = {
 	list: Array<Movie>;
 	title?: string;
 	cardGridColumn?: object;
-	totalPages: number;
-	currentPage: number;
-	setCurrentPage: (event: ChangeEvent<unknown>, value: number) => void;
+	totalPages?: number;
+	currentPage?: number;
+	setCurrentPage?: (event: ChangeEvent<unknown>, value: number) => void;
 };
 
 export type DetailsMovieCardProps = Pick<

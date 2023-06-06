@@ -1,5 +1,4 @@
 import SearchResultMovieCard from '@components/cards/searchResultMovieCard/SearchResultMovieCard';
-import MainContainer from '@components/containers/mainContainer/MainContainer';
 import { useSearchMoviesQuery } from '@graphql/__generated__/graphql-type';
 import { Box, Typography, useTheme } from '@mui/material';
 import { useEffect } from 'react';
@@ -32,26 +31,24 @@ const SearchResults = () => {
 	}
 
 	return (
-		<MainContainer>
-			<Box sx={styles.root}>
-				<Typography variant='h3' sx={styles.title}>
-					Search results ({data?.searchMovies?.results?.length})
-				</Typography>
+		<Box sx={styles.root}>
+			<Typography variant='h3' sx={styles.title}>
+				Search results ({data?.searchMovies?.results?.length})
+			</Typography>
 
-				<Box sx={styles.resultsBox}>
-					{data?.searchMovies?.results?.map(movie => (
-						<SearchResultMovieCard
-							key={movie?.id}
-							id={movie?.id}
-							title={movie?.title}
-							poster_path={movie?.poster_path}
-							overview={movie?.overview}
-							release_date={movie?.release_date}
-						/>
-					))}
-				</Box>
+			<Box sx={styles.resultsBox}>
+				{data?.searchMovies?.results?.map(movie => (
+					<SearchResultMovieCard
+						key={movie?.id}
+						id={movie?.id}
+						title={movie?.title}
+						poster_path={movie?.poster_path}
+						overview={movie?.overview}
+						release_date={movie?.release_date}
+					/>
+				))}
 			</Box>
-		</MainContainer>
+		</Box>
 	);
 };
 
