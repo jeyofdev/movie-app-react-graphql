@@ -36,7 +36,10 @@ const MenuItemsBlock = ({
 									.replaceAll(' ', '-')}`
 							: menuItem?.link
 					}
-					active={menuItemActive === menuItem?.id}
+					active={
+						menuItemActive ===
+						menuItem?.name?.split(' ')?.join('-').toLowerCase()
+					}
 					setMenuItemActive={setMenuItemActive}
 					disableRipple={mobile}
 				/>
