@@ -53,13 +53,6 @@ const useStyles = (theme: Theme) => ({
 		gap: '1rem',
 		alignItems: 'center',
 		backgroundColor: 'transparent',
-		height: {
-			xs: '250px',
-			sm: '250px',
-			md: '250px',
-			lg: '260px',
-			xl: '260px',
-		},
 	},
 	noImageIcon: {
 		fontSize: '5rem',

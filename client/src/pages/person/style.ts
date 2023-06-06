@@ -4,7 +4,7 @@ const useStyles = (theme: Theme) => ({
 	root: {
 		display: 'grid',
 		gridTemplateColumns: 'repeat(12, 1fr)',
-		gap: theme.spacing(4),
+		gap: `0px ${theme.spacing(5)}`,
 	},
 	name: {
 		gridColumn: {
@@ -15,7 +15,7 @@ const useStyles = (theme: Theme) => ({
 			xl: '3 / span 10',
 		},
 		color: theme.palette.primary.main,
-		marginBottom: theme.spacing(2),
+		marginBottom: theme.spacing(4),
 		display: 'flex',
 		justifyContent: 'center',
 	},
@@ -29,9 +29,9 @@ const useStyles = (theme: Theme) => ({
 	poster: {
 		gridColumn: {
 			xs: '1 / span 12',
-			sm: '1 / span 3',
-			md: '1 / span 3',
-			lg: '2 / span 2',
+			sm: '1 / span 5',
+			md: '1 / span 4',
+			lg: '2 / span 3',
 			xl: '3 / span 2',
 		},
 		gridRow: {
@@ -101,6 +101,7 @@ const useStyles = (theme: Theme) => ({
 			lg: '5 / span 6',
 			xl: '5 / span 6',
 		},
+		marginTop: theme.spacing(4),
 	},
 	viewMoreBtn: {
 		backgroundColor: theme.palette.primary.main,
@@ -136,6 +137,16 @@ const useStyles = (theme: Theme) => ({
 			md: 'auto / span 4',
 			lg: 'auto / span 3',
 			// xl: 'auto / span 2',
+		},
+	},
+	noImageBox: {
+		flexDirection: 'column',
+		width: '100%',
+		gap: '1rem',
+		backgroundColor: theme.palette.primary.main,
+		maxWidth: {
+			xs: '200px',
+			sm: '250px',
 		},
 	},
 });

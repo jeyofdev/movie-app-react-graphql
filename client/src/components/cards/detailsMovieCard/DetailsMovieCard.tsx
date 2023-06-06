@@ -1,5 +1,6 @@
 import SwiperSection from '@components/sections/swiperBlock/SwiperSection';
 import Tags from '@components/tags/Tags';
+import ImageThumb from '@components/ui/images/imageThumb/ImageThumb';
 import VoteAverage from '@components/ui/votes/average/VoteAverage';
 import { Box, Typography, useTheme } from '@mui/material';
 import { DetailsMovieCardProps } from '../../../types/types/props';
@@ -26,12 +27,14 @@ const DetailsMovieCard = ({
 						<VoteAverage voteAverage={vote_average as number} hasBackground />
 					</Box>
 				)}
-				<Box
-					component='img'
-					sx={styles.poster}
-					alt={title as string}
-					src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+
+				<ImageThumb
+					src={poster_path as string}
+					imageAlt={title as string}
+					noImageBoxStyle={{ ...styles.poster, ...styles.noImageBox }}
+					posterStyle={styles.poster}
 				/>
+
 				<Box sx={styles.contentBox}>
 					<Typography variant='h4' sx={styles.title}>
 						{title}
@@ -43,20 +46,20 @@ const DetailsMovieCard = ({
 						sx={{ color: theme.palette.common.white }}
 					/>
 
-					{overview && (
+					{overview ? (
 						<Typography variant='body2' sx={styles.overview}>
 							{overview}
 						</Typography>
-					)}
+					) : null}
 
-					{cast && (
+					{cast ? (
 						<SwiperSection
 							swiperType='person'
 							title='Cast'
 							list={cast}
 							titleStyle={{ color: theme.palette.common.white }}
 						/>
-					)}
+					) : null}
 				</Box>
 			</Box>
 		</Box>

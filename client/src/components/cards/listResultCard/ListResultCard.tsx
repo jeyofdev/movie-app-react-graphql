@@ -1,6 +1,5 @@
+import ImageThumb from '@components/ui/images/imageThumb/ImageThumb';
 import VoteAverage from '@components/ui/votes/average/VoteAverage';
-import { faImage } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Box, Button, Typography, useTheme } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { ListResultCardProps } from '../../../types/types/props';
@@ -23,26 +22,12 @@ const ListResultCard = ({
 			sx={{ ...styles.root, ...cardGridColumn }}
 		>
 			<Box>
-				{poster_path ? (
-					<Box
-						component='img'
-						sx={styles.poster}
-						alt={title as string}
-						src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-					/>
-				) : (
-					<Box sx={styles.noImageBox}>
-						<FontAwesomeIcon
-							icon={faImage}
-							color={theme.palette.primary.contrastText}
-							style={styles.noImageIcon}
-						/>
-
-						<Typography variant='h5' sx={styles.noImageTypo}>
-							No Image
-						</Typography>
-					</Box>
-				)}
+				<ImageThumb
+					src={poster_path as string}
+					imageAlt={title as string}
+					noImageBoxStyle={{ ...styles.poster, ...styles.noImageBox }}
+					posterStyle={styles.poster}
+				/>
 
 				<Box sx={styles.voteAverageBox}>
 					<VoteAverage

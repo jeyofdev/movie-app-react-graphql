@@ -22,6 +22,7 @@ const useStyles = (theme: Theme) => ({
 		alignItems: 'center',
 		gridTemplateColumns: 'repeat(12, 1fr)',
 		gap: theme.spacing(4),
+		width: '100%',
 	},
 	voteBox: {
 		display: {
@@ -84,6 +85,13 @@ const useStyles = (theme: Theme) => ({
 	},
 	overview: {
 		color: theme.palette.common.white,
+	},
+	noImageBox: {
+		flexDirection: 'column',
+		justifyContent: 'center',
+		gap: '1rem',
+		alignItems: 'center',
+		backgroundColor: theme.palette.primary.main,
 	},
 });
 

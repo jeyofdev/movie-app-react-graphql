@@ -1,6 +1,7 @@
 import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
 import ListContainer from '@components/containers/listContainer/ListContainer';
 import AlertBase from '@components/ui/alert/Alert';
+import ImageThumb from '@components/ui/images/imageThumb/ImageThumb';
 import PersonInfo from '@components/ui/personInfo/PersonInfo';
 import {
 	Movie,
@@ -68,74 +69,84 @@ const Person = () => {
 				{personDetailsData?.personDetails?.name}
 			</Typography>
 
-			<Box
-				component='img'
-				sx={styles.poster}
-				alt={personDetailsData?.personDetails?.name as string}
-				src={`https://image.tmdb.org/t/p/w500${personDetailsData?.personDetails?.profile_path}`}
+			<ImageThumb
+				src={personDetailsData?.personDetails?.profile_path as string}
+				imageAlt={personDetailsData?.personDetails?.name as string}
+				noImageBoxStyle={{ ...styles.poster, ...styles.noImageBox }}
+				posterStyle={styles.poster}
+				person
 			/>
 
-			<Box sx={{ ...styles.infoBox, ...styles.birthdayBox }}>
-				<PersonInfo
-					title='Birthday'
-					value={personDetailsData?.personDetails?.birthday as string}
-					subValue={
-						!personDetailsData?.personDetails?.deathday
-							? getAge(personDetailsData?.personDetails?.birthday as string)
-							: null
-					}
-					subValueEnd='years old'
-				/>
-			</Box>
-
-			<Box sx={{ ...styles.infoBox, ...styles.deathdayBox }}>
-				{personDetailsData?.personDetails?.deathday && (
+			{personDetailsData?.personDetails?.birthday && (
+				<Box sx={{ ...styles.infoBox, ...styles.birthdayBox }}>
 					<PersonInfo
-						title='Deathday'
-						value={personDetailsData?.personDetails?.deathday as string}
+						title='Birthday'
+						value={personDetailsData?.personDetails?.birthday as string}
 						subValue={
-							personDetailsData?.personDetails?.deathday &&
-							getAgeBetweenTwoDate(
-								personDetailsData?.personDetails?.birthday as string,
-								personDetailsData?.personDetails?.deathday as string,
-							)
+							!personDetailsData?.personDetails?.deathday
+								? getAge(personDetailsData?.personDetails?.birthday as string)
+								: null
 						}
 						subValueEnd='years old'
 					/>
-				)}
-			</Box>
+				</Box>
+			)}
 
-			<Box sx={{ ...styles.infoBox, ...styles.placeBirthBox }}>
-				<PersonInfo
-					title='Place of Birth'
-					value={personDetailsData?.personDetails?.place_of_birth as string}
-				/>
-			</Box>
-			<Box sx={{ ...styles.infoBox, ...styles.descriptionBox }}>
-				<PersonInfo
-					title='Description'
-					value={
-						viewMoreDescription
-							? (personDetailsData?.personDetails?.biography as string)
-							: truncate(
-									personDetailsData?.personDetails?.biography as string,
-									getTruncateNumberWord(),
-							  )
-					}
-				/>
+			{personDetailsData?.personDetails?.deathday && (
+				<Box sx={{ ...styles.infoBox, ...styles.deathdayBox }}>
+					{personDetailsData?.personDetails?.deathday && (
+						<PersonInfo
+							title='Deathday'
+							value={personDetailsData?.personDetails?.deathday as string}
+							subValue={
+								personDetailsData?.personDetails?.deathday &&
+								getAgeBetweenTwoDate(
+									personDetailsData?.personDetails?.birthday as string,
+									personDetailsData?.personDetails?.deathday as string,
+								)
+							}
+							subValueEnd='years old'
+						/>
+					)}
+				</Box>
+			)}
 
-				{(personDetailsData?.personDetails?.biography as string)?.split(' ')
-					?.length > getTruncateNumberWord() && (
-					<Button
-						sx={styles.viewMoreBtn}
-						onClick={() => setViewMoreDescription(!viewMoreDescription)}
-					>
-						<Typography variant='body1' sx={styles.viewMoreTypo}>
-							{!viewMoreDescription ? 'View more' : 'hide'}
-						</Typography>
-					</Button>
-				)}
-			</Box>
+			{personDetailsData?.personDetails?.place_of_birth && (
+				<Box sx={{ ...styles.infoBox, ...styles.placeBirthBox }}>
+					<PersonInfo
+						title='Place of Birth'
+						value={personDetailsData?.personDetails?.place_of_birth as string}
+					/>
+				</Box>
+			)}
+
+			{personDetailsData?.personDetails?.biography && (
+				<Box sx={{ ...styles.infoBox, ...styles.descriptionBox }}>
+					<PersonInfo
+						title='Description'
+						value={
+							viewMoreDescription
+								? (personDetailsData?.personDetails?.biography as string)
+								: truncate(
+										personDetailsData?.personDetails?.biography as string,
+										getTruncateNumberWord(),
+								  )
+						}
+					/>
+
+					{(personDetailsData?.personDetails?.biography as string)?.split(' ')
+						?.length > getTruncateNumberWord() && (
+						<Button
+							sx={styles.viewMoreBtn}
+							onClick={() => setViewMoreDescription(!viewMoreDescription)}
+						>
+							<Typography variant='body1' sx={styles.viewMoreTypo}>
+								{!viewMoreDescription ? 'View more' : 'hide'}
+							</Typography>
+						</Button>
+					)}
+				</Box>
+			)}
 
 			<Box sx={styles.listMoviesBox}>
 				<Typography variant='h5' sx={styles.listMoviesTitle}>

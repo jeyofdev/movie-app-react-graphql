@@ -247,3 +247,11 @@ export type RedirectWithTextButtonPropsType = {
 export type AlertPropsType = {
 	children: ReactNode;
 };
+
+export type ImageThumbPropsType = {
+	src: string;
+	imageAlt: string;
+	noImageBoxStyle: object;
+	posterStyle: object;
+	person?: boolean;
+};
