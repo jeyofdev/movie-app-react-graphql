@@ -1,5 +1,6 @@
 import SearchResultMovieCard from '@components/cards/searchResultMovieCard/SearchResultMovieCard';
-import MainContainer from '@components/containers/mainContainer/MainContainer';
+import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
+import AlertBase from '@components/ui/alert/Alert';
 import { useSearchMoviesQuery } from '@graphql/__generated__/graphql-type';
 import { Box, Typography, useTheme } from '@mui/material';
 import { useEffect } from 'react';
@@ -24,34 +25,32 @@ const SearchResults = () => {
 	}, []);
 
 	if (loading) {
-		return <Box>Loading...</Box>;
+		return <LoaderContainer />;
 	}
 
 	if (error) {
-		return <Box>{error?.message}</Box>;
+		<AlertBase>An error has occurred !!!</AlertBase>;
 	}
 
 	return (
-		<MainContainer>
-			<Box sx={styles.root}>
-				<Typography variant='h3' sx={styles.title}>
-					Search results ({data?.searchMovies?.results?.length})
-				</Typography>
+		<Box sx={styles.root}>
+			<Typography variant='h3' sx={styles.title}>
+				Search results ({data?.searchMovies?.results?.length})
+			</Typography>
 
-				<Box sx={styles.resultsBox}>
-					{data?.searchMovies?.results?.map(movie => (
-						<SearchResultMovieCard
-							key={movie?.id}
-							id={movie?.id}
-							title={movie?.title}
-							poster_path={movie?.poster_path}
-							overview={movie?.overview}
-							release_date={movie?.release_date}
-						/>
-					))}
-				</Box>
+			<Box sx={styles.resultsBox}>
+				{data?.searchMovies?.results?.map(movie => (
+					<SearchResultMovieCard
+						key={movie?.id}
+						id={movie?.id}
+						title={movie?.title}
+						poster_path={movie?.poster_path}
+						overview={movie?.overview}
+						release_date={movie?.release_date}
+					/>
+				))}
 			</Box>
-		</MainContainer>
+		</Box>
 	);
 };
 

@@ -43,20 +43,22 @@ const ListContainer = ({
 				))}
 			</Box>
 
-			<Box sx={{ marginTop: theme.spacing(4) }}>
-				<Pagination
-					count={totalPages}
-					page={currentPage}
-					onChange={setCurrentPage}
-					renderItem={item => (
-						<PaginationItem
-							sx={styles.paginationItem}
-							slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
-							{...item}
-						/>
-					)}
-				/>
-			</Box>
+			{currentPage && (
+				<Box sx={{ marginTop: theme.spacing(4) }}>
+					<Pagination
+						count={totalPages}
+						page={currentPage}
+						onChange={setCurrentPage}
+						renderItem={item => (
+							<PaginationItem
+								sx={styles.paginationItem}
+								slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
+								{...item}
+							/>
+						)}
+					/>
+				</Box>
+			)}
 		</Box>
 	);
 };

@@ -1,5 +1,7 @@
 import DetailsMovieCard from '@components/cards/detailsMovieCard/DetailsMovieCard';
-import MainContainer from '@components/containers/mainContainer/MainContainer';
+import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
+import AlertBase from '@components/ui/alert/Alert';
+import Loader from '@components/ui/loader/Loader';
 import {
 	CastMovie,
 	useCastByMovieQuery,
@@ -26,17 +28,18 @@ const MovieDetails = () => {
 	});
 
 	if (loading || castLoading) {
-		return <Box>Loading...</Box>;
+		return <LoaderContainer />;
 	}
 
 	if (error || castError) {
-		return <Box>{error?.message}</Box>;
+		<AlertBase>An error has occurred !!!</AlertBase>;
 	}
 
 	return (
-		<MainContainer>
-			<Box sx={styles.root}>
-				<Box sx={styles.primaryContentBox}>
+		<Box sx={styles.root}>
+			<Box sx={styles.primaryContentBox}>
+				<Loader />
+				{data && (
 					<DetailsMovieCard
 						title={data?.movieDetails?.title}
 						overview={data?.movieDetails?.overview}
@@ -47,9 +50,9 @@ const MovieDetails = () => {
 						backdrop_path={data?.movieDetails?.backdrop_path}
 						cast={castData?.castByMovie?.cast as Array<CastMovie>}
 					/>
-				</Box>
+				)}
 			</Box>
-		</MainContainer>
+		</Box>
 	);
 };
 

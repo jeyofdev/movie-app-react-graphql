@@ -34,7 +34,7 @@ export type MenuItemPropsType = {
 	link: string;
 	active: boolean;
 	disableRipple: boolean;
-	setMenuItemActive: Dispatch<SetStateAction<string | number>>;
+	setMenuItemActive: Dispatch<SetStateAction<string | null>>;
 };
 
 export type MenuItemType = Pick<MenuItemPropsType, 'icon' | 'link'> & {
@@ -54,8 +54,8 @@ export type BaseButtonPropsType = {
 export type BlockSidebarMenuProps = {
 	title: string;
 	menuItems: Array<Genre> | Array<MenuItemType>;
-	menuItemActive: string | number;
-	setMenuItemActive: Dispatch<SetStateAction<string | number>>;
+	menuItemActive: string;
+	setMenuItemActive: Dispatch<SetStateAction<string | null>>;
 	mobile?: boolean;
 	isGenre?: boolean;
 };
@@ -147,9 +147,9 @@ export type ListContainerProps = {
 	list: Array<Movie>;
 	title?: string;
 	cardGridColumn?: object;
-	totalPages: number;
-	currentPage: number;
-	setCurrentPage: (event: ChangeEvent<unknown>, value: number) => void;
+	totalPages?: number;
+	currentPage?: number;
+	setCurrentPage?: (event: ChangeEvent<unknown>, value: number) => void;
 };
 
 export type DetailsMovieCardProps = Pick<
@@ -242,4 +242,8 @@ export type RedirectWithTextButtonPropsType = {
 	labelBtn: string;
 	content?: string;
 	onClick: () => void;
+};
+
+export type AlertPropsType = {
+	children: ReactNode;
 };

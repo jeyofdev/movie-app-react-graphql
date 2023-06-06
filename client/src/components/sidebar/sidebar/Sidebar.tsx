@@ -14,6 +14,7 @@ import { Genre, useGenresQuery } from '@graphql/__generated__/graphql-type';
 import useWindowSize from '@hooks/useWindowSize';
 import { Box, Divider, Typography, useTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { BreakpointEnum } from '../../../types/enums';
 import { MenuItemType } from '../../../types/types/props';
@@ -24,7 +25,7 @@ const newsFeedItems: MenuItemType[] = [
 	{ id: uuidv4(), name: 'browse', icon: faCompass, link: '/home' },
 	{
 		id: uuidv4(),
-		name: 'coming soon',
+		name: 'upcoming',
 		icon: faCalendarCheck,
 		link: '/movies/upcoming',
 	},
@@ -52,10 +53,9 @@ const Sidebar = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
+	const { pathname } = useLocation();
 
-	const [menuItemActive, setMenuItemActive] = useState<string | number>(
-		newsFeedItems[0]?.id,
-	);
+	const [menuItemActive, setMenuItemActive] = useState<string | null>('');
 
 	const [showAllGenres, setShowAllGenres] = useState<boolean>(false);
 	const [genresItems, setGenresItems] = useState<Array<Genre>>([]);
@@ -76,6 +76,20 @@ const Sidebar = () => {
 	const handleClickShowAllGenres = () => {
 		setShowAllGenres(!showAllGenres);
 	};
+
+	useEffect(() => {
+		const pathnameSplit = pathname?.split('/');
+
+		if (pathnameSplit?.length === 4) {
+			setMenuItemActive(pathnameSplit[3]?.toLowerCase());
+		} else if (pathnameSplit?.length === 3) {
+			setMenuItemActive(pathnameSplit[2]?.toLowerCase());
+		} else if (pathnameSplit?.length === 2) {
+			setMenuItemActive('browse');
+		} else if (pathnameSplit[1] === 'search') {
+			setMenuItemActive('');
+		}
+	}, [pathname]);
 
 	useEffect(() => {
 		if (!showAllGenres) {
@@ -119,7 +133,7 @@ const Sidebar = () => {
 					<MenuItemsBlock
 						title='News Feed'
 						menuItems={newsFeedItems}
-						menuItemActive={menuItemActive}
+						menuItemActive={menuItemActive as string}
 						setMenuItemActive={setMenuItemActive}
 					/>
 
@@ -128,7 +142,7 @@ const Sidebar = () => {
 					<MenuItemsBlock
 						title='Genres'
 						menuItems={genresItems}
-						menuItemActive={menuItemActive}
+						menuItemActive={menuItemActive as string}
 						setMenuItemActive={setMenuItemActive}
 						isGenre
 					/>
@@ -157,7 +171,7 @@ const Sidebar = () => {
 							mobile
 							title='News Feed'
 							menuItems={newsFeedItems}
-							menuItemActive={menuItemActive}
+							menuItemActive={menuItemActive as string}
 							setMenuItemActive={setMenuItemActive}
 						/>
 					</Box>

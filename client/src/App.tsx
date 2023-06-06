@@ -1,3 +1,4 @@
+import MainContainer from '@components/containers/mainContainer/MainContainer';
 import { ThemeContext } from '@context/ThemeContext';
 import { Box, ThemeProvider } from '@mui/material';
 import { darkTheme, lightTheme } from '@theme/globalTheme';
@@ -17,7 +18,9 @@ const App = () => {
 			}
 		>
 			<Box sx={styles.root(themeMode)}>
-				<MainRouter />
+				<MainContainer>
+					<MainRouter />
+				</MainContainer>
 			</Box>
 		</ThemeProvider>
 	);

@@ -1,5 +1,6 @@
+import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
 import ListContainer from '@components/containers/listContainer/ListContainer';
-import MainContainer from '@components/containers/mainContainer/MainContainer';
+import AlertBase from '@components/ui/alert/Alert';
 import {
 	Movie,
 	useNowPlayingMoviesQuery,
@@ -38,25 +39,23 @@ const NowPlaying = () => {
 	}, []);
 
 	if (loading) {
-		return <Box>Loading...</Box>;
+		return <LoaderContainer />;
 	}
 
 	if (error) {
-		return <Box>{error?.message}</Box>;
+		<AlertBase>An error has occurred !!!</AlertBase>;
 	}
 
 	return (
-		<MainContainer>
-			<Box sx={styles.root}>
-				<ListContainer
-					list={data?.nowPlayingMovies?.results as Array<Movie>}
-					title={firstLetterCapitalize(getTitle())}
-					totalPages={data?.nowPlayingMovies?.total_pages as number}
-					currentPage={page}
-					setCurrentPage={handleChangePage}
-				/>
-			</Box>
-		</MainContainer>
+		<Box sx={styles.root}>
+			<ListContainer
+				list={data?.nowPlayingMovies?.results as Array<Movie>}
+				title={firstLetterCapitalize(getTitle())}
+				totalPages={data?.nowPlayingMovies?.total_pages as number}
+				currentPage={page}
+				setCurrentPage={handleChangePage}
+			/>
+		</Box>
 	);
 };
 

@@ -19,8 +19,13 @@ const MenuItem = ({
 	const styles = useStyles(theme);
 
 	const handleClick = () => {
-		setMenuItemActive(id);
-		navigate(link, { state: { genreId: id } });
+		setMenuItemActive(label?.split(' ')?.join('-').toLowerCase());
+		navigate(link, {
+			state: {
+				genreName: label?.split(' ')?.join('-')?.toLowerCase(),
+				genreId: Number(id),
+			},
+		});
 	};
 
 	return (
