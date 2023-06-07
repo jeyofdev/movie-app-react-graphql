@@ -103,7 +103,7 @@ export const globalTheme = createTheme({
 			fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
 
 			fontWeight: 400,
-			fontSize: '3rem',
+			fontSize: '2.5rem',
 			lineHeight: 1.167,
 			letterSpacing: '0em',
 

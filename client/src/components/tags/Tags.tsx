@@ -14,17 +14,20 @@ const Tags = ({ runtime, genres, sx }: TagsProps) => {
 	return (
 		<Box sx={styles.root}>
 			<Box sx={styles.movieInfosBox}>
-				{runtime && (
+				{runtime ? (
 					<Typography variant='body2' sx={{ ...styles.runtime, ...sx }}>
 						{formatNumberToHours(runtime)}
 					</Typography>
-				)}
+				) : null}
 
-				<FontAwesomeIcon
-					icon={faCircle}
-					style={{ ...styles.separatorCircle, ...sx }}
-				/>
-				<LinksGenres genres={genres as Array<Genre>} sx={sx} />
+				{runtime && genres ? (
+					<FontAwesomeIcon
+						icon={faCircle}
+						style={{ ...styles.separatorCircle, ...sx }}
+					/>
+				) : null}
+
+				{genres && <LinksGenres genres={genres as Array<Genre>} sx={sx} />}
 			</Box>
 		</Box>
 	);

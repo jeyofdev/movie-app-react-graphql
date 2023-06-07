@@ -46,6 +46,21 @@ const useStyles = (theme: Theme) => ({
 	voteIcon: {
 		fontSize: '0.75rem',
 	},
+	noImageBox: {
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		gap: '1rem',
+		alignItems: 'center',
+		backgroundColor: 'transparent',
+	},
+	noImageIcon: {
+		fontSize: '5rem',
+	},
+	noImageTypo: {
+		color: theme.palette.primary.contrastText,
+		fontWeight: 'bold',
+	},
 });
 
 export default useStyles;

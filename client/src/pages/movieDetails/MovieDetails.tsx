@@ -1,7 +1,6 @@
 import DetailsMovieCard from '@components/cards/detailsMovieCard/DetailsMovieCard';
 import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
 import AlertBase from '@components/ui/alert/Alert';
-import Loader from '@components/ui/loader/Loader';
 import {
 	CastMovie,
 	useCastByMovieQuery,
@@ -38,19 +37,16 @@ const MovieDetails = () => {
 	return (
 		<Box sx={styles.root}>
 			<Box sx={styles.primaryContentBox}>
-				<Loader />
-				{data && (
-					<DetailsMovieCard
-						title={data?.movieDetails?.title}
-						overview={data?.movieDetails?.overview}
-						genres={data?.movieDetails?.genres}
-						runtime={data?.movieDetails?.runtime}
-						vote_average={data?.movieDetails?.vote_average}
-						poster_path={data?.movieDetails?.poster_path}
-						backdrop_path={data?.movieDetails?.backdrop_path}
-						cast={castData?.castByMovie?.cast as Array<CastMovie>}
-					/>
-				)}
+				<DetailsMovieCard
+					title={data?.movieDetails?.title}
+					overview={data?.movieDetails?.overview}
+					genres={data?.movieDetails?.genres}
+					runtime={data?.movieDetails?.runtime}
+					vote_average={data?.movieDetails?.vote_average}
+					poster_path={data?.movieDetails?.poster_path}
+					backdrop_path={data?.movieDetails?.backdrop_path}
+					cast={castData?.castByMovie?.cast as Array<CastMovie>}
+				/>
 			</Box>
 		</Box>
 	);
