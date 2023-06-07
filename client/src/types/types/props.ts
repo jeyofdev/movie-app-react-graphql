@@ -1,3 +1,4 @@
+import { Control, FieldValues, UseFormReset } from 'react-hook-form';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
 	CastMovie,
@@ -185,10 +186,12 @@ export type ModalPropsType = {
 	open: boolean;
 	setOpen: Dispatch<SetStateAction<boolean>>;
 	close?: boolean;
+	onClose: () => void;
 	back?: boolean;
 	setStep?: Dispatch<SetStateAction<number>>;
 	title: string | ReactNode;
 	children?: ReactNode;
+	resetForm?: UseFormReset<FieldValues>;
 };
 
 export type SignUpModalPropsType = Pick<
@@ -218,14 +221,14 @@ export type SocialButtonPropsType = {
 };
 
 export type InputTextPropsType = {
+	control: Control<FieldValues>;
+	validation: object;
 	label: string;
 	id: string;
 	name: string;
 	placeholder?: string;
 	icon: IconDefinition;
 	password?: boolean;
-	value: string;
-	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
 export type UserMenuPropsType = {

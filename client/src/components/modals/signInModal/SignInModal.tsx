@@ -3,7 +3,13 @@ import SocialButton from '@components/ui/Button/socialButton/SocialButton';
 import InputText from '@components/ui/form/inputText/InputText';
 import Modal from '@components/ui/modals/Modal';
 import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import {
+	faCircleCheck,
+	faEnvelope,
+	faLock,
+	faTriangleExclamation,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	Alert,
 	Box,
@@ -12,12 +18,18 @@ import {
 	Typography,
 	useTheme,
 } from '@mui/material';
-import { forgotPassword, signIn, socialMediaAuth } from '@services/auth';
+import {
+	authErrorCredentials,
+	forgotPassword,
+	signIn,
+	socialMediaAuth,
+} from '@services/auth';
 import { githubProvider, googleProvider } from '@services/auth.providers';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import { ChangeEvent, useState } from 'react';
-import { ForgotDatasType, FormDatasLoginType } from '../../../types';
+import { useEffect, useState } from 'react';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { SignInModalPropsType } from '../../../types/types/props';
+import validation from '../../../validation';
 import useStyles from './style';
 
 const SignInModal = ({
@@ -31,23 +43,17 @@ const SignInModal = ({
 	const theme = useTheme();
 	const styles = useStyles(theme);
 
-	const [error, setError] = useState('');
-	const [loginFormDatas, setLoginFormDatas] = useState<FormDatasLoginType>({
-		email: '',
-		password: '',
-	});
+	const {
+		control,
+		handleSubmit,
+		reset,
+		watch,
+		formState: { errors, isSubmitted },
+	} = useForm({ mode: 'onSubmit' });
 
-	const [forgotFormDatas, setForgotFormDatas] = useState<ForgotDatasType>({
-		email: '',
-	});
-
-	const handleChangeLogin = (e: ChangeEvent<HTMLInputElement>) => {
-		setLoginFormDatas({ ...loginFormDatas, [e.target.name]: e.target.value });
-	};
-
-	const handleChangeForgot = (e: ChangeEvent<HTMLInputElement>) => {
-		setForgotFormDatas({ ...forgotFormDatas, [e.target.name]: e.target.value });
-	};
+	const [signUpError, setSignUpError] = useState<string | null>();
+	const [forgotPasswordSuccess, setForgotPasswordSuccess] =
+		useState<boolean>(false);
 
 	const handleSocialLogin = async (
 		provider: GoogleAuthProvider | GithubAuthProvider,
@@ -56,35 +62,41 @@ const SignInModal = ({
 		setOpen(false);
 	};
 
-	const handleSubmitLogin = () => {
-		if (!loginFormDatas.email || !loginFormDatas.password) {
-			setError('All form fields are required');
-		} else {
-			signIn(loginFormDatas.email, loginFormDatas.password);
-
-			setLoginFormDatas({
-				email: '',
-				password: '',
+	const handleSubmitLogin: SubmitHandler<FieldValues> = (data: FieldValues) => {
+		signIn(data.email, data.password)
+			.then(() => {
+				reset();
+				setOpen(false);
+			})
+			.catch(err => {
+				if (authErrorCredentials(err.code)) {
+					setSignUpError(
+						'Your credentials are incorrect. Please double-check your login details and try again.',
+					);
+				}
 			});
-
-			setOpen(false);
-		}
 	};
 
-	const handleSubmitEmail = () => {
-		if (!forgotFormDatas.email) {
-			setError('All form fields are required');
-		} else {
-			forgotPassword(forgotFormDatas.email);
-
-			setLoginFormDatas({
-				email: '',
-				password: '',
+	const handleSubmitEmail: SubmitHandler<FieldValues> = (data: FieldValues) => {
+		setForgotPasswordSuccess(false);
+		forgotPassword(data.email)
+			.then(() => {
+				reset();
+				// setOpen(false);
+				setForgotPasswordSuccess(true);
+			})
+			.catch(() => {
+				setForgotPasswordSuccess(true);
 			});
-
-			setOpen(false);
-		}
 	};
+
+	useEffect(() => {
+		const subscription = watch(() => {
+			setSignUpError(null);
+		});
+
+		return () => subscription.unsubscribe();
+	}, [watch]);
 
 	return (
 		<>
@@ -93,6 +105,7 @@ const SignInModal = ({
 					open={open}
 					setOpen={() => setOpen(false)}
 					close
+					onClose={() => reset()}
 					title={title?.stepOne}
 				>
 					<Box sx={styles.socialBtns}>
@@ -112,40 +125,55 @@ const SignInModal = ({
 					<Box sx={styles.dividerBox}>
 						<Box sx={styles.divider}>
 							<Divider sx={styles.dividerContent}>
-								<Typography variant='body2'>or</Typography>
+								<Typography variant='body2' sx={styles.dividerTypo}>
+									or
+								</Typography>
 							</Divider>
 						</Box>
 					</Box>
 
 					<Box sx={styles.form}>
-						{error && (
-							<Alert variant='filled' severity='error'>
-								{error}
+						{isSubmitted && (signUpError || Object.keys(errors).length > 0) && (
+							<Alert
+								variant='filled'
+								severity='error'
+								sx={styles.alertDanger}
+								iconMapping={{
+									error: (
+										<FontAwesomeIcon
+											icon={faTriangleExclamation}
+											color={theme.palette.error.main}
+											style={styles.alertIcon}
+										/>
+									),
+								}}
+							>
+								{signUpError ?? 'The form contains errors'}
 							</Alert>
 						)}
 
 						<Box sx={styles.inputsBox}>
 							<Box>
 								<InputText
+									control={control}
 									label='Email'
 									id='email'
 									name='email'
 									placeholder='ex. username@gmail.com'
 									icon={faEnvelope}
-									value={loginFormDatas.email}
-									onChange={handleChangeLogin}
+									validation={validation?.email}
 								/>
 							</Box>
 							<Box>
 								<InputText
+									control={control}
 									password
 									label='Password'
 									id='password'
 									name='password'
 									placeholder='************'
 									icon={faLock}
-									value={loginFormDatas.password}
-									onChange={handleChangeLogin}
+									validation={validation?.password}
 								/>
 								<Box
 									sx={{
@@ -155,16 +183,18 @@ const SignInModal = ({
 								>
 									<RedirectWithTextButton
 										labelBtn='Forgot password'
-										onClick={() => setStep(2)}
+										onClick={() => {
+											reset();
+											setStep(2);
+										}}
 									/>
 								</Box>
 							</Box>
 						</Box>
-
 						<Button
 							sx={styles.btnSubmit}
 							variant='contained'
-							onClick={handleSubmitLogin}
+							onClick={handleSubmit(handleSubmitLogin)}
 						>
 							<Typography variant='h6' sx={styles.btnSubmitTypo}>
 								Log in
@@ -176,7 +206,11 @@ const SignInModal = ({
 						<RedirectWithTextButton
 							labelBtn='Sign up'
 							content="Don't have an account ?"
-							onClick={onRedirect}
+							onClick={() => {
+								reset();
+								setStep(1);
+								onRedirect();
+							}}
 						/>
 					</Box>
 				</Modal>
@@ -187,27 +221,63 @@ const SignInModal = ({
 					open={open}
 					setOpen={() => setOpen(false)}
 					close
+					onClose={() => reset()}
 					back
 					title={title?.stepTwo}
 					setStep={setStep}
+					resetForm={reset}
 				>
 					<Box sx={styles.form}>
-						{error && (
-							<Alert variant='filled' severity='error'>
-								{error}
+						{isSubmitted && Object.keys(errors).length > 0 && (
+							<Alert
+								variant='filled'
+								severity='error'
+								sx={styles.alertDanger}
+								iconMapping={{
+									error: (
+										<FontAwesomeIcon
+											icon={faTriangleExclamation}
+											color={theme.palette.error.main}
+											style={styles.alertIcon}
+										/>
+									),
+								}}
+							>
+								The form contains errors
+							</Alert>
+						)}
+
+						{isSubmitted && forgotPasswordSuccess && (
+							<Alert
+								variant='filled'
+								severity='success'
+								color='success'
+								sx={styles.alertSuccess}
+								iconMapping={{
+									success: (
+										<FontAwesomeIcon
+											icon={faCircleCheck}
+											color={theme.palette.success.dark}
+											style={styles.alertIcon}
+										/>
+									),
+								}}
+							>
+								If the email entered corresponds to an application user, you
+								will receive an email with instructions to reset your password
 							</Alert>
 						)}
 
 						<Box sx={styles.inputsBox}>
 							<Box>
 								<InputText
+									control={control}
 									label='Email'
 									id='email'
 									name='email'
 									placeholder='ex. username@gmail.com'
 									icon={faEnvelope}
-									value={forgotFormDatas.email}
-									onChange={handleChangeForgot}
+									validation={validation?.email}
 								/>
 							</Box>
 						</Box>
@@ -215,10 +285,10 @@ const SignInModal = ({
 						<Button
 							sx={styles.btnSubmit}
 							variant='contained'
-							onClick={handleSubmitEmail}
+							onClick={handleSubmit(handleSubmitEmail)}
 						>
 							<Typography variant='h6' sx={styles.btnSubmitTypo}>
-								Log in
+								Enjoy
 							</Typography>
 						</Button>
 					</Box>
@@ -227,7 +297,11 @@ const SignInModal = ({
 						<RedirectWithTextButton
 							labelBtn='Sign up'
 							content="Don't have an account ?"
-							onClick={onRedirect}
+							onClick={() => {
+								reset();
+								setStep(1);
+								onRedirect();
+							}}
 						/>
 					</Box>
 				</Modal>

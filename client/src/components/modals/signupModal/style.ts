@@ -40,6 +40,13 @@ const useStyles = (theme: Theme) => ({
 			backgroundColor: 'transparent',
 		},
 	},
+	alertDanger: {
+		backgroundColor: theme.palette.error.light,
+		color: theme.palette.error.main,
+	},
+	alertIcon: {
+		fontSize: '1.15rem',
+	},
 });
 
 export default useStyles;

@@ -9,10 +9,12 @@ import useStyles from './style';
 const Modal = ({
 	open,
 	setOpen,
+	onClose,
 	close,
 	back,
 	title,
 	setStep,
+	resetForm,
 	children,
 }: ModalPropsType) => {
 	const theme = useTheme();
@@ -20,6 +22,7 @@ const Modal = ({
 	const { themeMode } = useContext(ThemeContext);
 
 	const handleClose = () => {
+		onClose();
 		setOpen(false);
 	};
 
@@ -49,7 +52,12 @@ const Modal = ({
 						<Button
 							variant='text'
 							sx={styles.iconBtn}
-							onClick={() => (setStep ? setStep(1) : {})}
+							onClick={() => {
+								// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+								resetForm ? resetForm() : null;
+								// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+								setStep ? setStep(1) : null;
+							}}
 						>
 							<FontAwesomeIcon
 								icon={faChevronLeft}

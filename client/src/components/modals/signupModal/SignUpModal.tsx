@@ -3,14 +3,20 @@ import SocialButton from '@components/ui/Button/socialButton/SocialButton';
 import InputText from '@components/ui/form/inputText/InputText';
 import Modal from '@components/ui/modals/Modal';
 import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import {
+	faEnvelope,
+	faLock,
+	faTriangleExclamation,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Alert, Box, Button, Typography, useTheme } from '@mui/material';
 import { signUp, socialMediaAuth } from '@services/auth';
 import { githubProvider, googleProvider } from '@services/auth.providers';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import { ChangeEvent, useState } from 'react';
-import { FormDatasRegisterType } from '../../../types';
+import { useEffect, useState } from 'react';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { SignUpModalPropsType } from '../../../types/types/props';
+import validation from '../../../validation';
 import useStyles from './style';
 
 const SignUpModal = ({
@@ -24,17 +30,16 @@ const SignUpModal = ({
 	const theme = useTheme();
 	const styles = useStyles(theme);
 
-	const [formDatas, setformData] = useState<FormDatasRegisterType>({
-		email: '',
-		password: '',
-		passwordConfirm: '',
-	});
+	const {
+		control,
+		handleSubmit,
+		reset,
+		getValues,
+		watch,
+		formState: { errors, isSubmitted },
+	} = useForm({ mode: 'onSubmit' });
 
-	const [error, setError] = useState('');
-
-	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setformData({ ...formDatas, [e.target.name]: e.target.value });
-	};
+	const [loginError, setLoginError] = useState<string | null>();
 
 	const handleSocialLogin = async (
 		provider: GoogleAuthProvider | GithubAuthProvider,
@@ -43,25 +48,26 @@ const SignUpModal = ({
 		setOpen(false);
 	};
 
-	const handleEmailLogin = () => {
-		if (!formDatas.email || !formDatas.password || !formDatas.passwordConfirm) {
-			setError('All form fields are required');
-		}
-
-		if (formDatas.password !== formDatas.passwordConfirm) {
-			setError('Passwords do not match');
-		} else {
-			signUp(formDatas.email, formDatas.password);
-
-			setformData({
-				email: '',
-				password: '',
-				passwordConfirm: '',
+	const handleEmailLogin: SubmitHandler<FieldValues> = (data: FieldValues) => {
+		signUp(data.email, data.password)
+			.then(() => {
+				reset();
+				setOpen(false);
+			})
+			.catch(err => {
+				if (err.code === 'auth/email-already-in-use') {
+					setLoginError('An account is already registered with your email.');
+				}
 			});
-
-			setOpen(false);
-		}
 	};
+
+	useEffect(() => {
+		const subscription = watch(() => {
+			setLoginError(null);
+		});
+
+		return () => subscription.unsubscribe();
+	}, [watch]);
 
 	return (
 		<>
@@ -70,6 +76,7 @@ const SignUpModal = ({
 					open={open}
 					setOpen={() => setOpen(false)}
 					close
+					onClose={() => reset()}
 					title={title?.stepOne}
 				>
 					<Box sx={styles.socialBtns}>
@@ -96,7 +103,10 @@ const SignUpModal = ({
 						<RedirectWithTextButton
 							labelBtn='Log in'
 							content='Already a member ?'
-							onClick={onRedirect}
+							onClick={() => {
+								setStep(1);
+								onRedirect();
+							}}
 						/>
 					</Box>
 				</Modal>
@@ -107,55 +117,77 @@ const SignUpModal = ({
 					open={open}
 					setOpen={() => setOpen(false)}
 					close
+					onClose={() => reset()}
 					back
 					title={title?.stepTwo}
 					setStep={setStep}
+					resetForm={reset}
 				>
 					<Box sx={styles.form}>
-						{error && (
-							<Alert variant='filled' severity='error'>
-								{error}
+						{isSubmitted && (loginError || Object.keys(errors).length > 0) && (
+							<Alert
+								variant='filled'
+								severity='error'
+								sx={styles.alertDanger}
+								iconMapping={{
+									error: (
+										<FontAwesomeIcon
+											icon={faTriangleExclamation}
+											color={theme.palette.error.main}
+											style={styles.alertIcon}
+										/>
+									),
+								}}
+							>
+								{loginError ?? 'The form contains errors'}
 							</Alert>
 						)}
+
 						<Box sx={styles.inputsBox}>
 							<InputText
+								control={control}
 								label='Email'
 								id='email'
 								name='email'
 								placeholder='ex. username@gmail.com'
 								icon={faEnvelope}
-								value={formDatas.email}
-								onChange={handleChange}
+								validation={validation?.email}
 							/>
 							<InputText
+								control={control}
 								password
 								label='Password'
 								id='password'
 								name='password'
 								placeholder='************'
 								icon={faLock}
-								value={formDatas.password}
-								onChange={handleChange}
+								validation={validation?.password}
 							/>
 							<InputText
+								control={control}
 								password
 								label='Password confirm'
 								id='passwordConfirm'
 								name='passwordConfirm'
 								placeholder='************'
 								icon={faLock}
-								value={formDatas.passwordConfirm}
-								onChange={handleChange}
+								validation={{
+									...validation?.passwordConfirm,
+									validate: (value: string) => {
+										if (value === getValues().password) return true;
+										return 'The passwords must match';
+									},
+								}}
 							/>
 						</Box>
 
 						<Button
 							sx={styles.btnSubmit}
 							variant='contained'
-							onClick={handleEmailLogin}
+							onClick={handleSubmit(handleEmailLogin)}
 						>
 							<Typography variant='h6' sx={styles.btnSubmitTypo}>
-								Sign in with email
+								Sign up with email
 							</Typography>
 						</Button>
 					</Box>
@@ -164,7 +196,11 @@ const SignUpModal = ({
 						<RedirectWithTextButton
 							labelBtn='Log in'
 							content='Already a member ?'
-							onClick={onRedirect}
+							onClick={() => {
+								reset();
+								setStep(1);
+								onRedirect();
+							}}
 						/>
 					</Box>
 				</Modal>
