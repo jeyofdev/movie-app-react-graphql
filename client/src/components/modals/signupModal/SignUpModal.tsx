@@ -8,9 +8,9 @@ import { Alert, Box, Button, Typography, useTheme } from '@mui/material';
 import { signUp, socialMediaAuth } from '@services/auth';
 import { githubProvider, googleProvider } from '@services/auth.providers';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import { ChangeEvent, useState } from 'react';
-import { FormDatasRegisterType } from '../../../types';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { SignUpModalPropsType } from '../../../types/types/props';
+import validation from '../../../validation';
 import useStyles from './style';
 
 const SignUpModal = ({
@@ -24,17 +24,13 @@ const SignUpModal = ({
 	const theme = useTheme();
 	const styles = useStyles(theme);
 
-	const [formDatas, setformData] = useState<FormDatasRegisterType>({
-		email: '',
-		password: '',
-		passwordConfirm: '',
-	});
-
-	const [error, setError] = useState('');
-
-	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setformData({ ...formDatas, [e.target.name]: e.target.value });
-	};
+	const {
+		control,
+		handleSubmit,
+		reset,
+		getValues,
+		formState: { errors, isSubmitted },
+	} = useForm({ mode: 'onSubmit' });
 
 	const handleSocialLogin = async (
 		provider: GoogleAuthProvider | GithubAuthProvider,
@@ -43,24 +39,11 @@ const SignUpModal = ({
 		setOpen(false);
 	};
 
-	const handleEmailLogin = () => {
-		if (!formDatas.email || !formDatas.password || !formDatas.passwordConfirm) {
-			setError('All form fields are required');
-		}
+	const handleEmailLogin: SubmitHandler<FieldValues> = (data: FieldValues) => {
+		signUp(data.email, data.password);
+		reset();
 
-		if (formDatas.password !== formDatas.passwordConfirm) {
-			setError('Passwords do not match');
-		} else {
-			signUp(formDatas.email, formDatas.password);
-
-			setformData({
-				email: '',
-				password: '',
-				passwordConfirm: '',
-			});
-
-			setOpen(false);
-		}
+		setOpen(false);
 	};
 
 	return (
@@ -110,52 +93,60 @@ const SignUpModal = ({
 					back
 					title={title?.stepTwo}
 					setStep={setStep}
+					resetForm={reset}
 				>
 					<Box sx={styles.form}>
-						{error && (
+						{isSubmitted && Object.keys(errors).length > 0 && (
 							<Alert variant='filled' severity='error'>
-								{error}
+								The form contains errors
 							</Alert>
 						)}
+
 						<Box sx={styles.inputsBox}>
 							<InputText
+								control={control}
 								label='Email'
 								id='email'
 								name='email'
 								placeholder='ex. username@gmail.com'
 								icon={faEnvelope}
-								value={formDatas.email}
-								onChange={handleChange}
+								validation={validation?.email}
 							/>
 							<InputText
+								control={control}
 								password
 								label='Password'
 								id='password'
 								name='password'
 								placeholder='************'
 								icon={faLock}
-								value={formDatas.password}
-								onChange={handleChange}
+								validation={validation?.password}
 							/>
 							<InputText
+								control={control}
 								password
 								label='Password confirm'
 								id='passwordConfirm'
 								name='passwordConfirm'
 								placeholder='************'
 								icon={faLock}
-								value={formDatas.passwordConfirm}
-								onChange={handleChange}
+								validation={{
+									...validation?.passwordConfirm,
+									validate: (value: string) => {
+										if (value === getValues().password) return true;
+										return 'The passwords must match';
+									},
+								}}
 							/>
 						</Box>
 
 						<Button
 							sx={styles.btnSubmit}
 							variant='contained'
-							onClick={handleEmailLogin}
+							onClick={handleSubmit(handleEmailLogin)}
 						>
 							<Typography variant='h6' sx={styles.btnSubmitTypo}>
-								Sign in with email
+								Sign up with email
 							</Typography>
 						</Button>
 					</Box>
@@ -164,7 +155,10 @@ const SignUpModal = ({
 						<RedirectWithTextButton
 							labelBtn='Log in'
 							content='Already a member ?'
-							onClick={onRedirect}
+							onClick={() => {
+								reset();
+								onRedirect();
+							}}
 						/>
 					</Box>
 				</Modal>

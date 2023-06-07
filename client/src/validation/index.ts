@@ -13,6 +13,13 @@ const validation = {
 			message: 'Password must be at least 8 characters',
 		},
 	},
+	passwordConfirm: {
+		required: 'The password confirm field is required',
+		minLength: {
+			value: 8,
+			message: 'Password must be at least 8 characters',
+		},
+	},
 };
 
 export default validation;
