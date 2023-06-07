@@ -45,7 +45,9 @@ const SignInModal = ({
 		formState: { errors, isSubmitted },
 	} = useForm({ mode: 'onSubmit' });
 
-	const [loginError, setLoginError] = useState<string | null>();
+	const [signUpError, setSignUpError] = useState<string | null>();
+	const [forgotPasswordSuccess, setForgotPasswordSuccess] =
+		useState<boolean>(false);
 
 	const handleSocialLogin = async (
 		provider: GoogleAuthProvider | GithubAuthProvider,
@@ -62,7 +64,7 @@ const SignInModal = ({
 			})
 			.catch(err => {
 				if (authErrorCredentials(err.code)) {
-					setLoginError(
+					setSignUpError(
 						'Your credentials are incorrect. Please double-check your login details and try again.',
 					);
 				}
@@ -70,15 +72,21 @@ const SignInModal = ({
 	};
 
 	const handleSubmitEmail: SubmitHandler<FieldValues> = (data: FieldValues) => {
-		forgotPassword(data.email);
-		reset();
-
-		setOpen(false);
+		setForgotPasswordSuccess(false);
+		forgotPassword(data.email)
+			.then(() => {
+				reset();
+				// setOpen(false);
+				setForgotPasswordSuccess(true);
+			})
+			.catch(() => {
+				setForgotPasswordSuccess(true);
+			});
 	};
 
 	useEffect(() => {
 		const subscription = watch(() => {
-			setLoginError(null);
+			setSignUpError(null);
 		});
 
 		return () => subscription.unsubscribe();
@@ -116,9 +124,9 @@ const SignInModal = ({
 					</Box>
 
 					<Box sx={styles.form}>
-						{isSubmitted && (loginError || Object.keys(errors).length > 0) && (
+						{isSubmitted && (signUpError || Object.keys(errors).length > 0) && (
 							<Alert variant='filled' severity='error'>
-								{loginError ?? 'The form contains errors'}
+								{signUpError ?? 'The form contains errors'}
 							</Alert>
 						)}
 
@@ -199,6 +207,13 @@ const SignInModal = ({
 						{isSubmitted && Object.keys(errors).length > 0 && (
 							<Alert variant='filled' severity='error'>
 								The form contains errors
+							</Alert>
+						)}
+
+						{isSubmitted && forgotPasswordSuccess && (
+							<Alert variant='filled' severity='success' color='success'>
+								If the email entered corresponds to an application user, you
+								will receive an email with instructions to reset your password
 							</Alert>
 						)}
 

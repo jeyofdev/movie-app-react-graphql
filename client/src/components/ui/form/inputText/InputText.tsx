@@ -31,7 +31,9 @@ const InputText = ({
 	const { themeMode } = useContext(ThemeContext);
 
 	const [showPassword, setShowPassword] = useState(false);
-	const [type, setType] = useState<'text' | 'password'>('text');
+	const [type, setType] = useState<'text' | 'password'>(
+		password ? 'password' : 'text',
+	);
 
 	return (
 		<Box>
@@ -70,7 +72,7 @@ const InputText = ({
 									password ? (
 										<InputAdornment position='end'>
 											<FontAwesomeIcon
-												icon={showPassword ? faEyeSlash : faEye}
+												icon={!showPassword ? faEyeSlash : faEye}
 												color={theme.palette.common.black}
 												style={styles.inputIconShowPassword(themeMode)}
 												onClick={() => {
