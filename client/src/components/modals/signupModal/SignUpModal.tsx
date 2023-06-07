@@ -3,7 +3,12 @@ import SocialButton from '@components/ui/Button/socialButton/SocialButton';
 import InputText from '@components/ui/form/inputText/InputText';
 import Modal from '@components/ui/modals/Modal';
 import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import {
+	faEnvelope,
+	faLock,
+	faTriangleExclamation,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Alert, Box, Button, Typography, useTheme } from '@mui/material';
 import { signUp, socialMediaAuth } from '@services/auth';
 import { githubProvider, googleProvider } from '@services/auth.providers';
@@ -120,7 +125,20 @@ const SignUpModal = ({
 				>
 					<Box sx={styles.form}>
 						{isSubmitted && (loginError || Object.keys(errors).length > 0) && (
-							<Alert variant='filled' severity='error'>
+							<Alert
+								variant='filled'
+								severity='error'
+								sx={styles.alertDanger}
+								iconMapping={{
+									error: (
+										<FontAwesomeIcon
+											icon={faTriangleExclamation}
+											color={theme.palette.error.main}
+											style={styles.alertIcon}
+										/>
+									),
+								}}
+							>
 								{loginError ?? 'The form contains errors'}
 							</Alert>
 						)}

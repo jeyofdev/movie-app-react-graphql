@@ -22,11 +22,11 @@ const DetailsMovieCard = ({
 	return (
 		<Box sx={styles.root(backdrop_path as string)}>
 			<Box sx={styles.content}>
-				{vote_average && (
+				{vote_average ? (
 					<Box sx={styles.voteBox}>
 						<VoteAverage voteAverage={vote_average as number} hasBackground />
 					</Box>
-				)}
+				) : null}
 
 				<ImageThumb
 					src={poster_path as string}
