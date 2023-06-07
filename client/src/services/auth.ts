@@ -30,18 +30,13 @@ export const logOut = () => {
 };
 
 export const signUp = (email: string, password: string) =>
-	createUserWithEmailAndPassword(auth, email, password)
-		.then(res => res.user)
-		.catch(err => {
-			console.log(err.message);
-		});
+	createUserWithEmailAndPassword(auth, email, password);
 
 export const signIn = (email: string, password: string) =>
-	signInWithEmailAndPassword(auth, email, password)
-		.then(res => res.user)
-		.catch(err => {
-			console.log(err.message);
-		});
+	signInWithEmailAndPassword(auth, email, password);
 
 export const forgotPassword = (email: string) =>
 	sendPasswordResetEmail(auth, email);
+
+export const authErrorCredentials = (errorCode: string) =>
+	errorCode === 'auth/user-not-found' || errorCode === 'auth/wrong-password';

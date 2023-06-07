@@ -8,6 +8,7 @@ import { Alert, Box, Button, Typography, useTheme } from '@mui/material';
 import { signUp, socialMediaAuth } from '@services/auth';
 import { githubProvider, googleProvider } from '@services/auth.providers';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { useEffect, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { SignUpModalPropsType } from '../../../types/types/props';
 import validation from '../../../validation';
@@ -29,8 +30,11 @@ const SignUpModal = ({
 		handleSubmit,
 		reset,
 		getValues,
+		watch,
 		formState: { errors, isSubmitted },
 	} = useForm({ mode: 'onSubmit' });
+
+	const [loginError, setLoginError] = useState<string | null>();
 
 	const handleSocialLogin = async (
 		provider: GoogleAuthProvider | GithubAuthProvider,
@@ -40,11 +44,25 @@ const SignUpModal = ({
 	};
 
 	const handleEmailLogin: SubmitHandler<FieldValues> = (data: FieldValues) => {
-		signUp(data.email, data.password);
-		reset();
-
-		setOpen(false);
+		signUp(data.email, data.password)
+			.then(() => {
+				reset();
+				setOpen(false);
+			})
+			.catch(err => {
+				if (err.code === 'auth/email-already-in-use') {
+					setLoginError('An account is already registered with your email.');
+				}
+			});
 	};
+
+	useEffect(() => {
+		const subscription = watch(() => {
+			setLoginError(null);
+		});
+
+		return () => subscription.unsubscribe();
+	}, [watch]);
 
 	return (
 		<>
@@ -96,9 +114,9 @@ const SignUpModal = ({
 					resetForm={reset}
 				>
 					<Box sx={styles.form}>
-						{isSubmitted && Object.keys(errors).length > 0 && (
+						{isSubmitted && (loginError || Object.keys(errors).length > 0) && (
 							<Alert variant='filled' severity='error'>
-								The form contains errors
+								{loginError ?? 'The form contains errors'}
 							</Alert>
 						)}
 

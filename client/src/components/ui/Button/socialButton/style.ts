@@ -7,10 +7,7 @@ const useStyles = (theme: Theme) => ({
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'space-between',
-		minWidth: {
-			xs: 246,
-			md: 300,
-		},
+		width: '100%',
 		padding: theme.spacing(2),
 		borderRadius: '10px',
 

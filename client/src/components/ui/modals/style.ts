@@ -73,7 +73,7 @@ const useStyles = (theme: Theme) => ({
 		padding: `0px ${theme.spacing(1.5)}`,
 		maxWidth: {
 			xs: 270,
-			sm: 'none',
+			sm: 300,
 		},
 	},
 	title: {
