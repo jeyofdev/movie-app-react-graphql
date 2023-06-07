@@ -15,9 +15,9 @@ import {
 import { forgotPassword, signIn, socialMediaAuth } from '@services/auth';
 import { githubProvider, googleProvider } from '@services/auth.providers';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import { ChangeEvent, useState } from 'react';
-import { ForgotDatasType, FormDatasLoginType } from '../../../types';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { SignInModalPropsType } from '../../../types/types/props';
+import validation from '../../../validation';
 import useStyles from './style';
 
 const SignInModal = ({
@@ -31,23 +31,12 @@ const SignInModal = ({
 	const theme = useTheme();
 	const styles = useStyles(theme);
 
-	const [error, setError] = useState('');
-	const [loginFormDatas, setLoginFormDatas] = useState<FormDatasLoginType>({
-		email: '',
-		password: '',
-	});
-
-	const [forgotFormDatas, setForgotFormDatas] = useState<ForgotDatasType>({
-		email: '',
-	});
-
-	const handleChangeLogin = (e: ChangeEvent<HTMLInputElement>) => {
-		setLoginFormDatas({ ...loginFormDatas, [e.target.name]: e.target.value });
-	};
-
-	const handleChangeForgot = (e: ChangeEvent<HTMLInputElement>) => {
-		setForgotFormDatas({ ...forgotFormDatas, [e.target.name]: e.target.value });
-	};
+	const {
+		control,
+		handleSubmit,
+		reset,
+		formState: { errors, isSubmitted },
+	} = useForm({ mode: 'onSubmit' });
 
 	const handleSocialLogin = async (
 		provider: GoogleAuthProvider | GithubAuthProvider,
@@ -56,34 +45,17 @@ const SignInModal = ({
 		setOpen(false);
 	};
 
-	const handleSubmitLogin = () => {
-		if (!loginFormDatas.email || !loginFormDatas.password) {
-			setError('All form fields are required');
-		} else {
-			signIn(loginFormDatas.email, loginFormDatas.password);
-
-			setLoginFormDatas({
-				email: '',
-				password: '',
-			});
-
-			setOpen(false);
-		}
+	const handleSubmitLogin: SubmitHandler<FieldValues> = (data: FieldValues) => {
+		signIn(data.email, data.password);
+		reset();
+		setOpen(false);
 	};
 
-	const handleSubmitEmail = () => {
-		if (!forgotFormDatas.email) {
-			setError('All form fields are required');
-		} else {
-			forgotPassword(forgotFormDatas.email);
+	const handleSubmitEmail: SubmitHandler<FieldValues> = (data: FieldValues) => {
+		forgotPassword(data.email);
+		reset();
 
-			setLoginFormDatas({
-				email: '',
-				password: '',
-			});
-
-			setOpen(false);
-		}
+		setOpen(false);
 	};
 
 	return (
@@ -118,34 +90,34 @@ const SignInModal = ({
 					</Box>
 
 					<Box sx={styles.form}>
-						{error && (
+						{isSubmitted && Object.keys(errors).length > 0 && (
 							<Alert variant='filled' severity='error'>
-								{error}
+								The form contains errors
 							</Alert>
 						)}
 
 						<Box sx={styles.inputsBox}>
 							<Box>
 								<InputText
+									control={control}
 									label='Email'
 									id='email'
 									name='email'
 									placeholder='ex. username@gmail.com'
 									icon={faEnvelope}
-									value={loginFormDatas.email}
-									onChange={handleChangeLogin}
+									validation={validation?.email}
 								/>
 							</Box>
 							<Box>
 								<InputText
+									control={control}
 									password
 									label='Password'
 									id='password'
 									name='password'
 									placeholder='************'
 									icon={faLock}
-									value={loginFormDatas.password}
-									onChange={handleChangeLogin}
+									validation={validation?.password}
 								/>
 								<Box
 									sx={{
@@ -155,7 +127,10 @@ const SignInModal = ({
 								>
 									<RedirectWithTextButton
 										labelBtn='Forgot password'
-										onClick={() => setStep(2)}
+										onClick={() => {
+											reset();
+											setStep(2);
+										}}
 									/>
 								</Box>
 							</Box>
@@ -164,7 +139,7 @@ const SignInModal = ({
 						<Button
 							sx={styles.btnSubmit}
 							variant='contained'
-							onClick={handleSubmitLogin}
+							onClick={handleSubmit(handleSubmitLogin)}
 						>
 							<Typography variant='h6' sx={styles.btnSubmitTypo}>
 								Log in
@@ -176,7 +151,10 @@ const SignInModal = ({
 						<RedirectWithTextButton
 							labelBtn='Sign up'
 							content="Don't have an account ?"
-							onClick={onRedirect}
+							onClick={() => {
+								reset();
+								onRedirect();
+							}}
 						/>
 					</Box>
 				</Modal>
@@ -190,24 +168,25 @@ const SignInModal = ({
 					back
 					title={title?.stepTwo}
 					setStep={setStep}
+					resetForm={reset}
 				>
 					<Box sx={styles.form}>
-						{error && (
+						{isSubmitted && Object.keys(errors).length > 0 && (
 							<Alert variant='filled' severity='error'>
-								{error}
+								The form contains errors
 							</Alert>
 						)}
 
 						<Box sx={styles.inputsBox}>
 							<Box>
 								<InputText
+									control={control}
 									label='Email'
 									id='email'
 									name='email'
 									placeholder='ex. username@gmail.com'
 									icon={faEnvelope}
-									value={forgotFormDatas.email}
-									onChange={handleChangeForgot}
+									validation={validation?.email}
 								/>
 							</Box>
 						</Box>
@@ -215,10 +194,10 @@ const SignInModal = ({
 						<Button
 							sx={styles.btnSubmit}
 							variant='contained'
-							onClick={handleSubmitEmail}
+							onClick={handleSubmit(handleSubmitEmail)}
 						>
 							<Typography variant='h6' sx={styles.btnSubmitTypo}>
-								Log in
+								Enjoy
 							</Typography>
 						</Button>
 					</Box>
@@ -227,7 +206,10 @@ const SignInModal = ({
 						<RedirectWithTextButton
 							labelBtn='Sign up'
 							content="Don't have an account ?"
-							onClick={onRedirect}
+							onClick={() => {
+								reset();
+								onRedirect();
+							}}
 						/>
 					</Box>
 				</Modal>

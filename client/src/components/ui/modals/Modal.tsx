@@ -13,6 +13,7 @@ const Modal = ({
 	back,
 	title,
 	setStep,
+	resetForm,
 	children,
 }: ModalPropsType) => {
 	const theme = useTheme();
@@ -49,7 +50,12 @@ const Modal = ({
 						<Button
 							variant='text'
 							sx={styles.iconBtn}
-							onClick={() => (setStep ? setStep(1) : {})}
+							onClick={() => {
+								// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+								resetForm ? resetForm() : null;
+								// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+								setStep ? setStep(1) : null;
+							}}
 						>
 							<FontAwesomeIcon
 								icon={faChevronLeft}
