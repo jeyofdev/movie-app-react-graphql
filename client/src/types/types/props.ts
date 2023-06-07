@@ -186,6 +186,7 @@ export type ModalPropsType = {
 	open: boolean;
 	setOpen: Dispatch<SetStateAction<boolean>>;
 	close?: boolean;
+	onClose: unknown;
 	back?: boolean;
 	setStep?: Dispatch<SetStateAction<number>>;
 	title: string | ReactNode;

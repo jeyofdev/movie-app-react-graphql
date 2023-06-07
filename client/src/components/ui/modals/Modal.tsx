@@ -9,6 +9,7 @@ import useStyles from './style';
 const Modal = ({
 	open,
 	setOpen,
+	onClose,
 	close,
 	back,
 	title,
@@ -21,6 +22,7 @@ const Modal = ({
 	const { themeMode } = useContext(ThemeContext);
 
 	const handleClose = () => {
+		onClose();
 		setOpen(false);
 	};
 

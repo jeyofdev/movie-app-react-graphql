@@ -71,6 +71,7 @@ const SignUpModal = ({
 					open={open}
 					setOpen={() => setOpen(false)}
 					close
+					onClose={() => reset()}
 					title={title?.stepOne}
 				>
 					<Box sx={styles.socialBtns}>
@@ -97,7 +98,10 @@ const SignUpModal = ({
 						<RedirectWithTextButton
 							labelBtn='Log in'
 							content='Already a member ?'
-							onClick={onRedirect}
+							onClick={() => {
+								setStep(1);
+								onRedirect();
+							}}
 						/>
 					</Box>
 				</Modal>
@@ -108,6 +112,7 @@ const SignUpModal = ({
 					open={open}
 					setOpen={() => setOpen(false)}
 					close
+					onClose={() => reset()}
 					back
 					title={title?.stepTwo}
 					setStep={setStep}
@@ -175,6 +180,7 @@ const SignUpModal = ({
 							content='Already a member ?'
 							onClick={() => {
 								reset();
+								setStep(1);
 								onRedirect();
 							}}
 						/>
