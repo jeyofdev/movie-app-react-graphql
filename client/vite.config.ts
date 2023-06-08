@@ -1,9 +1,25 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import svgr from 'vite-plugin-svgr';
+import { lingui } from '@lingui/vite-plugin';
 
 export default defineConfig({
-	plugins: [react()],
+	plugins: [
+		react({
+			babel: {
+				babelrc: true,
+			},
+		}),
+		svgr({
+			exportAsDefault: false,
+			svgrOptions: {},
+			esbuildOptions: {},
+			include: '**/*.svg',
+			exclude: '',
+		}),
+		lingui(),
+	],
 	resolve: {
 		alias: {
 			'@pages': `${path.resolve(__dirname, 'src/pages')}`,

@@ -13,7 +13,8 @@ const useStyles = (theme: Theme) => ({
 	},
 	searchBox: {
 		gridColumn: {
-			xs: '1 / span 9',
+			xs: '1 / span 8',
+			sm: '1 / span 8',
 			md: '1 / span 9',
 			lg: '1 / span 6',
 			xl: '1 / span 5',
@@ -21,8 +22,8 @@ const useStyles = (theme: Theme) => ({
 	},
 	LinksBox: {
 		gridColumn: {
-			xs: '10 / span 3',
-			sm: '10 / span 3',
+			xs: '10 / span 4',
+			sm: '9 / span 4',
 			md: '11 / span 2',
 			lg: '11 / span 2',
 			xl: '12 / span 1',
