@@ -1,6 +1,6 @@
 import SignInModal from '@components/modals/signInModal/SignInModal';
 import SignUpModal from '@components/modals/signUpModal/SignUpModal';
-import SelectCountry from '@components/ui/selectCountry/SelectCountry';
+import SelectLang from '@components/ui/selectLang/SelectLang';
 import UserMenu from '@components/ui/userMenu/UserMenu';
 import { ThemeContext } from '@context/ThemeContext';
 import {
@@ -129,7 +129,7 @@ const Topbar = () => {
 					)}
 				</Box>
 				<Box sx={styles.LinksBox}>
-					<SelectCountry />
+					<SelectLang />
 					<Button
 						color='primary'
 						onClick={() => {

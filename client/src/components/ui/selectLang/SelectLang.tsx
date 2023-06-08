@@ -1,4 +1,5 @@
 import { ThemeContext } from '@context/ThemeContext';
+import { TranslationContext } from '@context/TranslationContext';
 import {
 	Box,
 	FormControl,
@@ -16,26 +17,25 @@ import { ReactComponent as England } from '../../../assets/flags/england.svg';
 import { ReactComponent as France } from '../../../assets/flags/france.svg';
 import { ReactComponent as Germany } from '../../../assets/flags/germany.svg';
 import { ReactComponent as Spain } from '../../../assets/flags/spain.svg';
-import { ReactComponent as UnitedState } from '../../../assets/flags/united-state.svg';
+import { LocaleEnum } from '../../../types/enums';
 
 const countries = [
-	{ id: uuidv4(), label: 'France', locale: 'fr_FR' },
-	{ id: uuidv4(), label: 'England', locale: 'en_EN' },
-	{ id: uuidv4(), label: 'United State', locale: 'en_US' },
-	{ id: uuidv4(), label: 'Spain', locale: 'es_ES' },
-	{ id: uuidv4(), label: 'Germany', locale: 'de_DE' },
+	{ id: uuidv4(), label: 'English', locale: LocaleEnum.EN },
+	{ id: uuidv4(), label: 'French', locale: LocaleEnum.FR },
+	{ id: uuidv4(), label: 'Spanish', locale: LocaleEnum.ES },
+	{ id: uuidv4(), label: 'German', locale: LocaleEnum.DE },
 ];
 
-const SelectCountry = () => {
+const SelectLang = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const { themeMode } = useContext(ThemeContext);
+	const { currentLocale, handleLocale } = useContext(TranslationContext);
 
-	const [country, setCountry] = useState('en_EN');
 	const [open, setOpen] = useState(false);
 
 	const handleChange = (e: SelectChangeEvent) => {
-		setCountry(e.target.value as string);
+		handleLocale(e.target.value as LocaleEnum);
 	};
 
 	const handleClose = () => {
@@ -48,15 +48,13 @@ const SelectCountry = () => {
 
 	const getFlag = (locale: string) => {
 		switch (locale) {
-			case 'fr_FR':
+			case 'fr':
 				return <France style={styles.flag} />;
-			case 'en_EN':
+			case 'en':
 				return <England style={styles.flag} />;
-			case 'en_US':
-				return <UnitedState style={styles.flag} />;
-			case 'es_ES':
+			case 'es':
 				return <Spain style={styles.flag} />;
-			case 'de_DE':
+			case 'de':
 				return <Germany style={styles.flag} />;
 
 			default:
@@ -73,8 +71,8 @@ const SelectCountry = () => {
 					open={open}
 					onClose={handleClose}
 					onOpen={handleOpen}
-					value={country}
-					name='country'
+					value={currentLocale}
+					name='lang'
 					onChange={handleChange}
 					inputProps={{
 						id: 'open-select',
@@ -105,4 +103,4 @@ const SelectCountry = () => {
 	);
 };
 
-export default SelectCountry;
+export default SelectLang;
