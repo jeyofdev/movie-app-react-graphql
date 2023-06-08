@@ -9,17 +9,26 @@
 		"lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
 		"test": "vitest",
-		"codegen": "graphql-codegen --config codegen.ts"
+		"codegen": "graphql-codegen --config codegen.ts",
+		"extract": "lingui extract",
+		"compile": "lingui compile"
 	},
 	"dependencies": {
 		"@apollo/client": "^3.7.14",
+		"@babel/core": "^7.22.1",
 		"@graphql-codegen/add": "^4.0.1",
+		"@lingui/cli": "^4.2.1",
+		"@lingui/macro": "^4.2.1",
+		"@lingui/react": "^4.2.1",
+		"@lingui/vite-plugin": "^4.2.1",
+		"babel-plugin-macros": "^3.1.0",
 		"firebase": "^9.22.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-firebase-hooks": "^5.1.1",
 		"react-router-dom": "^6.11.1",
 		"swiper": "^9.3.2",
+		"uninstall": "^0.0.0",
 		"vite-plugin-svgr": "^3.2.0"
 	},
 	"devDependencies": {
