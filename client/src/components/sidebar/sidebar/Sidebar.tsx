@@ -12,6 +12,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Genre, useGenresQuery } from '@graphql/__generated__/graphql-type';
 import useWindowSize from '@hooks/useWindowSize';
+import { Trans } from '@lingui/macro';
 import { Box, Divider, Typography, useTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -126,7 +127,7 @@ const Sidebar = () => {
 							style={styles.topIcon}
 						/>
 						<Typography variant='h4' sx={styles.topTitle}>
-							Movies
+							<Trans>Movies</Trans>
 						</Typography>
 					</Box>
 
