@@ -20,6 +20,10 @@ const App = () => {
 		loadCatalog(currentLocale);
 	}, [currentLocale]);
 
+	useEffect(() => {
+		loadCatalog('en');
+	}, []);
+
 	return (
 		<I18nProvider i18n={i18n}>
 			<ThemeProvider
