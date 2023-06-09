@@ -9,7 +9,7 @@ import { useContext, useEffect } from 'react';
 import loadCatalog from './i18n';
 import MainRouter from './router/MainRouter';
 import useStyles from './style';
-import { DarkModeEnum } from './types/enums';
+import { DarkModeEnum, LocaleEnum } from './types/enums';
 
 const App = () => {
 	const { themeMode } = useContext(ThemeContext);
@@ -21,7 +21,7 @@ const App = () => {
 	}, [currentLocale]);
 
 	useEffect(() => {
-		loadCatalog('en');
+		loadCatalog(LocaleEnum.EN);
 	}, []);
 
 	return (

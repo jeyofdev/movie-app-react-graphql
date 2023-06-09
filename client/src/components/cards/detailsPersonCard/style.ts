@@ -116,6 +116,9 @@ const useStyles = (theme: Theme) => ({
 			lg: '5 / span 6',
 			xl: '5 / span 6',
 		},
+		marginTop: {
+			lg: theme.spacing(4),
+		},
 	},
 	viewMoreBtn: {
 		backgroundColor: theme.palette.primary.main,
@@ -128,6 +131,7 @@ const useStyles = (theme: Theme) => ({
 	},
 	viewMoreTypo: {
 		color: theme.palette.primary.contrastText,
+		textTransform: 'none',
 	},
 });
 

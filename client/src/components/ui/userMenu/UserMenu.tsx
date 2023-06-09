@@ -2,6 +2,8 @@ import UserMenuItem from '@components/items/userMenuItem/UserMenuItem';
 import { ThemeContext } from '@context/ThemeContext';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { t } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import { Box, Button, Divider, Menu, useTheme } from '@mui/material';
 import { logOut } from '@services/auth';
 import { auth } from '@services/firebase';
@@ -14,6 +16,7 @@ const UserMenu = ({ onClickLogin, onClickSignUp }: UserMenuPropsType) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const [user] = useAuthState(auth);
+	useLingui();
 	const { themeMode } = useContext(ThemeContext);
 
 	const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -59,7 +62,7 @@ const UserMenu = ({ onClickLogin, onClickSignUp }: UserMenuPropsType) => {
 				{!user ? (
 					<Box sx={styles.menuItemsBox}>
 						<UserMenuItem
-							label='Log in'
+							label={t`Login`}
 							onClick={e => {
 								onClickLogin(e);
 								handleCloseUserMenu();
@@ -69,7 +72,7 @@ const UserMenu = ({ onClickLogin, onClickSignUp }: UserMenuPropsType) => {
 						<Divider sx={styles.divider(themeMode)} />
 
 						<UserMenuItem
-							label='Sign up'
+							label={t`Sign up`}
 							onClick={e => {
 								onClickSignUp(e);
 								handleCloseUserMenu();
@@ -79,7 +82,7 @@ const UserMenu = ({ onClickLogin, onClickSignUp }: UserMenuPropsType) => {
 				) : (
 					<Box>
 						<UserMenuItem
-							label='Log out'
+							label={t`Logout`}
 							onClick={() => {
 								logOut();
 								handleCloseUserMenu();

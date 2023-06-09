@@ -1,5 +1,7 @@
 import ImageThumb from '@components/ui/images/imageThumb/ImageThumb';
 import PersonInfo from '@components/ui/personInfo/PersonInfo';
+import { t } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import { Box, Button, Typography, useTheme } from '@mui/material';
 import { getAge, getAgeBetweenTwoDate, truncate } from '@utils/index';
 import { useState } from 'react';
@@ -19,6 +21,7 @@ const DetailsPersonCard = ({
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
+	useLingui();
 
 	const [viewMoreDescription, setViewMoreDescription] = useState(false);
 
@@ -49,7 +52,7 @@ const DetailsPersonCard = ({
 			{birthday && (
 				<Box sx={{ ...styles.infoBox, ...styles.birthdayBox }}>
 					<PersonInfo
-						title='Birthday'
+						title={t`Date of birth`}
 						value={birthday as string}
 						subValue={!deathday ? getAge(birthday as string) : null}
 						subValueEnd='years old'
@@ -59,30 +62,31 @@ const DetailsPersonCard = ({
 
 			{deathday && (
 				<Box sx={{ ...styles.infoBox, ...styles.deathdayBox }}>
-					{deathday && (
-						<PersonInfo
-							title='Deathday'
-							value={deathday as string}
-							subValue={
-								deathday &&
-								getAgeBetweenTwoDate(birthday as string, deathday as string)
-							}
-							subValueEnd='years old'
-						/>
-					)}
+					<PersonInfo
+						title={t`Deathday`}
+						value={deathday as string}
+						subValue={getAgeBetweenTwoDate(
+							birthday as string,
+							deathday as string,
+						)}
+						subValueEnd='years old'
+					/>
 				</Box>
 			)}
 
 			{place_of_birth && (
 				<Box sx={{ ...styles.infoBox, ...styles.placeBirthBox }}>
-					<PersonInfo title='Place of Birth' value={place_of_birth as string} />
+					<PersonInfo
+						title={t`Place of Birth`}
+						value={place_of_birth as string}
+					/>
 				</Box>
 			)}
 
 			{biography && (
 				<Box sx={{ ...styles.infoBox, ...styles.descriptionBox }}>
 					<PersonInfo
-						title='Description'
+						title={t`Description`}
 						value={
 							viewMoreDescription
 								? (biography as string)
@@ -97,7 +101,7 @@ const DetailsPersonCard = ({
 							onClick={() => setViewMoreDescription(!viewMoreDescription)}
 						>
 							<Typography variant='body1' sx={styles.viewMoreTypo}>
-								{!viewMoreDescription ? 'View more' : 'hide'}
+								{!viewMoreDescription ? t`View more` : t`hide`}
 							</Typography>
 						</Button>
 					)}

@@ -10,6 +10,8 @@ import {
 	faTriangleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Trans, t } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import {
 	Alert,
 	Box,
@@ -42,6 +44,7 @@ const SignInModal = ({
 }: SignInModalPropsType) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
+	useLingui();
 
 	const {
 		control,
@@ -71,7 +74,7 @@ const SignInModal = ({
 			.catch(err => {
 				if (authErrorCredentials(err.code)) {
 					setSignUpError(
-						'Your credentials are incorrect. Please double-check your login details and try again.',
+						t`Your credentials are incorrect. Please double-check your login details and try again.`,
 					);
 				}
 			});
@@ -111,13 +114,13 @@ const SignInModal = ({
 					<Box sx={styles.socialBtns}>
 						<SocialButton
 							icon={faGoogle}
-							label='Continue with Google'
+							label={`${t`Continue with`} Google`}
 							onClick={() => handleSocialLogin(googleProvider)}
 						/>
 
 						<SocialButton
 							icon={faGithub}
-							label='Continue with GitHub'
+							label={`${t`Continue with`} GitHub`}
 							onClick={() => handleSocialLogin(githubProvider)}
 						/>
 					</Box>
@@ -126,7 +129,7 @@ const SignInModal = ({
 						<Box sx={styles.divider}>
 							<Divider sx={styles.dividerContent}>
 								<Typography variant='body2' sx={styles.dividerTypo}>
-									or
+									<Trans>or</Trans>
 								</Typography>
 							</Divider>
 						</Box>
@@ -148,7 +151,7 @@ const SignInModal = ({
 									),
 								}}
 							>
-								{signUpError ?? 'The form contains errors'}
+								{signUpError ?? t`The form contains errors`}
 							</Alert>
 						)}
 
@@ -156,10 +159,10 @@ const SignInModal = ({
 							<Box>
 								<InputText
 									control={control}
-									label='Email'
+									label={t`Email`}
 									id='email'
 									name='email'
-									placeholder='ex. username@gmail.com'
+									placeholder='username@gmail.com'
 									icon={faEnvelope}
 									validation={validation?.email}
 								/>
@@ -168,7 +171,7 @@ const SignInModal = ({
 								<InputText
 									control={control}
 									password
-									label='Password'
+									label={t`Password`}
 									id='password'
 									name='password'
 									placeholder='************'
@@ -182,7 +185,7 @@ const SignInModal = ({
 									}}
 								>
 									<RedirectWithTextButton
-										labelBtn='Forgot password'
+										labelBtn={t`Forgot your password`}
 										onClick={() => {
 											reset();
 											setStep(2);
@@ -197,15 +200,15 @@ const SignInModal = ({
 							onClick={handleSubmit(handleSubmitLogin)}
 						>
 							<Typography variant='h6' sx={styles.btnSubmitTypo}>
-								Log in
+								<Trans>Login</Trans>
 							</Typography>
 						</Button>
 					</Box>
 
 					<Box sx={styles.redirectBox}>
 						<RedirectWithTextButton
-							labelBtn='Sign up'
-							content="Don't have an account ?"
+							labelBtn={t`Sign up`}
+							content={t`Don't have an account ?`}
 							onClick={() => {
 								reset();
 								setStep(1);
@@ -243,7 +246,7 @@ const SignInModal = ({
 									),
 								}}
 							>
-								The form contains errors
+								<Trans>The form contains errors</Trans>
 							</Alert>
 						)}
 
@@ -263,8 +266,10 @@ const SignInModal = ({
 									),
 								}}
 							>
-								If the email entered corresponds to an application user, you
-								will receive an email with instructions to reset your password
+								<Trans>
+									If the email entered corresponds to an application user, you
+									will receive an email with instructions to reset your password
+								</Trans>
 							</Alert>
 						)}
 
@@ -272,10 +277,10 @@ const SignInModal = ({
 							<Box>
 								<InputText
 									control={control}
-									label='Email'
+									label={t`Email`}
 									id='email'
 									name='email'
-									placeholder='ex. username@gmail.com'
+									placeholder='username@gmail.com'
 									icon={faEnvelope}
 									validation={validation?.email}
 								/>
@@ -288,15 +293,15 @@ const SignInModal = ({
 							onClick={handleSubmit(handleSubmitEmail)}
 						>
 							<Typography variant='h6' sx={styles.btnSubmitTypo}>
-								Enjoy
+								<Trans>Send</Trans>
 							</Typography>
 						</Button>
 					</Box>
 
 					<Box sx={styles.redirectBox}>
 						<RedirectWithTextButton
-							labelBtn='Sign up'
-							content="Don't have an account ?"
+							labelBtn={t`Sign up`}
+							content={t`Don't have an account ?`}
 							onClick={() => {
 								reset();
 								setStep(1);
