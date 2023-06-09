@@ -9,6 +9,8 @@ import {
 	faSun,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { t } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import {
 	Box,
 	Button,
@@ -35,6 +37,7 @@ const Topbar = () => {
 	const styles = useStyles(theme);
 	const navigate = useNavigate();
 	const { width } = useWindowSize();
+	useLingui();
 
 	const { themeMode, handleThemeMode } = useContext(ThemeContext);
 
@@ -105,7 +108,7 @@ const Topbar = () => {
 							<Input
 								sx={styles.searchInput}
 								type={'text'}
-								placeholder='Search movie...'
+								placeholder={t`Search movie...`}
 								value={search}
 								onChange={handleChange}
 								onKeyUp={handleKeyUp}
@@ -163,8 +166,8 @@ const Topbar = () => {
 				step={signInStep}
 				setStep={setSignInStep}
 				title={{
-					stepOne: 'Sign up',
-					stepTwo: 'Finish Signing up',
+					stepOne: t`Sign up`,
+					stepTwo: t`Finish Signing up`,
 				}}
 				onRedirect={() => {
 					setShowModalSignIn(true);
@@ -178,8 +181,8 @@ const Topbar = () => {
 				step={logInStep}
 				setStep={setLogInStep}
 				title={{
-					stepOne: 'Log in',
-					stepTwo: 'Forgot Password ?',
+					stepOne: t`Login`,
+					stepTwo: t`Forgot your password ?`,
 				}}
 				onRedirect={() => {
 					setShowModalSignUp(true);

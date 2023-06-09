@@ -6,7 +6,227 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: es\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:130
+#: src/components/modals/signUpModal/SignUpModal.tsx:108
+#: src/components/modals/signUpModal/SignUpModal.tsx:201
+msgid "Already a member ?"
+msgstr "Ya eres usuario ?"
+
+#: src/components/modals/signUpModal/SignUpModal.tsx:62
+msgid "An account is already in use with this email."
+msgstr "Ya hay una cuenta en uso con este correo electrónico."
+
+#: src/components/sidebar/sidebar/Sidebar.tsx:34
+#: src/components/sidebar/sidebar/Sidebar.tsx:91
+msgid "browse"
+msgstr "navegar"
+
+#: src/components/cards/detailsMovieCard/DetailsMovieCard.tsx:61
+msgid "Cast"
+msgstr "Elenco"
+
+#: src/components/modals/signInModal/SignInModal.tsx:117
+#: src/components/modals/signInModal/SignInModal.tsx:123
+#: src/components/modals/signUpModal/SignUpModal.tsx:88
+#: src/components/modals/signUpModal/SignUpModal.tsx:94
+msgid "Continue with"
+msgstr "Continua con"
+
+#: src/components/modals/signUpModal/SignUpModal.tsx:100
+msgid "Continue with email"
+msgstr "Continuar con el correo electrónico"
+
+#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:55
+msgid "Date of birth"
+msgstr "Fecha de nacimiento"
+
+#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:66
+msgid "Deathday"
+msgstr "Fecha de muerte"
+
+#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:89
+msgid "Description"
+msgstr "Descripción"
+
+#: src/components/modals/signInModal/SignInModal.tsx:211
+#: src/components/modals/signInModal/SignInModal.tsx:304
+msgid "Don't have an account ?"
+msgstr "¿No tienes una cuenta?"
+
+#: src/components/modals/signInModal/SignInModal.tsx:162
+#: src/components/modals/signInModal/SignInModal.tsx:280
+#: src/components/modals/signUpModal/SignUpModal.tsx:152
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: src/components/topbar/Topbar.tsx:170
+msgid "Finish Signing up"
+msgstr "Terminar de registrarse"
+
+#: src/components/modals/signInModal/SignInModal.tsx:188
+msgid "Forgot your password"
+msgstr "Olvidaste tu contraseña"
+
+#: src/components/topbar/Topbar.tsx:185
+msgid "Forgot your password ?"
+msgstr "Olvidaste tu contraseña ?"
+
+#: src/components/sidebar/sidebar/Sidebar.tsx:146
+msgid "Genres"
+msgstr "Géneros"
+
+#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:104
+#: src/components/sidebar/sidebar/Sidebar.tsx:163
+msgid "hide"
+msgstr "esconder"
+
+#: src/components/modals/signInModal/SignInModal.tsx:269
+msgid "If the email entered corresponds to an application user, you will receive an email with instructions to reset your password"
+msgstr "Si el correo ingresado corresponde a un usuario de la aplicación, recibirá un correo con instrucciones para restablecer su contraseña"
+
+#: src/components/ui/loader/Loader.tsx:14
+msgid "Loading..."
+msgstr "Cargando..."
+
+#: src/components/modals/signInModal/SignInModal.tsx:203
+#: src/components/modals/signUpModal/SignUpModal.tsx:107
+#: src/components/modals/signUpModal/SignUpModal.tsx:200
+#: src/components/topbar/Topbar.tsx:184
+#: src/components/ui/userMenu/UserMenu.tsx:65
+msgid "Login"
+msgstr "Acceder"
+
+#: src/components/ui/userMenu/UserMenu.tsx:85
+msgid "Logout"
+msgstr "Salir"
+
+#: src/components/sidebar/sidebar/Sidebar.tsx:132
 msgid "Movies"
 msgstr "películas"
+
+#: src/pages/person/Person.tsx:68
+msgid "Movies list"
+msgstr "Lista de películas"
+
+#: src/components/sidebar/sidebar/Sidebar.tsx:137
+msgid "News Feed"
+msgstr "Noticias"
+
+#: src/components/sidebar/sidebar/Sidebar.tsx:55
+msgid "now playing"
+msgstr "en cartelera hoy"
+
+#: src/pages/home/Home.tsx:197
+msgid "Now playing movies"
+msgstr "Películas en cartelera"
+
+#: src/components/modals/signInModal/SignInModal.tsx:132
+msgid "or"
+msgstr "o"
+
+#: src/components/modals/signInModal/SignInModal.tsx:174
+#: src/components/modals/signUpModal/SignUpModal.tsx:162
+msgid "Password"
+msgstr "Contraseña"
+
+#: src/components/modals/signUpModal/SignUpModal.tsx:172
+msgid "Password Confirmation"
+msgstr "Confirmación de contraseña"
+
+#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:80
+msgid "Place of Birth"
+msgstr "Lugar de nacimiento"
+
+#: src/components/sidebar/sidebar/Sidebar.tsx:43
+msgid "popular"
+msgstr "popular"
+
+#: src/pages/home/Home.tsx:122
+msgid "Popular movies"
+msgstr "Películas populares"
+
+#: src/components/topbar/Topbar.tsx:111
+msgid "Search movie..."
+msgstr "Buscar película..."
+
+#: src/components/modals/signInModal/SignInModal.tsx:296
+msgid "Send"
+msgstr "Enviar"
+
+#: src/components/sidebar/sidebar/Sidebar.tsx:163
+msgid "show more"
+msgstr "mostrar más"
+
+#: src/components/modals/signInModal/SignInModal.tsx:210
+#: src/components/modals/signInModal/SignInModal.tsx:303
+#: src/components/topbar/Topbar.tsx:169
+#: src/components/ui/userMenu/UserMenu.tsx:75
+msgid "Sign up"
+msgstr "Inscripción"
+
+#: src/components/modals/signUpModal/SignUpModal.tsx:193
+msgid "Sign up with email"
+msgstr "Registrarse con dirección de correo electrónico"
+
+#: src/validation/index.ts:8
+msgid "The email address is not in the correct format"
+msgstr "La dirección de correo electrónico no tiene el formato correcto"
+
+#: src/validation/index.ts:5
+msgid "The email field is required"
+msgstr "El campo de correo electrónico es obligatorio"
+
+#: src/components/modals/signInModal/SignInModal.tsx:154
+#: src/components/modals/signInModal/SignInModal.tsx:249
+#: src/components/modals/signUpModal/SignUpModal.tsx:145
+msgid "The form contains errors"
+msgstr "El formulario contiene errores."
+
+#: src/validation/index.ts:19
+msgid "The password confirm field is required"
+msgstr ""
+
+#: src/validation/index.ts:12
+msgid "The password field is required"
+msgstr ""
+
+#: src/validation/index.ts:15
+#: src/validation/index.ts:22
+msgid "The password must be at least 8 characters"
+msgstr "La contraseña debe tener al menos 8 caracteres"
+
+#: src/components/modals/signUpModal/SignUpModal.tsx:181
+msgid "The passwords must match"
+msgstr "Las contraseñas deben coincidir"
+
+#: src/components/sidebar/sidebar/Sidebar.tsx:49
+msgid "top rated"
+msgstr "mejor valoradas"
+
+#: src/pages/home/Home.tsx:172
+msgid "Top rated movies"
+msgstr "Películas mejor valoradas"
+
+#: src/components/sidebar/sidebar/Sidebar.tsx:37
+msgid "upcoming"
+msgstr "próximamente"
+
+#: src/pages/home/Home.tsx:147
+msgid "Upcoming movies"
+msgstr "Próximas películas"
+
+#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:104
+#: src/components/cards/previewMovieCard/MoviePreviewCard.tsx:60
+#: src/components/cards/selectedThumbsGalleryCard/SelectedThumbsGalleryCard.tsx:60
+msgid "View more"
+msgstr "Ver más"
+
+#: src/components/modals/signInModal/SignInModal.tsx:77
+msgid "Your credentials are incorrect. Please double-check your login details and try again."
+msgstr "Sus credenciales son incorrectas. Verifique su información de inicio de sesión y vuelva a intentarlo."

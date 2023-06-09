@@ -10,6 +10,8 @@ import {
 	useTopRatedMoviesQuery,
 	useUpcomingMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
+import { t } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import { Box, useTheme } from '@mui/material';
 import { useState } from 'react';
 import { MoviesListCategoryEnum } from '../../types/enums';
@@ -18,6 +20,8 @@ import useStyles from './style';
 const Home = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
+	useLingui();
+
 	const [nowPlayingMovies, setNowPlayingMovies] = useState<Array<Movie>>([]);
 	const [popularMovies, setPopularMovies] = useState<Array<Movie>>([]);
 	const [upComingMovies, setUpComingMovies] = useState<Array<Movie>>([]);
@@ -115,7 +119,7 @@ const Home = () => {
 
 				<Box sx={styles.sectionBox}>
 					<SwiperSection
-						title='Popular movies'
+						title={t`Popular movies`}
 						list={popularMovies}
 						linkAllResult='/movies/popular'
 						moviesListCategory={MoviesListCategoryEnum.POPULAR}
@@ -140,7 +144,7 @@ const Home = () => {
 
 				<Box sx={styles.sectionBox}>
 					<SwiperSection
-						title='Upcoming movies'
+						title={t`Upcoming movies`}
 						list={upComingMovies}
 						linkAllResult='/movies/upcoming'
 						moviesListCategory={MoviesListCategoryEnum.UP_COMING}
@@ -165,7 +169,7 @@ const Home = () => {
 
 				<Box sx={styles.sectionBox}>
 					<SwiperSection
-						title='Top rated'
+						title={t`Top rated movies`}
 						list={topRatedMovies}
 						linkAllResult='/movies/top-rated'
 						moviesListCategory={MoviesListCategoryEnum.TOP_RATING}
@@ -190,7 +194,7 @@ const Home = () => {
 
 				<Box sx={styles.sectionBox}>
 					<SwiperSection
-						title='Now Playing'
+						title={t`Now playing movies`}
 						list={nowPlayingMovies}
 						linkAllResult='/movies/now-playing'
 						moviesListCategory={MoviesListCategoryEnum.NOW_PLAYING}

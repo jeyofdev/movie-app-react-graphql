@@ -2,6 +2,8 @@ import SwiperSection from '@components/sections/swiperBlock/SwiperSection';
 import Tags from '@components/tags/Tags';
 import ImageThumb from '@components/ui/images/imageThumb/ImageThumb';
 import VoteAverage from '@components/ui/votes/average/VoteAverage';
+import { t } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import { Box, Typography, useTheme } from '@mui/material';
 import { DetailsMovieCardProps } from '../../../types/types/props';
 import useStyles from './style';
@@ -18,6 +20,7 @@ const DetailsMovieCard = ({
 }: DetailsMovieCardProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
+	useLingui();
 
 	return (
 		<Box sx={styles.root(backdrop_path as string)}>
@@ -55,7 +58,7 @@ const DetailsMovieCard = ({
 					{cast ? (
 						<SwiperSection
 							swiperType='person'
-							title='Cast'
+							title={t`Cast`}
 							list={cast}
 							titleStyle={{ color: theme.palette.common.white }}
 						/>

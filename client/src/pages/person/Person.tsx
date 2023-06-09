@@ -7,6 +7,7 @@ import {
 	useMoviesByCastPersonQuery,
 	usePersonDetailsQuery,
 } from '@graphql/__generated__/graphql-type';
+import { Trans } from '@lingui/macro';
 import { Box, Typography, useTheme } from '@mui/material';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -64,7 +65,7 @@ const Person = () => {
 
 			<Box sx={styles.listMoviesBox}>
 				<Typography variant='h5' sx={styles.listMoviesTitle}>
-					Movies list (
+					<Trans>Movies list</Trans> (
 					{moviesByCastPersonData?.moviesByCastPerson?.cast?.length})
 				</Typography>
 

@@ -12,7 +12,8 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Genre, useGenresQuery } from '@graphql/__generated__/graphql-type';
 import useWindowSize from '@hooks/useWindowSize';
-import { Trans } from '@lingui/macro';
+import { Trans, t } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import { Box, Divider, Typography, useTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -22,39 +23,40 @@ import { MenuItemType } from '../../../types/types/props';
 import MenuItemsBlock from '../menuItemsBlock/MenuItemsBlock';
 import useStyles from './style';
 
-const newsFeedItems: MenuItemType[] = [
-	{ id: uuidv4(), name: 'browse', icon: faCompass, link: '/home' },
-	{
-		id: uuidv4(),
-		name: 'upcoming',
-		icon: faCalendarCheck,
-		link: '/movies/upcoming',
-	},
-	{
-		id: uuidv4(),
-		name: 'popular',
-		icon: faThumbsUp,
-		link: '/movies/popular',
-	},
-	{
-		id: uuidv4(),
-		name: 'top rated',
-		icon: faMedal,
-		link: '/movies/top-rated',
-	},
-	{
-		id: uuidv4(),
-		name: 'now playing',
-		icon: faCirclePlay,
-		link: '/movies/now-playing',
-	},
-];
-
 const Sidebar = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
 	const { pathname } = useLocation();
+	useLingui();
+
+	const newsFeedItems: MenuItemType[] = [
+		{ id: uuidv4(), name: t`browse`, icon: faCompass, link: '/home' },
+		{
+			id: uuidv4(),
+			name: t`upcoming`,
+			icon: faCalendarCheck,
+			link: '/movies/upcoming',
+		},
+		{
+			id: uuidv4(),
+			name: t`popular`,
+			icon: faThumbsUp,
+			link: '/movies/popular',
+		},
+		{
+			id: uuidv4(),
+			name: t`top rated`,
+			icon: faMedal,
+			link: '/movies/top-rated',
+		},
+		{
+			id: uuidv4(),
+			name: t`now playing`,
+			icon: faCirclePlay,
+			link: '/movies/now-playing',
+		},
+	];
 
 	const [menuItemActive, setMenuItemActive] = useState<string | null>('');
 
@@ -86,7 +88,7 @@ const Sidebar = () => {
 		} else if (pathnameSplit?.length === 3) {
 			setMenuItemActive(pathnameSplit[2]?.toLowerCase());
 		} else if (pathnameSplit?.length === 2) {
-			setMenuItemActive('browse');
+			setMenuItemActive(t`browse`);
 		} else if (pathnameSplit[1] === 'search') {
 			setMenuItemActive('');
 		}
@@ -132,7 +134,7 @@ const Sidebar = () => {
 					</Box>
 
 					<MenuItemsBlock
-						title='News Feed'
+						title={t`News Feed`}
 						menuItems={newsFeedItems}
 						menuItemActive={menuItemActive as string}
 						setMenuItemActive={setMenuItemActive}
@@ -141,7 +143,7 @@ const Sidebar = () => {
 					<Divider sx={styles.divider} />
 
 					<MenuItemsBlock
-						title='Genres'
+						title={t`Genres`}
 						menuItems={genresItems}
 						menuItemActive={menuItemActive as string}
 						setMenuItemActive={setMenuItemActive}
@@ -158,7 +160,7 @@ const Sidebar = () => {
 							style={styles.showAllGenresIcon}
 						/>
 						<Typography variant='body1' sx={styles.showAllGenresTypo}>
-							{!showAllGenres ? 'show more' : 'hide'}
+							{!showAllGenres ? t`show more` : t`hide`}
 						</Typography>
 					</BaseButton>
 

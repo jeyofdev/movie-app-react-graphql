@@ -1,6 +1,7 @@
 import Tags from '@components/tags/Tags';
 import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
 import VoteAverage from '@components/ui/votes/average/VoteAverage';
+import { Trans } from '@lingui/macro';
 import { Box, Typography, useTheme } from '@mui/material';
 import { truncate } from '@utils/index';
 import { useNavigate } from 'react-router-dom';
@@ -56,7 +57,7 @@ const MoviePreviewCard = ({
 					onClick={() => navigate(`/movie/${id}`)}
 					style={styles.button}
 				>
-					View more
+					<Trans>View more</Trans>
 				</BaseButton>
 			</Box>
 		</Box>

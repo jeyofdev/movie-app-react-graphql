@@ -9,6 +9,8 @@ import {
 	faTriangleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { t } from '@lingui/macro';
+import { useLingui } from '@lingui/react';
 import { Alert, Box, Button, Typography, useTheme } from '@mui/material';
 import { signUp, socialMediaAuth } from '@services/auth';
 import { githubProvider, googleProvider } from '@services/auth.providers';
@@ -29,6 +31,7 @@ const SignUpModal = ({
 }: SignUpModalPropsType) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
+	useLingui();
 
 	const {
 		control,
@@ -56,7 +59,7 @@ const SignUpModal = ({
 			})
 			.catch(err => {
 				if (err.code === 'auth/email-already-in-use') {
-					setLoginError('An account is already registered with your email.');
+					setLoginError(t`An account is already in use with this email.`);
 				}
 			});
 	};
@@ -82,27 +85,27 @@ const SignUpModal = ({
 					<Box sx={styles.socialBtns}>
 						<SocialButton
 							icon={faGoogle}
-							label='Continue with Google'
+							label={`${t`Continue with`} Google`}
 							onClick={() => handleSocialLogin(googleProvider)}
 						/>
 
 						<SocialButton
 							icon={faGithub}
-							label='Continue with GitHub'
+							label={`${t`Continue with`} GitHub`}
 							onClick={() => handleSocialLogin(githubProvider)}
 						/>
 
 						<SocialButton
 							icon={faEnvelope}
-							label='Continue with email'
+							label={t`Continue with email`}
 							onClick={() => setStep(2)}
 						/>
 					</Box>
 
 					<Box sx={styles.redirectBox}>
 						<RedirectWithTextButton
-							labelBtn='Log in'
-							content='Already a member ?'
+							labelBtn={t`Login`}
+							content={t`Already a member ?`}
 							onClick={() => {
 								setStep(1);
 								onRedirect();
@@ -139,14 +142,14 @@ const SignUpModal = ({
 									),
 								}}
 							>
-								{loginError ?? 'The form contains errors'}
+								{loginError ?? t`The form contains errors`}
 							</Alert>
 						)}
 
 						<Box sx={styles.inputsBox}>
 							<InputText
 								control={control}
-								label='Email'
+								label={t`Email`}
 								id='email'
 								name='email'
 								placeholder='ex. username@gmail.com'
@@ -156,7 +159,7 @@ const SignUpModal = ({
 							<InputText
 								control={control}
 								password
-								label='Password'
+								label={t`Password`}
 								id='password'
 								name='password'
 								placeholder='************'
@@ -166,7 +169,7 @@ const SignUpModal = ({
 							<InputText
 								control={control}
 								password
-								label='Password confirm'
+								label={t`Password Confirmation`}
 								id='passwordConfirm'
 								name='passwordConfirm'
 								placeholder='************'
@@ -175,7 +178,7 @@ const SignUpModal = ({
 									...validation?.passwordConfirm,
 									validate: (value: string) => {
 										if (value === getValues().password) return true;
-										return 'The passwords must match';
+										return t`The passwords must match`;
 									},
 								}}
 							/>
@@ -187,15 +190,15 @@ const SignUpModal = ({
 							onClick={handleSubmit(handleEmailLogin)}
 						>
 							<Typography variant='h6' sx={styles.btnSubmitTypo}>
-								Sign up with email
+								{t`Sign up with email`}
 							</Typography>
 						</Button>
 					</Box>
 
 					<Box sx={styles.redirectBox}>
 						<RedirectWithTextButton
-							labelBtn='Log in'
-							content='Already a member ?'
+							labelBtn={t`Login`}
+							content={t`Already a member ?`}
 							onClick={() => {
 								reset();
 								setStep(1);
