@@ -56,3 +56,10 @@ export const getAgeBetweenTwoDate = (birthday: string, deathday: string) => {
 
 	return Math.abs(age.getUTCFullYear() - 1970);
 };
+
+export const getListMoviesTitle = (pathname: string): string => {
+	const splitUrl = pathname.split('/');
+	return firstLetterCapitalize(
+		splitUrl[splitUrl.length - 1].replaceAll('-', ' '),
+	);
+};

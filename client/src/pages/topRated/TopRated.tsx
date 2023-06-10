@@ -7,14 +7,14 @@ import {
 	useTopRatedMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
 import { Box } from '@mui/material';
-import { firstLetterCapitalize } from '@utils/index';
+import { getListMoviesTitle } from '@utils/index';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import useStyles from './style';
 
 const TopRated = () => {
 	const styles = useStyles();
-	const location = useLocation();
+	const { pathname } = useLocation();
 	const { currentLocale } = useContext(TranslationContext);
 
 	const [page, setPage] = useState(1);
@@ -31,11 +31,6 @@ const TopRated = () => {
 
 	const handleChangePage = (event: ChangeEvent<unknown>, value: number) => {
 		setPage(value);
-	};
-
-	const getTitle = (): string => {
-		const splitUrl = location.pathname.split('/');
-		return splitUrl[splitUrl.length - 1].replaceAll('-', ' ');
 	};
 
 	useEffect(() => {
@@ -57,7 +52,7 @@ const TopRated = () => {
 				totalPages={data?.topRatedMovies?.total_pages as number}
 				currentPage={page}
 				setCurrentPage={handleChangePage}
-				title={firstLetterCapitalize(getTitle())}
+				title={getListMoviesTitle(pathname)}
 			/>
 		</Box>
 	);
