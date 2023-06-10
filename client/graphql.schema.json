@@ -467,7 +467,7 @@
 						"description": null,
 						"type": {
 							"kind": "ENUM",
-							"name": "RegionEnum",
+							"name": "LanguageEnum",
 							"ofType": null
 						},
 						"defaultValue": null,
@@ -712,25 +712,25 @@
 				"interfaces": null,
 				"enumValues": [
 					{
-						"name": "EN",
+						"name": "de",
 						"description": null,
 						"isDeprecated": false,
 						"deprecationReason": null
 					},
 					{
-						"name": "ES",
+						"name": "en",
 						"description": null,
 						"isDeprecated": false,
 						"deprecationReason": null
 					},
 					{
-						"name": "FR",
+						"name": "es",
 						"description": null,
 						"isDeprecated": false,
 						"deprecationReason": null
 					},
 					{
-						"name": "US",
+						"name": "fr",
 						"description": null,
 						"isDeprecated": false,
 						"deprecationReason": null
@@ -1719,7 +1719,7 @@
 						"description": null,
 						"type": {
 							"kind": "ENUM",
-							"name": "RegionEnum",
+							"name": "LanguageEnum",
 							"ofType": null
 						},
 						"defaultValue": null,
@@ -2862,41 +2862,6 @@
 				"possibleTypes": null
 			},
 			{
-				"kind": "ENUM",
-				"name": "RegionEnum",
-				"description": null,
-				"fields": null,
-				"inputFields": null,
-				"interfaces": null,
-				"enumValues": [
-					{
-						"name": "EN",
-						"description": null,
-						"isDeprecated": false,
-						"deprecationReason": null
-					},
-					{
-						"name": "ES",
-						"description": null,
-						"isDeprecated": false,
-						"deprecationReason": null
-					},
-					{
-						"name": "FR",
-						"description": null,
-						"isDeprecated": false,
-						"deprecationReason": null
-					},
-					{
-						"name": "US",
-						"description": null,
-						"isDeprecated": false,
-						"deprecationReason": null
-					}
-				],
-				"possibleTypes": null
-			},
-			{
 				"kind": "INPUT_OBJECT",
 				"name": "SearchInput",
 				"description": null,
@@ -2943,7 +2908,7 @@
 						"description": null,
 						"type": {
 							"kind": "ENUM",
-							"name": "RegionEnum",
+							"name": "LanguageEnum",
 							"ofType": null
 						},
 						"defaultValue": null,

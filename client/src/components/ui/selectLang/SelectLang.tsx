@@ -1,5 +1,6 @@
 import { ThemeContext } from '@context/ThemeContext';
 import { TranslationContext } from '@context/TranslationContext';
+import { LanguageEnum } from '@graphql/__generated__/graphql-type';
 import {
 	Box,
 	FormControl,
@@ -17,13 +18,12 @@ import { ReactComponent as England } from '../../../assets/flags/england.svg';
 import { ReactComponent as France } from '../../../assets/flags/france.svg';
 import { ReactComponent as Germany } from '../../../assets/flags/germany.svg';
 import { ReactComponent as Spain } from '../../../assets/flags/spain.svg';
-import { LocaleEnum } from '../../../types/enums';
 
 const countries = [
-	{ id: uuidv4(), label: 'English', locale: LocaleEnum.EN },
-	{ id: uuidv4(), label: 'French', locale: LocaleEnum.FR },
-	{ id: uuidv4(), label: 'Spanish', locale: LocaleEnum.ES },
-	{ id: uuidv4(), label: 'German', locale: LocaleEnum.DE },
+	{ id: uuidv4(), label: 'English', locale: LanguageEnum.En },
+	{ id: uuidv4(), label: 'French', locale: LanguageEnum.Fr },
+	{ id: uuidv4(), label: 'Spanish', locale: LanguageEnum.Es },
+	{ id: uuidv4(), label: 'German', locale: LanguageEnum.De },
 ];
 
 const SelectLang = () => {
@@ -35,7 +35,7 @@ const SelectLang = () => {
 	const [open, setOpen] = useState(false);
 
 	const handleChange = (e: SelectChangeEvent) => {
-		handleLocale(e.target.value as LocaleEnum);
+		handleLocale(e.target.value as LanguageEnum);
 	};
 
 	const handleClose = () => {

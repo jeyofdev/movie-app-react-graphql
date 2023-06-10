@@ -22,10 +22,3 @@ export enum SwiperDirectionEnum {
 	LEFT = 'left',
 	RIGHT = 'right',
 }
-
-export enum LocaleEnum {
-	EN = 'en',
-	FR = 'fr',
-	ES = 'es',
-	DE = 'de',
-}

@@ -1,21 +1,28 @@
 import DetailsMovieCard from '@components/cards/detailsMovieCard/DetailsMovieCard';
 import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
 import AlertBase from '@components/ui/alert/Alert';
+import { TranslationContext } from '@context/TranslationContext';
 import {
 	CastMovie,
 	useCastByMovieQuery,
 	useMovieDetailsQuery,
 } from '@graphql/__generated__/graphql-type';
 import { Box } from '@mui/material';
+import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import useStyles from './style';
 
 const MovieDetails = () => {
 	const styles = useStyles();
 	const { movieId } = useParams();
+	const { currentLocale } = useContext(TranslationContext);
 
 	const { loading, error, data } = useMovieDetailsQuery({
-		variables: { movieId: Number(movieId) },
+		variables: {
+			movieId: Number(movieId),
+			options: { language: currentLocale },
+		},
+		fetchPolicy: 'cache-and-network',
 	});
 
 	const {
@@ -24,6 +31,7 @@ const MovieDetails = () => {
 		data: castData,
 	} = useCastByMovieQuery({
 		variables: { movieId: Number(movieId) },
+		fetchPolicy: 'cache-and-network',
 	});
 
 	if (loading || castLoading) {
