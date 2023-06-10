@@ -71,10 +71,7 @@ const useStyles = (theme: Theme) => ({
 		},
 		overflowY: 'auto',
 		padding: `0px ${theme.spacing(1.5)}`,
-		maxWidth: {
-			xs: 270,
-			sm: 300,
-		},
+		maxWidth: 310,
 	},
 	title: {
 		color: theme.palette.primary.main,

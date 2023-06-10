@@ -31,11 +31,11 @@ const MainSwiper = ({
 		if (width >= 600 && width < BreakpointEnum.SM) return 4;
 		if (width >= BreakpointEnum.SM && width < BreakpointEnum.MD) return 3;
 		if (width >= BreakpointEnum.MD && width < 1200) return 4;
-		if (width >= 1200 && width < BreakpointEnum.LG) return 5;
-		if (width >= BreakpointEnum.LG && width < 1600) return 6;
-		if (width >= 1600 && width < BreakpointEnum.XL) return 7;
+		if (width >= 1200 && width < BreakpointEnum.LG) return 6;
+		if (width >= BreakpointEnum.LG && width < 1600) return 7;
+		if (width >= 1600 && width < BreakpointEnum.XL) return 8;
 
-		return 9;
+		return 10;
 	};
 
 	const card = (item: Movie): ReactNode | null => {
