@@ -19,7 +19,7 @@ import { Box, Divider, Typography, useTheme } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import { BreakpointEnum } from '../../../types/enums';
+import { BreakpointEnum, RoutesEnum } from '../../../types/enums';
 import { MenuItemType } from '../../../types/types/props';
 import MenuItemsBlock from '../menuItemsBlock/MenuItemsBlock';
 import useStyles from './style';
@@ -33,30 +33,30 @@ const Sidebar = () => {
 	useLingui();
 
 	const newsFeedItems: MenuItemType[] = [
-		{ id: uuidv4(), name: t`browse`, icon: faCompass, link: '/home' },
+		{ id: uuidv4(), name: t`browse`, icon: faCompass, link: RoutesEnum.ROOT },
 		{
 			id: uuidv4(),
 			name: t`upcoming`,
 			icon: faCalendarCheck,
-			link: '/movies/upcoming',
+			link: RoutesEnum.MOVIES_UPCOMING,
 		},
 		{
 			id: uuidv4(),
 			name: t`popular`,
 			icon: faThumbsUp,
-			link: '/movies/popular',
+			link: RoutesEnum.MOVIES_POPULAR,
 		},
 		{
 			id: uuidv4(),
 			name: t`top rated`,
 			icon: faMedal,
-			link: '/movies/top-rated',
+			link: RoutesEnum.MOVIES_TOP_RATED,
 		},
 		{
 			id: uuidv4(),
 			name: t`now playing`,
 			icon: faCirclePlay,
-			link: '/movies/now-playing',
+			link: RoutesEnum.MOVIES_NOW_PLAYING,
 		},
 	];
 

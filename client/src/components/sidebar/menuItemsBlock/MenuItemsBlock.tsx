@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import MenuItem from '@components/items/MenuItem/MenuItem';
 import { Box, Typography, useTheme } from '@mui/material';
+import { RoutesEnum } from '../../../types/enums';
 import { BlockSidebarMenuProps } from '../../../types/types/props';
 import useStyles from './style';
 
@@ -31,7 +32,7 @@ const MenuItemsBlock = ({
 					icon={menuItem?.icon}
 					link={
 						isGenre
-							? `/movies/genre/${menuItem?.name
+							? `${RoutesEnum.MOVIES_GENRE}/${menuItem?.name
 									.toLowerCase()
 									.replaceAll(' ', '-')}`
 							: menuItem?.link

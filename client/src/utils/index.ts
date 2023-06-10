@@ -1,3 +1,5 @@
+import { RoutesEnum } from '../types/enums';
+
 /**
  * Limit text by number words
  * @param text
@@ -33,7 +35,7 @@ export const formatNumberToHours = (totalMinutes: number): string => {
 };
 
 export const formatGenreForUrl = (genre: string) =>
-	`/movies/genre/${genre.toLowerCase().split(' ').join('-')}`;
+	`/${RoutesEnum.MOVIES_GENRE}/${genre.toLowerCase().split(' ').join('-')}`;
 
 export const firstLetterCapitalize = (text: string): string =>
 	text.slice(0, 1).toUpperCase() + text.slice(1);

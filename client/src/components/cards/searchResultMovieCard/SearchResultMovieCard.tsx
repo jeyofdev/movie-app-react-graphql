@@ -4,7 +4,7 @@ import { truncate } from '@utils/index';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { useWindowSize } from 'usehooks-ts';
-import { BreakpointEnum } from '../../../types/enums';
+import { BreakpointEnum, RoutesEnum } from '../../../types/enums';
 import { SearchResultMovieCardProps } from '../../../types/types/props';
 import useStyles from './style';
 
@@ -26,7 +26,10 @@ const SearchResultMovieCard = ({
 	};
 
 	return (
-		<Button onClick={() => navigate(`/movie/${id}`)} sx={styles.root}>
+		<Button
+			onClick={() => navigate(`/${RoutesEnum.MOVIE}/${id}`)}
+			sx={styles.root}
+		>
 			{/* <Box
 				component='img'
 				sx={styles.poster}
