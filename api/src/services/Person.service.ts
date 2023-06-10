@@ -74,6 +74,9 @@ class PersonService extends RESTDataSource {
 				this.baseURL,
 				this.apiKey,
 				`${String(args.personId)}/movie_credits`,
+				{
+					language: args?.options?.language,
+				},
 			),
 		);
 	}
