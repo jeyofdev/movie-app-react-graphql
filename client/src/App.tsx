@@ -1,6 +1,7 @@
 import MainContainer from '@components/containers/mainContainer/MainContainer';
 import { ThemeContext } from '@context/ThemeContext';
 import { TranslationContext } from '@context/TranslationContext';
+import { LanguageEnum } from '@graphql/__generated__/graphql-type';
 import { i18n } from '@lingui/core';
 import { I18nProvider } from '@lingui/react';
 import { Box, ThemeProvider } from '@mui/material';
@@ -9,7 +10,7 @@ import { useContext, useEffect } from 'react';
 import loadCatalog from './i18n';
 import MainRouter from './router/MainRouter';
 import useStyles from './style';
-import { DarkModeEnum, LocaleEnum } from './types/enums';
+import { DarkModeEnum } from './types/enums';
 
 const App = () => {
 	const { themeMode } = useContext(ThemeContext);
@@ -21,7 +22,7 @@ const App = () => {
 	}, [currentLocale]);
 
 	useEffect(() => {
-		loadCatalog(LocaleEnum.EN);
+		loadCatalog(LanguageEnum.En);
 	}, []);
 
 	return (

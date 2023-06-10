@@ -72,7 +72,7 @@ export type CrewMovie = {
 export type DiscoverInput = {
 	language?: InputMaybe<LanguageEnum>;
 	page?: InputMaybe<Scalars['Int']>;
-	region?: InputMaybe<RegionEnum>;
+	region?: InputMaybe<LanguageEnum>;
 	sort_by?: InputMaybe<SortEnum>;
 	with_genres?: InputMaybe<Scalars['Int']>;
 };
@@ -104,10 +104,10 @@ export type Keywords = {
 };
 
 export enum LanguageEnum {
-	En = 'EN',
-	Es = 'ES',
-	Fr = 'FR',
-	Us = 'US',
+	De = 'de',
+	En = 'en',
+	Es = 'es',
+	Fr = 'fr',
 }
 
 export type Movie = {
@@ -216,7 +216,7 @@ export type MoviesResponse = {
 export type OptionsInput = {
 	language?: InputMaybe<LanguageEnum>;
 	page?: InputMaybe<Scalars['Int']>;
-	region?: InputMaybe<RegionEnum>;
+	region?: InputMaybe<LanguageEnum>;
 };
 
 export type Person = {
@@ -395,18 +395,11 @@ export type QueryUpcomingMoviesArgs = {
 	options?: InputMaybe<OptionsInput>;
 };
 
-export enum RegionEnum {
-	En = 'EN',
-	Es = 'ES',
-	Fr = 'FR',
-	Us = 'US',
-}
-
 export type SearchInput = {
 	language?: InputMaybe<LanguageEnum>;
 	page?: InputMaybe<Scalars['Int']>;
 	query?: InputMaybe<Scalars['String']>;
-	region?: InputMaybe<RegionEnum>;
+	region?: InputMaybe<LanguageEnum>;
 };
 
 export enum SortEnum {

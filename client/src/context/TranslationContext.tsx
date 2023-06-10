@@ -1,19 +1,19 @@
+import { LanguageEnum } from '@graphql/__generated__/graphql-type';
 import { createContext, useState } from 'react';
-import { LocaleEnum } from '../types/enums';
 import { TranslationContextType } from '../types/types/context';
 import { ThemeContextProviderPropsType } from '../types/types/props';
 
 export const TranslationContext = createContext<TranslationContextType>({
-	currentLocale: LocaleEnum.EN,
+	currentLocale: LanguageEnum.En,
 	handleLocale: () => {},
 });
 
 const TranslationContextProvider = ({
 	children,
 }: ThemeContextProviderPropsType) => {
-	const [currentLocale, setcurrentLocale] = useState(LocaleEnum.EN);
+	const [currentLocale, setcurrentLocale] = useState(LanguageEnum.En);
 
-	const handleLocale = (locale: LocaleEnum) => {
+	const handleLocale = (locale: LanguageEnum) => {
 		setcurrentLocale(locale);
 	};
 
