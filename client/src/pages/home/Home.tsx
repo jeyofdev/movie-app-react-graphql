@@ -2,6 +2,7 @@ import PreviewMovieCard from '@components/cards/previewMovieCard/MoviePreviewCar
 import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
 import SwiperSection from '@components/sections/swiperBlock/SwiperSection';
 import AlertBase from '@components/ui/alert/Alert';
+import { TranslationContext } from '@context/TranslationContext';
 import {
 	Movie,
 	useMoviePreviewQuery,
@@ -13,13 +14,15 @@ import {
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { Box, useTheme } from '@mui/material';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { MoviesListCategoryEnum } from '../../types/enums';
 import useStyles from './style';
 
 const Home = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
+	const { currentLocale } = useContext(TranslationContext);
+
 	useLingui();
 
 	const [nowPlayingMovies, setNowPlayingMovies] = useState<Array<Movie>>([]);
@@ -36,6 +39,12 @@ const Home = () => {
 		useState<MoviesListCategoryEnum | null>(null);
 
 	const { loading, error } = useNowPlayingMoviesQuery({
+		variables: {
+			options: {
+				language: currentLocale,
+			},
+		},
+		fetchPolicy: 'cache-and-network',
 		onCompleted(data) {
 			setActiveItemSwiperGallery(data?.nowPlayingMovies?.results[0] as Movie);
 
@@ -49,6 +58,12 @@ const Home = () => {
 
 	const { loading: popularMoviesLoading, error: popularMoviesError } =
 		usePopularMoviesQuery({
+			variables: {
+				options: {
+					language: currentLocale,
+				},
+			},
+			fetchPolicy: 'cache-and-network',
 			onCompleted(data) {
 				setPopularMovies(
 					data?.popularMovies?.results
@@ -60,6 +75,12 @@ const Home = () => {
 
 	const { loading: upComingMovieLoading, error: upComingMovieError } =
 		useUpcomingMoviesQuery({
+			variables: {
+				options: {
+					language: currentLocale,
+				},
+			},
+			fetchPolicy: 'cache-and-network',
 			onCompleted(data) {
 				setUpComingMovies(
 					data?.upcomingMovies?.results
@@ -71,6 +92,12 @@ const Home = () => {
 
 	const { loading: topRatedMoviesLoading, error: topRatedMoviesError } =
 		useTopRatedMoviesQuery({
+			variables: {
+				options: {
+					language: currentLocale,
+				},
+			},
+			fetchPolicy: 'cache-and-network',
 			onCompleted(data) {
 				setTopRatedMovies(
 					data?.topRatedMovies?.results
@@ -81,7 +108,13 @@ const Home = () => {
 		});
 
 	const { data: moviePreviewData } = useMoviePreviewQuery({
-		variables: { movieId: moviesSelectedId },
+		variables: {
+			movieId: moviesSelectedId,
+			options: {
+				language: currentLocale,
+			},
+		},
+		fetchPolicy: 'cache-and-network',
 	});
 
 	if (
