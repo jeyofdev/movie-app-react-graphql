@@ -1,3 +1,5 @@
+import { RoutesEnum } from '../types/enums';
+
 /**
  * Limit text by number words
  * @param text
@@ -33,7 +35,7 @@ export const formatNumberToHours = (totalMinutes: number): string => {
 };
 
 export const formatGenreForUrl = (genre: string) =>
-	`/movies/genre/${genre.toLowerCase().split(' ').join('-')}`;
+	`/${RoutesEnum.MOVIES_GENRE}/${genre.toLowerCase().split(' ').join('-')}`;
 
 export const firstLetterCapitalize = (text: string): string =>
 	text.slice(0, 1).toUpperCase() + text.slice(1);
@@ -53,4 +55,11 @@ export const getAgeBetweenTwoDate = (birthday: string, deathday: string) => {
 	const age = new Date(diff);
 
 	return Math.abs(age.getUTCFullYear() - 1970);
+};
+
+export const getListMoviesTitle = (pathname: string): string => {
+	const splitUrl = pathname.split('/');
+	return firstLetterCapitalize(
+		splitUrl[splitUrl.length - 1].replaceAll('-', ' '),
+	);
 };

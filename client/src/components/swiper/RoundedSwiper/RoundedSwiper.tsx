@@ -13,7 +13,7 @@ import { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { useWindowSize } from 'usehooks-ts';
-import { BreakpointEnum } from '../../../types/enums';
+import { BreakpointEnum, RoutesEnum } from '../../../types/enums';
 import { RoundedSwiperProps } from '../../../types/types/props';
 import useStyles from './style';
 
@@ -67,7 +67,7 @@ const RoundedSwiper = ({ list }: RoundedSwiperProps) => {
 					<SwiperSlide key={item.id}>
 						<BaseTooltip title={item.name} arrow>
 							<Button
-								onClick={() => navigate(`/person/${item.id}`)}
+								onClick={() => navigate(`/${RoutesEnum.PERSON}/${item.id}`)}
 								disableRipple={true}
 								sx={{ padding: 0 }}
 							>

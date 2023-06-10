@@ -2,6 +2,7 @@ import ImageThumb from '@components/ui/images/imageThumb/ImageThumb';
 import VoteAverage from '@components/ui/votes/average/VoteAverage';
 import { Box, Button, Typography, useTheme } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { RoutesEnum } from '../../../types/enums';
 import { ListResultCardProps } from '../../../types/types/props';
 import useStyles from './style';
 
@@ -18,7 +19,7 @@ const ListResultCard = ({
 
 	return (
 		<Button
-			onClick={() => navigate(`/movie/${id}`)}
+			onClick={() => navigate(`/${RoutesEnum.MOVIE}/${id}`)}
 			sx={{ ...styles.root, ...cardGridColumn }}
 		>
 			<Box>

@@ -22,3 +22,16 @@ export enum SwiperDirectionEnum {
 	LEFT = 'left',
 	RIGHT = 'right',
 }
+
+export enum RoutesEnum {
+	ROOT = '/',
+	HOME = 'home',
+	MOVIES_POPULAR = 'movies/popular',
+	MOVIES_UPCOMING = 'movies/upcoming',
+	MOVIES_TOP_RATED = 'movies/top-rated',
+	MOVIES_NOW_PLAYING = 'movies/now-playing',
+	MOVIES_GENRE = 'movies/genre',
+	MOVIE = 'movie',
+	SEARCH = 'search',
+	PERSON = 'person',
+}

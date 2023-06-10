@@ -15,7 +15,7 @@ import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { Box, useTheme } from '@mui/material';
 import { useContext, useState } from 'react';
-import { MoviesListCategoryEnum } from '../../types/enums';
+import { MoviesListCategoryEnum, RoutesEnum } from '../../types/enums';
 import useStyles from './style';
 
 const Home = () => {
@@ -154,7 +154,7 @@ const Home = () => {
 					<SwiperSection
 						title={t`Popular movies`}
 						list={popularMovies}
-						linkAllResult='/movies/popular'
+						linkAllResult={RoutesEnum.MOVIES_POPULAR}
 						moviesListCategory={MoviesListCategoryEnum.POPULAR}
 						setMoviesSelectedId={setMoviesSelectedId}
 						setMoviesListCategory={setMoviesListCategory}
@@ -179,7 +179,7 @@ const Home = () => {
 					<SwiperSection
 						title={t`Upcoming movies`}
 						list={upComingMovies}
-						linkAllResult='/movies/upcoming'
+						linkAllResult={RoutesEnum.MOVIES_UPCOMING}
 						moviesListCategory={MoviesListCategoryEnum.UP_COMING}
 						setMoviesSelectedId={setMoviesSelectedId}
 						setMoviesListCategory={setMoviesListCategory}
@@ -204,7 +204,7 @@ const Home = () => {
 					<SwiperSection
 						title={t`Top rated movies`}
 						list={topRatedMovies}
-						linkAllResult='/movies/top-rated'
+						linkAllResult={RoutesEnum.MOVIES_TOP_RATED}
 						moviesListCategory={MoviesListCategoryEnum.TOP_RATING}
 						setMoviesSelectedId={setMoviesSelectedId}
 						setMoviesListCategory={setMoviesListCategory}
@@ -229,7 +229,7 @@ const Home = () => {
 					<SwiperSection
 						title={t`Now playing movies`}
 						list={nowPlayingMovies}
-						linkAllResult='/movies/now-playing'
+						linkAllResult={RoutesEnum.MOVIES_NOW_PLAYING}
 						moviesListCategory={MoviesListCategoryEnum.NOW_PLAYING}
 						setMoviesSelectedId={setMoviesSelectedId}
 						setMoviesListCategory={setMoviesListCategory}

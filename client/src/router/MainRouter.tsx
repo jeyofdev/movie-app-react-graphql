@@ -9,20 +9,21 @@ import SearchResults from '@pages/searchResults/SearchResults';
 import TopRated from '@pages/topRated/TopRated';
 import Upcoming from '@pages/upComing/UpComing';
 import { Route, Routes } from 'react-router-dom';
+import { RoutesEnum } from '../types/enums';
 
 const MainRouter = () => (
 	<Routes>
-		<Route path='movies/popular' element={<Popular />} />
-		<Route path='movies/upcoming' element={<Upcoming />} />
-		<Route path='movies/top-rated' element={<TopRated />} />
-		<Route path='movies/now-playing' element={<NowPlaying />} />
-		<Route path='movies/genre/:genreName' element={<Genre />} />
-		<Route path='movie/:movieId' element={<MovieDetails />} />
-		<Route path='search/:search' element={<SearchResults />} />
-		<Route path='person/:personId' element={<Person />} />
+		<Route path={RoutesEnum.MOVIES_POPULAR} element={<Popular />} />
+		<Route path={RoutesEnum.MOVIES_UPCOMING} element={<Upcoming />} />
+		<Route path={RoutesEnum.MOVIES_TOP_RATED} element={<TopRated />} />
+		<Route path={RoutesEnum.MOVIES_NOW_PLAYING} element={<NowPlaying />} />
+		<Route path={`${RoutesEnum.MOVIES_GENRE}/:genreName`} element={<Genre />} />
+		<Route path={`${RoutesEnum.MOVIE}/:movieId`} element={<MovieDetails />} />
+		<Route path={`${RoutesEnum.SEARCH}/:search`} element={<SearchResults />} />
+		<Route path={`${RoutesEnum.PERSON}/:personId`} element={<Person />} />
 
-		<Route path='/' element={<Home />}>
-			<Route path='home' element={<Home />} />
+		<Route path={RoutesEnum.ROOT} element={<Home />}>
+			<Route path={RoutesEnum.HOME} element={<Home />} />
 		</Route>
 
 		<Route path='*' element={<NotFound />} />

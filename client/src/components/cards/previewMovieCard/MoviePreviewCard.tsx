@@ -6,7 +6,7 @@ import { Box, Typography, useTheme } from '@mui/material';
 import { truncate } from '@utils/index';
 import { useNavigate } from 'react-router-dom';
 import { useWindowSize } from 'usehooks-ts';
-import { BreakpointEnum } from '../../../types/enums';
+import { BreakpointEnum, RoutesEnum } from '../../../types/enums';
 import { MoviePreviewCardProps } from '../../../types/types/props';
 import useStyles from './style';
 
@@ -54,7 +54,7 @@ const MoviePreviewCard = ({
 
 				<BaseButton
 					variant='outlined'
-					onClick={() => navigate(`/movie/${id}`)}
+					onClick={() => navigate(`/${RoutesEnum.MOVIE}/${id}`)}
 					style={styles.button}
 				>
 					<Trans>View more</Trans>
