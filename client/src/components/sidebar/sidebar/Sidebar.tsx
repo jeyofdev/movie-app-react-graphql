@@ -1,4 +1,5 @@
 import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
+import { TranslationContext } from '@context/TranslationContext';
 import {
 	faCalendarCheck,
 	faCircleArrowDown,
@@ -15,7 +16,7 @@ import useWindowSize from '@hooks/useWindowSize';
 import { Trans, t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { Box, Divider, Typography, useTheme } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { BreakpointEnum } from '../../../types/enums';
@@ -28,6 +29,7 @@ const Sidebar = () => {
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
 	const { pathname } = useLocation();
+	const { currentLocale } = useContext(TranslationContext);
 	useLingui();
 
 	const newsFeedItems: MenuItemType[] = [
@@ -67,6 +69,12 @@ const Sidebar = () => {
 		loading,
 		error,
 	} = useGenresQuery({
+		variables: {
+			options: {
+				language: currentLocale,
+			},
+		},
+		fetchPolicy: 'cache-and-network',
 		onCompleted(data) {
 			setGenresItems(
 				data?.genres?.genres
