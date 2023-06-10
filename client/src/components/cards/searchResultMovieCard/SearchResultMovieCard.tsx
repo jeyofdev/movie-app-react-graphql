@@ -1,3 +1,4 @@
+import ImageThumb from '@components/ui/images/imageThumb/ImageThumb';
 import { Box, Button, Typography, useTheme } from '@mui/material';
 import { truncate } from '@utils/index';
 import { format } from 'date-fns';
@@ -26,13 +27,21 @@ const SearchResultMovieCard = ({
 
 	return (
 		<Button onClick={() => navigate(`/movie/${id}`)} sx={styles.root}>
-			<Box
+			{/* <Box
 				component='img'
 				sx={styles.poster}
 				alt={title as string}
 				src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-			/>
+			/> */}
 
+			<Box>
+				<ImageThumb
+					src={poster_path as string}
+					imageAlt={title as string}
+					noImageBoxStyle={{ ...styles.poster, ...styles.noImageBox }}
+					posterStyle={styles.poster}
+				/>
+			</Box>
 			<Box sx={styles.contentBox}>
 				<Typography variant='h5' sx={styles.title}>
 					{title}

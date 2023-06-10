@@ -211,7 +211,7 @@ msgstr "Les mots de passe doivent correspondre"
 
 #: src/components/sidebar/sidebar/Sidebar.tsx:49
 msgid "top rated"
-msgstr "les mieux notés"
+msgstr "Mieux notés"
 
 #: src/pages/home/Home.tsx:172
 msgid "Top rated movies"

@@ -10,7 +10,7 @@ const useStyles = (theme: Theme) => ({
 	},
 	poster: {
 		width: '100%',
-		height: 234,
+		height: 190,
 		backgroundSize: 'contain',
 	},
 	title: {

@@ -47,6 +47,24 @@ const useStyles = (theme: Theme) => ({
 		color: theme.palette.grey[600],
 		marginTop: theme.spacing(1),
 	},
+	noImageBox: {
+		display: 'flex',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		gap: '1rem',
+		alignItems: 'center',
+		backgroundColor: 'transparent',
+		width: {
+			xs: '117px',
+		},
+	},
+	noImageIcon: {
+		fontSize: '5rem',
+	},
+	noImageTypo: {
+		color: theme.palette.primary.contrastText,
+		fontWeight: 'bold',
+	},
 });
 
 export default useStyles;

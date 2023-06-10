@@ -2,7 +2,6 @@ import { Theme } from '@mui/material';
 import { DarkModeEnum } from '../../../types/enums';
 
 const useStyles = (theme: Theme) => ({
-	root: {},
 	userIconBtn: {
 		background: theme.palette.primary.main,
 		borderRadius: '100%',
@@ -34,6 +33,10 @@ const useStyles = (theme: Theme) => ({
 	}),
 	menuItemsBox: {
 		padding: `${theme.spacing(0)} ${theme.spacing(0.5)}`,
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		flexDirection: 'column',
 	},
 	divider: (darkMode: DarkModeEnum) => ({
 		height: '0.5px',
