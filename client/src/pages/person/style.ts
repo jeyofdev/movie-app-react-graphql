@@ -2,17 +2,13 @@ import { Theme } from '@mui/material';
 
 const useStyles = (theme: Theme) => ({
 	root: {
-		display: 'grid',
-		gridTemplateColumns: 'repeat(12, 1fr)',
+		display: 'flex',
+		flexDirection: 'column',
 		gap: `0px ${theme.spacing(5)}`,
+		maxWidth: '900px',
+		width: '100%',
+		margin: '0px auto',
 	},
-	// topBox: {
-	// 	gridColumn: {
-	// 		xl: '3 / span 8',
-	// 	},
-	// 	display: 'flex',
-	// 	gap: theme.spacing(3),
-	// },
 	listMoviesBox: {
 		gridColumn: {
 			xs: '1 / span 12',

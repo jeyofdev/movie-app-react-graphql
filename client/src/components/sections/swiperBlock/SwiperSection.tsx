@@ -22,6 +22,7 @@ const SwiperSection = ({
 	setMoviesSelectedId,
 	setMoviesListCategory,
 	titleStyle,
+	swiperBoxStyle,
 }: SwiperSectionProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
@@ -110,7 +111,13 @@ const SwiperSection = ({
 	if (swiperType === 'person') {
 		return (
 			<>
-				<Box sx={{ ...styles.topSectionBox, marginBottom: 0 }}>
+				<Box
+					sx={{
+						...styles.topSectionBox,
+						marginBottom: 0,
+						gridColumn: '1 / span 12',
+					}}
+				>
 					<Typography
 						variant='h5'
 						sx={{ ...styles.sectionTitle, ...titleStyle }}
@@ -119,7 +126,10 @@ const SwiperSection = ({
 					</Typography>
 				</Box>
 
-				<RoundedSwiper list={list as Array<CastMovie>} />
+				<RoundedSwiper
+					list={list as Array<CastMovie>}
+					styleBox={swiperBoxStyle}
+				/>
 			</>
 		);
 	}

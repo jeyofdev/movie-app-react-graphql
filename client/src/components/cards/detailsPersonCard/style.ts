@@ -1,37 +1,26 @@
 import { Theme } from '@mui/material';
 
 const useStyles = (theme: Theme) => ({
-	nameBox: {
-		gridColumn: {
-			xs: '1 / span 12',
-			sm: '1 / span 12',
-			md: '1 / span 12',
-			lg: '2 / span 11',
-			xl: '3 / span 10',
-		},
-		color: theme.palette.primary.main,
-		marginBottom: theme.spacing(4),
+	detailsBox: {
 		display: 'flex',
-		justifyContent: 'center',
+		flexDirection: 'column',
 		width: '100%',
 	},
 	name: {
 		color: theme.palette.primary.main,
+		textAlign: 'center',
+		marginBottom: theme.spacing(4),
+	},
+	contentBox: {
+		display: 'flex',
+		alignItems: 'flex-start',
+		flexDirection: {
+			xs: 'column',
+			sm: 'row',
+		},
+		gap: theme.spacing(4),
 	},
 	poster: {
-		gridColumn: {
-			xs: '1 / span 12',
-			sm: '1 / span 5',
-			md: '1 / span 4',
-			lg: '2 / span 3',
-			xl: '3 / span 2',
-		},
-		gridRow: {
-			xs: '2 / span 3',
-			sm: '2 / span 3',
-			md: '2 / span 2',
-			lg: '2 / span 2',
-		},
 		height: {
 			xs: '300px',
 			sm: '250px',
@@ -42,9 +31,11 @@ const useStyles = (theme: Theme) => ({
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		margin: '0 auto',
+		margin: {
+			xs: '0px auto',
+			sm: '0px',
+		},
 		borderRadius: theme.spacing(2),
-		marginBottom: theme.spacing(4),
 	},
 	noImageBox: {
 		flexDirection: 'column',
@@ -56,6 +47,28 @@ const useStyles = (theme: Theme) => ({
 			sm: '250px',
 		},
 	},
+	datasBox: {
+		alignSelf: 'center',
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: {
+			xs: 'column',
+		},
+		gap: theme.spacing(4),
+	},
+	infosBoxes: {
+		display: 'flex',
+		flexWrap: 'wrap',
+		flexDirection: {
+			xs: 'column',
+			md: 'row',
+		},
+		justifyContent: {
+			xs: 'flex-start',
+			lg: 'space-between',
+		},
+		gap: theme.spacing(5),
+	},
 	infoBox: {
 		display: 'flex',
 		flexDirection: 'column',
@@ -65,65 +78,31 @@ const useStyles = (theme: Theme) => ({
 			sm: 'flex-start',
 		},
 	},
-	birthdayBox: {
-		gridColumn: {
-			xs: '1 / span 12',
-			sm: '6 / span 7',
-			md: '5 / span 4',
-			lg: '5 / span 2',
-			xl: '5 / span 2',
-		},
-		marginBottom: {
-			xs: theme.spacing(4),
-			lg: '0px',
-		},
-	},
-	deathdayBox: {
-		display: {
-			xs: 'flex',
-			md: 'none',
-			lg: 'flex',
-		},
-		gridColumn: {
-			xs: '1 / span 12',
-			sm: '6 / span 7',
-			lg: 'auto / span 2',
-			xl: 'auto / span 2',
-		},
-		marginBottom: {
-			xs: theme.spacing(4),
-			lg: '0px',
-		},
-	},
-	placeBirthBox: {
-		gridColumn: {
-			xs: '1 / span 12',
-			sm: '6 / span 7',
-			md: 'auto / span 4',
-			lg: 'auto / span 2',
-			xl: 'auto / span 2',
-		},
-		marginBottom: {
-			xs: theme.spacing(4),
-			lg: '0px',
-		},
-	},
 	descriptionBox: {
-		gridColumn: {
-			xs: '2 / span 10',
-			sm: '1 / span 12',
-			md: '5 / span 8',
-			lg: '5 / span 6',
-			xl: '5 / span 6',
+		width: {
+			xs: '90%',
+			sm: '100%',
+		},
+		maxWidth: {
+			xs: '350px',
+			sm: 'none',
+		},
+		margin: {
+			xs: '0px auto',
 		},
 		marginTop: {
-			lg: theme.spacing(4),
+			xs: 0,
+			sm: theme.spacing(4),
+			md: 0,
 		},
 	},
 	viewMoreBtn: {
 		backgroundColor: theme.palette.primary.main,
 		minWidth: 'auto',
-		alignSelf: 'flex-start',
+		alignSelf: {
+			xs: 'center',
+			sm: 'flex-start',
+		},
 
 		'&:hover': {
 			backgroundColor: theme.palette.primary.main,
