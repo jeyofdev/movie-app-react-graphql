@@ -34,56 +34,85 @@ const DetailsPersonCard = ({
 	};
 
 	return (
-		<>
-			<Box sx={styles.nameBox}>
-				<Typography variant='h3' sx={styles.name}>
-					{name}
-				</Typography>
-			</Box>
+		<Box sx={styles.detailsBox}>
+			<Typography variant='h3' sx={styles.name}>
+				{name}
+			</Typography>
 
-			<ImageThumb
-				src={profile_path as string}
-				imageAlt={name as string}
-				noImageBoxStyle={{ ...styles.poster, ...styles.noImageBox }}
-				posterStyle={styles.poster}
-				person
-			/>
+			<Box sx={styles.contentBox}>
+				<ImageThumb
+					src={profile_path as string}
+					imageAlt={name as string}
+					noImageBoxStyle={{ ...styles.poster, ...styles.noImageBox }}
+					posterStyle={styles.poster}
+					person
+				/>
 
-			{birthday && (
-				<Box sx={{ ...styles.infoBox, ...styles.birthdayBox }}>
-					<PersonInfo
-						title={t`Date of birth`}
-						value={birthday as string}
-						subValue={!deathday ? getAge(birthday as string) : null}
-						subValueEnd='years old'
-					/>
-				</Box>
-			)}
-
-			{deathday && (
-				<Box sx={{ ...styles.infoBox, ...styles.deathdayBox }}>
-					<PersonInfo
-						title={t`Deathday`}
-						value={deathday as string}
-						subValue={getAgeBetweenTwoDate(
-							birthday as string,
-							deathday as string,
+				<Box sx={styles.datasBox}>
+					<Box sx={styles.infosBoxes}>
+						{birthday && (
+							<Box sx={styles.infoBox}>
+								<PersonInfo
+									title={t`Date of birth`}
+									value={birthday as string}
+									subValue={!deathday ? getAge(birthday as string) : null}
+									subValueEnd='years old'
+								/>
+							</Box>
 						)}
-						subValueEnd='years old'
-					/>
-				</Box>
-			)}
 
-			{place_of_birth && (
-				<Box sx={{ ...styles.infoBox, ...styles.placeBirthBox }}>
-					<PersonInfo
-						title={t`Place of Birth`}
-						value={place_of_birth as string}
-					/>
-				</Box>
-			)}
+						{deathday && (
+							<Box sx={styles.infoBox}>
+								<PersonInfo
+									title={t`Deathday`}
+									value={deathday as string}
+									subValue={getAgeBetweenTwoDate(
+										birthday as string,
+										deathday as string,
+									)}
+									subValueEnd='years old'
+								/>
+							</Box>
+						)}
 
-			{biography && (
+						{place_of_birth && (
+							<Box sx={styles.infoBox}>
+								<PersonInfo
+									title={t`Place of Birth`}
+									value={place_of_birth as string}
+								/>
+							</Box>
+						)}
+					</Box>
+
+					{(width < BreakpointEnum.SM || width >= BreakpointEnum.MD) &&
+						biography && (
+							<Box sx={{ ...styles.infoBox, ...styles.descriptionBox }}>
+								<PersonInfo
+									title={t`Description`}
+									value={
+										viewMoreDescription
+											? (biography as string)
+											: truncate(biography as string, getTruncateNumberWord())
+									}
+								/>
+
+								{(biography as string)?.split(' ')?.length >
+									getTruncateNumberWord() && (
+									<Button
+										sx={styles.viewMoreBtn}
+										onClick={() => setViewMoreDescription(!viewMoreDescription)}
+									>
+										<Typography variant='body1' sx={styles.viewMoreTypo}>
+											{!viewMoreDescription ? t`View more` : t`hide`}
+										</Typography>
+									</Button>
+								)}
+							</Box>
+						)}
+				</Box>
+			</Box>
+			{width >= BreakpointEnum.SM && width < BreakpointEnum.MD && biography && (
 				<Box sx={{ ...styles.infoBox, ...styles.descriptionBox }}>
 					<PersonInfo
 						title={t`Description`}
@@ -107,7 +136,7 @@ const DetailsPersonCard = ({
 					)}
 				</Box>
 			)}
-		</>
+		</Box>
 	);
 };
 

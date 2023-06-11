@@ -56,12 +56,22 @@ const DetailsMovieCard = ({
 					) : null}
 
 					{cast ? (
-						<SwiperSection
-							swiperType='person'
-							title={t`Cast`}
-							list={cast}
-							titleStyle={{ color: theme.palette.common.white }}
-						/>
+						<Box
+							sx={{
+								position: 'relative',
+								display: 'grid',
+								gridTemplateColumns: 'repeat(12, 1fr)',
+								gap: theme.spacing(1),
+							}}
+						>
+							<SwiperSection
+								swiperType='person'
+								title={t`Cast`}
+								list={cast}
+								titleStyle={{ color: theme.palette.common.white }}
+								swiperBoxStyle={styles.swiperBox}
+							/>
+						</Box>
 					) : null}
 				</Box>
 			</Box>

@@ -7,10 +7,11 @@ const useStyles = (theme: Theme) => ({
 		gap: '1rem',
 		borderRadius: '100%',
 		overflow: 'hidden',
-	},
-	poster: {
 		width: '60px',
 		height: '60px',
+	},
+	poster: {
+		marginTop: '-5px',
 		backgroundSize: 'contain',
 	},
 	title: {

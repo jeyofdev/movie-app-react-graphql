@@ -74,6 +74,7 @@ export type MainSwiperProps = {
 
 export type RoundedSwiperProps = {
 	list: Array<CastMovie>;
+	styleBox?: object;
 };
 
 export type ThumbnailCardProps = Pick<Movie, 'title' | 'poster_path'>;
@@ -111,6 +112,7 @@ export type SwiperSectionProps = {
 		SetStateAction<MoviesListCategoryEnum | null>
 	>;
 	titleStyle?: object;
+	swiperBoxStyle?: object;
 };
 
 export type VoteAverageProps = {

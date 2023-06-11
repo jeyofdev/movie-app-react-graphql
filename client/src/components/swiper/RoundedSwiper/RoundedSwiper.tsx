@@ -17,7 +17,7 @@ import { BreakpointEnum, RoutesEnum } from '../../../types/enums';
 import { RoundedSwiperProps } from '../../../types/types/props';
 import useStyles from './style';
 
-const RoundedSwiper = ({ list }: RoundedSwiperProps) => {
+const RoundedSwiper = ({ list, styleBox }: RoundedSwiperProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
@@ -61,7 +61,7 @@ const RoundedSwiper = ({ list }: RoundedSwiperProps) => {
 				navigation={false}
 				modules={[Navigation]}
 				className='mySwiper'
-				style={styles.root}
+				style={{ ...styles.root, ...styleBox }}
 			>
 				{list.map(item => (
 					<SwiperSlide key={item.id}>
