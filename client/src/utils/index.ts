@@ -1,3 +1,6 @@
+import { format } from 'date-fns';
+import { enGB, fr, es, de } from 'date-fns/locale';
+import { LanguageEnum } from '@graphql/__generated__/graphql-type';
 import { RoutesEnum } from '../types/enums';
 
 /**
@@ -55,4 +58,42 @@ export const getAgeBetweenTwoDate = (birthday: string, deathday: string) => {
 	const age = new Date(diff);
 
 	return Math.abs(age.getUTCFullYear() - 1970);
+};
+
+export const formatDate = (date: string, locale: LanguageEnum) => {
+	const newDate = new Date(date);
+
+	const formatByLocale = () => {
+		switch (locale) {
+			case LanguageEnum.En:
+				return 'MMMM dd, yyyy';
+			case LanguageEnum.Fr:
+				return 'dd MMMM yyyy';
+			case LanguageEnum.Es:
+				return 'dd MMMM yyy';
+			case LanguageEnum.De:
+				return 'dd. MMMM yyyy';
+
+			default:
+				return 'MMMM dd, yyyy';
+		}
+	};
+
+	const getLocale = () => {
+		switch (locale) {
+			case LanguageEnum.En:
+				return enGB;
+			case LanguageEnum.Fr:
+				return fr;
+			case LanguageEnum.Es:
+				return es;
+			case LanguageEnum.De:
+				return de;
+
+			default:
+				return enGB;
+		}
+	};
+
+	return format(newDate, formatByLocale(), { locale: getLocale() });
 };

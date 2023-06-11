@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro';
 import { Typography, useTheme } from '@mui/material';
 import { PersonInfoProps } from '../../../types/types/props';
 import useStyles from './style';
@@ -18,7 +19,9 @@ const PersonInfo = ({
 			</Typography>
 
 			<Typography variant='body2' sx={styles.content}>
-				{value} {subValue && `(${subValue} ${subValueEnd})`}
+				{value
+					? `${value} ${subValue && `(${subValue} ${subValueEnd})`}`
+					: t`unknown`}
 			</Typography>
 		</>
 	);

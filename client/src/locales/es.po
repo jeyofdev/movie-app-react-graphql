@@ -17,6 +17,10 @@ msgstr ""
 msgid "{0, plural, one {Search result (#)} other {Search results (#)}}"
 msgstr "{0, plural, one {Resultado de búsqueda (#)} other {Resultados de investigación (#)}}"
 
+#: src/pages/genre/Genre.tsx:59
+msgid "{0}"
+msgstr ""
+
 #: src/components/modals/signUpModal/SignUpModal.tsx:108
 #: src/components/modals/signUpModal/SignUpModal.tsx:201
 msgid "Already a member ?"
@@ -38,12 +42,11 @@ msgstr "Ya hay una cuenta en uso con este correo electrónico."
 msgid "An error has occurred !!!"
 msgstr "Se ha producido un error !!!"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:36
-#: src/components/sidebar/sidebar/Sidebar.tsx:99
+#: src/components/sidebar/sidebar/Sidebar.tsx:39
 msgid "browse"
 msgstr "navegar"
 
-#: src/components/cards/detailsMovieCard/DetailsMovieCard.tsx:61
+#: src/components/cards/detailsMovieCard/DetailsMovieCard.tsx:69
 msgid "Cast"
 msgstr "Elenco"
 
@@ -58,15 +61,15 @@ msgstr "Continua con"
 msgid "Continue with email"
 msgstr "Continuar con el correo electrónico"
 
-#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:55
+#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:79
 msgid "Date of birth"
 msgstr "Fecha de nacimiento"
 
-#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:66
+#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:89
 msgid "Deathday"
 msgstr "Fecha de muerte"
 
-#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:89
+#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:39
 msgid "Description"
 msgstr "Descripción"
 
@@ -101,7 +104,7 @@ msgstr "Olvidaste tu contraseña ?"
 msgid "French"
 msgstr "Francés"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:154
+#: src/components/sidebar/sidebar/Sidebar.tsx:164
 msgid "Genres"
 msgstr "Géneros"
 
@@ -109,8 +112,8 @@ msgstr "Géneros"
 msgid "German"
 msgstr "Alemán"
 
-#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:104
-#: src/components/sidebar/sidebar/Sidebar.tsx:171
+#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:53
+#: src/components/sidebar/sidebar/Sidebar.tsx:181
 msgid "hide"
 msgstr "esconder"
 
@@ -134,7 +137,7 @@ msgstr "Acceder"
 msgid "Logout"
 msgstr "Salir"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:140
+#: src/components/sidebar/sidebar/Sidebar.tsx:150
 msgid "Movies"
 msgstr "películas"
 
@@ -142,7 +145,7 @@ msgstr "películas"
 msgid "Movies list"
 msgstr "Lista de películas"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:145
+#: src/components/sidebar/sidebar/Sidebar.tsx:155
 msgid "News Feed"
 msgstr "Noticias"
 
@@ -154,7 +157,7 @@ msgstr "Sin imagen"
 msgid "No photo"
 msgstr "Sin imagen"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:57
+#: src/components/sidebar/sidebar/Sidebar.tsx:67
 msgid "now playing"
 msgstr "en cartelera hoy"
 
@@ -180,11 +183,11 @@ msgstr "Contraseña"
 msgid "Password Confirmation"
 msgstr "Confirmación de contraseña"
 
-#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:80
+#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:102
 msgid "Place of Birth"
 msgstr "Lugar de nacimiento"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:45
+#: src/components/sidebar/sidebar/Sidebar.tsx:53
 msgid "popular"
 msgstr "popular"
 
@@ -201,7 +204,7 @@ msgstr "Buscar película..."
 msgid "Send"
 msgstr "Enviar"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:171
+#: src/components/sidebar/sidebar/Sidebar.tsx:181
 msgid "show more"
 msgstr "mostrar más"
 
@@ -251,7 +254,7 @@ msgstr "La contraseña debe tener al menos 8 caracteres"
 msgid "The passwords must match"
 msgstr "Las contraseñas deben coincidir"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:51
+#: src/components/sidebar/sidebar/Sidebar.tsx:60
 msgid "top rated"
 msgstr "mejor valoradas"
 
@@ -260,7 +263,11 @@ msgstr "mejor valoradas"
 msgid "Top rated movies"
 msgstr "Películas mejor valoradas"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:39
+#: src/components/ui/personInfo/PersonInfo.tsx:24
+msgid "Unknown"
+msgstr "Desconocido"
+
+#: src/components/sidebar/sidebar/Sidebar.tsx:46
 msgid "upcoming"
 msgstr "próximamente"
 
@@ -269,7 +276,7 @@ msgstr "próximamente"
 msgid "Upcoming movies"
 msgstr "Próximas películas"
 
-#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:104
+#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:53
 #: src/components/cards/previewMovieCard/MoviePreviewCard.tsx:60
 #: src/components/cards/selectedThumbsGalleryCard/SelectedThumbsGalleryCard.tsx:60
 msgid "View more"

@@ -1,10 +1,16 @@
 import ImageThumb from '@components/ui/images/imageThumb/ImageThumb';
 import PersonInfo from '@components/ui/personInfo/PersonInfo';
+import { TranslationContext } from '@context/TranslationContext';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { Box, Button, Typography, useTheme } from '@mui/material';
-import { getAge, getAgeBetweenTwoDate, truncate } from '@utils/index';
-import { useState } from 'react';
+import {
+	formatDate,
+	getAge,
+	getAgeBetweenTwoDate,
+	truncate,
+} from '@utils/index';
+import { useContext, useState } from 'react';
 import { useWindowSize } from 'usehooks-ts';
 import { BreakpointEnum } from '../../../types/enums';
 import { DetailsPersonCardPropsType } from '../../../types/types/props';
@@ -21,6 +27,8 @@ const DetailsPersonCard = ({
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
+	const { currentLocale } = useContext(TranslationContext);
+
 	useLingui();
 
 	const [viewMoreDescription, setViewMoreDescription] = useState(false);
@@ -32,6 +40,30 @@ const DetailsPersonCard = ({
 
 		return 100;
 	};
+
+	const getDescriptionJSX = (
+		<Box sx={{ ...styles.infoBox, ...styles.descriptionBox }}>
+			<PersonInfo
+				title={t`Description`}
+				value={
+					viewMoreDescription
+						? (biography as string)
+						: truncate(biography as string, getTruncateNumberWord())
+				}
+			/>
+
+			{(biography as string)?.split(' ')?.length > getTruncateNumberWord() && (
+				<Button
+					sx={styles.viewMoreBtn}
+					onClick={() => setViewMoreDescription(!viewMoreDescription)}
+				>
+					<Typography variant='body1' sx={styles.viewMoreTypo}>
+						{!viewMoreDescription ? t`View more` : t`hide`}
+					</Typography>
+				</Button>
+			)}
+		</Box>
+	);
 
 	return (
 		<Box sx={styles.detailsBox}>
@@ -50,22 +82,22 @@ const DetailsPersonCard = ({
 
 				<Box sx={styles.datasBox}>
 					<Box sx={styles.infosBoxes}>
-						{birthday && (
-							<Box sx={styles.infoBox}>
-								<PersonInfo
-									title={t`Date of birth`}
-									value={birthday as string}
-									subValue={!deathday ? getAge(birthday as string) : null}
-									subValueEnd='years old'
-								/>
-							</Box>
-						)}
+						<Box sx={styles.infoBox}>
+							<PersonInfo
+								title={t`Date of birth`}
+								value={formatDate(birthday as string, currentLocale) as string}
+								subValue={!deathday ? getAge(birthday as string) : null}
+								subValueEnd='years old'
+							/>
+						</Box>
 
 						{deathday && (
 							<Box sx={styles.infoBox}>
 								<PersonInfo
 									title={t`Deathday`}
-									value={deathday as string}
+									value={
+										formatDate(deathday as string, currentLocale) as string
+									}
 									subValue={getAgeBetweenTwoDate(
 										birthday as string,
 										deathday as string,
@@ -75,67 +107,21 @@ const DetailsPersonCard = ({
 							</Box>
 						)}
 
-						{place_of_birth && (
-							<Box sx={styles.infoBox}>
-								<PersonInfo
-									title={t`Place of Birth`}
-									value={place_of_birth as string}
-								/>
-							</Box>
-						)}
+						<Box sx={styles.infoBox}>
+							<PersonInfo
+								title={t`Place of Birth`}
+								value={place_of_birth as string}
+							/>
+						</Box>
 					</Box>
 
 					{(width < BreakpointEnum.SM || width >= BreakpointEnum.MD) &&
-						biography && (
-							<Box sx={{ ...styles.infoBox, ...styles.descriptionBox }}>
-								<PersonInfo
-									title={t`Description`}
-									value={
-										viewMoreDescription
-											? (biography as string)
-											: truncate(biography as string, getTruncateNumberWord())
-									}
-								/>
-
-								{(biography as string)?.split(' ')?.length >
-									getTruncateNumberWord() && (
-									<Button
-										sx={styles.viewMoreBtn}
-										onClick={() => setViewMoreDescription(!viewMoreDescription)}
-									>
-										<Typography variant='body1' sx={styles.viewMoreTypo}>
-											{!viewMoreDescription ? t`View more` : t`hide`}
-										</Typography>
-									</Button>
-								)}
-							</Box>
-						)}
+						getDescriptionJSX}
 				</Box>
 			</Box>
-			{width >= BreakpointEnum.SM && width < BreakpointEnum.MD && biography && (
-				<Box sx={{ ...styles.infoBox, ...styles.descriptionBox }}>
-					<PersonInfo
-						title={t`Description`}
-						value={
-							viewMoreDescription
-								? (biography as string)
-								: truncate(biography as string, getTruncateNumberWord())
-						}
-					/>
-
-					{(biography as string)?.split(' ')?.length >
-						getTruncateNumberWord() && (
-						<Button
-							sx={styles.viewMoreBtn}
-							onClick={() => setViewMoreDescription(!viewMoreDescription)}
-						>
-							<Typography variant='body1' sx={styles.viewMoreTypo}>
-								{!viewMoreDescription ? t`View more` : t`hide`}
-							</Typography>
-						</Button>
-					)}
-				</Box>
-			)}
+			{width >= BreakpointEnum.SM &&
+				width < BreakpointEnum.MD &&
+				getDescriptionJSX}
 		</Box>
 	);
 };
