@@ -30,13 +30,6 @@ const SearchResultMovieCard = ({
 			onClick={() => navigate(`/${RoutesEnum.MOVIE}/${id}`)}
 			sx={styles.root}
 		>
-			{/* <Box
-				component='img'
-				sx={styles.poster}
-				alt={title as string}
-				src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-			/> */}
-
 			<Box>
 				<ImageThumb
 					src={poster_path as string}

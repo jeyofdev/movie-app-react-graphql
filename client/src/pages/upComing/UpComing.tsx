@@ -6,15 +6,13 @@ import {
 	Movie,
 	useUpcomingMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
+import { Trans, t } from '@lingui/macro';
 import { Box } from '@mui/material';
-import { getListMoviesTitle } from '@utils/index';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import useStyles from './style';
 
 const Upcoming = () => {
 	const styles = useStyles();
-	const { pathname } = useLocation();
 	const { currentLocale } = useContext(TranslationContext);
 
 	const [page, setPage] = useState(1);
@@ -42,14 +40,18 @@ const Upcoming = () => {
 	}
 
 	if (error) {
-		<AlertBase>An error has occurred !!!</AlertBase>;
+		return (
+			<AlertBase>
+				<Trans>An error has occurred !!!</Trans>
+			</AlertBase>
+		);
 	}
 
 	return (
 		<Box sx={styles.root}>
 			<ListContainer
 				list={data?.upcomingMovies?.results as Array<Movie>}
-				title={getListMoviesTitle(pathname)}
+				title={t`Upcoming movies`}
 				totalPages={data?.upcomingMovies?.total_pages as number}
 				currentPage={page}
 				setCurrentPage={handleChangePage}

@@ -7,6 +7,7 @@ import {
 	useCastByMovieQuery,
 	useMovieDetailsQuery,
 } from '@graphql/__generated__/graphql-type';
+import { Trans } from '@lingui/macro';
 import { Box } from '@mui/material';
 import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
@@ -39,7 +40,11 @@ const MovieDetails = () => {
 	}
 
 	if (error || castError) {
-		<AlertBase>An error has occurred !!!</AlertBase>;
+		return (
+			<AlertBase>
+				<Trans>An error has occurred !!!</Trans>
+			</AlertBase>
+		);
 	}
 
 	return (

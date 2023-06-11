@@ -6,15 +6,13 @@ import {
 	Movie,
 	useNowPlayingMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
+import { Trans, t } from '@lingui/macro';
 import { Box } from '@mui/material';
-import { getListMoviesTitle } from '@utils/index';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import useStyles from './style';
 
 const NowPlaying = () => {
 	const styles = useStyles();
-	const { pathname } = useLocation();
 	const { currentLocale } = useContext(TranslationContext);
 
 	const [page, setPage] = useState(1);
@@ -42,14 +40,18 @@ const NowPlaying = () => {
 	}
 
 	if (error) {
-		<AlertBase>An error has occurred !!!</AlertBase>;
+		return (
+			<AlertBase>
+				<Trans>An error has occurred !!!</Trans>
+			</AlertBase>
+		);
 	}
 
 	return (
 		<Box sx={styles.root}>
 			<ListContainer
 				list={data?.nowPlayingMovies?.results as Array<Movie>}
-				title={getListMoviesTitle(pathname)}
+				title={t`Now playing movies`}
 				totalPages={data?.nowPlayingMovies?.total_pages as number}
 				currentPage={page}
 				setCurrentPage={handleChangePage}

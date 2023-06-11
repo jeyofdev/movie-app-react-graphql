@@ -6,6 +6,7 @@ import {
 	Movie,
 	useDiscoverMoviesByGenreQuery,
 } from '@graphql/__generated__/graphql-type';
+import { Trans, t } from '@lingui/macro';
 import { Box } from '@mui/material';
 import { firstLetterCapitalize } from '@utils/index';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
@@ -44,14 +45,20 @@ const Genre = () => {
 	}
 
 	if (error) {
-		return <AlertBase>An error has occurred !!!</AlertBase>;
+		return (
+			<AlertBase>
+				<Trans>An error has occurred !!!</Trans>
+			</AlertBase>
+		);
 	}
 
 	return (
 		<Box sx={styles.root}>
 			<ListContainer
 				list={data?.discoverMoviesByGenre?.results as Array<Movie>}
-				title={firstLetterCapitalize(genreName?.replaceAll('-', ' ') as string)}
+				title={t`${firstLetterCapitalize(
+					genreName?.replaceAll('-', ' ') as string,
+				)}`}
 				totalPages={data?.discoverMoviesByGenre?.total_pages as number}
 				currentPage={page}
 				setCurrentPage={handleChangePage}

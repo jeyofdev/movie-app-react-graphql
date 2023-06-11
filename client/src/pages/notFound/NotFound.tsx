@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro';
 import { Box, Typography, useTheme } from '@mui/material';
 import useStyles from './style';
 
@@ -7,7 +8,7 @@ const NotFound = () => {
 	return (
 		<Box sx={styles.root}>
 			<Typography variant='h3' sx={styles.typo}>
-				Page Not Found
+				<Trans>Page Not Found...</Trans>
 			</Typography>
 		</Box>
 	);

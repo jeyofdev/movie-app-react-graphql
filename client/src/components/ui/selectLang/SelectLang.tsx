@@ -1,6 +1,7 @@
 import { ThemeContext } from '@context/ThemeContext';
 import { TranslationContext } from '@context/TranslationContext';
 import { LanguageEnum } from '@graphql/__generated__/graphql-type';
+import { t } from '@lingui/macro';
 import {
 	Box,
 	FormControl,
@@ -20,10 +21,10 @@ import { ReactComponent as Germany } from '../../../assets/flags/germany.svg';
 import { ReactComponent as Spain } from '../../../assets/flags/spain.svg';
 
 const countries = [
-	{ id: uuidv4(), label: 'English', locale: LanguageEnum.En },
-	{ id: uuidv4(), label: 'French', locale: LanguageEnum.Fr },
-	{ id: uuidv4(), label: 'Spanish', locale: LanguageEnum.Es },
-	{ id: uuidv4(), label: 'German', locale: LanguageEnum.De },
+	{ id: uuidv4(), label: t`English`, locale: LanguageEnum.En },
+	{ id: uuidv4(), label: t`French`, locale: LanguageEnum.Fr },
+	{ id: uuidv4(), label: t`Spanish`, locale: LanguageEnum.Es },
+	{ id: uuidv4(), label: t`German`, locale: LanguageEnum.De },
 ];
 
 const SelectLang = () => {

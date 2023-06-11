@@ -3,6 +3,7 @@ import LoaderContainer from '@components/containers/LoaderContainer/LoaderContai
 import AlertBase from '@components/ui/alert/Alert';
 import { TranslationContext } from '@context/TranslationContext';
 import { useSearchMoviesQuery } from '@graphql/__generated__/graphql-type';
+import { Plural, Trans } from '@lingui/macro';
 import { Box, Typography, useTheme } from '@mui/material';
 import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -33,13 +34,21 @@ const SearchResults = () => {
 	}
 
 	if (error) {
-		<AlertBase>An error has occurred !!!</AlertBase>;
+		return (
+			<AlertBase>
+				<Trans>An error has occurred !!!</Trans>
+			</AlertBase>
+		);
 	}
 
 	return (
 		<Box sx={styles.root}>
 			<Typography variant='h3' sx={styles.title}>
-				Search results ({data?.searchMovies?.results?.length})
+				<Plural
+					value={data?.searchMovies?.results?.length as number}
+					one='Search result (#)'
+					other='Search results (#)'
+				/>
 			</Typography>
 
 			<Box sx={styles.resultsBox}>

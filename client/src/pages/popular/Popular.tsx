@@ -6,15 +6,14 @@ import {
 	Movie,
 	usePopularMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
+import { Trans, t } from '@lingui/macro';
 import { Box } from '@mui/material';
-import { getListMoviesTitle } from '@utils/index';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import useStyles from './style';
 
 const Popular = () => {
 	const styles = useStyles();
-	const { pathname } = useLocation();
+
 	const { currentLocale } = useContext(TranslationContext);
 
 	const [page, setPage] = useState(1);
@@ -42,14 +41,18 @@ const Popular = () => {
 	}
 
 	if (error) {
-		<AlertBase>An error has occurred !!!</AlertBase>;
+		return (
+			<AlertBase>
+				<Trans>An error has occurred !!!</Trans>
+			</AlertBase>
+		);
 	}
 
 	return (
 		<Box sx={styles.root}>
 			<ListContainer
 				list={data?.popularMovies?.results as Array<Movie>}
-				title={getListMoviesTitle(pathname)}
+				title={t`Popular movies`}
 				totalPages={data?.popularMovies?.total_pages as number}
 				currentPage={page}
 				setCurrentPage={handleChangePage}
