@@ -39,7 +39,7 @@ const MenuItemsBlock = ({
 					}
 					active={
 						menuItemActive ===
-						menuItem?.name?.split(' ')?.join('-').toLowerCase()
+						menuItem?.value?.split(' ')?.join('-').toLowerCase()
 					}
 					setMenuItemActive={setMenuItemActive}
 					disableRipple={mobile}

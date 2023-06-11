@@ -33,27 +33,37 @@ const Sidebar = () => {
 	useLingui();
 
 	const newsFeedItems: MenuItemType[] = [
-		{ id: uuidv4(), name: t`browse`, icon: faCompass, link: RoutesEnum.ROOT },
 		{
 			id: uuidv4(),
+			value: 'browse',
+			name: t`browse`,
+			icon: faCompass,
+			link: RoutesEnum.ROOT,
+		},
+		{
+			id: uuidv4(),
+			value: 'upcoming',
 			name: t`upcoming`,
 			icon: faCalendarCheck,
 			link: RoutesEnum.MOVIES_UPCOMING,
 		},
 		{
 			id: uuidv4(),
+			value: 'popular',
 			name: t`popular`,
 			icon: faThumbsUp,
 			link: RoutesEnum.MOVIES_POPULAR,
 		},
 		{
 			id: uuidv4(),
+			value: 'top rated',
 			name: t`top rated`,
 			icon: faMedal,
 			link: RoutesEnum.MOVIES_TOP_RATED,
 		},
 		{
 			id: uuidv4(),
+			value: 'now playing',
 			name: t`now playing`,
 			icon: faCirclePlay,
 			link: RoutesEnum.MOVIES_NOW_PLAYING,
@@ -96,7 +106,7 @@ const Sidebar = () => {
 		} else if (pathnameSplit?.length === 3) {
 			setMenuItemActive(pathnameSplit[2]?.toLowerCase());
 		} else if (pathnameSplit?.length === 2) {
-			setMenuItemActive(t`browse`);
+			setMenuItemActive('browse');
 		} else if (pathnameSplit[1] === 'search') {
 			setMenuItemActive('');
 		}
