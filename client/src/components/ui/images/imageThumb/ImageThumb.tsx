@@ -1,5 +1,6 @@
 import { faImage, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { t } from '@lingui/macro';
 import { Box, Typography, useTheme } from '@mui/material';
 import { ImageThumbPropsType } from '../../../../types/types/props';
 import useStyles from './style';
@@ -32,7 +33,7 @@ const ImageThumb = ({
 					/>
 
 					<Typography variant='h5' sx={styles.noImageTypo}>
-						{person ? 'No photo' : 'No Image'}
+						{person ? t`No photo` : t`No Image`}
 					</Typography>
 				</Box>
 			)}

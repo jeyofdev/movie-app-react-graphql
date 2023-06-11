@@ -6,15 +6,13 @@ import {
 	Movie,
 	useTopRatedMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
+import { Trans, t } from '@lingui/macro';
 import { Box } from '@mui/material';
-import { getListMoviesTitle } from '@utils/index';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import useStyles from './style';
 
 const TopRated = () => {
 	const styles = useStyles();
-	const { pathname } = useLocation();
 	const { currentLocale } = useContext(TranslationContext);
 
 	const [page, setPage] = useState(1);
@@ -42,7 +40,11 @@ const TopRated = () => {
 	}
 
 	if (error) {
-		<AlertBase>An error has occurred !!!</AlertBase>;
+		return (
+			<AlertBase>
+				<Trans>An error has occurred !!!</Trans>
+			</AlertBase>
+		);
 	}
 
 	return (
@@ -52,7 +54,7 @@ const TopRated = () => {
 				totalPages={data?.topRatedMovies?.total_pages as number}
 				currentPage={page}
 				setCurrentPage={handleChangePage}
-				title={getListMoviesTitle(pathname)}
+				title={t`Top rated movies`}
 			/>
 		</Box>
 	);

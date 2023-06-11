@@ -29,7 +29,7 @@ import {
 } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useWindowSize } from 'usehooks-ts';
-import { BreakpointEnum, DarkModeEnum } from '../../types/enums';
+import { BreakpointEnum, DarkModeEnum, RoutesEnum } from '../../types/enums';
 import useStyles from './style';
 
 const Topbar = () => {
@@ -55,7 +55,7 @@ const Topbar = () => {
 	};
 
 	const handleClick = () => {
-		navigate(`/search/${search.split(' ').join('-')}`);
+		navigate(`${RoutesEnum.SEARCH}/${search.split(' ').join('-')}`);
 		setSearch('');
 		setShowSearchBtnMobile(true);
 		setShowInputSearch(false);

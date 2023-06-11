@@ -57,7 +57,11 @@ const Person = () => {
 	}
 
 	if (personDetailsError || moviesByCastPersonError) {
-		return <AlertBase>An error has occurred !!!</AlertBase>;
+		return (
+			<AlertBase>
+				<Trans>An error has occurred !!!</Trans>
+			</AlertBase>
+		);
 	}
 
 	return (

@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/pages/searchResults/SearchResults.tsx:47
+msgid "{0, plural, one {Search result (#)} other {Search results (#)}}"
+msgstr "{0, plural, one {Search result (#)} other {Search results (#)}}"
+
 #: src/components/modals/signUpModal/SignUpModal.tsx:108
 #: src/components/modals/signUpModal/SignUpModal.tsx:201
 msgid "Already a member ?"
@@ -22,12 +26,24 @@ msgstr "Already a member ?"
 msgid "An account is already in use with this email."
 msgstr "An account is already in use with this email."
 
+#: src/pages/genre/Genre.tsx:50
+#: src/pages/home/Home.tsx:137
+#: src/pages/movieDetails/MovieDetails.tsx:45
+#: src/pages/nowPlaying/NowPlaying.tsx:45
+#: src/pages/person/Person.tsx:62
+#: src/pages/popular/Popular.tsx:46
+#: src/pages/searchResults/SearchResults.tsx:39
+#: src/pages/topRated/TopRated.tsx:45
+#: src/pages/upComing/UpComing.tsx:45
+msgid "An error has occurred !!!"
+msgstr ""
+
 #: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:53
 #~ msgid "Birthday"
 #~ msgstr ""
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:34
-#: src/components/sidebar/sidebar/Sidebar.tsx:91
+#: src/components/sidebar/sidebar/Sidebar.tsx:36
+#: src/components/sidebar/sidebar/Sidebar.tsx:99
 msgid "browse"
 msgstr "browse"
 
@@ -69,6 +85,10 @@ msgstr "Don't have an account ?"
 msgid "Email"
 msgstr "Email"
 
+#: src/components/ui/selectLang/SelectLang.tsx:24
+msgid "English"
+msgstr "English"
+
 #: src/components/topbar/Topbar.tsx:170
 msgid "Finish Signing up"
 msgstr "Finish Signing up"
@@ -81,12 +101,20 @@ msgstr "Forgot your password"
 msgid "Forgot your password ?"
 msgstr "Forgot your password ?"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:146
+#: src/components/ui/selectLang/SelectLang.tsx:25
+msgid "French"
+msgstr "French"
+
+#: src/components/sidebar/sidebar/Sidebar.tsx:154
 msgid "Genres"
 msgstr "Genres"
 
+#: src/components/ui/selectLang/SelectLang.tsx:27
+msgid "German"
+msgstr "German"
+
 #: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:104
-#: src/components/sidebar/sidebar/Sidebar.tsx:163
+#: src/components/sidebar/sidebar/Sidebar.tsx:171
 msgid "hide"
 msgstr "hide"
 
@@ -110,29 +138,42 @@ msgstr "Login"
 msgid "Logout"
 msgstr "Logout"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:132
+#: src/components/sidebar/sidebar/Sidebar.tsx:140
 msgid "Movies"
 msgstr "Movies"
 
-#: src/pages/person/Person.tsx:68
+#: src/pages/person/Person.tsx:82
 msgid "Movies list"
 msgstr "Movies list"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:137
+#: src/components/sidebar/sidebar/Sidebar.tsx:145
 msgid "News Feed"
 msgstr "News Feed"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:55
+#: src/components/ui/images/imageThumb/ImageThumb.tsx:36
+msgid "No Image"
+msgstr "No Image"
+
+#: src/components/ui/images/imageThumb/ImageThumb.tsx:36
+msgid "No photo"
+msgstr "No photo"
+
+#: src/components/sidebar/sidebar/Sidebar.tsx:57
 msgid "now playing"
 msgstr "now playing"
 
-#: src/pages/home/Home.tsx:197
+#: src/pages/home/Home.tsx:234
+#: src/pages/nowPlaying/NowPlaying.tsx:54
 msgid "Now playing movies"
 msgstr "Now playing movies"
 
 #: src/components/modals/signInModal/SignInModal.tsx:132
 msgid "or"
 msgstr "or"
+
+#: src/pages/notFound/NotFound.tsx:11
+msgid "Page Not Found..."
+msgstr "Page Not Found..."
 
 #: src/components/modals/signInModal/SignInModal.tsx:174
 #: src/components/modals/signUpModal/SignUpModal.tsx:162
@@ -147,11 +188,12 @@ msgstr "Password confirm"
 msgid "Place of Birth"
 msgstr "Place of Birth"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:43
+#: src/components/sidebar/sidebar/Sidebar.tsx:45
 msgid "popular"
 msgstr "popular"
 
-#: src/pages/home/Home.tsx:122
+#: src/pages/home/Home.tsx:159
+#: src/pages/popular/Popular.tsx:55
 msgid "Popular movies"
 msgstr "Popular movies"
 
@@ -163,7 +205,7 @@ msgstr "Search movie..."
 msgid "Send"
 msgstr "Send"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:163
+#: src/components/sidebar/sidebar/Sidebar.tsx:171
 msgid "show more"
 msgstr "show more"
 
@@ -177,6 +219,10 @@ msgstr "Sign up"
 #: src/components/modals/signUpModal/SignUpModal.tsx:193
 msgid "Sign up with email"
 msgstr "Sign up with email"
+
+#: src/components/ui/selectLang/SelectLang.tsx:26
+msgid "Spanish"
+msgstr "Spanish"
 
 #: src/validation/index.ts:8
 msgid "The email address is not in the correct format"
@@ -209,19 +255,21 @@ msgstr "The password must be at least 8 characters"
 msgid "The passwords must match"
 msgstr "The passwords must match"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:49
+#: src/components/sidebar/sidebar/Sidebar.tsx:51
 msgid "top rated"
 msgstr "top rated"
 
-#: src/pages/home/Home.tsx:172
+#: src/pages/home/Home.tsx:209
+#: src/pages/topRated/TopRated.tsx:57
 msgid "Top rated movies"
 msgstr "Top Rated Movies"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:37
+#: src/components/sidebar/sidebar/Sidebar.tsx:39
 msgid "upcoming"
 msgstr "upcoming"
 
-#: src/pages/home/Home.tsx:147
+#: src/pages/home/Home.tsx:184
+#: src/pages/upComing/UpComing.tsx:54
 msgid "Upcoming movies"
 msgstr "Upcoming movies"
 

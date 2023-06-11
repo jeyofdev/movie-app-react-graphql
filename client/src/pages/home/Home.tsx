@@ -11,7 +11,7 @@ import {
 	useTopRatedMoviesQuery,
 	useUpcomingMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
-import { t } from '@lingui/macro';
+import { Trans, t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { Box, useTheme } from '@mui/material';
 import { useContext, useState } from 'react';
@@ -132,7 +132,11 @@ const Home = () => {
 		upComingMovieError ||
 		topRatedMoviesError
 	) {
-		<AlertBase>An error has occurred !!!</AlertBase>;
+		return (
+			<AlertBase>
+				<Trans>An error has occurred !!!</Trans>
+			</AlertBase>
+		);
 	}
 
 	return (
