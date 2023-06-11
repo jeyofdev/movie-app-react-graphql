@@ -40,6 +40,7 @@ export type MenuItemPropsType = {
 
 export type MenuItemType = Pick<MenuItemPropsType, 'icon' | 'link'> & {
 	id: string;
+	value: string;
 	name: string;
 };
 
