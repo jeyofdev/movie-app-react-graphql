@@ -1,7 +1,8 @@
 import ImageThumb from '@components/ui/images/imageThumb/ImageThumb';
+import { TranslationContext } from '@context/TranslationContext';
 import { Box, Button, Typography, useTheme } from '@mui/material';
-import { truncate } from '@utils/index';
-import { format } from 'date-fns';
+import { formatDate, truncate } from '@utils/index';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useWindowSize } from 'usehooks-ts';
 import { BreakpointEnum, RoutesEnum } from '../../../types/enums';
@@ -19,11 +20,7 @@ const SearchResultMovieCard = ({
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
 	const navigate = useNavigate();
-
-	const formatDate = (date: string) => {
-		const newDate = new Date(date);
-		return format(newDate, 'MMMM dd, yyyy');
-	};
+	const { currentLocale } = useContext(TranslationContext);
 
 	return (
 		<Button
@@ -45,7 +42,7 @@ const SearchResultMovieCard = ({
 
 				{release_date && (
 					<Typography variant='body1' sx={styles.releaseDate}>
-						{formatDate(release_date as string)}
+						{formatDate(release_date as string, currentLocale)}
 					</Typography>
 				)}
 

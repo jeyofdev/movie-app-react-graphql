@@ -1,10 +1,16 @@
 import ImageThumb from '@components/ui/images/imageThumb/ImageThumb';
 import PersonInfo from '@components/ui/personInfo/PersonInfo';
+import { TranslationContext } from '@context/TranslationContext';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { Box, Button, Typography, useTheme } from '@mui/material';
-import { getAge, getAgeBetweenTwoDate, truncate } from '@utils/index';
-import { useState } from 'react';
+import {
+	formatDate,
+	getAge,
+	getAgeBetweenTwoDate,
+	truncate,
+} from '@utils/index';
+import { useContext, useState } from 'react';
 import { useWindowSize } from 'usehooks-ts';
 import { BreakpointEnum } from '../../../types/enums';
 import { DetailsPersonCardPropsType } from '../../../types/types/props';
@@ -21,6 +27,8 @@ const DetailsPersonCard = ({
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
+	const { currentLocale } = useContext(TranslationContext);
+
 	useLingui();
 
 	const [viewMoreDescription, setViewMoreDescription] = useState(false);
@@ -77,7 +85,7 @@ const DetailsPersonCard = ({
 						<Box sx={styles.infoBox}>
 							<PersonInfo
 								title={t`Date of birth`}
-								value={birthday as string}
+								value={formatDate(birthday as string, currentLocale) as string}
 								subValue={!deathday ? getAge(birthday as string) : null}
 								subValueEnd='years old'
 							/>
@@ -87,7 +95,9 @@ const DetailsPersonCard = ({
 							<Box sx={styles.infoBox}>
 								<PersonInfo
 									title={t`Deathday`}
-									value={deathday as string}
+									value={
+										formatDate(deathday as string, currentLocale) as string
+									}
 									subValue={getAgeBetweenTwoDate(
 										birthday as string,
 										deathday as string,
