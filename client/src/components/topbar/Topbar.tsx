@@ -1,5 +1,6 @@
 import SignInModal from '@components/modals/signInModal/SignInModal';
 import SignUpModal from '@components/modals/signUpModal/SignUpModal';
+import Logo from '@components/ui/logo/Logo';
 import SelectLang from '@components/ui/selectLang/SelectLang';
 import UserMenu from '@components/ui/userMenu/UserMenu';
 import { ThemeContext } from '@context/ThemeContext';
@@ -32,9 +33,10 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useWindowSize } from 'usehooks-ts';
 import { BreakpointEnum, DarkModeEnum, RoutesEnum } from '../../types/enums';
+import { TopBarPropsType } from '../../types/types/props';
 import useStyles from './style';
 
-const Topbar = () => {
+const Topbar = ({ landing }: TopBarPropsType) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const navigate = useNavigate();
@@ -84,25 +86,27 @@ const Topbar = () => {
 	return (
 		<>
 			<Box sx={styles.root}>
-				<Box sx={styles.searchBox}>
-					{showSearchBtnMobile && (
-						<Button
-							color='primary'
-							onClick={() => {
-								setShowInputSearch(!showInputSearch);
-								setShowSearchBtnMobile(false);
-							}}
-							sx={styles.darkModeBtn}
-						>
-							<FontAwesomeIcon
-								icon={faMagnifyingGlass}
-								color={theme.palette.primary.contrastText}
-								style={styles.searchIcon}
-							/>
-						</Button>
-					)}
+				{landing && <Logo />}
 
-					{showInputSearch && (
+				{!landing && showInputSearch && (
+					<Box sx={styles.searchBox}>
+						{showSearchBtnMobile && (
+							<Button
+								color='primary'
+								onClick={() => {
+									setShowInputSearch(!showInputSearch);
+									setShowSearchBtnMobile(false);
+								}}
+								sx={styles.darkModeBtn}
+							>
+								<FontAwesomeIcon
+									icon={faMagnifyingGlass}
+									color={theme.palette.primary.contrastText}
+									style={styles.searchIcon}
+								/>
+							</Button>
+						)}
+
 						<FormControl
 							sx={styles.searchFormControl(themeMode)}
 							variant='standard'
@@ -131,8 +135,9 @@ const Topbar = () => {
 								}
 							/>
 						</FormControl>
-					)}
-				</Box>
+					</Box>
+				)}
+
 				<Box sx={styles.LinksBox}>
 					<SelectLang />
 					<Button

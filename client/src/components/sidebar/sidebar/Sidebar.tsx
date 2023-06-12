@@ -1,6 +1,7 @@
 import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
 import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
 import AlertBase from '@components/ui/alert/Alert';
+import Logo from '@components/ui/logo/Logo';
 import { TranslationContext } from '@context/TranslationContext';
 import {
 	faCalendarCheck,
@@ -10,7 +11,6 @@ import {
 	faCompass,
 	faMedal,
 	faThumbsUp,
-	faTicket,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -44,7 +44,7 @@ const Sidebar = () => {
 			value: 'browse',
 			name: t`browse`,
 			icon: faCompass,
-			link: RoutesEnum.ROOT,
+			link: RoutesEnum.MOVIES_LIST,
 		},
 		{
 			id: uuidv4(),
@@ -159,16 +159,7 @@ const Sidebar = () => {
 		<Box sx={styles.root}>
 			{width >= BreakpointEnum.SM ? (
 				<>
-					<Box sx={styles.topContentBox}>
-						<FontAwesomeIcon
-							icon={faTicket}
-							color={theme.palette.primary.main}
-							style={styles.topIcon}
-						/>
-						<Typography variant='h4' sx={styles.topTitle}>
-							<Trans>Movies</Trans>
-						</Typography>
-					</Box>
+					<Logo />
 
 					<MenuItemsBlock
 						title={t`News Feed`}
