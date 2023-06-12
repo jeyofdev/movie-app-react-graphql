@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
 import { enGB, fr, es, de } from 'date-fns/locale';
+import { toast } from 'react-toastify';
 import { LanguageEnum } from '@graphql/__generated__/graphql-type';
 import { RoutesEnum } from '../types/enums';
 
@@ -97,3 +98,15 @@ export const formatDate = (date: string, locale: LanguageEnum) => {
 
 	return format(newDate, formatByLocale(), { locale: getLocale() });
 };
+
+export const toastSuccess = (message: string, autoClose?: number) =>
+	toast.success(message, {
+		position: 'top-right',
+		autoClose: autoClose ?? 5000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+		theme: 'colored',
+	});

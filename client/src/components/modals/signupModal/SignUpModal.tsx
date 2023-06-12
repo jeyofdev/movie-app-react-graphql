@@ -14,6 +14,7 @@ import { useLingui } from '@lingui/react';
 import { Alert, Box, Button, Typography, useTheme } from '@mui/material';
 import { signUp, socialMediaAuth } from '@services/auth';
 import { githubProvider, googleProvider } from '@services/auth.providers';
+import { toastSuccess } from '@utils/index';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
@@ -55,6 +56,7 @@ const SignUpModal = ({
 			.then(() => {
 				reset();
 				setOpen(false);
+				toastSuccess(t`you have successfully registered`, 5000);
 			})
 			.catch(err => {
 				if (err.code === 'auth/email-already-in-use') {
