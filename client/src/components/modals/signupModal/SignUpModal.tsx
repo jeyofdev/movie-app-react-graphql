@@ -14,11 +14,11 @@ import { useLingui } from '@lingui/react';
 import { Alert, Box, Button, Typography, useTheme } from '@mui/material';
 import { signUp, socialMediaAuth } from '@services/auth';
 import { githubProvider, googleProvider } from '@services/auth.providers';
+import { toastSuccess } from '@utils/index';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { SignUpModalPropsType } from '../../../types/types/props';
-import validation from '../../../validation';
 import useStyles from './style';
 
 const SignUpModal = ({
@@ -56,6 +56,7 @@ const SignUpModal = ({
 			.then(() => {
 				reset();
 				setOpen(false);
+				toastSuccess(t`you have successfully registered`, 5000);
 			})
 			.catch(err => {
 				if (err.code === 'auth/email-already-in-use') {
@@ -71,6 +72,30 @@ const SignUpModal = ({
 
 		return () => subscription.unsubscribe();
 	}, [watch]);
+
+	const validation = {
+		email: {
+			required: t`The email field is required`,
+			pattern: {
+				value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+				message: t`The email address is not in the correct format`,
+			},
+		},
+		password: {
+			required: t`The password field is required`,
+			minLength: {
+				value: 8,
+				message: t`The password must be at least 8 characters`,
+			},
+		},
+		passwordConfirm: {
+			required: t`The password confirm field is required`,
+			minLength: {
+				value: 8,
+				message: t`The password must be at least 8 characters`,
+			},
+		},
+	};
 
 	return (
 		<>

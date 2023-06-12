@@ -4,7 +4,6 @@ import InputText from '@components/ui/form/inputText/InputText';
 import Modal from '@components/ui/modals/Modal';
 import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import {
-	faCircleCheck,
 	faEnvelope,
 	faLock,
 	faTriangleExclamation,
@@ -27,11 +26,11 @@ import {
 	socialMediaAuth,
 } from '@services/auth';
 import { githubProvider, googleProvider } from '@services/auth.providers';
+import { toastSuccess } from '@utils/index';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { SignInModalPropsType } from '../../../types/types/props';
-import validation from '../../../validation';
 import useStyles from './style';
 
 const SignInModal = ({
@@ -55,8 +54,6 @@ const SignInModal = ({
 	} = useForm({ mode: 'onSubmit' });
 
 	const [signUpError, setSignUpError] = useState<string | null>();
-	const [forgotPasswordSuccess, setForgotPasswordSuccess] =
-		useState<boolean>(false);
 
 	const handleSocialLogin = async (
 		provider: GoogleAuthProvider | GithubAuthProvider,
@@ -70,6 +67,7 @@ const SignInModal = ({
 			.then(() => {
 				reset();
 				setOpen(false);
+				toastSuccess(t`You are connected`, 5000);
 			})
 			.catch(err => {
 				if (authErrorCredentials(err.code)) {
@@ -81,16 +79,20 @@ const SignInModal = ({
 	};
 
 	const handleSubmitEmail: SubmitHandler<FieldValues> = (data: FieldValues) => {
-		setForgotPasswordSuccess(false);
 		forgotPassword(data.email)
 			.then(() => {
 				reset();
-				// setOpen(false);
-				setForgotPasswordSuccess(true);
+				setOpen(false);
 			})
 			.catch(() => {
-				setForgotPasswordSuccess(true);
+				reset();
+				setOpen(false);
 			});
+
+		toastSuccess(
+			t`If the email entered corresponds to an application user, you will receive an email with instructions to reset your password`,
+			10000,
+		);
 	};
 
 	useEffect(() => {
@@ -100,6 +102,23 @@ const SignInModal = ({
 
 		return () => subscription.unsubscribe();
 	}, [watch]);
+
+	const validation = {
+		email: {
+			required: t`The email field is required`,
+			pattern: {
+				value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+				message: t`The email address is not in the correct format`,
+			},
+		},
+		password: {
+			required: t`The password field is required`,
+			minLength: {
+				value: 8,
+				message: t`The password must be at least 8 characters`,
+			},
+		},
+	};
 
 	return (
 		<>
@@ -247,29 +266,6 @@ const SignInModal = ({
 								}}
 							>
 								<Trans>The form contains errors</Trans>
-							</Alert>
-						)}
-
-						{isSubmitted && forgotPasswordSuccess && (
-							<Alert
-								variant='filled'
-								severity='success'
-								color='success'
-								sx={styles.alertSuccess}
-								iconMapping={{
-									success: (
-										<FontAwesomeIcon
-											icon={faCircleCheck}
-											color={theme.palette.success.dark}
-											style={styles.alertIcon}
-										/>
-									),
-								}}
-							>
-								<Trans>
-									If the email entered corresponds to an application user, you
-									will receive an email with instructions to reset your password
-								</Trans>
 							</Alert>
 						)}
 
