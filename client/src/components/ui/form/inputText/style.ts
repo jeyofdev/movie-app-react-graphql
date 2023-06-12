@@ -38,10 +38,18 @@ const useStyles = (theme: Theme) => ({
 	errorChip: {
 		width: 'fit-content',
 		marginTop: theme.spacing(0.5),
-		height: '18px',
+		height: 'auto',
+		padding: '2px 0px',
+
+		'& .MuiChip-label': {
+			textOverflow: 'unset',
+			whiteSpace: 'break-spaces',
+			overflow: 'hidden',
+		},
 	},
 	errorMessage: {
 		color: theme.palette.error.contrastText,
+		lineHeight: 1,
 	},
 });
 

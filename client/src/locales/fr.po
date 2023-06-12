@@ -17,16 +17,12 @@ msgstr ""
 msgid "{0, plural, one {Search result (#)} other {Search results (#)}}"
 msgstr "{0, plural, one {Résultat de recherche (#)} other {Résultats de recherche (#)}}"
 
-#: src/pages/genre/Genre.tsx:59
-msgid "{0}"
-msgstr ""
-
-#: src/components/modals/signUpModal/SignUpModal.tsx:108
-#: src/components/modals/signUpModal/SignUpModal.tsx:201
+#: src/components/modals/signUpModal/SignUpModal.tsx:110
+#: src/components/modals/signUpModal/SignUpModal.tsx:203
 msgid "Already a member ?"
 msgstr "Déjà membre ?"
 
-#: src/components/modals/signUpModal/SignUpModal.tsx:62
+#: src/components/modals/signUpModal/SignUpModal.tsx:64
 msgid "An account is already in use with this email."
 msgstr "Un compte est déjà utilisé avec cet e-mail."
 
@@ -54,37 +50,37 @@ msgstr "parcourir"
 msgid "Cast"
 msgstr "Casting"
 
-#: src/components/modals/signInModal/SignInModal.tsx:117
-#: src/components/modals/signInModal/SignInModal.tsx:123
-#: src/components/modals/signUpModal/SignUpModal.tsx:88
-#: src/components/modals/signUpModal/SignUpModal.tsx:94
+#: src/components/modals/signInModal/SignInModal.tsx:119
+#: src/components/modals/signInModal/SignInModal.tsx:125
+#: src/components/modals/signUpModal/SignUpModal.tsx:90
+#: src/components/modals/signUpModal/SignUpModal.tsx:96
 msgid "Continue with"
 msgstr "Continuer avec"
 
-#: src/components/modals/signUpModal/SignUpModal.tsx:100
+#: src/components/modals/signUpModal/SignUpModal.tsx:102
 msgid "Continue with email"
 msgstr "Continuer avec email"
 
-#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:79
+#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:87
 msgid "Date of birth"
 msgstr "Date de naissance"
 
-#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:89
+#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:97
 msgid "Deathday"
 msgstr "Date de décés"
 
-#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:39
+#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:47
 msgid "Description"
 msgstr "Description"
 
-#: src/components/modals/signInModal/SignInModal.tsx:211
-#: src/components/modals/signInModal/SignInModal.tsx:304
+#: src/components/modals/signInModal/SignInModal.tsx:213
+#: src/components/modals/signInModal/SignInModal.tsx:306
 msgid "Don't have an account ?"
 msgstr "Vous n'avez pas de compte ?"
 
-#: src/components/modals/signInModal/SignInModal.tsx:162
-#: src/components/modals/signInModal/SignInModal.tsx:280
-#: src/components/modals/signUpModal/SignUpModal.tsx:152
+#: src/components/modals/signInModal/SignInModal.tsx:164
+#: src/components/modals/signInModal/SignInModal.tsx:282
+#: src/components/modals/signUpModal/SignUpModal.tsx:154
 msgid "Email"
 msgstr "Email"
 
@@ -96,7 +92,7 @@ msgstr "Anglais"
 msgid "Finish Signing up"
 msgstr "Terminer l'inscription"
 
-#: src/components/modals/signInModal/SignInModal.tsx:188
+#: src/components/modals/signInModal/SignInModal.tsx:190
 msgid "Forgot your password"
 msgstr "Mot de passe oublié"
 
@@ -116,12 +112,12 @@ msgstr "Genres"
 msgid "German"
 msgstr "Allemand"
 
-#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:53
+#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:61
 #: src/components/sidebar/sidebar/Sidebar.tsx:181
 msgid "hide"
 msgstr "masquer"
 
-#: src/components/modals/signInModal/SignInModal.tsx:269
+#: src/components/modals/signInModal/SignInModal.tsx:271
 msgid "If the email entered corresponds to an application user, you will receive an email with instructions to reset your password"
 msgstr "Si l'e-mail saisi correspond à un utilisateur de l'application, vous recevrez un e-mail avec des instructions pour réinitialiser votre mot de passe"
 
@@ -129,9 +125,9 @@ msgstr "Si l'e-mail saisi correspond à un utilisateur de l'application, vous re
 msgid "Loading..."
 msgstr "Chargement..."
 
-#: src/components/modals/signInModal/SignInModal.tsx:203
-#: src/components/modals/signUpModal/SignUpModal.tsx:107
-#: src/components/modals/signUpModal/SignUpModal.tsx:200
+#: src/components/modals/signInModal/SignInModal.tsx:205
+#: src/components/modals/signUpModal/SignUpModal.tsx:109
+#: src/components/modals/signUpModal/SignUpModal.tsx:202
 #: src/components/topbar/Topbar.tsx:184
 #: src/components/ui/userMenu/UserMenu.tsx:65
 msgid "Login"
@@ -170,7 +166,7 @@ msgstr "actuellement"
 msgid "Now playing movies"
 msgstr "Films du moment"
 
-#: src/components/modals/signInModal/SignInModal.tsx:132
+#: src/components/modals/signInModal/SignInModal.tsx:134
 msgid "or"
 msgstr "ou"
 
@@ -178,16 +174,16 @@ msgstr "ou"
 msgid "Page Not Found..."
 msgstr "Page non trouvée..."
 
-#: src/components/modals/signInModal/SignInModal.tsx:174
-#: src/components/modals/signUpModal/SignUpModal.tsx:162
+#: src/components/modals/signInModal/SignInModal.tsx:176
+#: src/components/modals/signUpModal/SignUpModal.tsx:164
 msgid "Password"
 msgstr "Mot de passe"
 
-#: src/components/modals/signUpModal/SignUpModal.tsx:172
+#: src/components/modals/signUpModal/SignUpModal.tsx:174
 msgid "Password Confirmation"
 msgstr "Confirmation du mot de passe"
 
-#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:102
+#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:112
 msgid "Place of Birth"
 msgstr "Lieu de naissance"
 
@@ -204,7 +200,7 @@ msgstr "Films populaires"
 msgid "Search movie..."
 msgstr "Rechercher un film..."
 
-#: src/components/modals/signInModal/SignInModal.tsx:296
+#: src/components/modals/signInModal/SignInModal.tsx:298
 msgid "Send"
 msgstr "Envoyer"
 
@@ -212,14 +208,14 @@ msgstr "Envoyer"
 msgid "show more"
 msgstr "afficher plus"
 
-#: src/components/modals/signInModal/SignInModal.tsx:210
-#: src/components/modals/signInModal/SignInModal.tsx:303
+#: src/components/modals/signInModal/SignInModal.tsx:212
+#: src/components/modals/signInModal/SignInModal.tsx:305
 #: src/components/topbar/Topbar.tsx:169
 #: src/components/ui/userMenu/UserMenu.tsx:75
 msgid "Sign up"
 msgstr "Inscription"
 
-#: src/components/modals/signUpModal/SignUpModal.tsx:193
+#: src/components/modals/signUpModal/SignUpModal.tsx:195
 msgid "Sign up with email"
 msgstr "S'inscrire avec l'adresse e-mail"
 
@@ -227,34 +223,34 @@ msgstr "S'inscrire avec l'adresse e-mail"
 msgid "Spanish"
 msgstr "Espagnol"
 
-#: src/validation/index.ts:8
+#: src/validation/index.ts:13
 msgid "The email address is not in the correct format"
 msgstr "L'adresse e-mail n'est pas au bon format"
 
-#: src/validation/index.ts:5
+#: src/validation/index.ts:10
 msgid "The email field is required"
 msgstr "Le champ email est obligatoire"
 
-#: src/components/modals/signInModal/SignInModal.tsx:154
-#: src/components/modals/signInModal/SignInModal.tsx:249
-#: src/components/modals/signUpModal/SignUpModal.tsx:145
+#: src/components/modals/signInModal/SignInModal.tsx:156
+#: src/components/modals/signInModal/SignInModal.tsx:251
+#: src/components/modals/signUpModal/SignUpModal.tsx:147
 msgid "The form contains errors"
 msgstr "Le formulaire contient des erreurs"
 
-#: src/validation/index.ts:19
+#: src/validation/index.ts:24
 msgid "The password confirm field is required"
-msgstr ""
+msgstr "Le champ de confirmation du mot de passe est obligatoire"
 
-#: src/validation/index.ts:12
+#: src/validation/index.ts:17
 msgid "The password field is required"
-msgstr ""
+msgstr "Le champ mot de passe est obligatoire"
 
-#: src/validation/index.ts:15
-#: src/validation/index.ts:22
+#: src/validation/index.ts:20
+#: src/validation/index.ts:27
 msgid "The password must be at least 8 characters"
 msgstr "Le mot de passe doit comporter au moins 8 caractères"
 
-#: src/components/modals/signUpModal/SignUpModal.tsx:181
+#: src/components/modals/signUpModal/SignUpModal.tsx:183
 msgid "The passwords must match"
 msgstr "Les mots de passe doivent correspondre"
 
@@ -280,12 +276,12 @@ msgstr "à venir"
 msgid "Upcoming movies"
 msgstr "Films à venir"
 
-#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:53
+#: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:61
 #: src/components/cards/previewMovieCard/MoviePreviewCard.tsx:60
 #: src/components/cards/selectedThumbsGalleryCard/SelectedThumbsGalleryCard.tsx:60
 msgid "View more"
 msgstr "Voir plus"
 
-#: src/components/modals/signInModal/SignInModal.tsx:77
+#: src/components/modals/signInModal/SignInModal.tsx:79
 msgid "Your credentials are incorrect. Please double-check your login details and try again."
 msgstr "Vos informations d'identification sont erronées. Veuillez vérifier vos informations de connexion et réessayer."
