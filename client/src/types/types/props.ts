@@ -271,3 +271,7 @@ export type DetailsPersonCardPropsType = {
 	place_of_birth: string;
 	biography: string;
 };
+
+export type TopBarPropsType = {
+	landing?: boolean;
+};

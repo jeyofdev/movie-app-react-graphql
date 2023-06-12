@@ -31,19 +31,6 @@ const useStyles = (theme: Theme) => ({
 			gridColumn: '1 / span 1',
 		},
 	},
-	topContentBox: {
-		display: 'flex',
-		alignItems: 'center',
-		gap: '1rem',
-		marginTop: theme.spacing(2),
-	},
-	topIcon: {
-		fontSize: '1.75rem',
-	},
-	topTitle: {
-		color: theme.palette.primary.main,
-		textTransform: 'uppercase',
-	},
 	divider: {
 		height: '0.5px',
 		width: '100%',
