@@ -8,6 +8,7 @@ import useStyles from './style';
 const MenuItemsBlock = ({
 	title,
 	menuItems,
+	menuItemsOriginal,
 	menuItemActive,
 	setMenuItemActive,
 	mobile = false,
@@ -24,22 +25,25 @@ const MenuItemsBlock = ({
 				</Typography>
 			)}
 
-			{menuItems.map((menuItem: any) => (
+			{menuItems.map((menuItem: any, i: number) => (
 				<MenuItem
 					key={menuItem?.id}
 					id={menuItem?.id}
 					label={!mobile && menuItem?.name}
 					icon={menuItem?.icon}
 					link={
-						isGenre
-							? `${RoutesEnum.MOVIES_GENRE}/${menuItem?.name
+						isGenre && menuItemsOriginal
+							? `${RoutesEnum.MOVIES_GENRE}/${menuItemsOriginal[i]?.name
 									.toLowerCase()
 									.replaceAll(' ', '-')}`
 							: menuItem?.link
 					}
 					active={
-						menuItemActive ===
-						menuItem?.value?.split(' ')?.join('-').toLowerCase()
+						isGenre && menuItemsOriginal
+							? menuItemActive ===
+							  menuItemsOriginal[i]?.name?.split(' ')?.join('-').toLowerCase()
+							: menuItemActive ===
+							  menuItem?.value?.split(' ')?.join('-').toLowerCase()
 					}
 					setMenuItemActive={setMenuItemActive}
 					disableRipple={mobile}
