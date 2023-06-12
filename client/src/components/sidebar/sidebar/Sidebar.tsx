@@ -1,4 +1,6 @@
+import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
 import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
+import AlertBase from '@components/ui/alert/Alert';
 import { TranslationContext } from '@context/TranslationContext';
 import {
 	faCalendarCheck,
@@ -11,7 +13,11 @@ import {
 	faTicket,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Genre, useGenresQuery } from '@graphql/__generated__/graphql-type';
+import {
+	Genre,
+	LanguageEnum,
+	useGenresQuery,
+} from '@graphql/__generated__/graphql-type';
 import useWindowSize from '@hooks/useWindowSize';
 import { Trans, t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
@@ -76,15 +82,15 @@ const Sidebar = () => {
 	const [genresItems, setGenresItems] = useState<Array<Genre>>([]);
 	const {
 		data: dataGenres,
-		loading,
-		error,
+		loading: loadingGenres,
+		error: errorGenres,
 	} = useGenresQuery({
 		variables: {
 			options: {
 				language: currentLocale,
 			},
 		},
-		fetchPolicy: 'cache-and-network',
+		fetchPolicy: 'no-cache',
 		onCompleted(data) {
 			setGenresItems(
 				data?.genres?.genres
@@ -92,6 +98,15 @@ const Sidebar = () => {
 					: [],
 			);
 		},
+	});
+
+	const { data, loading, error } = useGenresQuery({
+		variables: {
+			options: {
+				language: LanguageEnum.En,
+			},
+		},
+		fetchPolicy: 'no-cache',
 	});
 
 	const handleClickShowAllGenres = () => {
@@ -128,12 +143,16 @@ const Sidebar = () => {
 		}
 	}, [dataGenres?.genres?.genres, showAllGenres]);
 
-	if (loading) {
-		return <Box>Loading...</Box>;
+	if (loading || loadingGenres) {
+		return <LoaderContainer />;
 	}
 
-	if (error) {
-		return <Box>{error.message}</Box>;
+	if (error || errorGenres) {
+		return (
+			<AlertBase>
+				<Trans>An error has occurred !!!</Trans>
+			</AlertBase>
+		);
 	}
 
 	return (
@@ -163,6 +182,7 @@ const Sidebar = () => {
 					<MenuItemsBlock
 						title={t`Genres`}
 						menuItems={genresItems}
+						menuItemsOriginal={data?.genres?.genres as Array<Genre>}
 						menuItemActive={menuItemActive as string}
 						setMenuItemActive={setMenuItemActive}
 						isGenre

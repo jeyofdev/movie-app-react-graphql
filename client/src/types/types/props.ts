@@ -56,6 +56,7 @@ export type BaseButtonPropsType = {
 export type BlockSidebarMenuProps = {
 	title: string;
 	menuItems: Array<Genre> | Array<MenuItemType>;
+	menuItemsOriginal?: Array<Genre>;
 	menuItemActive: string;
 	setMenuItemActive: Dispatch<SetStateAction<string | null>>;
 	mobile?: boolean;

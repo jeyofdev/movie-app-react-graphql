@@ -46,8 +46,8 @@ msgstr "durchsuche"
 msgid "Cast"
 msgstr "Gießen"
 
-#: src/components/modals/signInModal/SignInModal.tsx:138
-#: src/components/modals/signInModal/SignInModal.tsx:144
+#: src/components/modals/signInModal/SignInModal.tsx:136
+#: src/components/modals/signInModal/SignInModal.tsx:142
 #: src/components/modals/signUpModal/SignUpModal.tsx:113
 #: src/components/modals/signUpModal/SignUpModal.tsx:119
 msgid "Continue with"
@@ -69,13 +69,13 @@ msgstr "Sterbedatum"
 msgid "Description"
 msgstr "Beschreibung"
 
-#: src/components/modals/signInModal/SignInModal.tsx:232
-#: src/components/modals/signInModal/SignInModal.tsx:302
+#: src/components/modals/signInModal/SignInModal.tsx:230
+#: src/components/modals/signInModal/SignInModal.tsx:300
 msgid "Don't have an account ?"
 msgstr "Sie haben noch kein Konto?"
 
-#: src/components/modals/signInModal/SignInModal.tsx:183
-#: src/components/modals/signInModal/SignInModal.tsx:278
+#: src/components/modals/signInModal/SignInModal.tsx:181
+#: src/components/modals/signInModal/SignInModal.tsx:276
 #: src/components/modals/signUpModal/SignUpModal.tsx:177
 msgid "Email"
 msgstr "Email"
@@ -84,15 +84,15 @@ msgstr "Email"
 msgid "English"
 msgstr "Englisch"
 
-#: src/components/topbar/Topbar.tsx:173
+#: src/components/topbar/Topbar.tsx:172
 msgid "Finish Signing up"
 msgstr "Beenden Sie die Anmeldung"
 
-#: src/components/modals/signInModal/SignInModal.tsx:209
+#: src/components/modals/signInModal/SignInModal.tsx:207
 msgid "Forgot your password"
 msgstr "Haben Sie Ihr Passwort vergessen"
 
-#: src/components/topbar/Topbar.tsx:188
+#: src/components/topbar/Topbar.tsx:187
 msgid "Forgot your password ?"
 msgstr "Haben Sie Ihr Passwort vergessen ?"
 
@@ -100,7 +100,7 @@ msgstr "Haben Sie Ihr Passwort vergessen ?"
 msgid "French"
 msgstr "Französisch"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:164
+#: src/components/sidebar/sidebar/Sidebar.tsx:178
 msgid "Genres"
 msgstr "Genres"
 
@@ -109,11 +109,11 @@ msgid "German"
 msgstr "Deutsch"
 
 #: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:61
-#: src/components/sidebar/sidebar/Sidebar.tsx:181
+#: src/components/sidebar/sidebar/Sidebar.tsx:195
 msgid "hide"
 msgstr "verstecken"
 
-#: src/components/modals/signInModal/SignInModal.tsx:95
+#: src/components/modals/signInModal/SignInModal.tsx:93
 msgid "If the email entered corresponds to an application user, you will receive an email with instructions to reset your password"
 msgstr "Wenn die eingegebene E-Mail-Adresse einem Anwendungsbenutzer entspricht, erhalten Sie eine E-Mail mit Anweisungen zum Zurücksetzen Ihres Passworts"
 
@@ -121,10 +121,10 @@ msgstr "Wenn die eingegebene E-Mail-Adresse einem Anwendungsbenutzer entspricht,
 msgid "Loading..."
 msgstr "Wird geladen..."
 
-#: src/components/modals/signInModal/SignInModal.tsx:224
+#: src/components/modals/signInModal/SignInModal.tsx:222
 #: src/components/modals/signUpModal/SignUpModal.tsx:132
 #: src/components/modals/signUpModal/SignUpModal.tsx:225
-#: src/components/topbar/Topbar.tsx:187
+#: src/components/topbar/Topbar.tsx:186
 #: src/components/ui/userMenu/UserMenu.tsx:65
 msgid "Login"
 msgstr "Registrieren"
@@ -133,7 +133,7 @@ msgstr "Registrieren"
 msgid "Logout"
 msgstr "Abmelden"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:150
+#: src/components/sidebar/sidebar/Sidebar.tsx:164
 msgid "Movies"
 msgstr "Filme"
 
@@ -141,7 +141,7 @@ msgstr "Filme"
 msgid "Movies list"
 msgstr "Filmliste"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:155
+#: src/components/sidebar/sidebar/Sidebar.tsx:169
 msgid "News Feed"
 msgstr "Neuigkeiten"
 
@@ -162,7 +162,7 @@ msgstr "im Kino"
 msgid "Now playing movies"
 msgstr "Kinofilme"
 
-#: src/components/modals/signInModal/SignInModal.tsx:153
+#: src/components/modals/signInModal/SignInModal.tsx:151
 msgid "or"
 msgstr "oder"
 
@@ -170,7 +170,7 @@ msgstr "oder"
 msgid "Page Not Found..."
 msgstr "Seite nicht gefunden..."
 
-#: src/components/modals/signInModal/SignInModal.tsx:195
+#: src/components/modals/signInModal/SignInModal.tsx:193
 #: src/components/modals/signUpModal/SignUpModal.tsx:187
 msgid "Password"
 msgstr "Passwort"
@@ -192,21 +192,21 @@ msgstr "beliebt"
 msgid "Popular movies"
 msgstr "Beliebte Filme"
 
-#: src/components/topbar/Topbar.tsx:114
+#: src/components/topbar/Topbar.tsx:113
 msgid "Search movie..."
 msgstr "Film suchen..."
 
-#: src/components/modals/signInModal/SignInModal.tsx:294
+#: src/components/modals/signInModal/SignInModal.tsx:292
 msgid "Send"
 msgstr "schicken"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:181
+#: src/components/sidebar/sidebar/Sidebar.tsx:195
 msgid "show more"
 msgstr "zeig mehr"
 
-#: src/components/modals/signInModal/SignInModal.tsx:231
-#: src/components/modals/signInModal/SignInModal.tsx:301
-#: src/components/topbar/Topbar.tsx:172
+#: src/components/modals/signInModal/SignInModal.tsx:229
+#: src/components/modals/signInModal/SignInModal.tsx:299
+#: src/components/topbar/Topbar.tsx:171
 #: src/components/ui/userMenu/UserMenu.tsx:75
 msgid "Sign up"
 msgstr "Inschrift"
@@ -219,20 +219,20 @@ msgstr "Registrieren Sie sich mit E-Mail-Adresse"
 msgid "Spanish"
 msgstr "Spanisch"
 
-#: src/components/modals/signInModal/SignInModal.tsx:113
+#: src/components/modals/signInModal/SignInModal.tsx:111
 #: src/components/modals/signUpModal/SignUpModal.tsx:81
 #: src/validation/index.ts:8
 msgid "The email address is not in the correct format"
 msgstr "Die E-Mail-Adresse hat nicht das richtige Format"
 
-#: src/components/modals/signInModal/SignInModal.tsx:110
+#: src/components/modals/signInModal/SignInModal.tsx:108
 #: src/components/modals/signUpModal/SignUpModal.tsx:78
 #: src/validation/index.ts:5
 msgid "The email field is required"
 msgstr "Das E-Mail-Feld ist erforderlich"
 
-#: src/components/modals/signInModal/SignInModal.tsx:175
-#: src/components/modals/signInModal/SignInModal.tsx:270
+#: src/components/modals/signInModal/SignInModal.tsx:173
+#: src/components/modals/signInModal/SignInModal.tsx:268
 #: src/components/modals/signUpModal/SignUpModal.tsx:170
 msgid "The form contains errors"
 msgstr "Das Formular enthält Fehler"
@@ -242,13 +242,13 @@ msgstr "Das Formular enthält Fehler"
 msgid "The password confirm field is required"
 msgstr "Das Feld zur Passwortbestätigung ist erforderlich"
 
-#: src/components/modals/signInModal/SignInModal.tsx:117
+#: src/components/modals/signInModal/SignInModal.tsx:115
 #: src/components/modals/signUpModal/SignUpModal.tsx:85
 #: src/validation/index.ts:12
 msgid "The password field is required"
 msgstr "Das Passwortfeld ist erforderlich"
 
-#: src/components/modals/signInModal/SignInModal.tsx:120
+#: src/components/modals/signInModal/SignInModal.tsx:118
 #: src/components/modals/signUpModal/SignUpModal.tsx:88
 #: src/components/modals/signUpModal/SignUpModal.tsx:95
 #: src/validation/index.ts:15
@@ -288,7 +288,7 @@ msgstr "Kommende Filme"
 msgid "View more"
 msgstr "Mehr sehen"
 
-#: src/components/modals/signInModal/SignInModal.tsx:72
+#: src/components/modals/signInModal/SignInModal.tsx:70
 msgid "You are connected"
 msgstr "Sie sind verbunden"
 
@@ -296,6 +296,6 @@ msgstr "Sie sind verbunden"
 msgid "you have successfully registered"
 msgstr "Sie sind erfolgreich registriert"
 
-#: src/components/modals/signInModal/SignInModal.tsx:77
+#: src/components/modals/signInModal/SignInModal.tsx:75
 msgid "Your credentials are incorrect. Please double-check your login details and try again."
 msgstr "Ihre Anmeldedaten sind falsch. Bitte überprüfen Sie Ihre Anmeldeinformationen und versuchen Sie es erneut."
