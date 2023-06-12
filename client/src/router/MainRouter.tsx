@@ -1,6 +1,7 @@
 import Genre from '@pages/genre/Genre';
 import Home from '@pages/home/Home';
 import MovieDetails from '@pages/movieDetails/MovieDetails';
+import MoviesList from '@pages/moviesList/MoviesList';
 import NotFound from '@pages/notFound/NotFound';
 import NowPlaying from '@pages/nowPlaying/NowPlaying';
 import Person from '@pages/person/Person';
@@ -13,6 +14,7 @@ import { RoutesEnum } from '../types/enums';
 
 const MainRouter = () => (
 	<Routes>
+		<Route path={RoutesEnum.MOVIES_LIST} element={<MoviesList />} />
 		<Route path={RoutesEnum.MOVIES_POPULAR} element={<Popular />} />
 		<Route path={RoutesEnum.MOVIES_UPCOMING} element={<Upcoming />} />
 		<Route path={RoutesEnum.MOVIES_TOP_RATED} element={<TopRated />} />

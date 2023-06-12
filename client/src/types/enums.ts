@@ -25,7 +25,8 @@ export enum SwiperDirectionEnum {
 
 export enum RoutesEnum {
 	ROOT = '/',
-	HOME = 'home',
+	HOME = '/home',
+	MOVIES_LIST = 'movies',
 	MOVIES_POPULAR = 'movies/popular',
 	MOVIES_UPCOMING = 'movies/upcoming',
 	MOVIES_TOP_RATED = 'movies/top-rated',
