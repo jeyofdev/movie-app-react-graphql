@@ -434,6 +434,25 @@ export type PrimaryInfosMovieFieldsFragment = {
 	backdrop_path?: string | null;
 };
 
+export type PrimaryInfosMovieDetailsFieldsFragment = {
+	__typename?: 'MovieDetails';
+	id?: number | null;
+	title?: string | null;
+	vote_average?: number | null;
+	popularity?: number | null;
+	poster_path?: string | null;
+	backdrop_path?: string | null;
+	overview?: string | null;
+	release_date?: string | null;
+	runtime?: number | null;
+	tagline?: string | null;
+	genres?: Array<{
+		__typename?: 'Genre';
+		id: number;
+		name: string;
+	} | null> | null;
+};
+
 export type NowPlayingMoviesQueryVariables = Exact<{
 	options?: InputMaybe<OptionsInput>;
 }>;
@@ -605,8 +624,6 @@ export type MovieDetailsQuery = {
 		popularity?: number | null;
 		poster_path?: string | null;
 		backdrop_path?: string | null;
-		genre_ids?: Array<number | null> | null;
-		homepage?: string | null;
 		overview?: string | null;
 		release_date?: string | null;
 		runtime?: number | null;
@@ -619,27 +636,6 @@ export type MovieDetailsQuery = {
 	} | null;
 };
 
-export type PrimaryInfosMovieDetailsFieldsFragment = {
-	__typename?: 'MovieDetails';
-	id?: number | null;
-	title?: string | null;
-	vote_average?: number | null;
-	popularity?: number | null;
-	poster_path?: string | null;
-	backdrop_path?: string | null;
-	genre_ids?: Array<number | null> | null;
-	homepage?: string | null;
-	overview?: string | null;
-	release_date?: string | null;
-	runtime?: number | null;
-	tagline?: string | null;
-	genres?: Array<{
-		__typename?: 'Genre';
-		id: number;
-		name: string;
-	} | null> | null;
-};
-
 export type MoviePreviewQueryVariables = Exact<{
 	movieId?: InputMaybe<Scalars['Int']>;
 	options?: InputMaybe<OptionsInput>;
@@ -650,71 +646,20 @@ export type MoviePreviewQuery = {
 	movieDetails?: {
 		__typename?: 'MovieDetails';
 		id?: number | null;
-		original_title?: string | null;
 		title?: string | null;
-		overview?: string | null;
-		adult?: boolean | null;
-		backdrop_path?: string | null;
-		budget?: number | null;
-		genre_ids?: Array<number | null> | null;
-		homepage?: string | null;
-		imdb_id?: string | null;
-		original_language?: string | null;
+		vote_average?: number | null;
 		popularity?: number | null;
 		poster_path?: string | null;
+		backdrop_path?: string | null;
+		overview?: string | null;
 		release_date?: string | null;
 		runtime?: number | null;
-		status?: string | null;
 		tagline?: string | null;
-		video?: boolean | null;
-		vote_average?: number | null;
-		vote_count?: number | null;
 		genres?: Array<{
 			__typename?: 'Genre';
 			id: number;
 			name: string;
 		} | null> | null;
-		production_companies?: Array<{
-			__typename?: 'ProductionCompany';
-			id?: number | null;
-			name?: string | null;
-			logo_path?: string | null;
-			origin_country?: string | null;
-		} | null> | null;
-		production_countries?: Array<{
-			__typename?: 'ProductionCountry';
-			iso_3166_1?: string | null;
-			name?: string | null;
-		} | null> | null;
-		spoken_languages?: Array<{
-			__typename?: 'spoken_languages';
-			iso_639_1?: string | null;
-			name?: string | null;
-		} | null> | null;
-		images?: {
-			__typename?: 'MovieImageResponse';
-			id?: number | null;
-			backdrops?: Array<{
-				__typename?: 'PosterMovie';
-				aspect_ratio?: number | null;
-				file_path?: string | null;
-				height?: number | null;
-				iso_639_1?: string | null;
-				vote_average?: number | null;
-				vote_count?: number | null;
-				width?: number | null;
-			} | null> | null;
-			posters?: Array<{
-				__typename?: 'PosterMovie';
-				aspect_ratio?: number | null;
-				file_path?: string | null;
-				height?: number | null;
-				iso_639_1?: string | null;
-				vote_average?: number | null;
-				vote_count?: number | null;
-				width?: number | null;
-			} | null> | null;
-		} | null;
 	} | null;
 };
 
@@ -787,45 +732,17 @@ export type MoviesByCastPersonQuery = {
 			backdrop_path?: string | null;
 			genre_ids?: Array<number | null> | null;
 			id?: number | null;
-			original_language?: string | null;
-			original_title?: string | null;
 			overview?: string | null;
 			popularity?: number | null;
 			poster_path?: string | null;
 			release_date?: string | null;
 			title?: string | null;
-			video?: boolean | null;
 			vote_average?: number | null;
-			vote_count?: number | null;
 			genres?: Array<{
 				__typename?: 'Genre';
 				id: number;
 				name: string;
 			} | null> | null;
-			images?: {
-				__typename?: 'MovieImageResponse';
-				id?: number | null;
-				backdrops?: Array<{
-					__typename?: 'PosterMovie';
-					aspect_ratio?: number | null;
-					file_path?: string | null;
-					height?: number | null;
-					iso_639_1?: string | null;
-					vote_average?: number | null;
-					vote_count?: number | null;
-					width?: number | null;
-				} | null> | null;
-				posters?: Array<{
-					__typename?: 'PosterMovie';
-					aspect_ratio?: number | null;
-					file_path?: string | null;
-					height?: number | null;
-					iso_639_1?: string | null;
-					vote_average?: number | null;
-					vote_count?: number | null;
-					width?: number | null;
-				} | null> | null;
-			} | null;
 		} | null> | null;
 	} | null;
 };
@@ -859,8 +776,6 @@ export const PrimaryInfosMovieDetailsFieldsFragmentDoc = gql`
 			id
 			name
 		}
-		genre_ids
-		homepage
 		overview
 		release_date
 		runtime
@@ -1361,67 +1276,10 @@ export type MovieDetailsQueryResult = Apollo.QueryResult<
 export const MoviePreviewDocument = gql`
 	query MoviePreview($movieId: Int, $options: OptionsInput) {
 		movieDetails(movieId: $movieId, options: $options) {
-			id
-			genres {
-				id
-				name
-			}
-			original_title
-			title
-			overview
-			adult
-			backdrop_path
-			budget
-			genre_ids
-			homepage
-			imdb_id
-			original_language
-			popularity
-			poster_path
-			production_companies {
-				id
-				name
-				logo_path
-				origin_country
-			}
-			production_countries {
-				iso_3166_1
-				name
-			}
-			release_date
-			runtime
-			spoken_languages {
-				iso_639_1
-				name
-			}
-			status
-			tagline
-			video
-			vote_average
-			vote_count
-			images {
-				backdrops {
-					aspect_ratio
-					file_path
-					height
-					iso_639_1
-					vote_average
-					vote_count
-					width
-				}
-				id
-				posters {
-					aspect_ratio
-					file_path
-					height
-					iso_639_1
-					vote_average
-					vote_count
-					width
-				}
-			}
+			...PrimaryInfosMovieDetailsFields
 		}
 	}
+	${PrimaryInfosMovieDetailsFieldsFragmentDoc}
 `;
 
 /**
@@ -1630,37 +1488,12 @@ export const MoviesByCastPersonDocument = gql`
 					id
 					name
 				}
-				original_language
-				original_title
 				overview
 				popularity
 				poster_path
 				release_date
 				title
-				video
 				vote_average
-				vote_count
-				images {
-					backdrops {
-						aspect_ratio
-						file_path
-						height
-						iso_639_1
-						vote_average
-						vote_count
-						width
-					}
-					id
-					posters {
-						aspect_ratio
-						file_path
-						height
-						iso_639_1
-						vote_average
-						vote_count
-						width
-					}
-				}
 			}
 		}
 	}
