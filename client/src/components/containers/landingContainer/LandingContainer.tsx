@@ -31,7 +31,7 @@ const LandingContainer = () => {
 		onCompleted(data) {
 			setMoviesList(
 				(data?.popularMovies?.results as Array<Movie>)?.filter(
-					(_: Movie, index: number) => index < 5,
+					(_: Movie, index: number) => index < 10,
 				),
 			);
 		},
@@ -50,7 +50,7 @@ const LandingContainer = () => {
 	}
 
 	return (
-		<Box sx={styles.root(moviesList[0]?.backdrop_path as string)}>
+		<Box sx={styles.root(themeMode, moviesList[4]?.backdrop_path as string)}>
 			<Box sx={styles.contentBox}>
 				<Topbar landing />
 				<Divider sx={styles.divider(themeMode)} />

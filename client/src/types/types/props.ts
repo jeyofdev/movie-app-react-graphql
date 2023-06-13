@@ -283,3 +283,7 @@ export type LogoPropsType = {
 export type HomePropsType = {
 	list: Array<Movie>;
 };
+
+export type MainContainerPropsType = {
+	children: ReactNode;
+};
