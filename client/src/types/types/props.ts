@@ -20,10 +20,6 @@ export type ThemeContextProviderPropsType = {
 	children: ReactNode;
 };
 
-export type MainContainerPropsType = {
-	children: ReactNode;
-};
-
 export type AuthMainContainerPropsType = {
 	children: ReactNode;
 };
@@ -278,4 +274,12 @@ export type DetailsPersonCardPropsType = {
 
 export type TopBarPropsType = {
 	landing?: boolean;
+};
+
+export type LogoPropsType = {
+	landing?: boolean;
+};
+
+export type HomePropsType = {
+	list: Array<Movie>;
 };

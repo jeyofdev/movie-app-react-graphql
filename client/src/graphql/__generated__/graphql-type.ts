@@ -473,6 +473,7 @@ export type PopularMoviesQuery = {
 			vote_average?: number | null;
 			popularity?: number | null;
 			poster_path?: string | null;
+			backdrop_path?: string | null;
 		} | null>;
 	} | null;
 };
@@ -1062,6 +1063,7 @@ export const PopularMoviesDocument = gql`
 				vote_average
 				popularity
 				poster_path
+				backdrop_path
 			}
 		}
 	}

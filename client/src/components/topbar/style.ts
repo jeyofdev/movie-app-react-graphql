@@ -20,9 +20,9 @@ const useStyles = (theme: Theme) => ({
 			xl: '1 / span 5',
 		},
 	},
-	LinksBox: {
+	LinksBox: (landing: boolean) => ({
 		gridColumn: {
-			xs: '10 / span 4',
+			xs: landing ? '10 / span 2' : '10 / span 4',
 			sm: '9 / span 4',
 			md: '11 / span 2',
 			lg: '11 / span 2',
@@ -32,7 +32,7 @@ const useStyles = (theme: Theme) => ({
 		alignItems: 'center',
 		justifyContent: 'flex-end',
 		gap: theme.spacing(1),
-	},
+	}),
 	darkModeBtn: {
 		background: theme.palette.primary.main,
 		borderRadius: '100%',

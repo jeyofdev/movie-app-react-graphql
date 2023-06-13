@@ -38,6 +38,7 @@ query PopularMovies($options: OptionsInput) {
 			vote_average
 			popularity
 			poster_path
+			backdrop_path
 		}
 	}
 }

@@ -2,17 +2,18 @@ import { Theme } from '@mui/material';
 import { DarkModeEnum } from '../../../types/enums';
 
 const useStyles = (theme: Theme) => ({
-	root: {
+	root: (backdrop_path: string) => ({
 		position: 'relative',
 		display: 'grid',
 		gridTemplateColumns: 'repeat(12, 1fr)',
 		flexDirection: 'column',
 		backgroundColor: theme.palette.background.paper,
+		backgroundImage: `linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1)), url(https://image.tmdb.org/t/p/original${backdrop_path})`,
+		backgroundRepeat: 'no-repeat',
+		backgroundPosition: 'center',
+		backgroundSize: 'cover',
 		padding: 0,
-		paddingBottom: {
-			xs: '50px',
-			sm: 0,
-		},
+		paddingBottom: '0px',
 		width: '100%',
 		minHeight: '100vh',
 
@@ -35,7 +36,7 @@ const useStyles = (theme: Theme) => ({
 			maxWidth: `calc(1920px - (2 * ${theme.spacing(8)}))`,
 			minHeight: `calc(100vh - (2 * ${theme.spacing(5)}))`,
 		},
-	},
+	}),
 	contentBox: {
 		gridColumn: 'auto / span 12',
 		overflow: 'hidden',
@@ -56,7 +57,12 @@ const useStyles = (theme: Theme) => ({
 			xs: `0px ${theme.spacing(1)}`,
 			sm: '0px',
 		},
-		height: '100%',
+		height: {
+			xs: 'calc(100% - 100px)',
+		},
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 });
 

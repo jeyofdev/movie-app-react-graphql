@@ -1,7 +1,9 @@
 import { Theme } from '@mui/material';
 
 const useStyles = (theme: Theme) => ({
-	root: {},
+	root: {
+		width: '100%',
+	},
 	imagesBox: {
 		display: 'flex',
 		position: 'relative',
@@ -46,7 +48,7 @@ const useStyles = (theme: Theme) => ({
 			sm: '330px',
 			md: '330px',
 			lg: '450px',
-			xl: '450',
+			xl: '450px',
 		},
 	},
 	btn: {
