@@ -148,6 +148,10 @@ export type ListResultCardProps = Pick<
 	cardGridColumn: object;
 };
 
+export type HomeCardProps = Pick<Movie, 'title' | 'poster_path'> & {
+	boxStyles: object;
+};
+
 export type ListContainerProps = {
 	list: Array<Movie>;
 	title?: string;
@@ -258,7 +262,7 @@ export type AlertPropsType = {
 export type ImageThumbPropsType = {
 	src: string;
 	imageAlt: string;
-	noImageBoxStyle: object;
+	noImageBoxStyle?: object;
 	posterStyle: object;
 	person?: boolean;
 };

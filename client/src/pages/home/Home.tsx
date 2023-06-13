@@ -1,3 +1,4 @@
+import HomeCard from '@components/cards/homeCard/HomeCard';
 import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
 import AlertBase from '@components/ui/alert/Alert';
 import { TranslationContext } from '@context/TranslationContext';
@@ -13,7 +14,6 @@ import useStyles from './style';
 const Home = () => {
 	const styles = useStyles();
 	const { currentLocale } = useContext(TranslationContext);
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [moviesList, setMoviesList] = useState<Array<Movie>>([]);
 
 	const { loading, error } = usePopularMoviesQuery({
@@ -32,6 +32,22 @@ const Home = () => {
 		},
 	});
 
+	const getStyleCard = (i: number) => {
+		switch (i) {
+			case 0:
+				return styles.cardBoxOne;
+
+			case 1:
+				return styles.cardBoxTwo;
+
+			case 2:
+				return styles.cardBoxThree;
+
+			default:
+				return null;
+		}
+	};
+
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
@@ -48,7 +64,21 @@ const Home = () => {
 		);
 	}
 
-	return <Box sx={styles.root}>welcome</Box>;
+	return (
+		<Box sx={styles.root}>
+			<Box>
+				<Box sx={styles.imagesBox}>
+					{moviesList?.slice(1, 4)?.map((movie: Movie, i: number) => (
+						<HomeCard
+							key={movie?.id}
+							poster_path={movie?.poster_path}
+							boxStyles={{ ...styles.cardBox, ...getStyleCard(i) }}
+						/>
+					))}
+				</Box>
+			</Box>
+		</Box>
+	);
 };
 
 export default Home;
