@@ -284,6 +284,10 @@ export type HomePropsType = {
 	list: Array<Movie>;
 };
 
+export type MainContainerPropsType = {
+	children: ReactNode;
+};
+
 export type RequireAuthPropsType = {
 	children: ReactNode;
 };

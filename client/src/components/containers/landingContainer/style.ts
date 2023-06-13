@@ -2,16 +2,20 @@ import { Theme } from '@mui/material';
 import { DarkModeEnum } from '../../../types/enums';
 
 const useStyles = (theme: Theme) => ({
-	root: (backdrop_path: string) => ({
+	root: (darkMode: DarkModeEnum, backdrop_path: string) => ({
 		position: 'relative',
 		display: 'grid',
 		gridTemplateColumns: 'repeat(12, 1fr)',
 		flexDirection: 'column',
 		backgroundColor: theme.palette.background.paper,
-		backgroundImage: `linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1)), url(https://image.tmdb.org/t/p/original${backdrop_path})`,
+		backgroundImage:
+			darkMode === DarkModeEnum.LIGHT
+				? `linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 1)), url(https://image.tmdb.org/t/p/original${backdrop_path})`
+				: `linear-gradient(rgba(18, 18, 18, 1), rgba(18, 18, 18, 0.6), rgba(18, 18, 18, 1)), url(https://image.tmdb.org/t/p/original${backdrop_path})`,
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'center',
 		backgroundSize: 'cover',
+		// filter: 'grayscale(1)',
 		padding: 0,
 		paddingBottom: '0px',
 		width: '100%',

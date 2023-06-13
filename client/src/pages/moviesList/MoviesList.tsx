@@ -158,7 +158,7 @@ const MoviesList = () => {
 					<SwiperSection
 						title={t`Popular movies`}
 						list={popularMovies}
-						linkAllResult={RoutesEnum.MOVIES_POPULAR}
+						linkAllResult={`/${RoutesEnum.MOVIES_POPULAR}`}
 						moviesListCategory={MoviesListCategoryEnum.POPULAR}
 						setMoviesSelectedId={setMoviesSelectedId}
 						setMoviesListCategory={setMoviesListCategory}
@@ -183,7 +183,7 @@ const MoviesList = () => {
 					<SwiperSection
 						title={t`Upcoming movies`}
 						list={upComingMovies}
-						linkAllResult={RoutesEnum.MOVIES_UPCOMING}
+						linkAllResult={`/${RoutesEnum.MOVIES_UPCOMING}`}
 						moviesListCategory={MoviesListCategoryEnum.UP_COMING}
 						setMoviesSelectedId={setMoviesSelectedId}
 						setMoviesListCategory={setMoviesListCategory}
@@ -208,7 +208,7 @@ const MoviesList = () => {
 					<SwiperSection
 						title={t`Top rated movies`}
 						list={topRatedMovies}
-						linkAllResult={RoutesEnum.MOVIES_TOP_RATED}
+						linkAllResult={`/${RoutesEnum.MOVIES_TOP_RATED}`}
 						moviesListCategory={MoviesListCategoryEnum.TOP_RATING}
 						setMoviesSelectedId={setMoviesSelectedId}
 						setMoviesListCategory={setMoviesListCategory}
@@ -233,7 +233,7 @@ const MoviesList = () => {
 					<SwiperSection
 						title={t`Now playing movies`}
 						list={nowPlayingMovies}
-						linkAllResult={RoutesEnum.MOVIES_NOW_PLAYING}
+						linkAllResult={`/${RoutesEnum.MOVIES_NOW_PLAYING}`}
 						moviesListCategory={MoviesListCategoryEnum.NOW_PLAYING}
 						setMoviesSelectedId={setMoviesSelectedId}
 						setMoviesListCategory={setMoviesListCategory}

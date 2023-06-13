@@ -2,12 +2,15 @@ import { faTicket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Trans } from '@lingui/macro';
 import { Box, Typography, useTheme } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { RoutesEnum } from '../../../types/enums';
 import { LogoPropsType } from '../../../types/types/props';
 import useStyles from './style';
 
 const Logo = ({ landing }: LogoPropsType) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
+	const navigate = useNavigate();
 
 	return (
 		<Box sx={styles.topContentBox(landing ?? false)}>
@@ -15,8 +18,13 @@ const Logo = ({ landing }: LogoPropsType) => {
 				icon={faTicket}
 				color={theme.palette.primary.main}
 				style={styles.topIcon}
+				onClick={() => navigate(RoutesEnum.ROOT)}
 			/>
-			<Typography variant='h4' sx={styles.topTitle}>
+			<Typography
+				variant='h4'
+				sx={styles.topTitle}
+				onClick={() => navigate(RoutesEnum.ROOT)}
+			>
 				<Trans>Movies</Trans>
 			</Typography>
 		</Box>
