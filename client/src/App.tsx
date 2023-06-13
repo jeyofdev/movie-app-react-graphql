@@ -41,9 +41,7 @@ const App = () => {
 							<MainRouter />
 						</MainContainer>
 					) : (
-						<LandingContainer>
-							<MainRouter />
-						</LandingContainer>
+						<LandingContainer />
 					)}
 				</Box>
 			</ThemeProvider>

@@ -1,12 +1,12 @@
 import { Theme } from '@mui/material';
 
 const useStyles = (theme: Theme) => ({
-	topContentBox: {
+	topContentBox: (landing: boolean) => ({
 		display: 'flex',
 		alignItems: 'center',
 		gap: '1rem',
-		marginTop: theme.spacing(2),
-	},
+		marginTop: landing ? '0px' : theme.spacing(2),
+	}),
 	topIcon: {
 		fontSize: '1.75rem',
 	},

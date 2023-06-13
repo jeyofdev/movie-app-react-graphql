@@ -86,7 +86,7 @@ const Topbar = ({ landing }: TopBarPropsType) => {
 	return (
 		<>
 			<Box sx={styles.root}>
-				{landing && <Logo />}
+				{landing && <Logo landing />}
 
 				{!landing && showInputSearch && (
 					<Box sx={styles.searchBox}>
@@ -138,7 +138,7 @@ const Topbar = ({ landing }: TopBarPropsType) => {
 					</Box>
 				)}
 
-				<Box sx={styles.LinksBox}>
+				<Box sx={styles.LinksBox(landing ?? false)}>
 					<SelectLang />
 					<Button
 						color='primary'
