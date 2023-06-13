@@ -26,9 +26,11 @@ msgstr "Schon ein Mitglied ?"
 msgid "An account is already in use with this email."
 msgstr "Mit dieser E-Mail wird bereits ein Konto verwendet."
 
-#: src/pages/genre/Genre.tsx:50
-#: src/pages/home/Home.tsx:137
+#: src/components/sidebar/sidebar/Sidebar.tsx:153
+#: src/pages/genre/Genre.tsx:64
+#: src/pages/home/Home.tsx:63
 #: src/pages/movieDetails/MovieDetails.tsx:45
+#: src/pages/moviesList/MoviesList.tsx:137
 #: src/pages/nowPlaying/NowPlaying.tsx:45
 #: src/pages/person/Person.tsx:62
 #: src/pages/popular/Popular.tsx:46
@@ -38,7 +40,7 @@ msgstr "Mit dieser E-Mail wird bereits ein Konto verwendet."
 msgid "An error has occurred !!!"
 msgstr "Ein Fehler ist aufgetreten !!!"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:39
+#: src/components/sidebar/sidebar/Sidebar.tsx:45
 msgid "browse"
 msgstr "durchsuche"
 
@@ -84,7 +86,7 @@ msgstr "Email"
 msgid "English"
 msgstr "Englisch"
 
-#: src/components/topbar/Topbar.tsx:172
+#: src/components/topbar/Topbar.tsx:177
 msgid "Finish Signing up"
 msgstr "Beenden Sie die Anmeldung"
 
@@ -92,7 +94,7 @@ msgstr "Beenden Sie die Anmeldung"
 msgid "Forgot your password"
 msgstr "Haben Sie Ihr Passwort vergessen"
 
-#: src/components/topbar/Topbar.tsx:187
+#: src/components/topbar/Topbar.tsx:192
 msgid "Forgot your password ?"
 msgstr "Haben Sie Ihr Passwort vergessen ?"
 
@@ -100,7 +102,7 @@ msgstr "Haben Sie Ihr Passwort vergessen ?"
 msgid "French"
 msgstr "Französisch"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:178
+#: src/components/sidebar/sidebar/Sidebar.tsx:174
 msgid "Genres"
 msgstr "Genres"
 
@@ -108,8 +110,12 @@ msgstr "Genres"
 msgid "German"
 msgstr "Deutsch"
 
+#: src/pages/home/Home.tsx:90
+msgid "Getting started"
+msgstr "Einstieg"
+
 #: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:61
-#: src/components/sidebar/sidebar/Sidebar.tsx:195
+#: src/components/sidebar/sidebar/Sidebar.tsx:192
 msgid "hide"
 msgstr "verstecken"
 
@@ -124,16 +130,17 @@ msgstr "Wird geladen..."
 #: src/components/modals/signInModal/SignInModal.tsx:222
 #: src/components/modals/signUpModal/SignUpModal.tsx:132
 #: src/components/modals/signUpModal/SignUpModal.tsx:225
-#: src/components/topbar/Topbar.tsx:186
+#: src/components/topbar/Topbar.tsx:191
 #: src/components/ui/userMenu/UserMenu.tsx:65
+#: src/pages/home/Home.tsx:84
 msgid "Login"
-msgstr "Registrieren"
+msgstr "Anmeldung"
 
 #: src/components/ui/userMenu/UserMenu.tsx:85
 msgid "Logout"
-msgstr "Abmelden"
+msgstr "Ausloggen"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:164
+#: src/components/ui/logo/Logo.tsx:19
 msgid "Movies"
 msgstr "Filme"
 
@@ -141,7 +148,7 @@ msgstr "Filme"
 msgid "Movies list"
 msgstr "Filmliste"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:169
+#: src/components/sidebar/sidebar/Sidebar.tsx:165
 msgid "News Feed"
 msgstr "Neuigkeiten"
 
@@ -153,11 +160,11 @@ msgstr "Kein Bild"
 msgid "No photo"
 msgstr "Kein Bild"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:67
+#: src/components/sidebar/sidebar/Sidebar.tsx:73
 msgid "now playing"
 msgstr "im Kino"
 
-#: src/pages/home/Home.tsx:234
+#: src/pages/moviesList/MoviesList.tsx:234
 #: src/pages/nowPlaying/NowPlaying.tsx:54
 msgid "Now playing movies"
 msgstr "Kinofilme"
@@ -183,16 +190,16 @@ msgstr "Passwort Bestätigung"
 msgid "Place of Birth"
 msgstr "Geburtsort"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:53
+#: src/components/sidebar/sidebar/Sidebar.tsx:59
 msgid "popular"
 msgstr "beliebt"
 
-#: src/pages/home/Home.tsx:159
+#: src/pages/moviesList/MoviesList.tsx:159
 #: src/pages/popular/Popular.tsx:55
 msgid "Popular movies"
 msgstr "Beliebte Filme"
 
-#: src/components/topbar/Topbar.tsx:113
+#: src/components/topbar/Topbar.tsx:117
 msgid "Search movie..."
 msgstr "Film suchen..."
 
@@ -200,13 +207,13 @@ msgstr "Film suchen..."
 msgid "Send"
 msgstr "schicken"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:195
+#: src/components/sidebar/sidebar/Sidebar.tsx:192
 msgid "show more"
 msgstr "zeig mehr"
 
 #: src/components/modals/signInModal/SignInModal.tsx:229
 #: src/components/modals/signInModal/SignInModal.tsx:299
-#: src/components/topbar/Topbar.tsx:171
+#: src/components/topbar/Topbar.tsx:176
 #: src/components/ui/userMenu/UserMenu.tsx:75
 msgid "Sign up"
 msgstr "Inschrift"
@@ -260,11 +267,11 @@ msgstr "Das Passwort muss mindestens 8 Zeichen lang sein"
 msgid "The passwords must match"
 msgstr "Die Passwörter müssen übereinstimmen"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:60
+#: src/components/sidebar/sidebar/Sidebar.tsx:66
 msgid "top rated"
 msgstr "bestbewertet"
 
-#: src/pages/home/Home.tsx:209
+#: src/pages/moviesList/MoviesList.tsx:209
 #: src/pages/topRated/TopRated.tsx:57
 msgid "Top rated movies"
 msgstr "Bestbewertete Filme"
@@ -273,11 +280,11 @@ msgstr "Bestbewertete Filme"
 msgid "Unknown"
 msgstr "Unbekannt"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:46
+#: src/components/sidebar/sidebar/Sidebar.tsx:52
 msgid "upcoming"
 msgstr "Demnächst"
 
-#: src/pages/home/Home.tsx:184
+#: src/pages/moviesList/MoviesList.tsx:184
 #: src/pages/upComing/UpComing.tsx:54
 msgid "Upcoming movies"
 msgstr "Kommende Filme"
