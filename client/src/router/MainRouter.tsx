@@ -1,5 +1,6 @@
+import RequireAuth from '@components/auth/requireAuth/RequireAuth';
+import LandingContainer from '@components/containers/landingContainer/LandingContainer';
 import Genre from '@pages/genre/Genre';
-import Home from '@pages/home/Home';
 import MovieDetails from '@pages/movieDetails/MovieDetails';
 import MoviesList from '@pages/moviesList/MoviesList';
 import NotFound from '@pages/notFound/NotFound';
@@ -14,18 +15,81 @@ import { RoutesEnum } from '../types/enums';
 
 const MainRouter = () => (
 	<Routes>
-		<Route path={RoutesEnum.MOVIES_LIST} element={<MoviesList />} />
-		<Route path={RoutesEnum.MOVIES_POPULAR} element={<Popular />} />
-		<Route path={RoutesEnum.MOVIES_UPCOMING} element={<Upcoming />} />
-		<Route path={RoutesEnum.MOVIES_TOP_RATED} element={<TopRated />} />
-		<Route path={RoutesEnum.MOVIES_NOW_PLAYING} element={<NowPlaying />} />
-		<Route path={`${RoutesEnum.MOVIES_GENRE}/:genreName`} element={<Genre />} />
-		<Route path={`${RoutesEnum.MOVIE}/:movieId`} element={<MovieDetails />} />
-		<Route path={`${RoutesEnum.SEARCH}/:search`} element={<SearchResults />} />
-		<Route path={`${RoutesEnum.PERSON}/:personId`} element={<Person />} />
+		<Route
+			path={RoutesEnum.MOVIES_LIST}
+			element={
+				<RequireAuth>
+					<MoviesList />
+				</RequireAuth>
+			}
+		/>
+		<Route
+			path={RoutesEnum.MOVIES_POPULAR}
+			element={
+				<RequireAuth>
+					<Popular />
+				</RequireAuth>
+			}
+		/>
+		<Route
+			path={RoutesEnum.MOVIES_UPCOMING}
+			element={
+				<RequireAuth>
+					<Upcoming />
+				</RequireAuth>
+			}
+		/>
+		<Route
+			path={RoutesEnum.MOVIES_TOP_RATED}
+			element={
+				<RequireAuth>
+					<TopRated />
+				</RequireAuth>
+			}
+		/>
+		<Route
+			path={RoutesEnum.MOVIES_NOW_PLAYING}
+			element={
+				<RequireAuth>
+					<NowPlaying />
+				</RequireAuth>
+			}
+		/>
+		<Route
+			path={`${RoutesEnum.MOVIES_GENRE}/:genreName`}
+			element={
+				<RequireAuth>
+					<Genre />
+				</RequireAuth>
+			}
+		/>
+		<Route
+			path={`${RoutesEnum.MOVIE}/:movieId`}
+			element={
+				<RequireAuth>
+					<MovieDetails />
+				</RequireAuth>
+			}
+		/>
+		<Route
+			path={`${RoutesEnum.SEARCH}/:search`}
+			element={
+				<RequireAuth>
+					<SearchResults />
+				</RequireAuth>
+			}
+		/>
+		<Route
+			path={`${RoutesEnum.PERSON}/:personId`}
+			element={
+				<RequireAuth>
+					<Person />
+				</RequireAuth>
+			}
+		/>
 
-		<Route path={RoutesEnum.ROOT} element={<Home />}>
-			<Route path={RoutesEnum.HOME} element={<Home />} />
+		<Route path={RoutesEnum.ROOT} element={<LandingContainer />}>
+			<Route path={RoutesEnum.HOME} element={<LandingContainer />} />
 		</Route>
 
 		<Route path='*' element={<NotFound />} />
