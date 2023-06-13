@@ -1,135 +1,88 @@
+fragment ListMoviesFields on MoviesResponse {
+	page
+	total_pages
+	total_results
+}
+
+fragment PrimaryInfosMovieFields on Movie {
+	id
+	title
+	vote_average
+	popularity
+	poster_path
+	backdrop_path
+}
+
+fragment PrimaryInfosMovieDetailsFields on MovieDetails {
+	id
+	title
+	vote_average
+	popularity
+	poster_path
+	backdrop_path
+	genres {
+		id
+		name
+	}
+	overview
+	release_date
+	runtime
+	tagline
+}
+
 query NowPlayingMovies($options: OptionsInput) {
 	nowPlayingMovies(options: $options) {
-		page
-		total_pages
-		total_results
+		...ListMoviesFields
 		results {
-			adult
-			backdrop_path
-			genre_ids
-			id
-			original_language
-			original_title
-			overview
-			popularity
-			poster_path
-			release_date
-			title
-			video
-			vote_average
-			vote_count
-			images {
-				backdrops {
-					file_path
-				}
-			}
+			...PrimaryInfosMovieFields
 		}
 	}
 }
 
 query PopularMovies($options: OptionsInput) {
 	popularMovies(options: $options) {
-		page
-		total_pages
-		total_results
+		...ListMoviesFields
 		results {
-			id
-			title
-			vote_average
-			popularity
-			poster_path
-			backdrop_path
+			...PrimaryInfosMovieFields
 		}
 	}
 }
 
 query UpcomingMovies($options: OptionsInput) {
 	upcomingMovies(options: $options) {
-		page
-		total_pages
-		total_results
+		...ListMoviesFields
 		results {
-			adult
-			backdrop_path
-			genre_ids
-			id
-			original_language
-			original_title
-			overview
-			popularity
-			poster_path
-			release_date
-			title
-			video
-			vote_average
-			vote_count
-			images {
-				backdrops {
-					aspect_ratio
-					file_path
-					height
-					iso_639_1
-					vote_average
-					vote_count
-					width
-				}
-				id
-				posters {
-					aspect_ratio
-					file_path
-					height
-					iso_639_1
-					vote_average
-					vote_count
-					width
-				}
-			}
+			...PrimaryInfosMovieFields
 		}
 	}
 }
 
 query TopRatedMovies($options: OptionsInput) {
 	topRatedMovies(options: $options) {
-		page
+		...ListMoviesFields
 		results {
-			adult
-			backdrop_path
-			genre_ids
-			id
-			original_language
-			original_title
-			overview
-			popularity
-			poster_path
-			release_date
-			title
-			video
-			vote_average
-			vote_count
-			images {
-				posters {
-					aspect_ratio
-					file_path
-					height
-					iso_639_1
-					vote_average
-					vote_count
-					width
-				}
-				id
-				backdrops {
-					aspect_ratio
-					file_path
-					height
-					iso_639_1
-					vote_average
-					vote_count
-					width
-				}
-			}
+			...PrimaryInfosMovieFields
 		}
-		total_pages
-		total_results
+	}
+}
+
+query SearchMovies($searchOptions: SearchInput) {
+	searchMovies(searchOptions: $searchOptions) {
+		...ListMoviesFields
+		results {
+			...PrimaryInfosMovieFields
+			release_date
+			overview
+		}
+	}
+}
+
+query DiscoverMoviesByGenre($discoverOptions: DiscoverInput) {
+	discoverMoviesByGenre(discoverOptions: $discoverOptions) {
+		...ListMoviesFields
+		results {
+			...PrimaryInfosMovieFields
+		}
 	}
 }
 
@@ -144,158 +97,13 @@ query Genres($options: OptionsInput) {
 
 query MovieDetails($movieId: Int, $options: OptionsInput) {
 	movieDetails(movieId: $movieId, options: $options) {
-		id
-		genres {
-			id
-			name
-		}
-		original_title
-		title
-		overview
-		adult
-		backdrop_path
-		budget
-		genre_ids
-		homepage
-		imdb_id
-		original_language
-		popularity
-		poster_path
-		production_companies {
-			id
-			name
-			logo_path
-			origin_country
-		}
-		production_countries {
-			iso_3166_1
-			name
-		}
-		release_date
-		runtime
-		spoken_languages {
-			iso_639_1
-			name
-		}
-		status
-		tagline
-		video
-		vote_average
-		vote_count
-		images {
-			backdrops {
-				aspect_ratio
-				file_path
-				height
-				iso_639_1
-				vote_average
-				vote_count
-				width
-			}
-			id
-			posters {
-				aspect_ratio
-				file_path
-				height
-				iso_639_1
-				vote_average
-				vote_count
-				width
-			}
-		}
+		...PrimaryInfosMovieDetailsFields
 	}
 }
 
 query MoviePreview($movieId: Int, $options: OptionsInput) {
 	movieDetails(movieId: $movieId, options: $options) {
-		id
-		genres {
-			id
-			name
-		}
-		original_title
-		title
-		overview
-		adult
-		backdrop_path
-		budget
-		genre_ids
-		homepage
-		imdb_id
-		original_language
-		popularity
-		poster_path
-		production_companies {
-			id
-			name
-			logo_path
-			origin_country
-		}
-		production_countries {
-			iso_3166_1
-			name
-		}
-		release_date
-		runtime
-		spoken_languages {
-			iso_639_1
-			name
-		}
-		status
-		tagline
-		video
-		vote_average
-		vote_count
-		images {
-			backdrops {
-				aspect_ratio
-				file_path
-				height
-				iso_639_1
-				vote_average
-				vote_count
-				width
-			}
-			id
-			posters {
-				aspect_ratio
-				file_path
-				height
-				iso_639_1
-				vote_average
-				vote_count
-				width
-			}
-		}
-	}
-}
-
-query DiscoverMoviesByGenre($discoverOptions: DiscoverInput) {
-	discoverMoviesByGenre(discoverOptions: $discoverOptions) {
-		page
-		results {
-			adult
-			backdrop_path
-			genre_ids
-			id
-			original_language
-			original_title
-			overview
-			popularity
-			poster_path
-			release_date
-			title
-			video
-			vote_average
-			vote_count
-			images {
-				backdrops {
-					file_path
-				}
-			}
-		}
-		total_pages
-		total_results
+		...PrimaryInfosMovieDetailsFields
 	}
 }
 
@@ -316,55 +124,6 @@ query CastByMovie($movieId: Int, $options: OptionsInput) {
 			order
 		}
 		id
-	}
-}
-
-query SearchMovies($searchOptions: SearchInput) {
-	searchMovies(searchOptions: $searchOptions) {
-		page
-		results {
-			id
-			title
-			adult
-			backdrop_path
-			genre_ids
-			genres {
-				id
-				name
-			}
-			images {
-				backdrops {
-					aspect_ratio
-					file_path
-					height
-					iso_639_1
-					vote_average
-					vote_count
-					width
-				}
-				id
-				posters {
-					aspect_ratio
-					file_path
-					height
-					iso_639_1
-					vote_average
-					vote_count
-					width
-				}
-			}
-			original_language
-			original_title
-			overview
-			popularity
-			poster_path
-			release_date
-			video
-			vote_average
-			vote_count
-		}
-		total_pages
-		total_results
 	}
 }
 
@@ -398,37 +157,12 @@ query MoviesByCastPerson($personId: Int, $options: OptionsInput) {
 				id
 				name
 			}
-			original_language
-			original_title
 			overview
 			popularity
 			poster_path
 			release_date
 			title
-			video
 			vote_average
-			vote_count
-			images {
-				backdrops {
-					aspect_ratio
-					file_path
-					height
-					iso_639_1
-					vote_average
-					vote_count
-					width
-				}
-				id
-				posters {
-					aspect_ratio
-					file_path
-					height
-					iso_639_1
-					vote_average
-					vote_count
-					width
-				}
-			}
 		}
 	}
 }

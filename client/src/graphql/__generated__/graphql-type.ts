@@ -417,6 +417,23 @@ export type Spoken_Languages = {
 	name?: Maybe<Scalars['String']>;
 };
 
+export type ListMoviesFieldsFragment = {
+	__typename?: 'MoviesResponse';
+	page: number;
+	total_pages: number;
+	total_results: number;
+};
+
+export type PrimaryInfosMovieFieldsFragment = {
+	__typename?: 'Movie';
+	id?: number | null;
+	title?: string | null;
+	vote_average?: number | null;
+	popularity?: number | null;
+	poster_path?: string | null;
+	backdrop_path?: string | null;
+};
+
 export type NowPlayingMoviesQueryVariables = Exact<{
 	options?: InputMaybe<OptionsInput>;
 }>;
@@ -430,27 +447,12 @@ export type NowPlayingMoviesQuery = {
 		total_results: number;
 		results: Array<{
 			__typename?: 'Movie';
-			adult?: boolean | null;
-			backdrop_path?: string | null;
-			genre_ids?: Array<number | null> | null;
 			id?: number | null;
-			original_language?: string | null;
-			original_title?: string | null;
-			overview?: string | null;
+			title?: string | null;
+			vote_average?: number | null;
 			popularity?: number | null;
 			poster_path?: string | null;
-			release_date?: string | null;
-			title?: string | null;
-			video?: boolean | null;
-			vote_average?: number | null;
-			vote_count?: number | null;
-			images?: {
-				__typename?: 'MovieImageResponse';
-				backdrops?: Array<{
-					__typename?: 'PosterMovie';
-					file_path?: string | null;
-				} | null> | null;
-			} | null;
+			backdrop_path?: string | null;
 		} | null>;
 	} | null;
 };
@@ -491,44 +493,12 @@ export type UpcomingMoviesQuery = {
 		total_results: number;
 		results: Array<{
 			__typename?: 'Movie';
-			adult?: boolean | null;
-			backdrop_path?: string | null;
-			genre_ids?: Array<number | null> | null;
 			id?: number | null;
-			original_language?: string | null;
-			original_title?: string | null;
-			overview?: string | null;
+			title?: string | null;
+			vote_average?: number | null;
 			popularity?: number | null;
 			poster_path?: string | null;
-			release_date?: string | null;
-			title?: string | null;
-			video?: boolean | null;
-			vote_average?: number | null;
-			vote_count?: number | null;
-			images?: {
-				__typename?: 'MovieImageResponse';
-				id?: number | null;
-				backdrops?: Array<{
-					__typename?: 'PosterMovie';
-					aspect_ratio?: number | null;
-					file_path?: string | null;
-					height?: number | null;
-					iso_639_1?: string | null;
-					vote_average?: number | null;
-					vote_count?: number | null;
-					width?: number | null;
-				} | null> | null;
-				posters?: Array<{
-					__typename?: 'PosterMovie';
-					aspect_ratio?: number | null;
-					file_path?: string | null;
-					height?: number | null;
-					iso_639_1?: string | null;
-					vote_average?: number | null;
-					vote_count?: number | null;
-					width?: number | null;
-				} | null> | null;
-			} | null;
+			backdrop_path?: string | null;
 		} | null>;
 	} | null;
 };
@@ -546,44 +516,60 @@ export type TopRatedMoviesQuery = {
 		total_results: number;
 		results: Array<{
 			__typename?: 'Movie';
-			adult?: boolean | null;
-			backdrop_path?: string | null;
-			genre_ids?: Array<number | null> | null;
 			id?: number | null;
-			original_language?: string | null;
-			original_title?: string | null;
-			overview?: string | null;
+			title?: string | null;
+			vote_average?: number | null;
 			popularity?: number | null;
 			poster_path?: string | null;
+			backdrop_path?: string | null;
+		} | null>;
+	} | null;
+};
+
+export type SearchMoviesQueryVariables = Exact<{
+	searchOptions?: InputMaybe<SearchInput>;
+}>;
+
+export type SearchMoviesQuery = {
+	__typename?: 'Query';
+	searchMovies?: {
+		__typename?: 'MoviesResponse';
+		page: number;
+		total_pages: number;
+		total_results: number;
+		results: Array<{
+			__typename?: 'Movie';
 			release_date?: string | null;
+			overview?: string | null;
+			id?: number | null;
 			title?: string | null;
-			video?: boolean | null;
 			vote_average?: number | null;
-			vote_count?: number | null;
-			images?: {
-				__typename?: 'MovieImageResponse';
-				id?: number | null;
-				posters?: Array<{
-					__typename?: 'PosterMovie';
-					aspect_ratio?: number | null;
-					file_path?: string | null;
-					height?: number | null;
-					iso_639_1?: string | null;
-					vote_average?: number | null;
-					vote_count?: number | null;
-					width?: number | null;
-				} | null> | null;
-				backdrops?: Array<{
-					__typename?: 'PosterMovie';
-					aspect_ratio?: number | null;
-					file_path?: string | null;
-					height?: number | null;
-					iso_639_1?: string | null;
-					vote_average?: number | null;
-					vote_count?: number | null;
-					width?: number | null;
-				} | null> | null;
-			} | null;
+			popularity?: number | null;
+			poster_path?: string | null;
+			backdrop_path?: string | null;
+		} | null>;
+	} | null;
+};
+
+export type DiscoverMoviesByGenreQueryVariables = Exact<{
+	discoverOptions?: InputMaybe<DiscoverInput>;
+}>;
+
+export type DiscoverMoviesByGenreQuery = {
+	__typename?: 'Query';
+	discoverMoviesByGenre?: {
+		__typename?: 'MoviesResponse';
+		page: number;
+		total_pages: number;
+		total_results: number;
+		results: Array<{
+			__typename?: 'Movie';
+			id?: number | null;
+			title?: string | null;
+			vote_average?: number | null;
+			popularity?: number | null;
+			poster_path?: string | null;
+			backdrop_path?: string | null;
 		} | null>;
 	} | null;
 };
@@ -614,72 +600,44 @@ export type MovieDetailsQuery = {
 	movieDetails?: {
 		__typename?: 'MovieDetails';
 		id?: number | null;
-		original_title?: string | null;
 		title?: string | null;
-		overview?: string | null;
-		adult?: boolean | null;
-		backdrop_path?: string | null;
-		budget?: number | null;
-		genre_ids?: Array<number | null> | null;
-		homepage?: string | null;
-		imdb_id?: string | null;
-		original_language?: string | null;
+		vote_average?: number | null;
 		popularity?: number | null;
 		poster_path?: string | null;
+		backdrop_path?: string | null;
+		genre_ids?: Array<number | null> | null;
+		homepage?: string | null;
+		overview?: string | null;
 		release_date?: string | null;
 		runtime?: number | null;
-		status?: string | null;
 		tagline?: string | null;
-		video?: boolean | null;
-		vote_average?: number | null;
-		vote_count?: number | null;
 		genres?: Array<{
 			__typename?: 'Genre';
 			id: number;
 			name: string;
 		} | null> | null;
-		production_companies?: Array<{
-			__typename?: 'ProductionCompany';
-			id?: number | null;
-			name?: string | null;
-			logo_path?: string | null;
-			origin_country?: string | null;
-		} | null> | null;
-		production_countries?: Array<{
-			__typename?: 'ProductionCountry';
-			iso_3166_1?: string | null;
-			name?: string | null;
-		} | null> | null;
-		spoken_languages?: Array<{
-			__typename?: 'spoken_languages';
-			iso_639_1?: string | null;
-			name?: string | null;
-		} | null> | null;
-		images?: {
-			__typename?: 'MovieImageResponse';
-			id?: number | null;
-			backdrops?: Array<{
-				__typename?: 'PosterMovie';
-				aspect_ratio?: number | null;
-				file_path?: string | null;
-				height?: number | null;
-				iso_639_1?: string | null;
-				vote_average?: number | null;
-				vote_count?: number | null;
-				width?: number | null;
-			} | null> | null;
-			posters?: Array<{
-				__typename?: 'PosterMovie';
-				aspect_ratio?: number | null;
-				file_path?: string | null;
-				height?: number | null;
-				iso_639_1?: string | null;
-				vote_average?: number | null;
-				vote_count?: number | null;
-				width?: number | null;
-			} | null> | null;
-		} | null;
 	} | null;
+};
+
+export type PrimaryInfosMovieDetailsFieldsFragment = {
+	__typename?: 'MovieDetails';
+	id?: number | null;
+	title?: string | null;
+	vote_average?: number | null;
+	popularity?: number | null;
+	poster_path?: string | null;
+	backdrop_path?: string | null;
+	genre_ids?: Array<number | null> | null;
+	homepage?: string | null;
+	overview?: string | null;
+	release_date?: string | null;
+	runtime?: number | null;
+	tagline?: string | null;
+	genres?: Array<{
+		__typename?: 'Genre';
+		id: number;
+		name: string;
+	} | null> | null;
 };
 
 export type MoviePreviewQueryVariables = Exact<{
@@ -760,44 +718,6 @@ export type MoviePreviewQuery = {
 	} | null;
 };
 
-export type DiscoverMoviesByGenreQueryVariables = Exact<{
-	discoverOptions?: InputMaybe<DiscoverInput>;
-}>;
-
-export type DiscoverMoviesByGenreQuery = {
-	__typename?: 'Query';
-	discoverMoviesByGenre?: {
-		__typename?: 'MoviesResponse';
-		page: number;
-		total_pages: number;
-		total_results: number;
-		results: Array<{
-			__typename?: 'Movie';
-			adult?: boolean | null;
-			backdrop_path?: string | null;
-			genre_ids?: Array<number | null> | null;
-			id?: number | null;
-			original_language?: string | null;
-			original_title?: string | null;
-			overview?: string | null;
-			popularity?: number | null;
-			poster_path?: string | null;
-			release_date?: string | null;
-			title?: string | null;
-			video?: boolean | null;
-			vote_average?: number | null;
-			vote_count?: number | null;
-			images?: {
-				__typename?: 'MovieImageResponse';
-				backdrops?: Array<{
-					__typename?: 'PosterMovie';
-					file_path?: string | null;
-				} | null> | null;
-			} | null;
-		} | null>;
-	} | null;
-};
-
 export type CastByMovieQueryVariables = Exact<{
 	movieId?: InputMaybe<Scalars['Int']>;
 	options?: InputMaybe<OptionsInput>;
@@ -823,66 +743,6 @@ export type CastByMovieQuery = {
 			credit_id?: string | null;
 			order?: number | null;
 		} | null> | null;
-	} | null;
-};
-
-export type SearchMoviesQueryVariables = Exact<{
-	searchOptions?: InputMaybe<SearchInput>;
-}>;
-
-export type SearchMoviesQuery = {
-	__typename?: 'Query';
-	searchMovies?: {
-		__typename?: 'MoviesResponse';
-		page: number;
-		total_pages: number;
-		total_results: number;
-		results: Array<{
-			__typename?: 'Movie';
-			id?: number | null;
-			title?: string | null;
-			adult?: boolean | null;
-			backdrop_path?: string | null;
-			genre_ids?: Array<number | null> | null;
-			original_language?: string | null;
-			original_title?: string | null;
-			overview?: string | null;
-			popularity?: number | null;
-			poster_path?: string | null;
-			release_date?: string | null;
-			video?: boolean | null;
-			vote_average?: number | null;
-			vote_count?: number | null;
-			genres?: Array<{
-				__typename?: 'Genre';
-				id: number;
-				name: string;
-			} | null> | null;
-			images?: {
-				__typename?: 'MovieImageResponse';
-				id?: number | null;
-				backdrops?: Array<{
-					__typename?: 'PosterMovie';
-					aspect_ratio?: number | null;
-					file_path?: string | null;
-					height?: number | null;
-					iso_639_1?: string | null;
-					vote_average?: number | null;
-					vote_count?: number | null;
-					width?: number | null;
-				} | null> | null;
-				posters?: Array<{
-					__typename?: 'PosterMovie';
-					aspect_ratio?: number | null;
-					file_path?: string | null;
-					height?: number | null;
-					iso_639_1?: string | null;
-					vote_average?: number | null;
-					vote_count?: number | null;
-					width?: number | null;
-				} | null> | null;
-			} | null;
-		} | null>;
 	} | null;
 };
 
@@ -970,35 +830,54 @@ export type MoviesByCastPersonQuery = {
 	} | null;
 };
 
+export const ListMoviesFieldsFragmentDoc = gql`
+	fragment ListMoviesFields on MoviesResponse {
+		page
+		total_pages
+		total_results
+	}
+`;
+export const PrimaryInfosMovieFieldsFragmentDoc = gql`
+	fragment PrimaryInfosMovieFields on Movie {
+		id
+		title
+		vote_average
+		popularity
+		poster_path
+		backdrop_path
+	}
+`;
+export const PrimaryInfosMovieDetailsFieldsFragmentDoc = gql`
+	fragment PrimaryInfosMovieDetailsFields on MovieDetails {
+		id
+		title
+		vote_average
+		popularity
+		poster_path
+		backdrop_path
+		genres {
+			id
+			name
+		}
+		genre_ids
+		homepage
+		overview
+		release_date
+		runtime
+		tagline
+	}
+`;
 export const NowPlayingMoviesDocument = gql`
 	query NowPlayingMovies($options: OptionsInput) {
 		nowPlayingMovies(options: $options) {
-			page
-			total_pages
-			total_results
+			...ListMoviesFields
 			results {
-				adult
-				backdrop_path
-				genre_ids
-				id
-				original_language
-				original_title
-				overview
-				popularity
-				poster_path
-				release_date
-				title
-				video
-				vote_average
-				vote_count
-				images {
-					backdrops {
-						file_path
-					}
-				}
+				...PrimaryInfosMovieFields
 			}
 		}
 	}
+	${ListMoviesFieldsFragmentDoc}
+	${PrimaryInfosMovieFieldsFragmentDoc}
 `;
 
 /**
@@ -1054,19 +933,14 @@ export type NowPlayingMoviesQueryResult = Apollo.QueryResult<
 export const PopularMoviesDocument = gql`
 	query PopularMovies($options: OptionsInput) {
 		popularMovies(options: $options) {
-			page
-			total_pages
-			total_results
+			...ListMoviesFields
 			results {
-				id
-				title
-				vote_average
-				popularity
-				poster_path
-				backdrop_path
+				...PrimaryInfosMovieFields
 			}
 		}
 	}
+	${ListMoviesFieldsFragmentDoc}
+	${PrimaryInfosMovieFieldsFragmentDoc}
 `;
 
 /**
@@ -1122,48 +996,14 @@ export type PopularMoviesQueryResult = Apollo.QueryResult<
 export const UpcomingMoviesDocument = gql`
 	query UpcomingMovies($options: OptionsInput) {
 		upcomingMovies(options: $options) {
-			page
-			total_pages
-			total_results
+			...ListMoviesFields
 			results {
-				adult
-				backdrop_path
-				genre_ids
-				id
-				original_language
-				original_title
-				overview
-				popularity
-				poster_path
-				release_date
-				title
-				video
-				vote_average
-				vote_count
-				images {
-					backdrops {
-						aspect_ratio
-						file_path
-						height
-						iso_639_1
-						vote_average
-						vote_count
-						width
-					}
-					id
-					posters {
-						aspect_ratio
-						file_path
-						height
-						iso_639_1
-						vote_average
-						vote_count
-						width
-					}
-				}
+				...PrimaryInfosMovieFields
 			}
 		}
 	}
+	${ListMoviesFieldsFragmentDoc}
+	${PrimaryInfosMovieFieldsFragmentDoc}
 `;
 
 /**
@@ -1219,48 +1059,14 @@ export type UpcomingMoviesQueryResult = Apollo.QueryResult<
 export const TopRatedMoviesDocument = gql`
 	query TopRatedMovies($options: OptionsInput) {
 		topRatedMovies(options: $options) {
-			page
+			...ListMoviesFields
 			results {
-				adult
-				backdrop_path
-				genre_ids
-				id
-				original_language
-				original_title
-				overview
-				popularity
-				poster_path
-				release_date
-				title
-				video
-				vote_average
-				vote_count
-				images {
-					posters {
-						aspect_ratio
-						file_path
-						height
-						iso_639_1
-						vote_average
-						vote_count
-						width
-					}
-					id
-					backdrops {
-						aspect_ratio
-						file_path
-						height
-						iso_639_1
-						vote_average
-						vote_count
-						width
-					}
-				}
+				...PrimaryInfosMovieFields
 			}
-			total_pages
-			total_results
 		}
 	}
+	${ListMoviesFieldsFragmentDoc}
+	${PrimaryInfosMovieFieldsFragmentDoc}
 `;
 
 /**
@@ -1312,6 +1118,134 @@ export type TopRatedMoviesLazyQueryHookResult = ReturnType<
 export type TopRatedMoviesQueryResult = Apollo.QueryResult<
 	TopRatedMoviesQuery,
 	TopRatedMoviesQueryVariables
+>;
+export const SearchMoviesDocument = gql`
+	query SearchMovies($searchOptions: SearchInput) {
+		searchMovies(searchOptions: $searchOptions) {
+			...ListMoviesFields
+			results {
+				...PrimaryInfosMovieFields
+				release_date
+				overview
+			}
+		}
+	}
+	${ListMoviesFieldsFragmentDoc}
+	${PrimaryInfosMovieFieldsFragmentDoc}
+`;
+
+/**
+ * __useSearchMoviesQuery__
+ *
+ * To run a query within a React component, call `useSearchMoviesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSearchMoviesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSearchMoviesQuery({
+ *   variables: {
+ *      searchOptions: // value for 'searchOptions'
+ *   },
+ * });
+ */
+export function useSearchMoviesQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		SearchMoviesQuery,
+		SearchMoviesQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useQuery<SearchMoviesQuery, SearchMoviesQueryVariables>(
+		SearchMoviesDocument,
+		options,
+	);
+}
+export function useSearchMoviesLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		SearchMoviesQuery,
+		SearchMoviesQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useLazyQuery<SearchMoviesQuery, SearchMoviesQueryVariables>(
+		SearchMoviesDocument,
+		options,
+	);
+}
+export type SearchMoviesQueryHookResult = ReturnType<
+	typeof useSearchMoviesQuery
+>;
+export type SearchMoviesLazyQueryHookResult = ReturnType<
+	typeof useSearchMoviesLazyQuery
+>;
+export type SearchMoviesQueryResult = Apollo.QueryResult<
+	SearchMoviesQuery,
+	SearchMoviesQueryVariables
+>;
+export const DiscoverMoviesByGenreDocument = gql`
+	query DiscoverMoviesByGenre($discoverOptions: DiscoverInput) {
+		discoverMoviesByGenre(discoverOptions: $discoverOptions) {
+			...ListMoviesFields
+			results {
+				...PrimaryInfosMovieFields
+			}
+		}
+	}
+	${ListMoviesFieldsFragmentDoc}
+	${PrimaryInfosMovieFieldsFragmentDoc}
+`;
+
+/**
+ * __useDiscoverMoviesByGenreQuery__
+ *
+ * To run a query within a React component, call `useDiscoverMoviesByGenreQuery` and pass it any options that fit your needs.
+ * When your component renders, `useDiscoverMoviesByGenreQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useDiscoverMoviesByGenreQuery({
+ *   variables: {
+ *      discoverOptions: // value for 'discoverOptions'
+ *   },
+ * });
+ */
+export function useDiscoverMoviesByGenreQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		DiscoverMoviesByGenreQuery,
+		DiscoverMoviesByGenreQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useQuery<
+		DiscoverMoviesByGenreQuery,
+		DiscoverMoviesByGenreQueryVariables
+	>(DiscoverMoviesByGenreDocument, options);
+}
+export function useDiscoverMoviesByGenreLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		DiscoverMoviesByGenreQuery,
+		DiscoverMoviesByGenreQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useLazyQuery<
+		DiscoverMoviesByGenreQuery,
+		DiscoverMoviesByGenreQueryVariables
+	>(DiscoverMoviesByGenreDocument, options);
+}
+export type DiscoverMoviesByGenreQueryHookResult = ReturnType<
+	typeof useDiscoverMoviesByGenreQuery
+>;
+export type DiscoverMoviesByGenreLazyQueryHookResult = ReturnType<
+	typeof useDiscoverMoviesByGenreLazyQuery
+>;
+export type DiscoverMoviesByGenreQueryResult = Apollo.QueryResult<
+	DiscoverMoviesByGenreQuery,
+	DiscoverMoviesByGenreQueryVariables
 >;
 export const GenresDocument = gql`
 	query Genres($options: OptionsInput) {
@@ -1367,67 +1301,10 @@ export type GenresQueryResult = Apollo.QueryResult<
 export const MovieDetailsDocument = gql`
 	query MovieDetails($movieId: Int, $options: OptionsInput) {
 		movieDetails(movieId: $movieId, options: $options) {
-			id
-			genres {
-				id
-				name
-			}
-			original_title
-			title
-			overview
-			adult
-			backdrop_path
-			budget
-			genre_ids
-			homepage
-			imdb_id
-			original_language
-			popularity
-			poster_path
-			production_companies {
-				id
-				name
-				logo_path
-				origin_country
-			}
-			production_countries {
-				iso_3166_1
-				name
-			}
-			release_date
-			runtime
-			spoken_languages {
-				iso_639_1
-				name
-			}
-			status
-			tagline
-			video
-			vote_average
-			vote_count
-			images {
-				backdrops {
-					aspect_ratio
-					file_path
-					height
-					iso_639_1
-					vote_average
-					vote_count
-					width
-				}
-				id
-				posters {
-					aspect_ratio
-					file_path
-					height
-					iso_639_1
-					vote_average
-					vote_count
-					width
-				}
-			}
+			...PrimaryInfosMovieDetailsFields
 		}
 	}
+	${PrimaryInfosMovieDetailsFieldsFragmentDoc}
 `;
 
 /**
@@ -1598,87 +1475,6 @@ export type MoviePreviewQueryResult = Apollo.QueryResult<
 	MoviePreviewQuery,
 	MoviePreviewQueryVariables
 >;
-export const DiscoverMoviesByGenreDocument = gql`
-	query DiscoverMoviesByGenre($discoverOptions: DiscoverInput) {
-		discoverMoviesByGenre(discoverOptions: $discoverOptions) {
-			page
-			results {
-				adult
-				backdrop_path
-				genre_ids
-				id
-				original_language
-				original_title
-				overview
-				popularity
-				poster_path
-				release_date
-				title
-				video
-				vote_average
-				vote_count
-				images {
-					backdrops {
-						file_path
-					}
-				}
-			}
-			total_pages
-			total_results
-		}
-	}
-`;
-
-/**
- * __useDiscoverMoviesByGenreQuery__
- *
- * To run a query within a React component, call `useDiscoverMoviesByGenreQuery` and pass it any options that fit your needs.
- * When your component renders, `useDiscoverMoviesByGenreQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useDiscoverMoviesByGenreQuery({
- *   variables: {
- *      discoverOptions: // value for 'discoverOptions'
- *   },
- * });
- */
-export function useDiscoverMoviesByGenreQuery(
-	baseOptions?: Apollo.QueryHookOptions<
-		DiscoverMoviesByGenreQuery,
-		DiscoverMoviesByGenreQueryVariables
-	>,
-) {
-	const options = { ...defaultOptions, ...baseOptions };
-	return Apollo.useQuery<
-		DiscoverMoviesByGenreQuery,
-		DiscoverMoviesByGenreQueryVariables
-	>(DiscoverMoviesByGenreDocument, options);
-}
-export function useDiscoverMoviesByGenreLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
-		DiscoverMoviesByGenreQuery,
-		DiscoverMoviesByGenreQueryVariables
-	>,
-) {
-	const options = { ...defaultOptions, ...baseOptions };
-	return Apollo.useLazyQuery<
-		DiscoverMoviesByGenreQuery,
-		DiscoverMoviesByGenreQueryVariables
-	>(DiscoverMoviesByGenreDocument, options);
-}
-export type DiscoverMoviesByGenreQueryHookResult = ReturnType<
-	typeof useDiscoverMoviesByGenreQuery
->;
-export type DiscoverMoviesByGenreLazyQueryHookResult = ReturnType<
-	typeof useDiscoverMoviesByGenreLazyQuery
->;
-export type DiscoverMoviesByGenreQueryResult = Apollo.QueryResult<
-	DiscoverMoviesByGenreQuery,
-	DiscoverMoviesByGenreQueryVariables
->;
 export const CastByMovieDocument = gql`
 	query CastByMovie($movieId: Int, $options: OptionsInput) {
 		castByMovie(movieId: $movieId, options: $options) {
@@ -1749,107 +1545,6 @@ export type CastByMovieLazyQueryHookResult = ReturnType<
 export type CastByMovieQueryResult = Apollo.QueryResult<
 	CastByMovieQuery,
 	CastByMovieQueryVariables
->;
-export const SearchMoviesDocument = gql`
-	query SearchMovies($searchOptions: SearchInput) {
-		searchMovies(searchOptions: $searchOptions) {
-			page
-			results {
-				id
-				title
-				adult
-				backdrop_path
-				genre_ids
-				genres {
-					id
-					name
-				}
-				images {
-					backdrops {
-						aspect_ratio
-						file_path
-						height
-						iso_639_1
-						vote_average
-						vote_count
-						width
-					}
-					id
-					posters {
-						aspect_ratio
-						file_path
-						height
-						iso_639_1
-						vote_average
-						vote_count
-						width
-					}
-				}
-				original_language
-				original_title
-				overview
-				popularity
-				poster_path
-				release_date
-				video
-				vote_average
-				vote_count
-			}
-			total_pages
-			total_results
-		}
-	}
-`;
-
-/**
- * __useSearchMoviesQuery__
- *
- * To run a query within a React component, call `useSearchMoviesQuery` and pass it any options that fit your needs.
- * When your component renders, `useSearchMoviesQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useSearchMoviesQuery({
- *   variables: {
- *      searchOptions: // value for 'searchOptions'
- *   },
- * });
- */
-export function useSearchMoviesQuery(
-	baseOptions?: Apollo.QueryHookOptions<
-		SearchMoviesQuery,
-		SearchMoviesQueryVariables
-	>,
-) {
-	const options = { ...defaultOptions, ...baseOptions };
-	return Apollo.useQuery<SearchMoviesQuery, SearchMoviesQueryVariables>(
-		SearchMoviesDocument,
-		options,
-	);
-}
-export function useSearchMoviesLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
-		SearchMoviesQuery,
-		SearchMoviesQueryVariables
-	>,
-) {
-	const options = { ...defaultOptions, ...baseOptions };
-	return Apollo.useLazyQuery<SearchMoviesQuery, SearchMoviesQueryVariables>(
-		SearchMoviesDocument,
-		options,
-	);
-}
-export type SearchMoviesQueryHookResult = ReturnType<
-	typeof useSearchMoviesQuery
->;
-export type SearchMoviesLazyQueryHookResult = ReturnType<
-	typeof useSearchMoviesLazyQuery
->;
-export type SearchMoviesQueryResult = Apollo.QueryResult<
-	SearchMoviesQuery,
-	SearchMoviesQueryVariables
 >;
 export const PersonDetailsDocument = gql`
 	query PersonDetails($personId: Int, $options: OptionsInput) {
