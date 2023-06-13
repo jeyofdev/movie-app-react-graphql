@@ -9,10 +9,12 @@ const useStyles = (theme: Theme) => ({
 	}),
 	topIcon: {
 		fontSize: '1.75rem',
+		cursor: 'pointer',
 	},
 	topTitle: {
 		color: theme.palette.primary.main,
 		textTransform: 'uppercase',
+		cursor: 'pointer',
 	},
 });
 
