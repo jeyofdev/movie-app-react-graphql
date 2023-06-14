@@ -31,7 +31,7 @@ describe('init server', () => {
 				{
 					collectionId: 100,
 					options: {
-						language: 'EN',
+						language: 'en',
 					},
 				},
 			);
@@ -47,7 +47,7 @@ describe('init server', () => {
 				{
 					collectionId: 10,
 					options: {
-						language: 'EN',
+						language: 'en',
 					},
 				},
 			);
@@ -63,7 +63,7 @@ describe('init server', () => {
 				{
 					collectionId: 10,
 					options: {
-						language: 'EN',
+						language: 'en',
 					},
 				},
 			);

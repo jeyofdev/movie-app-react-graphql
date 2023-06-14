@@ -31,9 +31,9 @@ describe('init server', () => {
 				{
 					searchOptions: {
 						query: 'tutuy',
-						language: 'FR',
+						language: 'fr',
 						page: 1,
-						region: 'FR',
+						region: 'fr',
 					},
 				},
 			);
@@ -49,9 +49,9 @@ describe('init server', () => {
 				{
 					searchOptions: {
 						query: 'star wars',
-						language: 'FR',
+						language: 'fr',
 						page: 1,
-						region: 'FR',
+						region: 'fr',
 					},
 				},
 			);

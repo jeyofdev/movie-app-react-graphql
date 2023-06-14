@@ -30,7 +30,7 @@ describe('init server', () => {
 				discoverMoviesQueryOperations.sortMovies,
 				{
 					discoverOptions: {
-						language: 'FR',
+						language: 'fr',
 						page: 2,
 						sort_by: 'PRIMARY_RELEASE_DATE_ASC',
 					},
@@ -48,7 +48,7 @@ describe('init server', () => {
 			discoverMoviesQueryOperations.sortMovies,
 			{
 				discoverOptions: {
-					language: 'FR',
+					language: 'fr',
 					page: 2,
 					sort_by: 'POPULARITY_DESC',
 				},

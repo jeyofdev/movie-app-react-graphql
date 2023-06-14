@@ -31,7 +31,7 @@ describe('init server', () => {
 				{
 					collectionId: 30000000,
 					options: {
-						language: 'EN',
+						language: 'en',
 					},
 				},
 			);
@@ -47,7 +47,7 @@ describe('init server', () => {
 				{
 					personId: 2,
 					options: {
-						language: 'FR',
+						language: 'fr',
 					},
 				},
 			);
@@ -63,7 +63,7 @@ describe('init server', () => {
 				{
 					personId: 2,
 					options: {
-						language: 'FR',
+						language: 'fr',
 					},
 				},
 			);
@@ -79,7 +79,7 @@ describe('init server', () => {
 				{
 					personId: 2,
 					options: {
-						language: 'EN',
+						language: 'en',
 					},
 				},
 			);
@@ -95,7 +95,7 @@ describe('init server', () => {
 				{
 					personId: 6384,
 					options: {
-						language: 'FR',
+						language: 'fr',
 					},
 				},
 			);
