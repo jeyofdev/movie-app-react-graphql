@@ -9,13 +9,17 @@ import {
 import { Trans } from '@lingui/macro';
 import { Box, Divider, useTheme } from '@mui/material';
 import Home from '@pages/home/Home';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { RoutesEnum } from '../../../types/enums';
 import LoaderContainer from '../LoaderContainer/LoaderContainer';
 import useStyles from './style';
 
 const LandingContainer = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
+	const { state } = useLocation();
+	const navigate = useNavigate();
 	const { themeMode } = useContext(ThemeContext);
 	const { currentLocale } = useContext(TranslationContext);
 
@@ -36,6 +40,12 @@ const LandingContainer = () => {
 			);
 		},
 	});
+
+	useEffect(() => {
+		if (state?.from?.pathname !== RoutesEnum.ROOT) {
+			navigate(state?.from?.pathname);
+		}
+	}, [navigate, state?.from?.pathname]);
 
 	if (loading) {
 		return <LoaderContainer />;

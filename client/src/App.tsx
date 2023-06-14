@@ -25,7 +25,7 @@ const App = () => {
 	}, [currentLocale]);
 
 	useEffect(() => {
-		loadCatalog(LanguageEnum.En);
+		loadCatalog(localStorage.getItem('locale') ?? LanguageEnum.En);
 	}, []);
 
 	return (
