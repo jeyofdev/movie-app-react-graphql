@@ -31,7 +31,7 @@ describe('init server', () => {
 				{
 					movieId: 7660450,
 					options: {
-						language: 'FR',
+						language: 'fr',
 					},
 				},
 			);
@@ -47,7 +47,7 @@ describe('init server', () => {
 				{
 					movieId: 76600,
 					options: {
-						language: 'FR',
+						language: 'fr',
 					},
 				},
 			);
@@ -62,9 +62,9 @@ describe('init server', () => {
 				moviesQueryOperations.popular,
 				{
 					options: {
-						language: 'FR',
+						language: 'fr',
 						page: 1,
-						region: 'FR',
+						region: 'fr',
 					},
 				},
 			);
@@ -79,9 +79,9 @@ describe('init server', () => {
 				moviesQueryOperations.nowPlaying,
 				{
 					options: {
-						language: 'FR',
+						language: 'fr',
 						page: 1,
-						region: 'FR',
+						region: 'fr',
 					},
 				},
 			);
@@ -96,9 +96,9 @@ describe('init server', () => {
 				moviesQueryOperations.upcoming,
 				{
 					options: {
-						language: 'FR',
+						language: 'fr',
 						page: 1,
-						region: 'FR',
+						region: 'fr',
 					},
 				},
 			);
@@ -113,9 +113,9 @@ describe('init server', () => {
 				moviesQueryOperations.topRating,
 				{
 					options: {
-						language: 'FR',
+						language: 'fr',
 						page: 1,
-						region: 'FR',
+						region: 'fr',
 					},
 				},
 			);
@@ -131,7 +131,7 @@ describe('init server', () => {
 				{
 					movieId: 76600,
 					options: {
-						language: 'FR',
+						language: 'fr',
 					},
 				},
 			);
@@ -147,7 +147,7 @@ describe('init server', () => {
 				{
 					movieId: 76600,
 					options: {
-						language: 'FR',
+						language: 'fr',
 					},
 				},
 			);
@@ -163,7 +163,7 @@ describe('init server', () => {
 				{
 					movieId: 76600,
 					options: {
-						language: 'ES',
+						language: 'es',
 						page: 1,
 					},
 				},
