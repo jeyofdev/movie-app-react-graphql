@@ -11,7 +11,9 @@ export const TranslationContext = createContext<TranslationContextType>({
 const TranslationContextProvider = ({
 	children,
 }: ThemeContextProviderPropsType) => {
-	const [currentLocale, setcurrentLocale] = useState(LanguageEnum.En);
+	const [currentLocale, setcurrentLocale] = useState<LanguageEnum>(
+		(localStorage.getItem('locale') as LanguageEnum) ?? LanguageEnum.En,
+	);
 
 	const handleLocale = (locale: LanguageEnum) => {
 		setcurrentLocale(locale);

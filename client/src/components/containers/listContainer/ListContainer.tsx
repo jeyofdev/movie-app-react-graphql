@@ -46,7 +46,7 @@ const ListContainer = ({
 			{currentPage && (
 				<Box sx={{ marginTop: theme.spacing(4) }}>
 					<Pagination
-						count={totalPages}
+						count={(totalPages as number) > 100 ? 100 : totalPages}
 						page={currentPage}
 						onChange={setCurrentPage}
 						renderItem={item => (

@@ -27,7 +27,7 @@ const TopRated = () => {
 		fetchPolicy: 'cache-and-network',
 	});
 
-	const handleChangePage = (event: ChangeEvent<unknown>, value: number) => {
+	const handleChangePage = (_: ChangeEvent<unknown>, value: number) => {
 		setPage(value);
 	};
 

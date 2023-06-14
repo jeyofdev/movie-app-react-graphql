@@ -35,8 +35,25 @@ const SelectLang = () => {
 
 	const [open, setOpen] = useState(false);
 
+	const getLocale = (locale: string) => {
+		switch (locale) {
+			case 'en':
+				return LanguageEnum.En;
+			case 'fr':
+				return LanguageEnum.Fr;
+			case 'es':
+				return LanguageEnum.Es;
+			case 'de':
+				return LanguageEnum.De;
+
+			default:
+				return LanguageEnum.En;
+		}
+	};
+
 	const handleChange = (e: SelectChangeEvent) => {
 		handleLocale(e.target.value as LanguageEnum);
+		localStorage.setItem('locale', getLocale(e.target.value));
 	};
 
 	const handleClose = () => {
