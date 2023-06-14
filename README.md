@@ -1,6 +1,6 @@
 # Movies App with Graphql and React
 
-This is a Movies App using React, Apollo, Graphql and The Movie Database (TMDB) API.</p>
+This is a Movies App using React, Apollo, Graphql Firebase and The Movie Database (TMDB) API.</p>
 
 ## Getting starting
 
@@ -52,7 +52,16 @@ In the .env, set your api url.
 Example :
 
 ```sh
-VITE_GRAPHQL_URL="http://localhost:4040/graphql"
+VITE_GRAPHQL_URL=http://localhost:4040/graphql
+
+# firebase config
+VITE_API_KEY=
+VITE_AUTH_DOMAIN=
+VITE_PROJECT_ID=
+VITE_STORAGE_BUCKET=
+VITE_MESSAGING_SENDER_ID=
+VITE_APP_ID=
+
 ```
 
 ### Start the app in dev mode
@@ -69,8 +78,8 @@ Navigate to http://localhost:8080 in your browser to run the React app.
 
 ### Testing
 
-run all the tests of the app :
+run tests of the api :
 
 ```sh
-npm run dev
+npm run test:api
 ```
