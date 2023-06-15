@@ -6,10 +6,10 @@ const useStyles = (theme: Theme) => ({
 		alignItems: 'center',
 		gap: theme.spacing(1),
 	},
-	loader: (color: string) => ({
+	loader: (color?: string) => ({
 		color: color ?? theme.palette.primary.main,
 	}),
-	typo: (color: string) => ({
+	typo: (color?: string) => ({
 		color: color ?? theme.palette.primary.main,
 	}),
 });
