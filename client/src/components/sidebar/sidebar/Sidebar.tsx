@@ -131,13 +131,17 @@ const Sidebar = () => {
 		if (!showAllGenres) {
 			setGenresItems(
 				dataGenres?.genres?.genres
-					? (dataGenres?.genres?.genres.slice(0, 5) as Array<Genre>)
+					? (dataGenres?.genres?.genres
+							.filter(genre => genre?.id !== 99)
+							.slice(0, 5) as Array<Genre>)
 					: [],
 			);
 		} else {
 			setGenresItems(
 				dataGenres?.genres?.genres
-					? (dataGenres?.genres?.genres as Array<Genre>)
+					? (dataGenres?.genres?.genres.filter(
+							genre => genre?.id !== 99,
+					  ) as Array<Genre>)
 					: [],
 			);
 		}
