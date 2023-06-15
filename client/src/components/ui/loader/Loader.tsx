@@ -1,16 +1,17 @@
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { Box, CircularProgress, Typography, useTheme } from '@mui/material';
+import { LoaderPropsType } from '../../../types/types/props';
 import useStyles from './style';
 
-const Loader = () => {
+const Loader = ({ color }: LoaderPropsType) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	useLingui();
 	return (
 		<Box sx={styles.loaderBox}>
-			<CircularProgress sx={styles.loader} />
-			<Typography variant='h5' sx={styles.typo}>
+			<CircularProgress sx={styles.loader(color)} />
+			<Typography variant='h5' sx={styles.typo(color)}>
 				{t`Loading...`}
 			</Typography>
 		</Box>
