@@ -4,6 +4,7 @@ import SwiperSection from '@components/sections/swiperBlock/SwiperSection';
 import AlertBase from '@components/ui/alert/Alert';
 import { TranslationContext } from '@context/TranslationContext';
 import {
+	Genre,
 	Movie,
 	useMoviePreviewQuery,
 	useNowPlayingMoviesQuery,
@@ -246,7 +247,9 @@ const MoviesList = () => {
 								title={moviePreviewData?.movieDetails?.title}
 								backdrop_path={moviePreviewData?.movieDetails?.backdrop_path}
 								overview={moviePreviewData?.movieDetails?.overview}
-								genres={moviePreviewData?.movieDetails?.genres}
+								genres={(
+									moviePreviewData?.movieDetails?.genres as Array<Genre>
+								).filter(genre => genre?.id !== 99)}
 								runtime={moviePreviewData?.movieDetails?.runtime}
 								vote_average={moviePreviewData?.movieDetails?.vote_average}
 								stylesBox={styles.previewBox}

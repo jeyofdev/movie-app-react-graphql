@@ -4,6 +4,7 @@ import AlertBase from '@components/ui/alert/Alert';
 import { TranslationContext } from '@context/TranslationContext';
 import {
 	CastMovie,
+	Genre,
 	useCastByMovieQuery,
 	useMovieDetailsQuery,
 } from '@graphql/__generated__/graphql-type';
@@ -53,7 +54,9 @@ const MovieDetails = () => {
 				<DetailsMovieCard
 					title={data?.movieDetails?.title}
 					overview={data?.movieDetails?.overview}
-					genres={data?.movieDetails?.genres}
+					genres={(data?.movieDetails?.genres as Array<Genre>).filter(
+						genre => genre?.id !== 99,
+					)}
 					runtime={data?.movieDetails?.runtime}
 					vote_average={data?.movieDetails?.vote_average}
 					poster_path={data?.movieDetails?.poster_path}

@@ -48,7 +48,7 @@ const LandingContainer = () => {
 	}, [navigate, state?.from?.pathname]);
 
 	if (loading) {
-		return <LoaderContainer />;
+		return <LoaderContainer color={theme.palette.primary.contrastText} />;
 	}
 
 	if (error) {

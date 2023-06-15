@@ -291,3 +291,9 @@ export type MainContainerPropsType = {
 export type RequireAuthPropsType = {
 	children: ReactNode;
 };
+
+export type LoaderContainerPropsType = {
+	color?: string;
+};
+
+export type LoaderPropsType = Pick<LoaderContainerPropsType, 'color'>;

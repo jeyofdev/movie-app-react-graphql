@@ -1,13 +1,14 @@
 import Loader from '@components/ui/loader/Loader';
 import { Box } from '@mui/material';
+import { LoaderContainerPropsType } from '../../../types/types/props';
 import useStyles from './style';
 
-const LoaderContainer = () => {
+const LoaderContainer = ({ color }: LoaderContainerPropsType) => {
 	const styles = useStyles();
 
 	return (
 		<Box sx={styles.root}>
-			<Loader />
+			<Loader color={color} />
 		</Box>
 	);
 };
