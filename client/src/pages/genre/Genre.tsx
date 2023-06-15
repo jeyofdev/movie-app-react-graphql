@@ -12,12 +12,14 @@ import { Trans } from '@lingui/macro';
 import { Box } from '@mui/material';
 import { firstLetterCapitalize } from '@utils/index';
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { RoutesEnum } from '../../types/enums';
 import useStyles from './style';
 
 const Genre = () => {
 	const styles = useStyles();
 	const location = useLocation();
+	const navigate = useNavigate();
 	const { currentLocale } = useContext(TranslationContext);
 
 	const [page, setPage] = useState(1);
@@ -50,9 +52,22 @@ const Genre = () => {
 		setPage(value);
 	};
 
+	const getTitleGenre = () => {
+		const currentGenreById = (
+			dataGenres?.genres?.genres as Array<GenreType>
+		).find(genre => genre.id === Number(location?.state?.genreId))
+			?.name as string;
+
+		return currentGenreById;
+	};
+
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
+
+	if (!location?.state) {
+		navigate(`/${RoutesEnum.MOVIES_LIST}`);
+	}
 
 	if (loading || loadingGenres) {
 		return <LoaderContainer />;
@@ -70,11 +85,7 @@ const Genre = () => {
 		<Box sx={styles.root}>
 			<ListContainer
 				list={data?.discoverMoviesByGenre?.results as Array<Movie>}
-				title={firstLetterCapitalize(
-					(dataGenres?.genres?.genres as Array<GenreType>).find(
-						genre => genre.id === Number(location?.state?.genreId),
-					)?.name as string,
-				)}
+				title={firstLetterCapitalize(getTitleGenre())}
 				totalPages={data?.discoverMoviesByGenre?.total_pages as number}
 				currentPage={page}
 				setCurrentPage={handleChangePage}
