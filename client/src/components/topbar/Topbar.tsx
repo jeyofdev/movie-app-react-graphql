@@ -1,5 +1,6 @@
 import SignInModal from '@components/modals/signInModal/SignInModal';
-import SignUpModal from '@components/modals/signUpModal/SignUpModal';
+
+import SignUpModal from '@components/modals/signupModal/SignUpModal';
 import Logo from '@components/ui/logo/Logo';
 import SelectLang from '@components/ui/selectLang/SelectLang';
 import UserMenu from '@components/ui/userMenu/UserMenu';

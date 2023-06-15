@@ -27,7 +27,7 @@ const NowPlaying = () => {
 		fetchPolicy: 'cache-and-network',
 	});
 
-	const handleChangePage = (e: ChangeEvent<unknown>, value: number) => {
+	const handleChangePage = (_: ChangeEvent<unknown>, value: number) => {
 		setPage(value);
 	};
 

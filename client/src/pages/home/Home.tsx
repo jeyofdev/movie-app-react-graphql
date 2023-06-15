@@ -1,6 +1,6 @@
 import HomeCard from '@components/cards/homeCard/HomeCard';
 import SignInModal from '@components/modals/signInModal/SignInModal';
-import SignUpModal from '@components/modals/signUpModal/SignUpModal';
+import SignUpModal from '@components/modals/signupModal/SignUpModal';
 import { Movie } from '@graphql/__generated__/graphql-type';
 import { Trans, t } from '@lingui/macro';
 import { Box, Button, Typography, useTheme } from '@mui/material';
