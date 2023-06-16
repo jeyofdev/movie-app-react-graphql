@@ -7,13 +7,13 @@ import { RoutesEnum } from '../../../types/enums';
 import { LogoPropsType } from '../../../types/types/props';
 import useStyles from './style';
 
-const Logo = ({ landing }: LogoPropsType) => {
+const Logo = ({ landing, stylesBox }: LogoPropsType) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 	const navigate = useNavigate();
 
 	return (
-		<Box sx={styles.topContentBox(landing ?? false)}>
+		<Box sx={{ ...styles.topContentBox(landing ?? false), ...stylesBox }}>
 			<FontAwesomeIcon
 				icon={faTicket}
 				color={theme.palette.primary.main}

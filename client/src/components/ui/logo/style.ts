@@ -2,6 +2,7 @@ import { Theme } from '@mui/material';
 
 const useStyles = (theme: Theme) => ({
 	topContentBox: (landing: boolean) => ({
+		gridColumn: landing ? '1 / span 6' : 'none',
 		position: 'relative',
 		display: 'flex',
 		alignItems: 'center',

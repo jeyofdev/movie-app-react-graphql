@@ -1,3 +1,4 @@
+import Logo from '@components/ui/logo/Logo';
 import { ThemeContext } from '@context/ThemeContext';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -25,7 +26,7 @@ const SidebarResponsive = ({
 
 	return (
 		<AppBar position='fixed' sx={styles.appBar}>
-			<Toolbar>
+			<Toolbar sx={styles.toolbar}>
 				<IconButton
 					edge='start'
 					color='inherit'
@@ -46,13 +47,17 @@ const SidebarResponsive = ({
 					sx={styles.menuRoot}
 				>
 					<Box sx={styles.menuBox}>
-						<IconButton sx={styles.iconBtn} onClick={() => setOpen(false)}>
-							<FontAwesomeIcon
-								icon={faTimes}
-								color={theme.palette.primary.main}
-								style={styles.closeIcon}
-							/>
-						</IconButton>
+						<Box sx={styles.boxTop}>
+							<IconButton sx={styles.iconBtn} onClick={() => setOpen(false)}>
+								<FontAwesomeIcon
+									icon={faTimes}
+									color={theme.palette.primary.main}
+									style={styles.closeIcon}
+								/>
+							</IconButton>
+
+							<Logo stylesBox={{ marginTop: 0 }} />
+						</Box>
 
 						<Divider sx={styles.divider(themeMode)} />
 
