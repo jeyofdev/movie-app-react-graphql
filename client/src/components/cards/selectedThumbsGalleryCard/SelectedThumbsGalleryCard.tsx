@@ -1,4 +1,3 @@
-import Tags from '@components/tags/Tags';
 import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
 import VoteAverage from '@components/ui/votes/average/VoteAverage';
 import { Trans } from '@lingui/macro';
@@ -13,8 +12,8 @@ import useStyles from './style';
 const SelectedThumbsGalleryCard = ({
 	id,
 	title,
-	genres,
-	runtime,
+	// genres,
+	// runtime,
 	overview,
 	vote_average,
 }: SelectedThumbsGalleryCardProps) => {
@@ -39,7 +38,7 @@ const SelectedThumbsGalleryCard = ({
 					</Box>
 				</Box>
 
-				<Tags genres={genres} runtime={runtime} sx={styles.voteAverage} />
+				{/* <Tags genres={genres} runtime={runtime} sx={styles.voteAverage} /> */}
 
 				{overview && (
 					<Typography

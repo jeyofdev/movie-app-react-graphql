@@ -7,10 +7,7 @@ const useStyles = (theme: Theme) => ({
 		gridTemplateColumns: 'repeat(12, 1fr)',
 		backgroundColor: theme.palette.background.paper,
 		padding: 0,
-		paddingBottom: {
-			xs: '50px',
-			sm: 0,
-		},
+		paddingBottom: 0,
 		width: '100%',
 		minHeight: '100vh',
 

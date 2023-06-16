@@ -13,11 +13,15 @@ const useStyles = (theme: Theme) => ({
 	},
 	searchBox: {
 		gridColumn: {
-			xs: '1 / span 8',
+			xs: '2 / span 7',
 			sm: '1 / span 8',
 			md: '1 / span 9',
 			lg: '1 / span 6',
 			xl: '1 / span 5',
+		},
+		paddingLeft: {
+			xs: '20px',
+			sm: 0,
 		},
 	},
 	LinksBox: (landing: boolean) => ({

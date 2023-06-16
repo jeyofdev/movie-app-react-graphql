@@ -83,11 +83,11 @@ const SwiperSection = ({
 					id={activeItemSwiperGallery?.id}
 					title={activeItemSwiperGallery?.title}
 					vote_average={activeItemSwiperGallery?.vote_average}
-					runtime={125}
-					genres={[
-						{ id: 1, name: 'action' },
-						{ id: 2, name: 'Comedy' },
-					]}
+					// runtime={125}
+					// genres={[
+					// 	{ id: 1, name: 'action' },
+					// 	{ id: 2, name: 'Comedy' },
+					// ]}
 					overview={activeItemSwiperGallery?.overview}
 				/>
 

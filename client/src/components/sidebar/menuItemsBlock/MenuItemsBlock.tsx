@@ -13,13 +13,15 @@ const MenuItemsBlock = ({
 	setMenuItemActive,
 	mobile = false,
 	isGenre = false,
+	boxStyles,
+	setCloseMenuMobile,
 }: BlockSidebarMenuProps) => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
 
 	return (
-		<Box sx={styles.root}>
-			{!mobile && (
+		<Box sx={{ ...styles.root, ...boxStyles }}>
+			{!mobile && title && (
 				<Typography variant='h6' sx={styles.menuItemsBlockTitle}>
 					{title}
 				</Typography>
@@ -47,6 +49,7 @@ const MenuItemsBlock = ({
 					}
 					setMenuItemActive={setMenuItemActive}
 					disableRipple={mobile}
+					setCloseMenuMobile={setCloseMenuMobile}
 				/>
 			))}
 		</Box>

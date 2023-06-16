@@ -2,6 +2,8 @@ import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Typography, useTheme } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useWindowSize } from 'usehooks-ts';
+import { BreakpointEnum } from '../../../types/enums';
 import { MenuItemPropsType } from '../../../types/types/props';
 import useStyles from './style';
 
@@ -13,12 +15,18 @@ const MenuItem = ({
 	icon,
 	disableRipple,
 	setMenuItemActive,
+	setCloseMenuMobile,
 }: MenuItemPropsType) => {
 	const theme = useTheme();
 	const navigate = useNavigate();
 	const styles = useStyles(theme);
+	const { width } = useWindowSize();
 
 	const handleClick = () => {
+		if (width < BreakpointEnum.SM) {
+			setCloseMenuMobile(false);
+		}
+
 		setMenuItemActive(label?.split(' ')?.join('-').toLowerCase());
 		navigate(link, {
 			state: {
@@ -35,8 +43,16 @@ const MenuItem = ({
 			style={styles.root}
 			active={active}
 		>
-			{icon ? <FontAwesomeIcon icon={icon} style={styles.icon} /> : null}
-			<Typography variant='body1' sx={styles.label}>
+			{icon ? (
+				<FontAwesomeIcon
+					icon={icon}
+					style={width >= BreakpointEnum.SM ? styles.icon : styles.iconMobile}
+				/>
+			) : null}
+			<Typography
+				variant={width >= BreakpointEnum.SM ? 'body1' : 'h5'}
+				sx={styles.label}
+			>
 				{label}
 			</Typography>
 		</BaseButton>
