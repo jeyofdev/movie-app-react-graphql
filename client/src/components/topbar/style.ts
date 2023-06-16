@@ -26,7 +26,7 @@ const useStyles = (theme: Theme) => ({
 	},
 	LinksBox: (landing: boolean) => ({
 		gridColumn: {
-			xs: landing ? '10 / span 2' : '10 / span 4',
+			xs: landing ? '9 / span 4' : '10 / span 4',
 			sm: '9 / span 4',
 			md: '11 / span 2',
 			lg: '11 / span 2',

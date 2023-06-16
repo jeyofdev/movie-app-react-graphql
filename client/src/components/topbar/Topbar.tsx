@@ -73,69 +73,71 @@ const Topbar = ({ landing }: TopBarPropsType) => {
 	};
 
 	useEffect(() => {
-		if (width < BreakpointEnum.SM && !showInputSearch) {
-			setShowSearchBtnMobile(true);
-		} else {
-			setShowSearchBtnMobile(false);
-		}
-
-		if (width >= BreakpointEnum.SM) {
+		if (width > BreakpointEnum.SM) {
 			setShowInputSearch(true);
+			setShowSearchBtnMobile(false);
+		} else {
+			setShowInputSearch(false);
+			setShowSearchBtnMobile(true);
 		}
-	}, [showInputSearch, width]);
+	}, [width]);
 
 	return (
 		<>
 			<Box sx={styles.root}>
 				{landing && <Logo landing />}
 
-				{!landing && showInputSearch && (
+				{!landing && (
 					<Box sx={styles.searchBox}>
 						{showSearchBtnMobile && (
-							<Button
-								color='primary'
-								onClick={() => {
-									setShowInputSearch(!showInputSearch);
-									setShowSearchBtnMobile(false);
-								}}
-								sx={styles.darkModeBtn}
-							>
-								<FontAwesomeIcon
-									icon={faMagnifyingGlass}
-									color={theme.palette.primary.contrastText}
-									style={styles.searchIcon}
-								/>
-							</Button>
+							<>
+								<Button
+									color='primary'
+									onClick={() => {
+										setShowInputSearch(!showInputSearch);
+										setShowSearchBtnMobile(false);
+									}}
+									sx={styles.darkModeBtn}
+								>
+									<FontAwesomeIcon
+										icon={faMagnifyingGlass}
+										color={theme.palette.primary.contrastText}
+										style={styles.searchIcon}
+									/>
+								</Button>
+							</>
 						)}
 
-						<FormControl
-							sx={styles.searchFormControl(themeMode)}
-							variant='standard'
-						>
-							<Input
-								sx={styles.searchInput}
-								type={'text'}
-								placeholder={t`Search movie...`}
-								value={search}
-								onChange={handleChange}
-								onKeyUp={handleKeyUp}
-								disableUnderline
-								endAdornment={
-									<InputAdornment position='end'>
-										<IconButton
-											aria-label='toggle password visibility'
-											onClick={handleClick}
-										>
-											<FontAwesomeIcon
-												icon={faMagnifyingGlass}
-												color={theme.palette.common.black}
-												style={styles.searchIcon}
-											/>
-										</IconButton>
-									</InputAdornment>
-								}
-							/>
-						</FormControl>
+						{showInputSearch && (
+							<FormControl
+								sx={styles.searchFormControl(themeMode)}
+								variant='standard'
+							>
+								<Input
+									sx={styles.searchInput}
+									type={'text'}
+									placeholder={t`Search movie...`}
+									value={search}
+									onChange={handleChange}
+									onKeyUp={handleKeyUp}
+									disableUnderline
+									endAdornment={
+										<InputAdornment position='end'>
+											<IconButton
+												aria-label='toggle password visibility'
+												onClick={handleClick}
+											>
+												<FontAwesomeIcon
+													icon={faMagnifyingGlass}
+													color={theme.palette.common.black}
+													style={styles.searchIcon}
+												/>
+											</IconButton>
+										</InputAdornment>
+									}
+								/>
+							</FormControl>
+						)}
 					</Box>
 				)}
 
