@@ -6,6 +6,9 @@ const useStyles = (theme: Theme) => ({
 		width: 0,
 		right: 'auto',
 	},
+	toolbar: {
+		minHeight: '59px !important',
+	},
 	menuRoot: {
 		width: '100%',
 	},
@@ -16,8 +19,13 @@ const useStyles = (theme: Theme) => ({
 		width: '320px',
 		borderRight: `0.1px solid ${theme.palette.primary.main}`,
 	},
-	iconBtn: {
+	boxTop: {
+		display: 'flex',
+		justifyContent: 'space-between',
 		marginBottom: theme.spacing(2),
+	},
+	iconBtn: {
+		marginBottom: 0,
 	},
 	closeIcon: {
 		fontSize: '1.75rem',

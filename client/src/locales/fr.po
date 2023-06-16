@@ -17,20 +17,20 @@ msgstr ""
 msgid "{0, plural, one {Search result (#)} other {Search results (#)}}"
 msgstr "{0, plural, one {Résultat de recherche (#)} other {Résultats de recherche (#)}}"
 
-#: src/components/modals/signUpModal/SignUpModal.tsx:133
-#: src/components/modals/signUpModal/SignUpModal.tsx:226
+#: src/components/modals/signupModal/SignUpModal.tsx:133
+#: src/components/modals/signupModal/SignUpModal.tsx:226
 msgid "Already a member ?"
 msgstr "Déjà membre ?"
 
-#: src/components/modals/signUpModal/SignUpModal.tsx:63
+#: src/components/modals/signupModal/SignUpModal.tsx:63
 msgid "An account is already in use with this email."
 msgstr "Un compte est déjà utilisé avec cet e-mail."
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:153
-#: src/pages/genre/Genre.tsx:64
-#: src/pages/home/Home.tsx:63
-#: src/pages/movieDetails/MovieDetails.tsx:45
-#: src/pages/moviesList/MoviesList.tsx:137
+#: src/components/containers/landingContainer/LandingContainer.tsx:57
+#: src/components/sidebar/sidebar/Sidebar.tsx:158
+#: src/pages/genre/Genre.tsx:79
+#: src/pages/movieDetails/MovieDetails.tsx:46
+#: src/pages/moviesList/MoviesList.tsx:138
 #: src/pages/nowPlaying/NowPlaying.tsx:45
 #: src/pages/person/Person.tsx:62
 #: src/pages/popular/Popular.tsx:46
@@ -44,7 +44,7 @@ msgstr "Une erreur est survenue !!!"
 #~ msgid "Birthday"
 #~ msgstr "Date de naissance"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:45
+#: src/components/sidebar/sidebar/Sidebar.tsx:46
 msgid "browse"
 msgstr "parcourir"
 
@@ -54,12 +54,12 @@ msgstr "Casting"
 
 #: src/components/modals/signInModal/SignInModal.tsx:136
 #: src/components/modals/signInModal/SignInModal.tsx:142
-#: src/components/modals/signUpModal/SignUpModal.tsx:113
-#: src/components/modals/signUpModal/SignUpModal.tsx:119
+#: src/components/modals/signupModal/SignUpModal.tsx:113
+#: src/components/modals/signupModal/SignUpModal.tsx:119
 msgid "Continue with"
 msgstr "Continuer avec"
 
-#: src/components/modals/signUpModal/SignUpModal.tsx:125
+#: src/components/modals/signupModal/SignUpModal.tsx:125
 msgid "Continue with email"
 msgstr "Continuer avec email"
 
@@ -82,7 +82,7 @@ msgstr "Vous n'avez pas de compte ?"
 
 #: src/components/modals/signInModal/SignInModal.tsx:181
 #: src/components/modals/signInModal/SignInModal.tsx:276
-#: src/components/modals/signUpModal/SignUpModal.tsx:177
+#: src/components/modals/signupModal/SignUpModal.tsx:177
 msgid "Email"
 msgstr "Email"
 
@@ -90,7 +90,8 @@ msgstr "Email"
 msgid "English"
 msgstr "Anglais"
 
-#: src/components/topbar/Topbar.tsx:177
+#: src/components/topbar/Topbar.tsx:178
+#: src/pages/home/Home.tsx:123
 msgid "Finish Signing up"
 msgstr "Terminer l'inscription"
 
@@ -98,7 +99,8 @@ msgstr "Terminer l'inscription"
 msgid "Forgot your password"
 msgstr "Mot de passe oublié"
 
-#: src/components/topbar/Topbar.tsx:192
+#: src/components/topbar/Topbar.tsx:193
+#: src/pages/home/Home.tsx:138
 msgid "Forgot your password ?"
 msgstr "Mot de passe oublié ?"
 
@@ -106,7 +108,7 @@ msgstr "Mot de passe oublié ?"
 msgid "French"
 msgstr "Français"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:174
+#: src/components/sidebar/sidebar/Sidebar.tsx:180
 msgid "Genres"
 msgstr "Genres"
 
@@ -114,12 +116,12 @@ msgstr "Genres"
 msgid "German"
 msgstr "Allemand"
 
-#: src/pages/home/Home.tsx:90
+#: src/pages/home/Home.tsx:108
 msgid "Getting started"
 msgstr "Commencer"
 
 #: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:61
-#: src/components/sidebar/sidebar/Sidebar.tsx:192
+#: src/components/sidebar/sidebar/Sidebar.tsx:199
 msgid "hide"
 msgstr "masquer"
 
@@ -127,16 +129,17 @@ msgstr "masquer"
 msgid "If the email entered corresponds to an application user, you will receive an email with instructions to reset your password"
 msgstr "Si l'e-mail saisi correspond à un utilisateur de l'application, vous recevrez un e-mail avec des instructions pour réinitialiser votre mot de passe"
 
-#: src/components/ui/loader/Loader.tsx:14
+#: src/components/ui/loader/Loader.tsx:15
 msgid "Loading..."
 msgstr "Chargement..."
 
 #: src/components/modals/signInModal/SignInModal.tsx:222
-#: src/components/modals/signUpModal/SignUpModal.tsx:132
-#: src/components/modals/signUpModal/SignUpModal.tsx:225
-#: src/components/topbar/Topbar.tsx:191
+#: src/components/modals/signupModal/SignUpModal.tsx:132
+#: src/components/modals/signupModal/SignUpModal.tsx:225
+#: src/components/topbar/Topbar.tsx:192
 #: src/components/ui/userMenu/UserMenu.tsx:65
-#: src/pages/home/Home.tsx:84
+#: src/pages/home/Home.tsx:80
+#: src/pages/home/Home.tsx:137
 msgid "Login"
 msgstr "Connexion"
 
@@ -144,7 +147,7 @@ msgstr "Connexion"
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: src/components/ui/logo/Logo.tsx:19
+#: src/components/ui/logo/Logo.tsx:28
 msgid "Movies"
 msgstr "Films"
 
@@ -152,7 +155,7 @@ msgstr "Films"
 msgid "Movies list"
 msgstr "Liste de films"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:165
+#: src/components/sidebar/sidebar/Sidebar.tsx:170
 msgid "News Feed"
 msgstr "Flux"
 
@@ -164,11 +167,11 @@ msgstr "Aucune image"
 msgid "No photo"
 msgstr "Aucune photo"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:73
+#: src/components/sidebar/sidebar/Sidebar.tsx:74
 msgid "now playing"
 msgstr "actuellement"
 
-#: src/pages/moviesList/MoviesList.tsx:234
+#: src/pages/moviesList/MoviesList.tsx:235
 #: src/pages/nowPlaying/NowPlaying.tsx:54
 msgid "Now playing movies"
 msgstr "Films du moment"
@@ -182,11 +185,11 @@ msgid "Page Not Found..."
 msgstr "Page non trouvée..."
 
 #: src/components/modals/signInModal/SignInModal.tsx:193
-#: src/components/modals/signUpModal/SignUpModal.tsx:187
+#: src/components/modals/signupModal/SignUpModal.tsx:187
 msgid "Password"
 msgstr "Mot de passe"
 
-#: src/components/modals/signUpModal/SignUpModal.tsx:197
+#: src/components/modals/signupModal/SignUpModal.tsx:197
 msgid "Password Confirmation"
 msgstr "Confirmation du mot de passe"
 
@@ -194,16 +197,16 @@ msgstr "Confirmation du mot de passe"
 msgid "Place of Birth"
 msgstr "Lieu de naissance"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:59
+#: src/components/sidebar/sidebar/Sidebar.tsx:60
 msgid "popular"
 msgstr "populaires"
 
-#: src/pages/moviesList/MoviesList.tsx:159
+#: src/pages/moviesList/MoviesList.tsx:160
 #: src/pages/popular/Popular.tsx:55
 msgid "Popular movies"
 msgstr "Films populaires"
 
-#: src/components/topbar/Topbar.tsx:117
+#: src/components/topbar/Topbar.tsx:118
 msgid "Search movie..."
 msgstr "Rechercher un film..."
 
@@ -211,18 +214,20 @@ msgstr "Rechercher un film..."
 msgid "Send"
 msgstr "Envoyer"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:192
+#: src/components/sidebar/sidebar/Sidebar.tsx:199
 msgid "show more"
 msgstr "afficher plus"
 
 #: src/components/modals/signInModal/SignInModal.tsx:229
 #: src/components/modals/signInModal/SignInModal.tsx:299
-#: src/components/topbar/Topbar.tsx:176
+#: src/components/topbar/Topbar.tsx:177
 #: src/components/ui/userMenu/UserMenu.tsx:75
+#: src/pages/home/Home.tsx:95
+#: src/pages/home/Home.tsx:122
 msgid "Sign up"
 msgstr "Inscription"
 
-#: src/components/modals/signUpModal/SignUpModal.tsx:218
+#: src/components/modals/signupModal/SignUpModal.tsx:218
 msgid "Sign up with email"
 msgstr "S'inscrire avec l'adresse e-mail"
 
@@ -231,51 +236,51 @@ msgid "Spanish"
 msgstr "Espagnol"
 
 #: src/components/modals/signInModal/SignInModal.tsx:111
-#: src/components/modals/signUpModal/SignUpModal.tsx:81
+#: src/components/modals/signupModal/SignUpModal.tsx:81
 #: src/validation/index.ts:8
 msgid "The email address is not in the correct format"
 msgstr "L'adresse e-mail n'est pas au bon format"
 
 #: src/components/modals/signInModal/SignInModal.tsx:108
-#: src/components/modals/signUpModal/SignUpModal.tsx:78
+#: src/components/modals/signupModal/SignUpModal.tsx:78
 #: src/validation/index.ts:5
 msgid "The email field is required"
 msgstr "Le champ email est obligatoire"
 
 #: src/components/modals/signInModal/SignInModal.tsx:173
 #: src/components/modals/signInModal/SignInModal.tsx:268
-#: src/components/modals/signUpModal/SignUpModal.tsx:170
+#: src/components/modals/signupModal/SignUpModal.tsx:170
 msgid "The form contains errors"
 msgstr "Le formulaire contient des erreurs"
 
-#: src/components/modals/signUpModal/SignUpModal.tsx:92
+#: src/components/modals/signupModal/SignUpModal.tsx:92
 #: src/validation/index.ts:19
 msgid "The password confirm field is required"
 msgstr "Le champ de confirmation du mot de passe est obligatoire"
 
 #: src/components/modals/signInModal/SignInModal.tsx:115
-#: src/components/modals/signUpModal/SignUpModal.tsx:85
+#: src/components/modals/signupModal/SignUpModal.tsx:85
 #: src/validation/index.ts:12
 msgid "The password field is required"
 msgstr "Le champ mot de passe est obligatoire"
 
 #: src/components/modals/signInModal/SignInModal.tsx:118
-#: src/components/modals/signUpModal/SignUpModal.tsx:88
-#: src/components/modals/signUpModal/SignUpModal.tsx:95
+#: src/components/modals/signupModal/SignUpModal.tsx:88
+#: src/components/modals/signupModal/SignUpModal.tsx:95
 #: src/validation/index.ts:15
 #: src/validation/index.ts:22
 msgid "The password must be at least 8 characters"
 msgstr "Le mot de passe doit comporter au moins 8 caractères"
 
-#: src/components/modals/signUpModal/SignUpModal.tsx:206
+#: src/components/modals/signupModal/SignUpModal.tsx:206
 msgid "The passwords must match"
 msgstr "Les mots de passe doivent correspondre"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:66
+#: src/components/sidebar/sidebar/Sidebar.tsx:67
 msgid "top rated"
 msgstr "Mieux notés"
 
-#: src/pages/moviesList/MoviesList.tsx:209
+#: src/pages/moviesList/MoviesList.tsx:210
 #: src/pages/topRated/TopRated.tsx:57
 msgid "Top rated movies"
 msgstr "Films les mieux notés"
@@ -284,26 +289,30 @@ msgstr "Films les mieux notés"
 msgid "Unknown"
 msgstr "Inconnue"
 
-#: src/components/sidebar/sidebar/Sidebar.tsx:52
+#: src/components/sidebar/sidebar/Sidebar.tsx:53
 msgid "upcoming"
 msgstr "à venir"
 
-#: src/pages/moviesList/MoviesList.tsx:184
+#: src/pages/moviesList/MoviesList.tsx:185
 #: src/pages/upComing/UpComing.tsx:54
 msgid "Upcoming movies"
 msgstr "Films à venir"
 
 #: src/components/cards/detailsPersonCard/DetailsPersonCard.tsx:61
 #: src/components/cards/previewMovieCard/MoviePreviewCard.tsx:60
-#: src/components/cards/selectedThumbsGalleryCard/SelectedThumbsGalleryCard.tsx:60
+#: src/components/cards/selectedThumbsGalleryCard/SelectedThumbsGalleryCard.tsx:59
 msgid "View more"
 msgstr "Voir plus"
+
+#: src/pages/home/Home.tsx:61
+msgid "Welcome to our site dedicated to the latest cinematic releases! Our platform brings together all the essential information about the latest and most popular movies"
+msgstr "Bienvenue sur notre site dédié aux dernières sorties cinématographiques ! Notre plateforme regroupe toutes les informations essentielles sur les films les plus récents et les plus populaires"
 
 #: src/components/modals/signInModal/SignInModal.tsx:70
 msgid "You are connected"
 msgstr "Vous êtes connecté"
 
-#: src/components/modals/signUpModal/SignUpModal.tsx:59
+#: src/components/modals/signupModal/SignUpModal.tsx:59
 msgid "you have successfully registered"
 msgstr "Vous êtes inscrit avec succès"
 

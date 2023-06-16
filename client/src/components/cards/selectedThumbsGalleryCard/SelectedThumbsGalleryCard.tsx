@@ -34,6 +34,7 @@ const SelectedThumbsGalleryCard = ({
 						<VoteAverage
 							voteAverage={vote_average as number}
 							typoStyle={styles.voteAverage}
+							hasBackground
 						/>
 					</Box>
 				</Box>

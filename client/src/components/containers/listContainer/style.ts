@@ -29,6 +29,7 @@ const useStyles = (theme: Theme) => ({
 	title: {
 		marginBottom: theme.spacing(5),
 		color: theme.palette.primary.main,
+		textAlign: 'center',
 	},
 	paginationItem: {
 		'&.MuiPaginationItem-root': {

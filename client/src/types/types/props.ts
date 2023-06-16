@@ -286,6 +286,7 @@ export type TopBarPropsType = {
 
 export type LogoPropsType = {
 	landing?: boolean;
+	stylesBox?: object;
 };
 
 export type HomePropsType = {

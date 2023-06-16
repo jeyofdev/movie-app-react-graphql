@@ -5,7 +5,10 @@ const useStyles = (theme: Theme) => ({
 		width: '100%',
 	},
 	imagesBox: {
-		display: 'flex',
+		display: {
+			xs: 'none',
+			sm: 'flex',
+		},
 		position: 'relative',
 	},
 	cardBox: {
@@ -41,15 +44,8 @@ const useStyles = (theme: Theme) => ({
 		display: 'flex',
 		justifyContent: 'center',
 		gap: theme.spacing(2),
-		// background: 'red',
 		zIndex: 1001,
-		marginTop: {
-			xs: '230px',
-			sm: '330px',
-			md: '330px',
-			lg: '450px',
-			xl: '450px',
-		},
+		marginBottom: theme.spacing(3),
 	},
 	btn: {
 		borderRadius: '100px',
@@ -66,6 +62,28 @@ const useStyles = (theme: Theme) => ({
 		'&:hover': {
 			backgroundColor: theme.palette.primary.main,
 		},
+	},
+	typoBox: {
+		display: 'flex',
+		justifyContent: 'center',
+		width: '100%',
+		marginTop: {
+			xs: '0px',
+			sm: '330px',
+			md: '330px',
+			lg: '450px',
+			xl: '450px',
+		},
+		marginBottom: theme.spacing(4),
+	},
+	typoContent: {
+		color: theme.palette.primary.main,
+		textAlign: 'center',
+		maxWidth: {
+			xs: '300px',
+			sm: '500px',
+		},
+		lineHeight: 1.4,
 	},
 });
 

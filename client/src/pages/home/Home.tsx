@@ -56,6 +56,15 @@ const Home = ({ list }: HomePropsType) => {
 					))}
 				</Box>
 
+				<Box sx={styles.typoBox}>
+					<Typography variant='h5' sx={styles.typoContent}>
+						<Trans>
+							Welcome to our site dedicated to the latest cinematic releases!
+							Our platform brings together all the essential information about
+							the latest and most popular movies
+						</Trans>
+					</Typography>
+				</Box>
 				<Box sx={styles.btnsBox}>
 					{!user ? (
 						<>
