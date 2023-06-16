@@ -32,6 +32,7 @@ export type MenuItemPropsType = {
 	active: boolean;
 	disableRipple: boolean;
 	setMenuItemActive: Dispatch<SetStateAction<string | null>>;
+	setCloseMenuMobile: Dispatch<SetStateAction<boolean>>;
 };
 
 export type MenuItemType = Pick<MenuItemPropsType, 'icon' | 'link'> & {
@@ -50,14 +51,21 @@ export type BaseButtonPropsType = {
 };
 
 export type BlockSidebarMenuProps = {
-	title: string;
+	title?: string;
 	menuItems: Array<Genre> | Array<MenuItemType>;
 	menuItemsOriginal?: Array<Genre>;
 	menuItemActive: string;
 	setMenuItemActive: Dispatch<SetStateAction<string | null>>;
 	mobile?: boolean;
 	isGenre?: boolean;
+	boxStyles?: object;
+	setCloseMenuMobile: Dispatch<SetStateAction<boolean>>;
 };
+
+export type SidebarResponsivePropsTypes = Pick<
+	BlockSidebarMenuProps,
+	'menuItems' | 'menuItemActive' | 'setMenuItemActive'
+>;
 
 export type MainSwiperProps = {
 	list: Array<Movie>;

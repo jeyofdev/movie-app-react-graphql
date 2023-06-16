@@ -5,6 +5,7 @@ import { Box, Typography, useTheme } from '@mui/material';
 import { formatGenreForUrl } from '@utils/index';
 import { useNavigate } from 'react-router-dom';
 import { useWindowSize } from 'usehooks-ts';
+import { BreakpointEnum } from '../../../../types/enums';
 import { LinksGenresProps } from '../../../../types/types/props';
 import useStyles from './style';
 
@@ -14,7 +15,11 @@ const LinksGenres = ({ genres, sx }: LinksGenresProps) => {
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
 
-	const getLinkGenre = (genresLength: number, genre: Genre, index: number) => (
+	const getLinkGenre = (
+		arrGenres: Array<Genre>,
+		genre: Genre,
+		index: number,
+	) => (
 		<Box key={genre?.id} sx={{ display: 'flex' }}>
 			<BaseButton
 				style={{ ...styles.genreButton, ...sx }}
@@ -28,7 +33,7 @@ const LinksGenres = ({ genres, sx }: LinksGenresProps) => {
 				{genre?.name}
 			</BaseButton>
 
-			{genresLength - 1 !== index && (
+			{index !== arrGenres.length - 1 && (
 				<span style={{ ...styles.span, ...sx }}>,&nbsp;</span>
 			)}
 		</Box>
@@ -49,13 +54,14 @@ const LinksGenres = ({ genres, sx }: LinksGenresProps) => {
 		const arrGenre = width >= 960 ? genres : genres.slice(0, length);
 
 		return arrGenre.map((genre: Genre, i: number) => {
-			if (width >= 960) return <>{getLinkGenre(length, genre, i)}</>;
-			if (width >= 768)
-				return <>{i <= length && getLinkGenre(length, genre, i)}</>;
+			if (width >= BreakpointEnum.MD)
+				return <>{getLinkGenre(arrGenre, genre, i)}</>;
+			if (width >= BreakpointEnum.SM)
+				return <>{i <= length && getLinkGenre(arrGenre, genre, i)}</>;
 			if (width >= 400)
-				return <>{i <= length && getLinkGenre(length, genre, i)}</>;
+				return <>{i <= length && getLinkGenre(arrGenre, genre, i)}</>;
 
-			if (i <= 1) return getLinkGenre(length, genre, i);
+			if (i <= 1) return getLinkGenre(arrGenre, genre, i);
 
 			return undefined;
 		});
@@ -77,7 +83,7 @@ const LinksGenres = ({ genres, sx }: LinksGenresProps) => {
 			</BaseTooltip>
 		);
 
-		if (width >= 400 && width < 768 && genresArr.length > 3) {
+		if (width >= 400 && width < BreakpointEnum.SM && genresArr.length > 3) {
 			return (
 				<>
 					{tooltip(
@@ -95,7 +101,7 @@ const LinksGenres = ({ genres, sx }: LinksGenresProps) => {
 				<>
 					{tooltip(
 						genresArr
-							.map((el: Genre, i: number) => i > 0 && el.name)
+							.map((el: Genre, i: number) => i > 1 && el.name)
 							?.filter((item: string | boolean) => item && item)
 							?.join(', '),
 					)}

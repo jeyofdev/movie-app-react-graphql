@@ -3,8 +3,8 @@ import { Theme } from '@mui/material';
 const useStyles = (theme: Theme) => ({
 	root: {
 		[theme.breakpoints.down('sm')]: {
-			display: 'initial',
 			background: 'transparent',
+			gap: '1rem',
 
 			'&.active': {
 				opacity: 0.2,
@@ -34,6 +34,10 @@ const useStyles = (theme: Theme) => ({
 	icon: {
 		height: '1.15rem',
 		minWidth: '1.5rem',
+	},
+	iconMobile: {
+		height: '1.5rem',
+		minWidth: '2rem',
 	},
 	label: {
 		textTransform: 'normal',

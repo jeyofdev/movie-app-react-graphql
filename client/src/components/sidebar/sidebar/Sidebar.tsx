@@ -28,6 +28,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { BreakpointEnum, RoutesEnum } from '../../../types/enums';
 import { MenuItemType } from '../../../types/types/props';
 import MenuItemsBlock from '../menuItemsBlock/MenuItemsBlock';
+import SidebarResponsive from '../sideBarResponsive/SidebarResponsive';
 import useStyles from './style';
 
 const Sidebar = () => {
@@ -170,6 +171,7 @@ const Sidebar = () => {
 						menuItems={newsFeedItems}
 						menuItemActive={menuItemActive as string}
 						setMenuItemActive={setMenuItemActive}
+						setCloseMenuMobile={() => {}}
 					/>
 
 					<Divider sx={styles.divider} />
@@ -181,6 +183,7 @@ const Sidebar = () => {
 						menuItemActive={menuItemActive as string}
 						setMenuItemActive={setMenuItemActive}
 						isGenre
+						setCloseMenuMobile={() => {}}
 					/>
 
 					<BaseButton
@@ -200,18 +203,11 @@ const Sidebar = () => {
 					<Divider sx={styles.divider} />
 				</>
 			) : (
-				<>
-					<Divider sx={styles.divider} />
-					<Box sx={styles.root}>
-						<MenuItemsBlock
-							mobile
-							title='News Feed'
-							menuItems={newsFeedItems}
-							menuItemActive={menuItemActive as string}
-							setMenuItemActive={setMenuItemActive}
-						/>
-					</Box>
-				</>
+				<SidebarResponsive
+					menuItems={newsFeedItems}
+					menuItemActive={menuItemActive as string}
+					setMenuItemActive={setMenuItemActive}
+				/>
 			)}
 		</Box>
 	);

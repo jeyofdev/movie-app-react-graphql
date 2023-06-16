@@ -2,14 +2,12 @@ import { Theme } from '@mui/material';
 
 const useStyles = (theme: Theme) => ({
 	root: {
-		position: 'fixed',
-		bottom: 0,
-		gridColumn: '1 / span 12',
 		display: 'flex',
 		width: '100%',
-		height: '50px',
 		backgroundColor: theme.palette.background.paper,
 		zIndex: 100,
+		position: 'absolute',
+		top: 0,
 
 		[theme.breakpoints.up('sm')]: {
 			position: 'relative',
