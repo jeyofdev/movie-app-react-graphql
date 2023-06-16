@@ -23,12 +23,15 @@ const useStyles = (theme: Theme) => ({
 	},
 	title: {
 		color: theme.palette.common.white,
+		marginRight: theme.spacing(1),
 	},
 	overview: {
 		color: theme.palette.common.white,
 		maxWidth: {
 			sm: '100%',
-			md: '80%',
+			md: '60%',
+			lg: '50%',
+			xl: '50%',
 		},
 	},
 	button: {

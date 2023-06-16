@@ -432,6 +432,7 @@ export type PrimaryInfosMovieFieldsFragment = {
 	popularity?: number | null;
 	poster_path?: string | null;
 	backdrop_path?: string | null;
+	overview?: string | null;
 };
 
 export type PrimaryInfosMovieDetailsFieldsFragment = {
@@ -472,6 +473,7 @@ export type NowPlayingMoviesQuery = {
 			popularity?: number | null;
 			poster_path?: string | null;
 			backdrop_path?: string | null;
+			overview?: string | null;
 		} | null>;
 	} | null;
 };
@@ -495,6 +497,7 @@ export type PopularMoviesQuery = {
 			popularity?: number | null;
 			poster_path?: string | null;
 			backdrop_path?: string | null;
+			overview?: string | null;
 		} | null>;
 	} | null;
 };
@@ -518,6 +521,7 @@ export type UpcomingMoviesQuery = {
 			popularity?: number | null;
 			poster_path?: string | null;
 			backdrop_path?: string | null;
+			overview?: string | null;
 		} | null>;
 	} | null;
 };
@@ -541,6 +545,7 @@ export type TopRatedMoviesQuery = {
 			popularity?: number | null;
 			poster_path?: string | null;
 			backdrop_path?: string | null;
+			overview?: string | null;
 		} | null>;
 	} | null;
 };
@@ -589,6 +594,7 @@ export type DiscoverMoviesByGenreQuery = {
 			popularity?: number | null;
 			poster_path?: string | null;
 			backdrop_path?: string | null;
+			overview?: string | null;
 		} | null>;
 	} | null;
 };
@@ -762,6 +768,7 @@ export const PrimaryInfosMovieFieldsFragmentDoc = gql`
 		popularity
 		poster_path
 		backdrop_path
+		overview
 	}
 `;
 export const PrimaryInfosMovieDetailsFieldsFragmentDoc = gql`
