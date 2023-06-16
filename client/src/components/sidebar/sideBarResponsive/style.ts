@@ -12,7 +12,7 @@ const useStyles = (theme: Theme) => ({
 	menuBox: {
 		padding: theme.spacing(4),
 		height: '100%',
-		backgroundColor: theme.palette.primary.contrastText,
+		backgroundColor: theme.palette.background.paper,
 		width: '320px',
 		borderRight: `0.1px solid ${theme.palette.primary.main}`,
 	},
