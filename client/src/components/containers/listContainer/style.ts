@@ -36,13 +36,13 @@ const useStyles = (theme: Theme) => ({
 			color: theme.palette.primary.main,
 		},
 
+		'& .MuiPaginationItem-ellipsis': {
+			color: 'red',
+		},
+
 		'&.Mui-selected': {
 			background: 'transparent',
 			fontSize: '1.5rem',
-		},
-
-		'&.MuiPaginationItem-ellipsis': {
-			color: 'red',
 		},
 	},
 });
