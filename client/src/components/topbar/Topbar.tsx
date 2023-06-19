@@ -62,12 +62,15 @@ const Topbar = ({ landing }: TopBarPropsType) => {
 	const handleClick = () => {
 		navigate(`${RoutesEnum.SEARCH}/${search.split(' ').join('-')}`);
 		setSearch('');
-		setShowSearchBtnMobile(true);
-		setShowInputSearch(false);
+
+		if (width < BreakpointEnum.SM) {
+			setShowSearchBtnMobile(true);
+			setShowInputSearch(false);
+		}
 	};
 
 	const handleKeyUp = (e: KeyboardEvent<HTMLInputElement>) => {
-		if (e.code === 'Enter') {
+		if (e.code === 'Enter' && search.length > 0) {
 			handleClick();
 		}
 	};
@@ -126,10 +129,15 @@ const Topbar = ({ landing }: TopBarPropsType) => {
 											<IconButton
 												aria-label='toggle password visibility'
 												onClick={handleClick}
+												disabled={search.length <= 0}
 											>
 												<FontAwesomeIcon
 													icon={faMagnifyingGlass}
-													color={theme.palette.common.black}
+													color={
+														search.length <= 0
+															? theme.palette.grey[300]
+															: theme.palette.common.black
+													}
 													style={styles.searchIcon}
 												/>
 											</IconButton>
