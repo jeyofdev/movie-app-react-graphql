@@ -16,7 +16,8 @@ import {
 	QuerySimilarMovieArgs,
 	QueryTopRatedMoviesArgs,
 	QueryUpcomingMoviesArgs,
-} from '__generated__/resolvers-types';
+	RegionEnum,
+} from '../__generated__/resolvers-types';
 import 'dotenv/config';
 import { formatUrlQuery } from '../utils/helpers';
 
@@ -41,7 +42,10 @@ class MovieService extends RESTDataSource {
 			formatUrlQuery(this.baseURL, this.apiKey, 'popular', {
 				language: args?.options?.language,
 				page: args?.options?.page,
-				region: args?.options?.region,
+				region:
+					args?.options?.region !== RegionEnum.En
+						? args?.options?.region
+						: null,
 			}),
 		);
 	}
@@ -51,7 +55,10 @@ class MovieService extends RESTDataSource {
 			formatUrlQuery(this.baseURL, this.apiKey, 'top_rated', {
 				language: args?.options?.language,
 				page: args?.options?.page,
-				region: args?.options?.region,
+				region:
+					args?.options?.region !== RegionEnum.En
+						? args?.options?.region
+						: null,
 			}),
 		);
 	}
@@ -61,7 +68,10 @@ class MovieService extends RESTDataSource {
 			formatUrlQuery(this.baseURL, this.apiKey, 'upcoming', {
 				language: args?.options?.language,
 				page: args?.options?.page,
-				region: args?.options?.region,
+				region:
+					args?.options?.region !== RegionEnum.En
+						? args?.options?.region
+						: null,
 			}),
 		);
 	}
@@ -73,7 +83,10 @@ class MovieService extends RESTDataSource {
 			formatUrlQuery(this.baseURL, this.apiKey, 'now_playing', {
 				language: args?.options?.language,
 				page: args?.options?.page,
-				region: args?.options?.region,
+				region:
+					args?.options?.region !== RegionEnum.En
+						? args?.options?.region
+						: null,
 			}),
 		);
 	}

@@ -22,7 +22,7 @@ import useStyles from './style';
 const MoviesList = () => {
 	const theme = useTheme();
 	const styles = useStyles(theme);
-	const { currentLocale } = useContext(TranslationContext);
+	const { currentLocale, currentRegion } = useContext(TranslationContext);
 
 	useLingui();
 
@@ -43,6 +43,7 @@ const MoviesList = () => {
 		variables: {
 			options: {
 				language: currentLocale,
+				region: currentRegion,
 			},
 		},
 		fetchPolicy: 'cache-and-network',
@@ -62,6 +63,7 @@ const MoviesList = () => {
 			variables: {
 				options: {
 					language: currentLocale,
+					region: currentRegion,
 				},
 			},
 			fetchPolicy: 'cache-and-network',
@@ -79,6 +81,7 @@ const MoviesList = () => {
 			variables: {
 				options: {
 					language: currentLocale,
+					region: currentRegion,
 				},
 			},
 			fetchPolicy: 'cache-and-network',
@@ -96,6 +99,7 @@ const MoviesList = () => {
 			variables: {
 				options: {
 					language: currentLocale,
+					region: currentRegion,
 				},
 			},
 			fetchPolicy: 'cache-and-network',
@@ -113,6 +117,7 @@ const MoviesList = () => {
 			movieId: moviesSelectedId,
 			options: {
 				language: currentLocale,
+				region: currentRegion,
 			},
 		},
 		fetchPolicy: 'cache-and-network',

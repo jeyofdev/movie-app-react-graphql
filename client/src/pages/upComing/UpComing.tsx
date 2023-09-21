@@ -13,7 +13,7 @@ import useStyles from './style';
 
 const Upcoming = () => {
 	const styles = useStyles();
-	const { currentLocale } = useContext(TranslationContext);
+	const { currentLocale, currentRegion } = useContext(TranslationContext);
 
 	const [page, setPage] = useState(1);
 
@@ -22,6 +22,7 @@ const Upcoming = () => {
 			options: {
 				page,
 				language: currentLocale,
+				region: currentRegion,
 			},
 		},
 		fetchPolicy: 'cache-and-network',

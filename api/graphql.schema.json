@@ -467,7 +467,7 @@
 						"description": null,
 						"type": {
 							"kind": "ENUM",
-							"name": "LanguageEnum",
+							"name": "RegionEnum",
 							"ofType": null
 						},
 						"defaultValue": null,
@@ -1719,7 +1719,7 @@
 						"description": null,
 						"type": {
 							"kind": "ENUM",
-							"name": "LanguageEnum",
+							"name": "RegionEnum",
 							"ofType": null
 						},
 						"defaultValue": null,
@@ -2862,6 +2862,41 @@
 				"possibleTypes": null
 			},
 			{
+				"kind": "ENUM",
+				"name": "RegionEnum",
+				"description": null,
+				"fields": null,
+				"inputFields": null,
+				"interfaces": null,
+				"enumValues": [
+					{
+						"name": "de",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "en",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "es",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "fr",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					}
+				],
+				"possibleTypes": null
+			},
+			{
 				"kind": "INPUT_OBJECT",
 				"name": "SearchInput",
 				"description": null,
@@ -2908,7 +2943,7 @@
 						"description": null,
 						"type": {
 							"kind": "ENUM",
-							"name": "LanguageEnum",
+							"name": "RegionEnum",
 							"ofType": null
 						},
 						"defaultValue": null,
