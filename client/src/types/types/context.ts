@@ -1,4 +1,4 @@
-import { LanguageEnum } from '@graphql/__generated__/graphql-type';
+import { LanguageEnum, RegionEnum } from '@graphql/__generated__/graphql-type';
 import { DarkModeEnum } from '../enums';
 
 export type ThemeContextType = {
@@ -8,5 +8,6 @@ export type ThemeContextType = {
 
 export type TranslationContextType = {
 	currentLocale: LanguageEnum;
+	currentRegion: RegionEnum;
 	handleLocale: (locale: LanguageEnum) => void;
 };

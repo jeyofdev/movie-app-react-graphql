@@ -11,7 +11,7 @@ import {
 	SelectChangeEvent,
 	useTheme,
 } from '@mui/material';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import useStyles from './style';
 
@@ -63,6 +63,8 @@ const SelectLang = () => {
 	const handleOpen = () => {
 		setOpen(true);
 	};
+
+	useEffect(() => {}, [currentLocale]);
 
 	const getFlag = (locale: string) => {
 		switch (locale) {

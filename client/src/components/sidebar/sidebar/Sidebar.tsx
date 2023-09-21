@@ -13,11 +13,7 @@ import {
 	faThumbsUp,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-	Genre,
-	LanguageEnum,
-	useGenresQuery,
-} from '@graphql/__generated__/graphql-type';
+import { Genre, useGenresQuery } from '@graphql/__generated__/graphql-type';
 import useWindowSize from '@hooks/useWindowSize';
 import { Trans, t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
@@ -36,7 +32,7 @@ const Sidebar = () => {
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
 	const { pathname } = useLocation();
-	const { currentLocale } = useContext(TranslationContext);
+	const { currentLocale, currentRegion } = useContext(TranslationContext);
 	useLingui();
 
 	const newsFeedItems: MenuItemType[] = [
@@ -89,6 +85,7 @@ const Sidebar = () => {
 		variables: {
 			options: {
 				language: currentLocale,
+				region: currentRegion,
 			},
 		},
 		fetchPolicy: 'no-cache',
@@ -104,7 +101,8 @@ const Sidebar = () => {
 	const { data, loading, error } = useGenresQuery({
 		variables: {
 			options: {
-				language: LanguageEnum.En,
+				language: currentLocale,
+				region: currentRegion,
 			},
 		},
 		fetchPolicy: 'no-cache',

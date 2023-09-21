@@ -14,7 +14,7 @@ import useStyles from './style';
 const Popular = () => {
 	const styles = useStyles();
 
-	const { currentLocale } = useContext(TranslationContext);
+	const { currentLocale, currentRegion } = useContext(TranslationContext);
 
 	const [page, setPage] = useState(1);
 
@@ -23,6 +23,7 @@ const Popular = () => {
 			options: {
 				page,
 				language: currentLocale,
+				region: currentRegion,
 			},
 		},
 		fetchPolicy: 'cache-and-network',
