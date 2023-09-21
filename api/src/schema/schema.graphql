@@ -5,6 +5,13 @@ enum LanguageEnum {
 	de
 }
 
+enum RegionEnum {
+	fr
+	en
+	es
+	de
+}
+
 enum SortEnum {
 	POPULARITY_ASC
 	POPULARITY_DESC
@@ -234,7 +241,7 @@ type KeywordMoviesResponse {
 input OptionsInput {
 	language: LanguageEnum
 	page: Int
-	region: LanguageEnum
+	region: RegionEnum
 }
 
 input DiscoverInput {
@@ -242,14 +249,14 @@ input DiscoverInput {
 	sort_by: SortEnum
 	language: LanguageEnum
 	page: Int
-	region: LanguageEnum
+	region: RegionEnum
 }
 
 input SearchInput {
 	query: String
 	language: LanguageEnum
 	page: Int
-	region: LanguageEnum
+	region: RegionEnum
 }
 
 type Query {

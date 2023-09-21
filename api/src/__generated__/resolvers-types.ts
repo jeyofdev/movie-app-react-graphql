@@ -70,7 +70,7 @@ export type CrewMovie = {
 export type DiscoverInput = {
 	language?: InputMaybe<LanguageEnum>;
 	page?: InputMaybe<Scalars['Int']>;
-	region?: InputMaybe<LanguageEnum>;
+	region?: InputMaybe<RegionEnum>;
 	sort_by?: InputMaybe<SortEnum>;
 	with_genres?: InputMaybe<Scalars['Int']>;
 };
@@ -214,7 +214,7 @@ export type MoviesResponse = {
 export type OptionsInput = {
 	language?: InputMaybe<LanguageEnum>;
 	page?: InputMaybe<Scalars['Int']>;
-	region?: InputMaybe<LanguageEnum>;
+	region?: InputMaybe<RegionEnum>;
 };
 
 export type Person = {
@@ -393,11 +393,18 @@ export type QueryUpcomingMoviesArgs = {
 	options?: InputMaybe<OptionsInput>;
 };
 
+export enum RegionEnum {
+	De = 'de',
+	En = 'en',
+	Es = 'es',
+	Fr = 'fr',
+}
+
 export type SearchInput = {
 	language?: InputMaybe<LanguageEnum>;
 	page?: InputMaybe<Scalars['Int']>;
 	query?: InputMaybe<Scalars['String']>;
-	region?: InputMaybe<LanguageEnum>;
+	region?: InputMaybe<RegionEnum>;
 };
 
 export enum SortEnum {
@@ -556,6 +563,7 @@ export type ResolversTypes = ResolversObject<{
 	ProductionCompany: ResolverTypeWrapper<ProductionCompany>;
 	ProductionCountry: ResolverTypeWrapper<ProductionCountry>;
 	Query: ResolverTypeWrapper<{}>;
+	RegionEnum: RegionEnum;
 	SearchInput: SearchInput;
 	SortEnum: SortEnum;
 	String: ResolverTypeWrapper<Scalars['String']>;

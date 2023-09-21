@@ -5,6 +5,12 @@ const enums = {
 		es: 'es-ES',
 		de: 'de-DE',
 	},
+	RegionEnum: {
+		fr: 'fr',
+		en: 'en',
+		es: 'es',
+		de: 'de',
+	},
 	SortEnum: {
 		POPULARITY_ASC: 'popularity.asc',
 		POPULARITY_DESC: 'popularity.desc',
