@@ -62,18 +62,7 @@
 		"*.{js,css,md,html,json}": "prettier --cache --write"
 	},
 	"dependencies": {
-		"@emotion/react": "^11.11.0",
-		"@emotion/styled": "^11.11.0",
-		"@fortawesome/fontawesome-svg-core": "^6.4.0",
-		"@fortawesome/free-brands-svg-icons": "^6.4.0",
-		"@fortawesome/free-solid-svg-icons": "^6.4.0",
-		"@fortawesome/react-fontawesome": "^0.2.0",
-		"@mui/icons-material": "^5.11.16",
-		"@mui/material": "^5.13.0",
 		"delay-cli": "^2.0.0",
-		"mui-sx": "^1.0.0",
-		"react-hook-form": "^7.44.3",
-		"usehooks-ts": "^2.9.1",
 		"uuid": "^9.0.0"
 	}
 }
