@@ -2,6 +2,22 @@
 
 This is a Movies App using React, Apollo, Graphql Firebase and The Movie Database (TMDB) API.</p>
 
+### Tools
+
+- [React](https://react.dev/) React 18.
+- [Typescript](https://www.typescriptlang.org/) JavaScript with syntax for types.
+- [ESLint](https://eslint.org/) Find and fix problems in JavaScript and typescript code.
+- [Prettier](https://prettier.io/) Code formatter.
+- [husky](https://typicode.github.io/husky) Husky improves your commits.
+- [firebase](https://firebase.google.com/) Firebase app development platform.
+- [materialUI](https://mui.com/) Move faster with intuitive React UI tools.
+- [apollo-client](https://www.apollographql.com/docs/react) Apollo Client is a comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL.
+- [Apollo-server](https://www.apollographql.com/docs/apollo-server) Apollo Server is a spec-compliant GraphQL server that's compatible with any GraphQL client.
+- [react-hook-form](https://www.react-hook-form.com/) Performant, flexible and extensible forms with easy-to-use validation.
+- [lingui](https://lingui.dev/) JavaScript library for internalization (i18n) of JavaScript projects.
+- [codegen](https://the-guild.dev/graphql/codegen/) CodeGen is a family of open-source model for program synthesis.
+- [Graphql](https://graphql.org/) A query language for an API.
+
 ## Getting starting
 
 ### Prerequisites
