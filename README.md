@@ -76,6 +76,10 @@ Navigate to http://localhost:{yourport} in your browser to explore the API with 
 
 Navigate to http://localhost:8080 in your browser to run the React app.
 
+### Production
+
+Project available on this [link](https://movie-app-react-graphql.vercel.app/).
+
 ### Testing
 
 run tests of the api :
