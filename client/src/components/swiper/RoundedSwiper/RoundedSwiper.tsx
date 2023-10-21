@@ -3,12 +3,13 @@ import BaseTooltip from '@components/ui/tooltips/baseTooltip/BaseTooltip';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CastMovie } from '@graphql/__generated__/graphql-type';
-import { Box, Button, useTheme } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
+import useTheme from '@hooks/useTheme';
 import { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -18,7 +19,7 @@ import { RoundedSwiperProps } from '../../../types/types/props';
 import useStyles from './style';
 
 const RoundedSwiper = ({ list, styleBox }: RoundedSwiperProps) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
 	const navigate = useNavigate();

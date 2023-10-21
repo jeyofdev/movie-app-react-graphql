@@ -1,6 +1,7 @@
 import ImageThumb from '@components/ui/images/imageThumb/ImageThumb';
 import VoteAverage from '@components/ui/votes/average/VoteAverage';
-import { Box, Button, Typography, useTheme } from '@mui/material';
+import useTheme from '@hooks/useTheme';
+import { Box, Button, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { RoutesEnum } from '../../../types/enums';
 import { ListResultCardProps } from '../../../types/types/props';
@@ -13,7 +14,7 @@ const ListResultCard = ({
 	vote_average,
 	cardGridColumn,
 }: ListResultCardProps) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const navigate = useNavigate();
 

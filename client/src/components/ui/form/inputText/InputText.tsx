@@ -1,6 +1,7 @@
 import { ThemeContext } from '@context/ThemeContext';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useTheme from '@hooks/useTheme';
 import {
 	Box,
 	Chip,
@@ -9,7 +10,6 @@ import {
 	InputAdornment,
 	InputLabel,
 	Typography,
-	useTheme,
 } from '@mui/material';
 import { useContext, useState } from 'react';
 import { Controller } from 'react-hook-form';
@@ -26,7 +26,7 @@ const InputText = ({
 	placeholder,
 	password,
 }: InputTextPropsType) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const { themeMode } = useContext(ThemeContext);
 

@@ -2,7 +2,8 @@ import Logo from '@components/ui/logo/Logo';
 import { ThemeContext } from '@context/ThemeContext';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useTheme } from '@mui/material';
+import useTheme from '@hooks/useTheme';
+import {} from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
@@ -19,7 +20,7 @@ const SidebarResponsive = ({
 	menuItemActive,
 	setMenuItemActive,
 }: SidebarResponsivePropsTypes) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const [open, setOpen] = useState<boolean>(false);
 	const { themeMode } = useContext(ThemeContext);

@@ -9,9 +9,10 @@ import {
 	faTriangleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useTheme from '@hooks/useTheme';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
-import { Alert, Box, Button, Typography, useTheme } from '@mui/material';
+import { Alert, Box, Button, Typography } from '@mui/material';
 import { signUp, socialMediaAuth } from '@services/auth';
 import { githubProvider, googleProvider } from '@services/auth.providers';
 import { toastSuccess } from '@utils/index';
@@ -29,7 +30,7 @@ const SignUpModal = ({
 	setStep,
 	onRedirect,
 }: SignUpModalPropsType) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	useLingui();
 

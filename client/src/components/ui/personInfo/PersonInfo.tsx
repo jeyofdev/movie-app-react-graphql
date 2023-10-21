@@ -1,5 +1,6 @@
+import useTheme from '@hooks/useTheme';
 import { t } from '@lingui/macro';
-import { Typography, useTheme } from '@mui/material';
+import { Typography } from '@mui/material';
 import { PersonInfoProps } from '../../../types/types/props';
 import useStyles from './style';
 
@@ -9,7 +10,7 @@ const PersonInfo = ({
 	subValue,
 	subValueEnd,
 }: PersonInfoProps) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 
 	return (

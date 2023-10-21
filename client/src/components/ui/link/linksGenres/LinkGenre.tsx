@@ -1,7 +1,8 @@
 import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
 import BaseTooltip from '@components/ui/tooltips/baseTooltip/BaseTooltip';
 import { Genre } from '@graphql/__generated__/graphql-type';
-import { Box, Typography, useTheme } from '@mui/material';
+import useTheme from '@hooks/useTheme';
+import { Box, Typography } from '@mui/material';
 import { formatGenreForUrl } from '@utils/index';
 import { useNavigate } from 'react-router-dom';
 import { useWindowSize } from 'usehooks-ts';
@@ -11,7 +12,7 @@ import useStyles from './style';
 
 const LinksGenres = ({ genres, sx }: LinksGenresProps) => {
 	const navigate = useNavigate();
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
 

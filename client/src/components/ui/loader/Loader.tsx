@@ -1,11 +1,12 @@
+import useTheme from '@hooks/useTheme';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
-import { Box, CircularProgress, Typography, useTheme } from '@mui/material';
+import { Box, CircularProgress, Typography } from '@mui/material';
 import { LoaderPropsType } from '../../../types/types/props';
 import useStyles from './style';
 
 const Loader = ({ color }: LoaderPropsType) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	useLingui();
 	return (

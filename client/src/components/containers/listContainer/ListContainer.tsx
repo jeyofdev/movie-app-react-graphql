@@ -1,13 +1,8 @@
 import ListResultCard from '@components/cards/listResultCard/ListResultCard';
+import useTheme from '@hooks/useTheme';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import {
-	Box,
-	Pagination,
-	PaginationItem,
-	Typography,
-	useTheme,
-} from '@mui/material';
+import { Box, Pagination, PaginationItem, Typography } from '@mui/material';
 import { ListContainerProps } from '../../../types/types/props';
 import useStyles from './style';
 
@@ -19,7 +14,7 @@ const ListContainer = ({
 	setCurrentPage,
 	cardGridColumn = {},
 }: ListContainerProps) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 
 	return (

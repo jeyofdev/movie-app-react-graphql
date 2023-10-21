@@ -1,7 +1,8 @@
 import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
 import VoteAverage from '@components/ui/votes/average/VoteAverage';
+import useTheme from '@hooks/useTheme';
 import { Trans } from '@lingui/macro';
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { truncate } from '@utils/index';
 import { useNavigate } from 'react-router-dom';
 import { useWindowSize } from 'usehooks-ts';
@@ -17,7 +18,7 @@ const SelectedThumbsGalleryCard = ({
 	overview,
 	vote_average,
 }: SelectedThumbsGalleryCardProps) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const navigate = useNavigate();
 	const { width } = useWindowSize();

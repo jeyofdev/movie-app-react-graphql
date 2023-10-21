@@ -1,6 +1,7 @@
 import ImageThumb from '@components/ui/images/imageThumb/ImageThumb';
 import { TranslationContext } from '@context/TranslationContext';
-import { Box, Button, Typography, useTheme } from '@mui/material';
+import useTheme from '@hooks/useTheme';
+import { Box, Button, Typography } from '@mui/material';
 import { formatDate, truncate } from '@utils/index';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +17,7 @@ const SearchResultMovieCard = ({
 	overview,
 	release_date,
 }: SearchResultMovieCardProps) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
 	const navigate = useNavigate();

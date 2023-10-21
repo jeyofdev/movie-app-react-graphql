@@ -11,6 +11,7 @@ import {
 	faSun,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useTheme from '@hooks/useTheme';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import {
@@ -20,7 +21,6 @@ import {
 	IconButton,
 	Input,
 	InputAdornment,
-	useTheme,
 } from '@mui/material';
 import {
 	ChangeEvent,
@@ -38,7 +38,7 @@ import { TopBarPropsType } from '../../types/types/props';
 import useStyles from './style';
 
 const Topbar = ({ landing }: TopBarPropsType) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const navigate = useNavigate();
 	const { width } = useWindowSize();
@@ -159,7 +159,7 @@ const Topbar = ({ landing }: TopBarPropsType) => {
 						sx={styles.darkModeBtn}
 					>
 						<FontAwesomeIcon
-							icon={themeMode === DarkModeEnum.DARK ? faMoon : faSun}
+							icon={themeMode === DarkModeEnum.DARK ? faSun : faMoon}
 							color={theme.palette.primary.contrastText}
 							style={styles.icon}
 						/>

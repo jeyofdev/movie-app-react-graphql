@@ -9,16 +9,10 @@ import {
 	faTriangleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useTheme from '@hooks/useTheme';
 import { Trans, t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
-import {
-	Alert,
-	Box,
-	Button,
-	Divider,
-	Typography,
-	useTheme,
-} from '@mui/material';
+import { Alert, Box, Button, Divider, Typography } from '@mui/material';
 import {
 	authErrorCredentials,
 	forgotPassword,
@@ -41,7 +35,7 @@ const SignInModal = ({
 	step,
 	setStep,
 }: SignInModalPropsType) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	useLingui();
 

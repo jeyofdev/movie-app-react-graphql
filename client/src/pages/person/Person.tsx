@@ -8,14 +8,15 @@ import {
 	useMoviesByCastPersonQuery,
 	usePersonDetailsQuery,
 } from '@graphql/__generated__/graphql-type';
+import useTheme from '@hooks/useTheme';
 import { Trans } from '@lingui/macro';
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import useStyles from './style';
 
 const Person = () => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const { personId } = useParams();
 	const { currentLocale } = useContext(TranslationContext);

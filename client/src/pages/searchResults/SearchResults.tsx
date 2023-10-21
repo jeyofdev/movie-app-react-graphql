@@ -3,14 +3,15 @@ import LoaderContainer from '@components/containers/LoaderContainer/LoaderContai
 import AlertBase from '@components/ui/alert/Alert';
 import { TranslationContext } from '@context/TranslationContext';
 import { useSearchMoviesQuery } from '@graphql/__generated__/graphql-type';
+import useTheme from '@hooks/useTheme';
 import { Plural, Trans } from '@lingui/macro';
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import useStyles from './style';
 
 const SearchResults = () => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const { search } = useParams();
 	const { currentLocale } = useContext(TranslationContext);

@@ -2,9 +2,10 @@ import UserMenuItem from '@components/items/userMenuItem/UserMenuItem';
 import { ThemeContext } from '@context/ThemeContext';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useTheme from '@hooks/useTheme';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
-import { Box, Button, Divider, Menu, useTheme } from '@mui/material';
+import { Box, Button, Divider, Menu } from '@mui/material';
 import { logOut } from '@services/auth';
 import { auth } from '@services/firebase';
 import { MouseEvent, useContext, useState } from 'react';
@@ -13,7 +14,7 @@ import { UserMenuPropsType } from '../../../types/types/props';
 import useStyles from './style';
 
 const UserMenu = ({ onClickLogin, onClickSignUp }: UserMenuPropsType) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const [user] = useAuthState(auth);
 	useLingui();
