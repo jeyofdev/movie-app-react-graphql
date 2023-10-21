@@ -3,13 +3,13 @@ import BaseTooltip from '@components/ui/tooltips/baseTooltip/BaseTooltip';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CastMovie } from '@graphql/__generated__/graphql-type';
+import useTheme from '@hooks/useTheme';
 import { Box, Button } from '@mui/material';
 import { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import useTheme from '@hooks/useTheme';
 import { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
