@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import MenuItem from '@components/items/MenuItem/MenuItem';
-import { Box, Typography, useTheme } from '@mui/material';
+import useTheme from '@hooks/useTheme';
+import { Box, Typography } from '@mui/material';
 import { RoutesEnum } from '../../../types/enums';
 import { BlockSidebarMenuProps } from '../../../types/types/props';
 import useStyles from './style';
@@ -16,7 +17,7 @@ const MenuItemsBlock = ({
 	boxStyles,
 	setCloseMenuMobile,
 }: BlockSidebarMenuProps) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 
 	return (

@@ -1,6 +1,7 @@
 import { ThemeContext } from '@context/ThemeContext';
 import { TranslationContext } from '@context/TranslationContext';
 import { LanguageEnum } from '@graphql/__generated__/graphql-type';
+import useTheme from '@hooks/useTheme';
 import { t } from '@lingui/macro';
 import {
 	Box,
@@ -9,7 +10,6 @@ import {
 	MenuItem,
 	Select,
 	SelectChangeEvent,
-	useTheme,
 } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
@@ -28,7 +28,7 @@ const countries = [
 ];
 
 const SelectLang = () => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const { themeMode } = useContext(ThemeContext);
 	const { currentLocale, handleLocale } = useContext(TranslationContext);

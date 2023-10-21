@@ -1,7 +1,8 @@
 import { faImage, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useTheme from '@hooks/useTheme';
 import { t } from '@lingui/macro';
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { ImageThumbPropsType } from '../../../../types/types/props';
 import useStyles from './style';
 
@@ -12,7 +13,7 @@ const ImageThumb = ({
 	posterStyle,
 	person,
 }: ImageThumbPropsType) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 
 	return (

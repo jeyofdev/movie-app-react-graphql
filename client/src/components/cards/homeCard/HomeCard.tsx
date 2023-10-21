@@ -1,10 +1,11 @@
 import ImageThumb from '@components/ui/images/imageThumb/ImageThumb';
-import { Box, useTheme } from '@mui/material';
+import useTheme from '@hooks/useTheme';
+import { Box } from '@mui/material';
 import { HomeCardProps } from '../../../types/types/props';
 import useStyles from './style';
 
 const HomeCard = ({ title, poster_path, boxStyles }: HomeCardProps) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 
 	return (

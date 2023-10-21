@@ -1,9 +1,10 @@
-import { Box, useTheme } from '@mui/material';
+import useTheme from '@hooks/useTheme';
+import { Box } from '@mui/material';
 import { ThumbnailCardProps } from '../../../types/types/props';
 import useStyles from './style';
 
 const ThumbnailCard = ({ title, poster_path }: ThumbnailCardProps) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 
 	return (

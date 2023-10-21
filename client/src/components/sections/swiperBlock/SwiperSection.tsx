@@ -3,7 +3,8 @@ import RoundedSwiper from '@components/swiper/RoundedSwiper/RoundedSwiper';
 import MainSwiper from '@components/swiper/mainSwiper/MainSwiper';
 import ThumbsGallerySwiper from '@components/swiper/thumbsGallerySwiper/ThumbsGallerySwiper';
 import { CastMovie, Movie } from '@graphql/__generated__/graphql-type';
-import { Box, Typography, useTheme } from '@mui/material';
+import useTheme from '@hooks/useTheme';
+import { Box, Typography } from '@mui/material';
 import { Dispatch, SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
 import { useWindowSize } from 'usehooks-ts';
@@ -24,7 +25,7 @@ const SwiperSection = ({
 	titleStyle,
 	swiperBoxStyle,
 }: SwiperSectionProps) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
 

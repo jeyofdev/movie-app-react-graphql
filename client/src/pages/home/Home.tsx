@@ -2,8 +2,9 @@ import HomeCard from '@components/cards/homeCard/HomeCard';
 import SignInModal from '@components/modals/signInModal/SignInModal';
 import SignUpModal from '@components/modals/signupModal/SignUpModal';
 import { Movie } from '@graphql/__generated__/graphql-type';
+import useTheme from '@hooks/useTheme';
 import { Trans, t } from '@lingui/macro';
-import { Box, Button, Typography, useTheme } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { auth } from '@services/firebase';
 import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -13,7 +14,7 @@ import { HomePropsType } from '../../types/types/props';
 import useStyles from './style';
 
 const Home = ({ list }: HomePropsType) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const navigate = useNavigate();
 	const [user] = useAuthState(auth);

@@ -2,9 +2,10 @@ import SwiperSection from '@components/sections/swiperBlock/SwiperSection';
 import Tags from '@components/tags/Tags';
 import ImageThumb from '@components/ui/images/imageThumb/ImageThumb';
 import VoteAverage from '@components/ui/votes/average/VoteAverage';
+import useTheme from '@hooks/useTheme';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { DetailsMovieCardProps } from '../../../types/types/props';
 import useStyles from './style';
 
@@ -18,7 +19,7 @@ const DetailsMovieCard = ({
 	backdrop_path,
 	cast,
 }: DetailsMovieCardProps) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	useLingui();
 

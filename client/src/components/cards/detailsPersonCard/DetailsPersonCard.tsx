@@ -1,9 +1,10 @@
 import ImageThumb from '@components/ui/images/imageThumb/ImageThumb';
 import PersonInfo from '@components/ui/personInfo/PersonInfo';
 import { TranslationContext } from '@context/TranslationContext';
+import useTheme from '@hooks/useTheme';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
-import { Box, Button, Typography, useTheme } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import {
 	formatDate,
 	getAge,
@@ -24,7 +25,7 @@ const DetailsPersonCard = ({
 	place_of_birth,
 	biography,
 }: DetailsPersonCardPropsType) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
 	const { currentLocale } = useContext(TranslationContext);

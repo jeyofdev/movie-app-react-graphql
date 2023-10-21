@@ -1,4 +1,4 @@
-import { Box, Button, useTheme } from '@mui/material';
+import { Box, Button } from '@mui/material';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { A11y, FreeMode, Navigation, Thumbs } from 'swiper';
@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import SwiperButton from '@components/ui/Button/swiperButton/SwiperButton';
 import { Movie } from '@graphql/__generated__/graphql-type';
+import useTheme from '@hooks/useTheme';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
@@ -23,7 +24,7 @@ const ThumbsGallerySwiper = ({
 	setActiveImage,
 	swiperBox,
 }: SwiperThumbsGalleryType) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
 

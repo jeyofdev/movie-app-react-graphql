@@ -1,40 +1,24 @@
 import DetailsMovieCard from '@components/cards/detailsMovieCard/DetailsMovieCard';
 import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
 import AlertBase from '@components/ui/alert/Alert';
-import { TranslationContext } from '@context/TranslationContext';
-import {
-	CastMovie,
-	Genre,
-	useCastByMovieQuery,
-	useMovieDetailsQuery,
-} from '@graphql/__generated__/graphql-type';
+import { CastMovie, Genre } from '@graphql/__generated__/graphql-type';
+import useMovieCast from '@hooks/useMovieCast';
+import useMovieDetails from '@hooks/useMovieDetails';
 import { Trans } from '@lingui/macro';
 import { Box } from '@mui/material';
-import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import useStyles from './style';
 
 const MovieDetails = () => {
 	const styles = useStyles();
 	const { movieId } = useParams();
-	const { currentLocale } = useContext(TranslationContext);
 
-	const { loading, error, data } = useMovieDetailsQuery({
-		variables: {
-			movieId: Number(movieId),
-			options: { language: currentLocale },
-		},
-		fetchPolicy: 'cache-and-network',
-	});
-
+	const { loading, error, data } = useMovieDetails(movieId as string);
 	const {
 		loading: castLoading,
 		error: castError,
 		data: castData,
-	} = useCastByMovieQuery({
-		variables: { movieId: Number(movieId) },
-		fetchPolicy: 'cache-and-network',
-	});
+	} = useMovieCast(movieId as string);
 
 	if (loading || castLoading) {
 		return <LoaderContainer />;

@@ -1,6 +1,7 @@
 import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Typography, useTheme } from '@mui/material';
+import useTheme from '@hooks/useTheme';
+import { Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useWindowSize } from 'usehooks-ts';
 import { BreakpointEnum } from '../../../types/enums';
@@ -17,7 +18,7 @@ const MenuItem = ({
 	setMenuItemActive,
 	setCloseMenuMobile,
 }: MenuItemPropsType) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const navigate = useNavigate();
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();

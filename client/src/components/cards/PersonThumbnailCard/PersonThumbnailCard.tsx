@@ -1,4 +1,5 @@
-import { Box, useTheme } from '@mui/material';
+import useTheme from '@hooks/useTheme';
+import { Box } from '@mui/material';
 import { PersonThumbnailCardProps } from '../../../types/types/props';
 import useStyles from './style';
 
@@ -6,7 +7,7 @@ const PersonThumbnailCard = ({
 	name,
 	profile_path,
 }: PersonThumbnailCardProps) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 
 	return (

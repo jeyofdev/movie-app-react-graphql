@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Box, Button, Typography, useTheme } from '@mui/material';
+import useTheme from '@hooks/useTheme';
+import { Box, Button, Typography } from '@mui/material';
 import { SocialButtonPropsType } from '../../../../types/types/props';
 import useStyles from './style';
 
 const SocialButton = ({ icon, label, onClick }: SocialButtonPropsType) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 
 	return (

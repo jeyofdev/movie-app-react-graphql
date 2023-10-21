@@ -1,4 +1,5 @@
-import { Button, Typography, useTheme } from '@mui/material';
+import useTheme from '@hooks/useTheme';
+import { Button, Typography } from '@mui/material';
 import { RedirectWithTextButtonPropsType } from '../../../../types/types/props';
 import useStyles from './style';
 
@@ -7,7 +8,7 @@ const RedirectWithTextButton = ({
 	labelBtn,
 	onClick,
 }: RedirectWithTextButtonPropsType) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 
 	return (

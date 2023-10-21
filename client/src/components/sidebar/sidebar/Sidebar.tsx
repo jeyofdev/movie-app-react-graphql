@@ -14,10 +14,11 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Genre, useGenresQuery } from '@graphql/__generated__/graphql-type';
+import useTheme from '@hooks/useTheme';
 import useWindowSize from '@hooks/useWindowSize';
 import { Trans, t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
-import { Box, Divider, Typography, useTheme } from '@mui/material';
+import { Box, Divider, Typography } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
@@ -28,7 +29,7 @@ import SidebarResponsive from '../sideBarResponsive/SidebarResponsive';
 import useStyles from './style';
 
 const Sidebar = () => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
 	const { pathname } = useLocation();

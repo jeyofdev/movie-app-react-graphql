@@ -1,8 +1,10 @@
 import BaseButton from '@components/ui/Button/BaseButton/BaseButton';
 import BaseTooltip from '@components/ui/tooltips/baseTooltip/BaseTooltip';
 import { Genre } from '@graphql/__generated__/graphql-type';
-import { Box, Typography, useTheme } from '@mui/material';
+import useTheme from '@hooks/useTheme';
+import { Box, Typography } from '@mui/material';
 import { formatGenreForUrl } from '@utils/index';
+import { Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useWindowSize } from 'usehooks-ts';
 import { BreakpointEnum } from '../../../../types/enums';
@@ -11,7 +13,7 @@ import useStyles from './style';
 
 const LinksGenres = ({ genres, sx }: LinksGenresProps) => {
 	const navigate = useNavigate();
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const { width } = useWindowSize();
 
@@ -55,13 +57,26 @@ const LinksGenres = ({ genres, sx }: LinksGenresProps) => {
 
 		return arrGenre.map((genre: Genre, i: number) => {
 			if (width >= BreakpointEnum.MD)
-				return <>{getLinkGenre(arrGenre, genre, i)}</>;
+				return (
+					<Fragment key={genre.id}>{getLinkGenre(arrGenre, genre, i)}</Fragment>
+				);
 			if (width >= BreakpointEnum.SM)
-				return <>{i <= length && getLinkGenre(arrGenre, genre, i)}</>;
+				return (
+					<Fragment key={genre.id}>
+						{i <= length && getLinkGenre(arrGenre, genre, i)}
+					</Fragment>
+				);
 			if (width >= 400)
-				return <>{i <= length && getLinkGenre(arrGenre, genre, i)}</>;
+				return (
+					<Fragment key={genre.id}>
+						{i <= length && getLinkGenre(arrGenre, genre, i)}
+					</Fragment>
+				);
 
-			if (i <= 1) return getLinkGenre(arrGenre, genre, i);
+			if (i <= 1)
+				return (
+					<Fragment key={genre.id}>{getLinkGenre(arrGenre, genre, i)}</Fragment>
+				);
 
 			return undefined;
 		});

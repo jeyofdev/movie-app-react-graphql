@@ -1,7 +1,8 @@
 import { ThemeContext } from '@context/ThemeContext';
 import { faChevronLeft, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Box, Button, Dialog, Typography, useTheme } from '@mui/material';
+import useTheme from '@hooks/useTheme';
+import { Box, Button, Dialog, Typography } from '@mui/material';
 import { useContext } from 'react';
 import { ModalPropsType } from '../../../types/types/props';
 import useStyles from './style';
@@ -17,7 +18,7 @@ const Modal = ({
 	resetForm,
 	children,
 }: ModalPropsType) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const { themeMode } = useContext(ThemeContext);
 

@@ -6,8 +6,9 @@ import {
 	Movie,
 	usePopularMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
+import useTheme from '@hooks/useTheme';
 import { Trans } from '@lingui/macro';
-import { Box, Divider, useTheme } from '@mui/material';
+import { Box, Divider } from '@mui/material';
 import Home from '@pages/home/Home';
 import { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -16,7 +17,7 @@ import LoaderContainer from '../LoaderContainer/LoaderContainer';
 import useStyles from './style';
 
 const LandingContainer = () => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const { state } = useLocation();
 	const navigate = useNavigate();

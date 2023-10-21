@@ -4,7 +4,7 @@ import { ThemeContextType } from '../types/types/context';
 import { ThemeContextProviderPropsType } from '../types/types/props';
 
 export const ThemeContext = createContext<ThemeContextType>({
-	themeMode: DarkModeEnum.LIGHT,
+	themeMode: DarkModeEnum.DARK,
 	handleThemeMode: () => {},
 });
 

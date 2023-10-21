@@ -12,15 +12,16 @@ import {
 	useTopRatedMoviesQuery,
 	useUpcomingMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
+import useTheme from '@hooks/useTheme';
 import { Trans, t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
-import { Box, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 import { useContext, useState } from 'react';
 import { MoviesListCategoryEnum, RoutesEnum } from '../../types/enums';
 import useStyles from './style';
 
 const MoviesList = () => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const { currentLocale, currentRegion } = useContext(TranslationContext);
 

@@ -1,6 +1,7 @@
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Box, Typography, useTheme } from '@mui/material';
+import useTheme from '@hooks/useTheme';
+import { Box, Typography } from '@mui/material';
 import { VoteAverageProps } from '../../../../types/types/props';
 import useStyles from './style';
 
@@ -11,7 +12,7 @@ const VoteAverage = ({
 	iconStyle,
 	hasBackground,
 }: VoteAverageProps) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 
 	return (

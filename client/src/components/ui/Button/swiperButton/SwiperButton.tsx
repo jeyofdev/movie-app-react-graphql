@@ -3,14 +3,15 @@ import {
 	faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, useTheme } from '@mui/material';
+import useTheme from '@hooks/useTheme';
+import { Button } from '@mui/material';
 import { useSwiper } from 'swiper/react';
 import { SwiperDirectionEnum } from '../../../../types/enums';
 import { SwiperButtonProps } from '../../../../types/types/props';
 import useStyles from './style';
 
 const SwiperButton = ({ direction }: SwiperButtonProps) => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const swiper = useSwiper();
 
