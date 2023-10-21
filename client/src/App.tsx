@@ -1,15 +1,13 @@
 import LandingContainer from '@components/containers/landingContainer/LandingContainer';
 import MainContainer from '@components/containers/mainContainer/MainContainer';
 import { ThemeContext } from '@context/ThemeContext';
-import { TranslationContext } from '@context/TranslationContext';
-import { LanguageEnum } from '@graphql/__generated__/graphql-type';
+import useTranslation from '@hooks/useTranslation';
 import { i18n } from '@lingui/core';
 import { I18nProvider } from '@lingui/react';
 import { Box, ThemeProvider } from '@mui/material';
 import { darkTheme, lightTheme } from '@theme/globalTheme';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
-import loadCatalog from './i18n';
 import MainRouter from './router/MainRouter';
 import useStyles from './style';
 import { DarkModeEnum, RoutesEnum } from './types/enums';
@@ -18,15 +16,7 @@ const App = () => {
 	const { themeMode } = useContext(ThemeContext);
 	const styles = useStyles();
 	const { pathname } = useLocation();
-	const { currentLocale } = useContext(TranslationContext);
-
-	useEffect(() => {
-		loadCatalog(currentLocale);
-	}, [currentLocale]);
-
-	useEffect(() => {
-		loadCatalog(localStorage.getItem('locale') ?? LanguageEnum.En);
-	}, []);
+	useTranslation();
 
 	return (
 		<I18nProvider i18n={i18n}>
