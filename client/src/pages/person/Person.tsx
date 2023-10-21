@@ -6,8 +6,8 @@ import { TranslationContext } from '@context/TranslationContext';
 import {
 	Movie,
 	useMoviesByCastPersonQuery,
-	usePersonDetailsQuery,
 } from '@graphql/__generated__/graphql-type';
+import usePersonDetails from '@hooks/usePersonDetails';
 import useTheme from '@hooks/useTheme';
 import { Trans } from '@lingui/macro';
 import { Box, Typography } from '@mui/material';
@@ -25,15 +25,7 @@ const Person = () => {
 		loading: personDetailsLoading,
 		error: personDetailsError,
 		data: personDetailsData,
-	} = usePersonDetailsQuery({
-		variables: {
-			personId: Number(personId),
-			options: {
-				language: currentLocale,
-			},
-		},
-		fetchPolicy: 'cache-and-network',
-	});
+	} = usePersonDetails(personId as string);
 
 	const {
 		loading: moviesByCastPersonLoading,

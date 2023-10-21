@@ -21,7 +21,7 @@ const PersonInfo = ({
 
 			<Typography variant='body2' sx={styles.content}>
 				{value
-					? `${value} ${subValue && `(${subValue} ${subValueEnd})`}`
+					? `${value} ${subValue ? `(${subValue} ${subValueEnd})` : ''}`
 					: t`Unknown`}
 			</Typography>
 		</>
