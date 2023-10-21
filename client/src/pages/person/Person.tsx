@@ -2,16 +2,13 @@ import DetailsPersonCard from '@components/cards/detailsPersonCard/DetailsPerson
 import LoaderContainer from '@components/containers/LoaderContainer/LoaderContainer';
 import ListContainer from '@components/containers/listContainer/ListContainer';
 import AlertBase from '@components/ui/alert/Alert';
-import { TranslationContext } from '@context/TranslationContext';
-import {
-	Movie,
-	useMoviesByCastPersonQuery,
-} from '@graphql/__generated__/graphql-type';
+import { Movie } from '@graphql/__generated__/graphql-type';
+import useMoviesByPerson from '@hooks/useMoviesByPerson';
 import usePersonDetails from '@hooks/usePersonDetails';
 import useTheme from '@hooks/useTheme';
 import { Trans } from '@lingui/macro';
 import { Box, Typography } from '@mui/material';
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import useStyles from './style';
 
@@ -19,7 +16,6 @@ const Person = () => {
 	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	const { personId } = useParams();
-	const { currentLocale } = useContext(TranslationContext);
 
 	const {
 		loading: personDetailsLoading,
@@ -31,15 +27,7 @@ const Person = () => {
 		loading: moviesByCastPersonLoading,
 		error: moviesByCastPersonError,
 		data: moviesByCastPersonData,
-	} = useMoviesByCastPersonQuery({
-		variables: {
-			personId: Number(personId),
-			options: {
-				language: currentLocale,
-			},
-		},
-		fetchPolicy: 'cache-and-network',
-	});
+	} = useMoviesByPerson(personId as string);
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
