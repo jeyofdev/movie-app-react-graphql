@@ -1,4 +1,4 @@
-import { ApolloError, WatchQueryFetchPolicy } from '@apollo/client';
+import { WatchQueryFetchPolicy } from '@apollo/client';
 import { TranslationContext } from '@context/TranslationContext';
 import {
 	useSearchMoviesQuery,
@@ -6,10 +6,12 @@ import {
 } from '@graphql/__generated__/graphql-type';
 import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { LoadingAndErrorOnFetchType } from '../types/types/hook';
 
-type UseSearchMovieType = {
-	loading: boolean;
-	error: ApolloError | undefined;
+type UseSearchMovieType = Pick<
+	LoadingAndErrorOnFetchType,
+	'loading' | 'error'
+> & {
 	data: SearchMoviesQuery | undefined;
 };
 

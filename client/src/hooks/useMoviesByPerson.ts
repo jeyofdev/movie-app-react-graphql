@@ -1,14 +1,16 @@
-import { ApolloError, WatchQueryFetchPolicy } from '@apollo/client';
+import { WatchQueryFetchPolicy } from '@apollo/client';
 import { TranslationContext } from '@context/TranslationContext';
 import {
 	MoviesByCastPersonQuery,
 	useMoviesByCastPersonQuery,
 } from '@graphql/__generated__/graphql-type';
 import { useContext } from 'react';
+import { LoadingAndErrorOnFetchType } from '../types/types/hook';
 
-type UseMoviesByPersonType = {
-	loading: boolean;
-	error: ApolloError | undefined;
+type UseMoviesByPersonType = Pick<
+	LoadingAndErrorOnFetchType,
+	'loading' | 'error'
+> & {
 	data: MoviesByCastPersonQuery | undefined;
 };
 
