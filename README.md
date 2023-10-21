@@ -4,6 +4,7 @@ This is a Movies App using React, Apollo, Graphql Firebase and The Movie Databas
 
 ### Tools
 
+- [Vite](https://vitejs.dev/) Next Generation Frontend Tooling
 - [React](https://react.dev/) React 18.
 - [Typescript](https://www.typescriptlang.org/) JavaScript with syntax for types.
 - [ESLint](https://eslint.org/) Find and fix problems in JavaScript and typescript code.
