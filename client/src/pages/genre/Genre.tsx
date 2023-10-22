@@ -4,10 +4,11 @@ import AlertBase from '@components/ui/alert/Alert';
 import { Movie } from '@graphql/__generated__/graphql-type';
 import useGenreTitle from '@hooks/useGenreTitle';
 import useMoviesByGenre from '@hooks/useMoviesByGenre';
+import usePagination from '@hooks/usePagination';
 import { Trans } from '@lingui/macro';
 import { Box } from '@mui/material';
 import { firstLetterCapitalize } from '@utils/index';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { RoutesEnum } from '../../types/enums';
 import useStyles from './style';
@@ -16,7 +17,7 @@ const Genre = () => {
 	const styles = useStyles();
 	const location = useLocation();
 	const navigate = useNavigate();
-	const [page, setPage] = useState(1);
+	const { page, handleChangePage } = usePagination();
 
 	const {
 		loading: loadingGenres,
@@ -25,10 +26,6 @@ const Genre = () => {
 	} = useGenreTitle('no-cache');
 
 	const { loading, error, data } = useMoviesByGenre(page);
-
-	const handleChangePage = (_: ChangeEvent<unknown>, value: number) => {
-		setPage(value);
-	};
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
