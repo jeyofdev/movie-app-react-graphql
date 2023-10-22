@@ -9,22 +9,16 @@ import {
 	faTriangleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useAuth from '@hooks/useAuth';
 import useTheme from '@hooks/useTheme';
 import { Trans, t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { Alert, Box, Button, Divider, Typography } from '@mui/material';
-import {
-	authErrorCredentials,
-	forgotPassword,
-	signIn,
-	socialMediaAuth,
-} from '@services/auth';
 import { githubProvider, googleProvider } from '@services/auth.providers';
-import { toastSuccess } from '@utils/index';
-import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { useEffect, useState } from 'react';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { SignInModalPropsType } from '../../../types/types/props';
+import validation from '../../../validation';
 import useStyles from './style';
 
 const SignInModal = ({
@@ -38,6 +32,7 @@ const SignInModal = ({
 	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	useLingui();
+	const [signUpError, setSignUpError] = useState<string | null>();
 
 	const {
 		control,
@@ -47,47 +42,11 @@ const SignInModal = ({
 		formState: { errors, isSubmitted },
 	} = useForm({ mode: 'onSubmit' });
 
-	const [signUpError, setSignUpError] = useState<string | null>();
-
-	const handleSocialLogin = async (
-		provider: GoogleAuthProvider | GithubAuthProvider,
-	) => {
-		await socialMediaAuth(provider);
-		setOpen(false);
-	};
-
-	const handleSubmitLogin: SubmitHandler<FieldValues> = (data: FieldValues) => {
-		signIn(data.email, data.password)
-			.then(() => {
-				reset();
-				setOpen(false);
-				toastSuccess(t`You are connected`, 5000);
-			})
-			.catch(err => {
-				if (authErrorCredentials(err.code)) {
-					setSignUpError(
-						t`Your credentials are incorrect. Please double-check your login details and try again.`,
-					);
-				}
-			});
-	};
-
-	const handleSubmitEmail: SubmitHandler<FieldValues> = (data: FieldValues) => {
-		forgotPassword(data.email)
-			.then(() => {
-				reset();
-				setOpen(false);
-			})
-			.catch(() => {
-				reset();
-				setOpen(false);
-			});
-
-		toastSuccess(
-			t`If the email entered corresponds to an application user, you will receive an email with instructions to reset your password`,
-			10000,
-		);
-	};
+	const { socialLogin, SignInWithEmail, forgotPassword } = useAuth({
+		setOpen,
+		resetForm: reset,
+		setError: setSignUpError,
+	});
 
 	useEffect(() => {
 		const subscription = watch(() => {
@@ -96,23 +55,6 @@ const SignInModal = ({
 
 		return () => subscription.unsubscribe();
 	}, [watch]);
-
-	const validation = {
-		email: {
-			required: t`The email field is required`,
-			pattern: {
-				value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-				message: t`The email address is not in the correct format`,
-			},
-		},
-		password: {
-			required: t`The password field is required`,
-			minLength: {
-				value: 8,
-				message: t`The password must be at least 8 characters`,
-			},
-		},
-	};
 
 	return (
 		<>
@@ -128,13 +70,13 @@ const SignInModal = ({
 						<SocialButton
 							icon={faGoogle}
 							label={`${t`Continue with`} Google`}
-							onClick={() => handleSocialLogin(googleProvider)}
+							onClick={() => socialLogin(googleProvider)}
 						/>
 
 						<SocialButton
 							icon={faGithub}
 							label={`${t`Continue with`} GitHub`}
-							onClick={() => handleSocialLogin(githubProvider)}
+							onClick={() => socialLogin(githubProvider)}
 						/>
 					</Box>
 
@@ -210,7 +152,7 @@ const SignInModal = ({
 						<Button
 							sx={styles.btnSubmit}
 							variant='contained'
-							onClick={handleSubmit(handleSubmitLogin)}
+							onClick={handleSubmit(SignInWithEmail)}
 						>
 							<Typography variant='h6' sx={styles.btnSubmitTypo}>
 								<Trans>Login</Trans>
@@ -280,7 +222,7 @@ const SignInModal = ({
 						<Button
 							sx={styles.btnSubmit}
 							variant='contained'
-							onClick={handleSubmit(handleSubmitEmail)}
+							onClick={handleSubmit(forgotPassword)}
 						>
 							<Typography variant='h6' sx={styles.btnSubmitTypo}>
 								<Trans>Send</Trans>

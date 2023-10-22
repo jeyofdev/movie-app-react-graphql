@@ -40,13 +40,17 @@ const MoviesList = () => {
 	const [moviesListCategory, setMoviesListCategory] =
 		useState<MoviesListCategoryEnum | null>(null);
 
-	const { loading, error } = useNowPlayingMoviesQuery({
+	const defaultVariablesQueries = {
 		variables: {
 			options: {
 				language: currentLocale,
 				region: currentRegion,
 			},
 		},
+	};
+
+	const { loading, error } = useNowPlayingMoviesQuery({
+		...defaultVariablesQueries,
 		fetchPolicy: 'cache-and-network',
 		onCompleted(data) {
 			setActiveItemSwiperGallery(data?.nowPlayingMovies?.results[0] as Movie);
@@ -61,12 +65,7 @@ const MoviesList = () => {
 
 	const { loading: popularMoviesLoading, error: popularMoviesError } =
 		usePopularMoviesQuery({
-			variables: {
-				options: {
-					language: currentLocale,
-					region: currentRegion,
-				},
-			},
+			...defaultVariablesQueries,
 			fetchPolicy: 'cache-and-network',
 			onCompleted(data) {
 				setPopularMovies(
@@ -79,12 +78,7 @@ const MoviesList = () => {
 
 	const { loading: upComingMovieLoading, error: upComingMovieError } =
 		useUpcomingMoviesQuery({
-			variables: {
-				options: {
-					language: currentLocale,
-					region: currentRegion,
-				},
-			},
+			...defaultVariablesQueries,
 			fetchPolicy: 'cache-and-network',
 			onCompleted(data) {
 				setUpComingMovies(
@@ -97,12 +91,7 @@ const MoviesList = () => {
 
 	const { loading: topRatedMoviesLoading, error: topRatedMoviesError } =
 		useTopRatedMoviesQuery({
-			variables: {
-				options: {
-					language: currentLocale,
-					region: currentRegion,
-				},
-			},
+			...defaultVariablesQueries,
 			fetchPolicy: 'cache-and-network',
 			onCompleted(data) {
 				setTopRatedMovies(

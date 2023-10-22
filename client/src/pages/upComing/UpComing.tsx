@@ -6,16 +6,16 @@ import {
 	Movie,
 	useUpcomingMoviesQuery,
 } from '@graphql/__generated__/graphql-type';
+import usePagination from '@hooks/usePagination';
 import { Trans, t } from '@lingui/macro';
 import { Box } from '@mui/material';
-import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import useStyles from './style';
 
 const Upcoming = () => {
 	const styles = useStyles();
 	const { currentLocale, currentRegion } = useContext(TranslationContext);
-
-	const [page, setPage] = useState(1);
+	const { page, handleChangePage } = usePagination();
 
 	const { loading, error, data } = useUpcomingMoviesQuery({
 		variables: {
@@ -27,10 +27,6 @@ const Upcoming = () => {
 		},
 		fetchPolicy: 'cache-and-network',
 	});
-
-	const handleChangePage = (_: ChangeEvent<unknown>, value: number) => {
-		setPage(value);
-	};
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
