@@ -9,16 +9,14 @@ import {
 	faTriangleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useAuth from '@hooks/useAuth';
 import useTheme from '@hooks/useTheme';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { Alert, Box, Button, Typography } from '@mui/material';
-import { signUp, socialMediaAuth } from '@services/auth';
 import { githubProvider, googleProvider } from '@services/auth.providers';
-import { toastSuccess } from '@utils/index';
-import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { useEffect, useState } from 'react';
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { SignUpModalPropsType } from '../../../types/types/props';
 import useStyles from './style';
 
@@ -33,6 +31,7 @@ const SignUpModal = ({
 	const { theme } = useTheme();
 	const styles = useStyles(theme);
 	useLingui();
+	const [loginError, setLoginError] = useState<string | null>();
 
 	const {
 		control,
@@ -43,28 +42,11 @@ const SignUpModal = ({
 		formState: { errors, isSubmitted },
 	} = useForm({ mode: 'onSubmit' });
 
-	const [loginError, setLoginError] = useState<string | null>();
-
-	const handleSocialLogin = async (
-		provider: GoogleAuthProvider | GithubAuthProvider,
-	) => {
-		await socialMediaAuth(provider);
-		setOpen(false);
-	};
-
-	const handleEmailLogin: SubmitHandler<FieldValues> = (data: FieldValues) => {
-		signUp(data.email, data.password)
-			.then(() => {
-				reset();
-				setOpen(false);
-				toastSuccess(t`you have successfully registered`, 5000);
-			})
-			.catch(err => {
-				if (err.code === 'auth/email-already-in-use') {
-					setLoginError(t`An account is already in use with this email.`);
-				}
-			});
-	};
+	const { socialLogin, SignUpWithEmail } = useAuth({
+		setOpen,
+		resetForm: reset,
+		setError: setLoginError,
+	});
 
 	useEffect(() => {
 		const subscription = watch(() => {
@@ -112,13 +94,13 @@ const SignUpModal = ({
 						<SocialButton
 							icon={faGoogle}
 							label={`${t`Continue with`} Google`}
-							onClick={() => handleSocialLogin(googleProvider)}
+							onClick={() => socialLogin(googleProvider)}
 						/>
 
 						<SocialButton
 							icon={faGithub}
 							label={`${t`Continue with`} GitHub`}
-							onClick={() => handleSocialLogin(githubProvider)}
+							onClick={() => socialLogin(githubProvider)}
 						/>
 
 						<SocialButton
@@ -213,7 +195,7 @@ const SignUpModal = ({
 						<Button
 							sx={styles.btnSubmit}
 							variant='contained'
-							onClick={handleSubmit(handleEmailLogin)}
+							onClick={handleSubmit(SignUpWithEmail)}
 						>
 							<Typography variant='h6' sx={styles.btnSubmitTypo}>
 								{t`Sign up with email`}
