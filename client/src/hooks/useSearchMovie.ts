@@ -30,8 +30,8 @@ type UseSearchMovieType = Pick<
 };
 
 const useSearchMovie = (
-	setShowSearchBtnMobile: Dispatch<SetStateAction<boolean>>,
-	setShowInputSearch: Dispatch<SetStateAction<boolean>>,
+	setShowSearchBtnMobile?: Dispatch<SetStateAction<boolean>>,
+	setShowInputSearch?: Dispatch<SetStateAction<boolean>>,
 	fetchPolicy: WatchQueryFetchPolicy = 'cache-and-network',
 ): UseSearchMovieType => {
 	const { width } = useWindowSize();
@@ -62,8 +62,10 @@ const useSearchMovie = (
 		setSearch('');
 
 		if (width < BreakpointEnum.SM) {
-			setShowSearchBtnMobile(true);
-			setShowInputSearch(false);
+			if (setShowSearchBtnMobile && setShowInputSearch) {
+				setShowSearchBtnMobile(true);
+				setShowInputSearch(false);
+			}
 		}
 	};
 
