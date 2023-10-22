@@ -11,6 +11,7 @@ import {
 	faSun,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useSearchMovie from '@hooks/useSearchMovie';
 import useTheme from '@hooks/useTheme';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
@@ -22,31 +23,22 @@ import {
 	Input,
 	InputAdornment,
 } from '@mui/material';
-import {
-	ChangeEvent,
-	KeyboardEvent,
-	useContext,
-	useEffect,
-	useState,
-} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useWindowSize } from 'usehooks-ts';
-import { BreakpointEnum, DarkModeEnum, RoutesEnum } from '../../types/enums';
+import { BreakpointEnum, DarkModeEnum } from '../../types/enums';
 import { TopBarPropsType } from '../../types/types/props';
 import useStyles from './style';
 
 const Topbar = ({ landing }: TopBarPropsType) => {
 	const { theme } = useTheme();
 	const styles = useStyles(theme);
-	const navigate = useNavigate();
 	const { width } = useWindowSize();
 	useLingui();
 
 	const { themeMode, handleThemeMode } = useContext(ThemeContext);
 
-	const [search, setSearch] = useState<string>('');
 	const [showSearchBtnMobile, setShowSearchBtnMobile] =
 		useState<boolean>(false);
 	const [showInputSearch, setShowInputSearch] = useState<boolean>(false);
@@ -55,25 +47,10 @@ const Topbar = ({ landing }: TopBarPropsType) => {
 	const [signInStep, setSignInStep] = useState<number>(0);
 	const [logInStep, setLogInStep] = useState<number>(0);
 
-	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setSearch(e.target.value);
-	};
-
-	const handleClick = () => {
-		navigate(`${RoutesEnum.SEARCH}/${search.split(' ').join('-')}`);
-		setSearch('');
-
-		if (width < BreakpointEnum.SM) {
-			setShowSearchBtnMobile(true);
-			setShowInputSearch(false);
-		}
-	};
-
-	const handleKeyUp = (e: KeyboardEvent<HTMLInputElement>) => {
-		if (e.code === 'Enter' && search.length > 0) {
-			handleClick();
-		}
-	};
+	const { search, onChange, onClick, onKeyUp } = useSearchMovie(
+		setShowSearchBtnMobile,
+		setShowInputSearch,
+	);
 
 	useEffect(() => {
 		if (width > BreakpointEnum.SM) {
@@ -121,14 +98,14 @@ const Topbar = ({ landing }: TopBarPropsType) => {
 									type={'text'}
 									placeholder={t`Search movie...`}
 									value={search}
-									onChange={handleChange}
-									onKeyUp={handleKeyUp}
+									onChange={onChange}
+									onKeyUp={onKeyUp}
 									disableUnderline
 									endAdornment={
 										<InputAdornment position='end'>
 											<IconButton
 												aria-label='toggle password visibility'
-												onClick={handleClick}
+												onClick={onClick}
 												disabled={search.length <= 0}
 											>
 												<FontAwesomeIcon
